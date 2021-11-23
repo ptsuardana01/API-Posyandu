@@ -37,7 +37,29 @@ class KadersController extends Controller
      */
     public function store(Request $request)
     {
-        
+        $dataKader = $request->validate([
+            'nama' => ['required', 'max:255'],
+            'nik' => ['required', 'unique:kaders,nik', 'max:16'],
+            'kd_kader' => ['required', 'max:5'],
+            'tmpt_lahir' => ['required', 'max:100'],
+            'tgl_lahir' => ['required'],
+            'alamat' => ['required', 'max:255'],
+            'telp' => ['required'],
+            'email' => ['required', 'max:100'],
+        ]);
+        try {
+            $response = Kaders::create($dataKader);
+            return response()->json([
+                'success' => true,
+                'message' => 'success',
+                'data' => $response
+            ]);
+        } catch (\Exception $e) {
+            return response()->json([
+                'message' => 'Err',
+                'errors' => $e->getMessage(),
+            ]);
+        }
     }
 
     /**
