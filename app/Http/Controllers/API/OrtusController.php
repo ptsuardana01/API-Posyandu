@@ -37,7 +37,36 @@ class OrtusController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $dataOrtu = $request->validate([
+            'nama_ayah' => ['required', 'max:150'],
+            'nik_ayah' => ['required', 'unique:ortus,nik_ayah', 'max:16'],
+            'nama_ibu' => ['required', 'max:150'],
+            'nik_ibu' => ['required', 'unique:ortus,nik_ibu', 'max:16'],
+            'tmpt_lahir_ayah' => ['required', 'max:100'],
+            'tgl_lahir_ayah' => ['required'],
+            'tmpt_lahir_ibu' => ['required', 'max:100'],
+            'tgl_lahir_ibu' => ['required'],
+            'alamat' => ['required', 'max:255'],
+            'telp' => ['required'],
+            'stts_kehamilan' => ['required'],
+            'stts_bumil' => ['required'],
+            'id_kader_bumil' => ['required'],
+            'tgl_meninggal' => [],
+        ]);
+
+        try {
+            $response = Ortus::create($dataOrtu);
+            return response()->json([
+                'succsess' => true,
+                'message' => 'succsess',
+                'data' => $response,
+            ]);
+        } catch (\Exception $e) {
+            return response()->json([
+                'message' => 'Err',
+                'errors' => $e->getMessage(),
+            ]);
+        }
     }
 
     /**
@@ -71,7 +100,37 @@ class OrtusController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $dataOrtu = $request->validate([
+            'nama_ayah' => ['required', 'max:150'],
+            'nik_ayah' => ['required', 'max:16'],
+            'nama_ibu' => ['required', 'max:150'],
+            'nik_ibu' => ['required', 'max:16'],
+            'tmpt_lahir_ayah' => ['required', 'max:100'],
+            'tgl_lahir_ayah' => ['required'],
+            'tmpt_lahir_ibu' => ['required', 'max:100'],
+            'tgl_lahir_ibu' => ['required'],
+            'alamat' => ['required', 'max:255'],
+            'telp' => ['required'],
+            'stts_kehamilan' => ['required'],
+            'stts_bumil' => ['required'],
+            'id_kader_bumil' => ['required'],
+            'tgl_meninggal' => [],
+        ]);
+
+        try {
+            $ortu = Ortus::find($id);
+            $response = $ortu->update($dataOrtu);
+            return response()->json([
+                'succsess' => true,
+                'message' => 'succsess',
+                'data' => $response,
+            ]);
+        } catch (\Exception $e) {
+            return response()->json([
+                'message' => 'Err',
+                'errors' => $e->getMessage(),
+            ]);
+        }
     }
 
     /**
@@ -82,6 +141,18 @@ class OrtusController extends Controller
      */
     public function destroy($id)
     {
-        //
+        try {
+            $dataOrtu = Ortus::find($id);
+            $dataOrtu->delete();
+            return response()->json([
+                'success' => true,
+                'message' => 'success',
+            ]);
+        } catch (\Exception $e) {
+            return response()->json([
+                'message' => 'Err',
+                'errors' => $e->getMessage(),
+            ]);
+        }
     }
 }
