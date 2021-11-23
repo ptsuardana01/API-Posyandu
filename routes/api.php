@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\API\OrtusController;
+use App\Http\Controllers\API\BalitasController;
+use App\Http\Controllers\API\KadersController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -17,3 +20,12 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+// route kader
+Route::resource('kader', KadersController::class);
+
+// route balita
+Route::resource('balita', BalitasController::class);
+
+// route balita
+Route::resource('ortu', OrtusController::class);
