@@ -15,7 +15,7 @@ class OrtusController extends Controller
      */
     public function index()
     {
-        $ortus = Ortus::all();
+        $ortus = Ortus::getOrtus()->paginate(5);
         return response()->json($ortus);
     }
 

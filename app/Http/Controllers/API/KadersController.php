@@ -37,7 +37,7 @@ class KadersController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        
     }
 
     /**

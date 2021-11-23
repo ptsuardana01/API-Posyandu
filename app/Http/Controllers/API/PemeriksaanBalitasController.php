@@ -3,10 +3,11 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
-use App\Models\Balitas;
+use App\Models\PemeriksaanBalitas;
+use GuzzleHttp\RetryMiddleware;
 use Illuminate\Http\Request;
 
-class BalitasController extends Controller
+class PemeriksaanBalitasController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,8 +16,8 @@ class BalitasController extends Controller
      */
     public function index()
     {
-        $balitas = Balitas::getBalitas()->paginate(5);
-        return response()->json($balitas);
+        $data_balita = PemeriksaanBalitas::getPemeriksaanBalita()->paginate(5);
+        return response()->json($data_balita);
     }
 
     /**

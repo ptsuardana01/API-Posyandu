@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\API\PemeriksaanBumilsController;
+use App\Http\Controllers\API\PemeriksaanBalitasController;
 use App\Http\Controllers\API\OrtusController;
 use App\Http\Controllers\API\BalitasController;
 use App\Http\Controllers\API\KadersController;
@@ -29,3 +31,9 @@ Route::resource('balita', BalitasController::class);
 
 // route balita
 Route::resource('ortu', OrtusController::class);
+
+// route pemeriksaan_bumils
+Route::resource('pemeriksaan-bumil', PemeriksaanBumilsController::class);
+
+// route pemeriksaan_balitas
+Route::resource('pemeriksaan-balita', PemeriksaanBalitasController::class);

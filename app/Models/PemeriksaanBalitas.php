@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
 
 class PemeriksaanBalitas extends Model
 {
@@ -12,8 +13,17 @@ class PemeriksaanBalitas extends Model
     protected $primaryKey = 'id';
     protected $guarded = [];
 
-    public function pemeriksaanBalita()
+    static function getPemeriksaanBalita()
     {
-        return $this->belongsTo(Balitas::class, 'id_pemeriksaan_balita', 'id');
+        $return = DB::table('pemeriksaan_balitas')
+                ->join('balitas','pemeriksaan_balitas.id_balita','=','balitas.id')
+                ->select('pemeriksaan_balitas.*','balitas.*');
+
+        return $return;
     }
+
+    // public function pemeriksaanBalita()
+    // {
+    //     return $this->belongsTo(Balitas::class, 'id_pemeriksaan_balita', 'id');
+    // }
 }

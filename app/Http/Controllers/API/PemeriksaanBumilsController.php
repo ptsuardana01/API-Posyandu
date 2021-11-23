@@ -3,10 +3,10 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
-use App\Models\Balitas;
+use App\Models\PemeriksaanBumils;
 use Illuminate\Http\Request;
 
-class BalitasController extends Controller
+class PemeriksaanBumilsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,8 +15,8 @@ class BalitasController extends Controller
      */
     public function index()
     {
-        $balitas = Balitas::getBalitas()->paginate(5);
-        return response()->json($balitas);
+        $data_bumil = PemeriksaanBumils::getPemeriksaanBumil()->paginate(5);
+        return response()->json($data_bumil);
     }
 
     /**

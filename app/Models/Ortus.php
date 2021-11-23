@@ -16,7 +16,8 @@ class Ortus extends Model
     static function getOrtus()
     {
         $return = DB::table('ortus')
-                ->join('kaders','ortus.id_kader_ortus','=','kaders.id');
+                ->join('kaders','ortus.id_kader_bumil','=','kaders.id')
+                ->select('ortus.*', 'kaders.nama as nama_kader');
         return $return;
 
     }
