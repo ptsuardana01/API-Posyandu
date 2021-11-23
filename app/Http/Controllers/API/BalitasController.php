@@ -37,7 +37,28 @@ class BalitasController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $dataBalita = $request->validate([
+            'nama' => ['required', 'max:255'],
+            'tmpt_lahir' => ['required', 'max:100'],
+            'tgl_lahir' => ['required'],
+            'stts_balita' => ['required'],
+            'tgl_meninggal' => [],
+            'id_ortu' => ['required'],
+            'id_kader_balita' => ['required'],
+        ]);
+        try {
+            $response = Balitas::create($dataBalita);
+            return response()->json([
+                'success' => true,
+                'message' => 'success',
+                'data' => $response
+            ]);
+        } catch (\Exception $e) {
+            return response()->json([
+                'message' => 'Err',
+                'errors' => $e->getMessage(),
+            ]);
+        }
     }
 
     /**
@@ -71,7 +92,29 @@ class BalitasController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $dataBalita = $request->validate([
+            'nama' => ['required', 'max:255'],
+            'tmpt_lahir' => ['required', 'max:100'],
+            'tgl_lahir' => ['required'],
+            'stts_balita' => ['required'],
+            'tgl_meninggal' => [],
+            'id_ortu' => ['required'],
+            'id_kader_balita' => ['required'],
+        ]);
+        try {
+            $response = Balitas::find($id);
+            $response->update($dataBalita);
+            return response()->json([
+                'success' => true,
+                'message' => 'success',
+                'data' => $response
+            ]);
+        } catch (\Exception $e) {
+            return response()->json([
+                'message' => 'Err',
+                'errors' => $e->getMessage(),
+            ]);
+        }
     }
 
     /**
@@ -82,6 +125,18 @@ class BalitasController extends Controller
      */
     public function destroy($id)
     {
-        //
+        try {
+            $response = Balitas::find($id);
+            $response->delete();
+            return response()->json([
+                'success' => true,
+                'message' => 'success',
+            ]);
+        } catch (\Exception $e) {
+            return response()->json([
+                'message' => 'Err',
+                'errors' => $e->getMessage(),
+            ]);
+        }
     }
 }
