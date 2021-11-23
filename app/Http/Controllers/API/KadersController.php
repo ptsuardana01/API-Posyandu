@@ -135,6 +135,18 @@ class KadersController extends Controller
      */
     public function destroy($id)
     {
-        //
+        try {
+            $dataKader = Kaders::find($id);
+            $dataKader->delete();
+            return response()->json([
+                'success' => true,
+                'message' => 'success',
+            ]);
+        } catch (\Exception $e) {
+            return response()->json([
+                'message' => 'Err',
+                'errors' => $e->getMessage(),
+            ]);
+        }
     }
 }
