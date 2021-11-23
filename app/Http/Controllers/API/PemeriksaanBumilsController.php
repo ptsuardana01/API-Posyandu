@@ -37,7 +37,25 @@ class PemeriksaanBumilsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $pemeriksaanBumil = $request->validate([
+            'tb' => ['required', 'numeric'],
+            'bb' => ['required', 'numeric'],
+            'lila' => ['required', 'numeric'],
+            'id_bumil' => ['required'],
+        ]);
+        try {
+            $response = PemeriksaanBumils::create($pemeriksaanBumil);
+            return response()->json([
+                'success' => true,
+                'message' => 'success',
+                'data' => $response
+            ]);
+        } catch (\Exception $e) {
+            return response()->json([
+                'message' => 'Err',
+                'errors' => $e->getMessage(),
+            ]);
+        }
     }
 
     /**
@@ -71,7 +89,26 @@ class PemeriksaanBumilsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $pemeriksaanBumil = $request->validate([
+            'tb' => ['required', 'numeric'],
+            'bb' => ['required', 'numeric'],
+            'lila' => ['required', 'numeric'],
+            'id_bumil' => ['required'],
+        ]);
+        try {
+            $response = PemeriksaanBumils::find($id);
+            $response->update($pemeriksaanBumil);
+            return response()->json([
+                'success' => true,
+                'message' => 'success',
+                'data' => $response
+            ]);
+        } catch (\Exception $e) {
+            return response()->json([
+                'message' => 'Err',
+                'errors' => $e->getMessage(),
+            ]);
+        }
     }
 
     /**
@@ -82,6 +119,19 @@ class PemeriksaanBumilsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        try {
+            $response = PemeriksaanBumils::find($id);
+            $response->delete();
+            return response()->json([
+                'success' => true,
+                'message' => 'success',
+                'data deleted' => $response
+            ]);
+        } catch (\Exception $e) {
+            return response()->json([
+                'message' => 'Err',
+                'errors' => $e->getMessage(),
+            ]);
+        }
     }
 }
