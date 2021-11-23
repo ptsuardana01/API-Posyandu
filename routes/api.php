@@ -25,6 +25,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 // route kader
 Route::resource('kader', KadersController::class);
+// Route::put('/kader/{id}', [KadersController::class, 'update']);
 
 // route balita
 Route::resource('balita', BalitasController::class);

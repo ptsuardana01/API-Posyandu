@@ -5,6 +5,7 @@ namespace App\Http\Controllers\API;
 use App\Http\Controllers\Controller;
 use App\Models\Kaders;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class KadersController extends Controller
 {
@@ -93,7 +94,37 @@ class KadersController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+
+        $dataKader = $request->validate([
+            'nama' => ['required', 'max:255'],
+            'nik' => ['required', 'max:16'],
+            'kd_kader' => ['required', 'max:5'],
+            'tmpt_lahir' => ['required', 'max:100'],
+            'tgl_lahir' => ['required'],
+            'alamat' => ['required', 'max:255'],
+            'telp' => ['required'],
+            'email' => ['required', 'max:100'],
+        ]);
+
+
+        // if ($dataKader->fails()) {
+        //     return response()->json($dataKader->errors(),422);
+        // }
+
+        try {
+            $kader = Kaders::findOrFail($id);
+            $response = $kader->update($dataKader);
+            return response()->json([
+                'success' => true,
+                'message' => 'success',
+                'data' => $response
+            ]);
+        } catch (\Exception $e) {
+            return response()->json([
+                'message' => 'Err',
+                'errors' => $e->getMessage(),
+            ]);
+        }
     }
 
     /**
