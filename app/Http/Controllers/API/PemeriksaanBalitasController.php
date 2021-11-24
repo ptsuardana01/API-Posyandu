@@ -38,7 +38,25 @@ class PemeriksaanBalitasController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $pemeriksaanBalita = $request->validate([
+            'tb' => ['required', 'numeric'],
+            'bb' => ['required', 'numeric'],
+            'lk' => ['required', 'numeric'],
+            'id_balita' => ['required'],
+        ]);
+        try {
+            $response = PemeriksaanBalitas::create($pemeriksaanBalita);
+            return response()->json([
+                'success' => true,
+                'message' => 'success',
+                'data' => $response
+            ]);
+        } catch (\Exception $e) {
+            return response()->json([
+                'message' => 'Err',
+                'errors' => $e->getMessage(),
+            ]);
+        }
     }
 
     /**
@@ -72,7 +90,26 @@ class PemeriksaanBalitasController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $pemeriksaanBalita = $request->validate([
+            'tb' => ['required', 'numeric'],
+            'bb' => ['required', 'numeric'],
+            'lk' => ['required', 'numeric'],
+            'id_balita' => ['required'],
+        ]);
+        try {
+            $response = PemeriksaanBalitas::find($id);
+            $response->update($pemeriksaanBalita);
+            return response()->json([
+                'success' => true,
+                'message' => 'success',
+                'data' => $response
+            ]);
+        } catch (\Exception $e) {
+            return response()->json([
+                'message' => 'Err',
+                'errors' => $e->getMessage(),
+            ]);
+        }
     }
 
     /**
@@ -83,6 +120,19 @@ class PemeriksaanBalitasController extends Controller
      */
     public function destroy($id)
     {
-        //
+        try {
+            $response = PemeriksaanBalitas::find($id);
+            $response->delete();
+            return response()->json([
+                'success' => true,
+                'message' => 'success',
+                'data deleted' => $response
+            ]);
+        } catch (\Exception $e) {
+            return response()->json([
+                'message' => 'Err',
+                'errors' => $e->getMessage(),
+            ]);
+        }
     }
 }

@@ -147,6 +147,7 @@ class OrtusController extends Controller
             return response()->json([
                 'success' => true,
                 'message' => 'success',
+                'data deleted' => $dataOrtu,
             ]);
         } catch (\Exception $e) {
             return response()->json([

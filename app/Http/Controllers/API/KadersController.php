@@ -141,6 +141,7 @@ class KadersController extends Controller
             return response()->json([
                 'success' => true,
                 'message' => 'success',
+                'data deleted' => $dataKader,
             ]);
         } catch (\Exception $e) {
             return response()->json([
