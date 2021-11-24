@@ -131,6 +131,7 @@ class BalitasController extends Controller
             return response()->json([
                 'success' => true,
                 'message' => 'success',
+                'data deleted' => $response,
             ]);
         } catch (\Exception $e) {
             return response()->json([
