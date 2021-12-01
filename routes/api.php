@@ -1,10 +1,12 @@
 <?php
 
+use App\Http\Controllers\API\AuthController;
 use App\Http\Controllers\API\PemeriksaanBumilsController;
 use App\Http\Controllers\API\PemeriksaanBalitasController;
 use App\Http\Controllers\API\OrtusController;
 use App\Http\Controllers\API\BalitasController;
 use App\Http\Controllers\API\KadersController;
+use GuzzleHttp\Middleware;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -23,18 +25,24 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-// route kader
-Route::resource('kader', KadersController::class);
-// Route::put('/kader/{id}', [KadersController::class, 'update']);
+Route::post('login', [AuthController::class, 'login']);
 
-// route balita
-Route::resource('balita', BalitasController::class);
+Route::group(['middleware'=>'auth:sanctum'], function() {
+    // route kader
+    Route::resource('kader', KadersController::class);
+    // Route::put('/kader/{id}', [KadersController::class, 'update']);
 
-// route balita
-Route::resource('ortu', OrtusController::class);
+    // route balita
+    Route::resource('balita', BalitasController::class);
 
-// route pemeriksaan_bumils
-Route::resource('pemeriksaan-bumil', PemeriksaanBumilsController::class);
+    // route balita
+    Route::resource('ortu', OrtusController::class);
 
-// route pemeriksaan_balitas
-Route::resource('pemeriksaan-balita', PemeriksaanBalitasController::class);
+    // route pemeriksaan_bumils
+    Route::resource('pemeriksaan-bumil', PemeriksaanBumilsController::class);
+
+    // route pemeriksaan_balitas
+    Route::resource('pemeriksaan-balita', PemeriksaanBalitasController::class);
+
+});
+
