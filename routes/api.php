@@ -6,6 +6,7 @@ use App\Http\Controllers\API\PemeriksaanBalitasController;
 use App\Http\Controllers\API\OrtusController;
 use App\Http\Controllers\API\BalitasController;
 use App\Http\Controllers\API\KadersController;
+use App\Http\Controllers\API\KehamilanController;
 use GuzzleHttp\Middleware;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -43,6 +44,9 @@ Route::group(['middleware'=>'auth:sanctum'], function() {
 
     // route pemeriksaan_balitas
     Route::resource('pemeriksaan-balita', PemeriksaanBalitasController::class);
+
+    // route kehamilan
+    Route::resource('kehamilan', KehamilanController::class);
 
 });
 

@@ -1,7 +1,7 @@
 <template>
-    <table class="table table-striped">
-        <thead>
-        <tr>
+   <table class="table table-striped">
+      <thead>
+         <tr>
             <th scope="col">Kd_Kader</th>
             <th scope="col">Nama</th>
             <th scope="col">NIK</th>
@@ -10,10 +10,10 @@
             <th scope="col">Telp</th>
             <th scope="col">Email</th>
             <th scope="col">Aksi</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr>
+         </tr>
+      </thead>
+      <tbody>
+         <tr>
             <th scope="row">KD_01</th>
             <td>Putu Suratnyana</td>
             <td>1234567890123456</td>
@@ -22,13 +22,13 @@
             <td>081786625435</td>
             <td>pas@gmail.com</td>
             <td>
-            <div class="">
-                <a href="" class="btn btn-warning">Edit</a>
-                <button type="button" class="btn btn-danger">Delete</button>
-            </div>
+               <div class="">
+                  <a href="" class="btn btn-warning">Edit</a>
+                  <button type="button" class="btn btn-danger">Delete</button>
+               </div>
             </td>
-        </tr>
-        <tr>
+         </tr>
+         <tr>
             <th scope="row">KD_01</th>
             <td>Putu Suratnyana</td>
             <td>1234567890123456</td>
@@ -37,22 +37,22 @@
             <td>081786625435</td>
             <td>pas@gmail.com</td>
             <td>
-            <div class="">
-                <a href="" class="btn btn-warning">Edit</a>
-                <button type="button" class="btn btn-danger">Delete</button>
-            </div>
+               <div class="">
+                  <a href="" class="btn btn-warning">Edit</a>
+                  <button type="button" class="btn btn-danger">Delete</button>
+               </div>
             </td>
-        </tr>
-        </tbody>
-    </table>
+         </tr>
+      </tbody>
+   </table>
 </template>
 
 <script>
 export default {
-    mounted() {
-        axios.get('/api/kader').then((response) =>{
-            console.log(response)
-        })
-    }
-}
+   mounted() {
+      axios.get("/api/kader").then((response) => {
+         console.log(response);
+      });
+   },
+};
 </script>

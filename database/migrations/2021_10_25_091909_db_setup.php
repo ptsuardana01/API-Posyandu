@@ -21,6 +21,7 @@ class DbSetup extends Migration
             $table->string('kd_kader', 10)->unique();
             $table->string('tmpt_lahir', 100);
             $table->date('tgl_lahir', 100);
+            $table->boolean('jk');
             $table->text('alamat', 255);
             $table->string('telp', 15);
             $table->string('email', 100);
@@ -30,17 +31,16 @@ class DbSetup extends Migration
 
         Schema::create('ortus', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('nama_ayah', 255);
             $table->string('nama_ibu', 255);
-            $table->string('nik_ayah', 16)->unique();
+            $table->string('nama_ayah', 255);
             $table->string('nik_ibu', 16)->unique();
-            $table->string('tmpt_lahir_ayah', 100);
+            $table->string('nik_ayah', 16)->unique();
             $table->string('tmpt_lahir_ibu', 100);
-            $table->date('tgl_lahir_ayah', 50);
+            $table->string('tmpt_lahir_ayah', 100);
             $table->date('tgl_lahir_ibu', 50);
+            $table->date('tgl_lahir_ayah', 50);
             $table->text('alamat', 255);
             $table->string('telp', 15);
-            $table->boolean('stts_kehamilan');
             $table->boolean('stts_bumil');
             $table->date('tgl_meninggal')->nullable();
             $table->unsignedBigInteger('id_kader_bumil');
@@ -71,9 +71,9 @@ class DbSetup extends Migration
 
         Schema::create('pemeriksaan_bumils', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->integer('tb');
-            $table->integer('bb');
-            $table->integer('lila');
+            $table->float('tb');
+            $table->float('bb');
+            $table->float('lila');
             $table->unsignedBigInteger('id_bumil');
             $table->timestamps();
 
@@ -83,13 +83,24 @@ class DbSetup extends Migration
 
         Schema::create('pemeriksaan_balitas', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->integer('tb');
-            $table->integer('bb');
-            $table->integer('lk');
+            $table->float('tb');
+            $table->float('bb');
+            $table->float('lk');
             $table->unsignedBigInteger('id_balita');
             $table->timestamps();
 
             $table->foreign('id_balita')->references('id')->on('balitas')
+            ->onUpdate('cascade')->onDelete('cascade');
+        });
+
+        Schema::create('kehamilan', function (Blueprint $table) {
+            $table->bigIncrements('id');
+            $table->boolean('stts_kehamilan');
+            $table->string('ket');
+            $table->unsignedBigInteger('id_bumil');
+            $table->timestamps();
+
+            $table->foreign('id_bumil')->references('id')->on('ortus')
             ->onUpdate('cascade')->onDelete('cascade');
         });
     }

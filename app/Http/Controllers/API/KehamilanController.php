@@ -3,11 +3,10 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
-use App\Models\Kaders;
+use App\Models\Kehamilan;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Validator;
 
-class KadersController extends Controller
+class KehamilanController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,8 +15,8 @@ class KadersController extends Controller
      */
     public function index()
     {
-        $kaders = Kaders::paginate(5);
-        return response()->json($kaders);
+        $kehamilans = Kehamilan::getKehamilan()->paginate(5);
+        return response()->json($kehamilans);
     }
 
     /**
@@ -38,19 +37,13 @@ class KadersController extends Controller
      */
     public function store(Request $request)
     {
-        $dataKader = $request->validate([
-            'nama' => ['required', 'max:255'],
-            'nik' => ['required', 'unique:kaders,nik', 'max:16'],
-            'kd_kader' => ['required', 'max:5'],
-            'tmpt_lahir' => ['required', 'max:100'],
-            'tgl_lahir' => ['required'],
-            'jk' => ['required'],
-            'alamat' => ['required', 'max:255'],
-            'telp' => ['required'],
-            'email' => ['required', 'max:100'],
+        $kehamilans = $request->validate([
+            'stts_kehamilan' => ['required'],
+            'ket' => ['required', 'max:255'],
+            'id_bumil' => ['required'],
         ]);
         try {
-            $response = Kaders::create($dataKader);
+            $response = Kehamilan::create($kehamilans);
             return response()->json([
                 'success' => true,
                 'message' => 'success',
@@ -95,27 +88,14 @@ class KadersController extends Controller
      */
     public function update(Request $request, $id)
     {
-
-        $dataKader = $request->validate([
-            'nama' => ['required', 'max:255'],
-            'nik' => ['required', 'max:16'],
-            'kd_kader' => ['required', 'max:5'],
-            'tmpt_lahir' => ['required', 'max:100'],
-            'tgl_lahir' => ['required'],
-            'jk' => ['required'],
-            'alamat' => ['required', 'max:255'],
-            'telp' => ['required'],
-            'email' => ['required', 'max:100'],
+        $dataKehamilans = $request->validate([
+            'stts_kehamilan' => ['required'],
+            'ket' => ['required', 'max:255'],
+            'id_bumil' => ['required'],
         ]);
-
-
-        // if ($dataKader->fails()) {
-        //     return response()->json($dataKader->errors(),422);
-        // }
-
         try {
-            $kader = Kaders::findOrFail($id);
-            $response = $kader->update($dataKader);
+            $kehamilan = Kehamilan::find($id);
+            $response = $kehamilan->update($dataKehamilans);
             return response()->json([
                 'success' => true,
                 'message' => 'success',
@@ -138,12 +118,12 @@ class KadersController extends Controller
     public function destroy($id)
     {
         try {
-            $dataKader = Kaders::find($id);
-            $dataKader->delete();
+            $dataKehamilan = Kehamilan::find($id);
+            $dataKehamilan->delete();
             return response()->json([
                 'success' => true,
                 'message' => 'success',
-                'data deleted' => $dataKader,
+                'data deleted' => $dataKehamilan,
             ]);
         } catch (\Exception $e) {
             return response()->json([
