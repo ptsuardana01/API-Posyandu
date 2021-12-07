@@ -11,7 +11,7 @@ import { adminRoutes } from './routes/admin';
 
 
 const adminRouter = new VueRouter({
-    linkActiveClass: 'active',
+    linkActiveClass: 'router-link-exact-active',
     mode: 'history',
     routes:adminRoutes
 })

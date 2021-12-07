@@ -1,14 +1,17 @@
-const Datas = require('../components/admin/pages/Datas.vue').default
+const Dashboard = require('../components/admin/pages/Dashboard.vue').default
+const Kader = require('../components/admin/pages/Kader.vue').default
 const AddDatas = require('../components/admin/pages/AddDatas.vue').default
 
 export const adminRoutes = [
     {
+        name: 'dashboard',
         path: '/admin/dashboard',
-        component: Datas
+        component: Dashboard
     },
     {
-        path: '/admin/data-kader',
-        component: Datas
+        name: 'kader',
+        path: '/admin/petugas-posyandu',
+        component: Kader
     },
     {
         path: '/admin/add-kader',
