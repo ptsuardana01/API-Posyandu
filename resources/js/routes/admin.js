@@ -1,6 +1,6 @@
 const Dashboard = require('../components/admin/pages/Dashboard.vue').default
 const Kader = require('../components/admin/pages/Kader.vue').default
-const AddDatas = require('../components/admin/pages/AddDatas.vue').default
+const Ortu = require('../components/admin/pages/Ortu.vue').default
 
 export const adminRoutes = [
     {
@@ -14,7 +14,8 @@ export const adminRoutes = [
         component: Kader
     },
     {
-        path: '/admin/add-kader',
-        component: AddDatas
+        name: 'ortu',
+        path: '/admin/orang-tua',
+        component: Ortu
     },
 ]

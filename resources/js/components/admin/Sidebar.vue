@@ -18,7 +18,7 @@
             </li>
 
             <li class="nav-item">
-                <router-link class="nav-link collapsed" :to="{ name: '' }">
+                <router-link class="nav-link collapsed" :to="{ name: 'ortu' }">
                     <i class="bi bi-grid"></i>
                     <span>Orang Tua</span>
                 </router-link>

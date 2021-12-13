@@ -28,6 +28,7 @@
                             <table class="table datatable">
                                 <thead>
                                     <tr>
+                                        <th scope="col">#</th>
                                         <th scope="col">Kode Petugas</th>
                                         <th scope="col">Nama</th>
                                         <th scope="col">NIK</th>
@@ -41,7 +42,8 @@
                                 </thead>
                                 <tbody>
                                     <tr v-for="(item, index) in kaders" :key="index">
-                                        <th scope="row">{{ item.kd_kader }}</th>
+                                        <th scope="row">{{ index+1}}</th>
+                                        <td>{{ item.kd_kader }}</td>
                                         <td>{{ item.nama }}</td>
                                         <td>{{ item.nik }}</td>
                                         <td>{{ item.tmpt_lahir }}, {{ item.tgl_lahir }}</td>
