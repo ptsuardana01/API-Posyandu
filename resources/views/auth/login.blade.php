@@ -1,56 +1,75 @@
-<x-guest-layout>
-    <x-auth-card>
-        <x-slot name="logo">
-            <a href="/">
-                <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
-            </a>
-        </x-slot>
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400&display=swap" rel="stylesheet">
 
-        <!-- Session Status -->
-        <x-auth-session-status class="mb-4" :status="session('status')" />
+    <link rel="stylesheet" href="{{ asset('asset_login/fonts/icomoon/style.css') }}">
 
-        <!-- Validation Errors -->
-        <x-auth-validation-errors class="mb-4" :errors="$errors" />
+    <link rel="stylesheet" href="{{ asset('asset_login/css/owl.carousel.min.css') }}">
 
-        <form method="POST" action="{{ route('login') }}">
-            @csrf
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="{{ asset('asset_login/css/bootstrap.min.css') }}">
+    
+    <!-- Style -->
+    <link rel="stylesheet" href="{{ asset('asset_login/css/style.css') }}">
 
-            <!-- Email Address -->
-            <div>
-                <x-label for="email" :value="__('Email')" />
-
-                <x-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus />
+    <title>Login</title>
+  </head>
+  <body>
+  
+  <div class="content">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <img src="{{ asset('img/Asset 2.png') }}" alt="Image" class="img-fluid">
+        </div>
+        <div class="col-md-6 contents">
+          <div class="row justify-content-center">
+            <div class="col-md-8">
+              <div class="mb-4">
+              <h3>Sign In</h3>
+              <p class="mb-4">Selamat datang di Pos Layanan Terpadu</p>
             </div>
-
-            <!-- Password -->
-            <div class="mt-4">
-                <x-label for="password" :value="__('Password')" />
-
-                <x-input id="password" class="block mt-1 w-full"
-                                type="password"
-                                name="password"
-                                required autocomplete="current-password" />
-            </div>
-
-            <!-- Remember Me -->
-            <div class="block mt-4">
-                <label for="remember_me" class="inline-flex items-center">
-                    <input id="remember_me" type="checkbox" class="rounded border-gray-300 text-indigo-600 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" name="remember">
-                    <span class="ml-2 text-sm text-gray-600">{{ __('Remember me') }}</span>
+            <form method="POST" action="{{ route('login') }}">
+                @csrf
+              <div class="form-group first">
+                <label for="email">Email</label>
+                <input id="email" class="form-control" type="email" name="email" :value="old('email')" required autofocus >
+              </div>
+              <div class="form-group last mb-4">
+                <label for="password">Password</label>
+                <input id="password" class="form-control"
+                type="password"
+                name="password"
+                required autocomplete="current-password">
+                
+              </div>
+              
+              <div class="d-flex mb-5 align-items-center">
+                <label class="control control--checkbox mb-0"><span class="caption">Remember me</span>
+                  <input type="checkbox" checked="checked"/>
+                  <div class="control__indicator"></div>
                 </label>
-            </div>
-
-            <div class="flex items-center justify-end mt-4">
                 @if (Route::has('password.request'))
-                    <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('password.request') }}">
-                        {{ __('Forgot your password?') }}
-                    </a>
+                <span class="ml-auto"><a href="{{ route('password.request') }}" class="forgot-pass">Forgot Password</a>
+                </span> 
                 @endif
+              </div>
 
-                <x-button class="ml-3">
-                    {{ __('Log in') }}
-                </x-button>
+              <button type="submit" class="btn btn-block btn-primary"> Login </button>
+            </form>
             </div>
-        </form>
-    </x-auth-card>
-</x-guest-layout>
+          </div> 
+        </div>
+      </div>
+    </div>
+  </div>
+    <script src="{{ asset('asset_login/js/jquery-3.3.1.min.js') }}"></script>
+    <script src="{{ asset('asset_login/js/popper.min.js') }}"></script>
+    <script src="{{ asset('asset_login/js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('asset_login/js/main.js') }}"></script>
+  </body>
+</html>

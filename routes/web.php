@@ -31,7 +31,7 @@ Route::get('/kader/{any}', function () {
     ->where('any', '.*');
 
 Route::get('/user/{any}', function () {
-    return view('user/dashboard');
+    return view('user/app');
 })->middleware(['auth', 'role:user'])
     ->where('any', '.*');
 
