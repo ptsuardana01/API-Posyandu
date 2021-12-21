@@ -25,7 +25,7 @@
             </li>
 
             <li class="nav-item">
-                <router-link class="nav-link collapsed" :to="{ name: '' }">
+                <router-link class="nav-link collapsed" :to="{ name: 'balita' }">
                     <i class="bi bi-grid"></i>
                     <span>Balita</span>
                 </router-link>

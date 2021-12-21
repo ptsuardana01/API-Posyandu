@@ -18,7 +18,7 @@ class PemeriksaanBumils extends Model
         $return = DB::table('pemeriksaan_bumils')
                 ->join('ortus','pemeriksaan_bumils.id_bumil','=','ortus.id')
                 ->select('pemeriksaan_bumils.*','ortus.nama_ibu','ortus.nik_ibu','ortus.tmpt_lahir_ibu',
-                        'ortus.tgl_lahir_ibu','ortus.stts_kehamilan','ortus.stts_bumil',
+                        'ortus.tgl_lahir_ibu','ortus.stts_bumil',
                         'ortus.tgl_meninggal as tgl_meninggal_bumil','ortus.id_kader_bumil');
 
         return $return;
