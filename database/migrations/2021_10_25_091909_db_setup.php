@@ -57,6 +57,7 @@ class DbSetup extends Migration
             $table->string('tmpt_lahir', 100);
             $table->date('tgl_lahir', 100);
             $table->boolean('stts_balita');
+            $table->boolean('jk');
             $table->date('tgl_meninggal')->nullable();
             $table->unsignedBigInteger('id_kader_balita');
             $table->unsignedBigInteger('id_ortu');

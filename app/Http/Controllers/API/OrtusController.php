@@ -76,7 +76,8 @@ class OrtusController extends Controller
      */
     public function show($id)
     {
-        //
+        $ortu = Ortus::find($id)->first();
+        return response()->json($ortu);
     }
 
     /**
