@@ -1,4 +1,8 @@
-import homepage from "../components/user/Homepage.vue";
+import Homepage from "../components/user/pages/Homepage.vue";
 export const userRoutes = [
-    { name: "homepage", path: "/user/homepage", component: homepage },
+    {
+        name: "Homepage",
+        path: "/user/Homepage",
+        component: Homepage,
+    },
 ];

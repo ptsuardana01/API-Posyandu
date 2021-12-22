@@ -1,10 +1,10 @@
 <template>
-    <div class="background">
+    <div class="bg-white h-screen py-24">
         <div class="py-12">
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
                 <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                     <div
-                        class="p-6 bg-white font-bold border-b border-gray-200 shadow-lg"
+                        class="p-6 bg-gray-100 font-bold border-b border-gray-200 shadow-lg text-center animate-pulse"
                     >
                         You're logged in!
                     </div>
@@ -12,11 +12,15 @@
             </div>
         </div>
         <div
-            class="flex text-5xl justify-center items-center font-bold text-pink-400 bg-pink-100 sm:rounded md:rounded-lg shadow-lg"
+            class="flex text-5xl justify-center items-center font-bold text-pink-400 bg-white sm:rounded md:rounded-lg shadow-lg w-full"
         >
-            Pos Layanan Terpadu (POSYANDU)<br />
-            Demi Generasi Muda Yang Maju !
-            <img class="w-1/2" src="img/Asset 2.png" alt="" />
+            <div class="flex items-center justify-center pr-44">
+                Pos Layanan Terpadu (POSYANDU)<br />
+                Demi Generasi Muda Yang Maju !
+            </div>
+            <div>
+                <img class="w-82" src="/img/Breastfeeding (1).gif" alt="" />
+            </div>
         </div>
         <div class="flex items-center justify-center mt-4 mb-40">
             <div class="p-8 bg-white w-4/5 shadow-lg rounded-lg">
@@ -28,24 +32,24 @@
                         Masukan data untuk mencari jadwal :
                     </p>
                 </div>
-                <form class="flex gap-4" action="">
+                <form class="flex gap-5" action="">
                     <input
-                        class="py-2 px-4 w-1/4 bg-gray-100 shadow-md"
+                        class="py-2 px-4 w-1/4 bg-gray-100 shadow-md rounded-lg"
                         type="text"
                         placeholder="Masukan Nama"
                     />
                     <input
-                        class="py-2 px-4 w-1/4 bg-gray-100 shadow-md"
+                        class="py-2 px-4 w-1/4 bg-gray-100 shadow-md rounded-lg"
                         type="text"
                         placeholder="Nomor Akte Kelahiran anak anda"
                     />
                     <input
-                        class="py-2 px-4 w-1/4 bg-gray-100 shadow-md"
+                        class="py-2 px-4 w-1/4 bg-gray-100 shadow-md rounded-lg"
                         type="text"
                         placeholder="NIK Ibu balita"
                     />
                     <button
-                        class="rounded-lg bg-blue-100 w-32 px-7 py-4 font-bold text-lg shadow-lg hover:bg-indigo-500"
+                        class="rounded-lg bg-blue-100 w-52 px-7 py-4 font-bold text-lg shadow-lg hover:bg-indigo-500 cursor-pointer transition duration-700 transform hover:scale-110 motion-reduce:transform-none hover:text-white"
                     >
                         Cari
                     </button>
