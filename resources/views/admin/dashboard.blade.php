@@ -9,7 +9,7 @@
     <meta content="" name="description">
     <meta content="" name="keywords">
     {{-- Bootstrap --}}
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    {{-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous"> --}}
 
     <!-- Favicons -->
     <link href="{{ asset('assets/img/favicon.png') }}" rel="icon">
@@ -33,25 +33,25 @@
 </head>
 
 <body>
-    
+
     <div id="admin">
 
     </div>
 
+    <script src="{{ asset('/js/app.js')}}"></script>
 
-    <script src="{{ asset('js/app.js')}}"></script>
     <!-- Vendor JS Files -->
-    <script src="{{ asset('assets/vendor/apexcharts/apexcharts.min.js') }}"></script>
-    <script src="{{ asset('assets/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
-    <script src="{{ asset('assets/vendor/chart.js/chart.min.js') }}"></script>
-    <script src="{{ asset('assets/vendor/echarts/echarts.min.js') }}"></script>
-    <script src="{{ asset('assets/vendor/quill/quill.min.js') }}"></script>
-    <script src="{{ asset('assets/vendor/simple-datatables/simple-datatables.js') }}"></script>
-    <script src="{{ asset('assets/vendor/tinymce/tinymce.min.js') }}"></script>
-    <script src="{{ asset('assets/vendor/php-email-form/validate.js') }}"></script>
+    <script src="{{ asset('/assets/vendor/apexcharts/apexcharts.min.js') }}"></script>
+    <script src="{{ asset('/assets/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ asset('/assets/vendor/chart.js/chart.min.js') }}"></script>
+    <script src="{{ asset('/assets/vendor/echarts/echarts.min.js') }}"></script>
+    <script src="{{ asset('/assets/vendor/quill/quill.min.js') }}"></script>
+    <script src="{{ asset('/assets/vendor/simple-datatables/simple-datatables.js') }}"></script>
+    <script src="{{ asset('/assets/vendor/tinymce/tinymce.min.js') }}"></script>
+    <script src="{{ asset('/assets/vendor/php-email-form/validate.js') }}"></script>
 
     <!-- Template Main JS File -->
-    <script src="{{ asset('assets/js/main.js') }}"></script>
+    <script src="{{ asset('/assets/js/main.js') }}"></script>
 
 </body>
 </html>
