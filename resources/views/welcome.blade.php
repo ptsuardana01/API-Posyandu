@@ -43,12 +43,6 @@
                         @endif
                         
                     @endauth
-                    <form action="{{ route('logout') }}" method="POST" class="text-sm text-gray-700 dark:text-gray-500 underline">
-                        @csrf
-                        <button type="submit">
-                            Logout
-                        </button>
-                    </form>
                 </div>
             @endif
 
