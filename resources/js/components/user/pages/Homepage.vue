@@ -1,5 +1,5 @@
 <template>
-    <div class="bg-white h-screen py-24">
+    <div class="bg-indigo-50 h-screen py-24">
         <div class="py-12">
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
                 <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
