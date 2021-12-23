@@ -18,10 +18,25 @@
             </li>
 
             <li class="nav-item">
-                <router-link class="nav-link collapsed" :to="{ name: 'ortu' }">
-                    <i class="bi bi-grid"></i>
+                <a class="nav-link collapsed" data-bs-target="#tables-nav" data-bs-toggle="collapse" href="#">
+                    <i class="bi bi-layout-text-window-reverse"></i>
                     <span>Orang Tua</span>
-                </router-link>
+                    <i class="bi bi-chevron-down ms-auto"></i>
+                </a>
+                <ul id="tables-nav" class="nav-content collapse" data-bs-parent="#sidebar-nav">
+                    <li class="nav-item">
+                        <router-link class="nav-link collapsed" :to="{ name: 'ortu' }">
+                            <i class="bi bi-grid"></i>
+                            <span>Data Orang Tua</span>
+                        </router-link>
+                    </li>
+                    <li>
+                        <router-link class="nav-link collapsed" :to="{ name: 'ortu' }">
+                            <i class="bi bi-grid"></i>
+                            <span>Data Bumil</span>
+                        </router-link>
+                    </li>
+                </ul>
             </li>
 
             <li class="nav-item">
@@ -53,7 +68,6 @@
                 </ul>
             </li>
             <!-- End Tables Nav -->
-
         </ul>
     </aside>
     <!-- End Sidebar-->
