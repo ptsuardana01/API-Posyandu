@@ -72,7 +72,8 @@ class KadersController extends Controller
      */
     public function show($id)
     {
-        //
+        $kaders = Kaders::find($id);
+        return response()->json($kaders);
     }
 
     /**

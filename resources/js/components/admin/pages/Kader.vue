@@ -19,13 +19,13 @@
                     <div class="card">
                         <div class="card-body">
                             <!-- <h5 class="card-title">Data Petugas Posyandu</h5> -->
-                            <div class="btn btn-success" style="margin-top: 1.5rem;">
+                            <router-link class="btn btn-success" style="margin-top: 1.5rem" :to="{ name: 'form-kader' }">
                                 <i class="bi bi-file-earmark-plus"></i>
                                 Tambah Data
-                            </div>
+                            </router-link>
 
                             <!-- Table with stripped rows -->
-                            <table class="table datatable">
+                            <table class="table">
                                 <thead>
                                     <tr>
                                         <th scope="col">#</th>
@@ -42,7 +42,7 @@
                                 </thead>
                                 <tbody>
                                     <tr v-for="(item, index) in kaders" :key="index">
-                                        <th scope="row">{{ index+1}}</th>
+                                        <th scope="row">{{ index + 1 }}</th>
                                         <td>{{ item.kd_kader }}</td>
                                         <td>{{ item.nama }}</td>
                                         <td>{{ item.nik }}</td>
@@ -56,8 +56,8 @@
                                         <td>{{ item.email }}</td>
                                         <td>
                                             <div class="text-center">
-                                                <a href="" class="btn btn-outline-warning"><i class="bi bi-pencil-fill"></i></a>
-                                                <button type="button" class="btn btn-outline-danger"><i class="bi bi-trash-fill"></i></button>
+                                                <router-link :to="{ name: 'form-edit-kader', params: { id: item.id } }" class="btn btn-outline-warning"><i class="bi bi-pencil-fill"></i></router-link>
+                                                <button @click="deleteData(item.id)" type="submit" class="btn btn-outline-danger"><i class="bi bi-trash-fill"></i></button>
                                             </div>
                                         </td>
                                     </tr>
@@ -90,6 +90,27 @@ export default {
             axios.get("/api/kader").then((response) => {
                 this.kaders = response.data.data;
             });
+        },
+        deleteData: function (id) {
+            this.$swal
+                .fire({
+                    title: "Anda yakin?",
+                    text: "Data yang dihapus tidak dapat dikembalikan!",
+                    icon: "warning",
+                    showCancelButton: true,
+                    confirmButtonColor: "#3085d6",
+                    cancelButtonColor: "#d33",
+                    confirmButtonText: "Ya, Hapus data ini!",
+                    cancelButtonText: "Batal",
+                })
+                .then((result) => {
+                    if (result.value) {
+                        this.axios.delete("/api/kader/" + id).then((response) => {
+                            this.$swal.fire("Terhapus!", "Petugas Posyandu berhasil terhapus.", "success");
+                        });
+                        this.getDataKaders();
+                    }
+                });
         },
     },
 };

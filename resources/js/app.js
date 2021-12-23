@@ -2,13 +2,21 @@ require("./bootstrap");
 
 window.Vue = require("vue").default;
 
+import VueAxios from 'vue-axios';
+import axios from 'axios';
 import adminApp from "./components/admin/App.vue";
 import userApp from "./components/user/App.vue";
 import VueRouter from "vue-router";
+import VueSweetalert2 from 'vue-sweetalert2';
+import 'sweetalert2/dist/sweetalert2.all';
+
 Vue.use(VueRouter);
+Vue.use(VueSweetalert2);
+Vue.use(VueAxios, axios);
 
 import { adminRoutes } from "./routes/admin";
 import { userRoutes } from "./routes/user";
+
 
 const adminRouter = new VueRouter({
     linkActiveClass: 'router-link-exact-active',
