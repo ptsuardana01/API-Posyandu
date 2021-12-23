@@ -11,10 +11,11 @@ import { adminRoutes } from "./routes/admin";
 import { userRoutes } from "./routes/user";
 
 const adminRouter = new VueRouter({
-    linkActiveClass: "active",
+    linkActiveClass: 'router-link-exact-active',
     mode: "history",
     routes: adminRoutes,
 });
+
 const userRouter = new VueRouter({
     linkActiveClass: "active",
     mode: "history",
