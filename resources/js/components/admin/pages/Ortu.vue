@@ -8,6 +8,9 @@
                         <router-link :to="{ name: 'dashboard' }"><i class="bi bi-house-door"></i></router-link>
                     </li>
                     <li class="breadcrumb-item active">Orang Tua</li>
+                    <li class="breadcrumb-item active">
+                        <router-link :to="{ name: 'ortu' }">Data Orang Tua</router-link>
+                    </li>
                 </ol>
             </nav>
         </div>
@@ -19,10 +22,10 @@
                     <div class="card">
                         <div class="card-body">
                             <!-- <h5 class="card-title">Data Petugas Posyandu</h5> -->
-                            <div class="btn btn-success" style="margin-top: 1.5rem">
+                            <router-link :to="{ name: 'form-ortu' }" class="btn btn-success" style="margin-top: 1.5rem">
                                 <i class="bi bi-file-earmark-plus"></i>
                                 Tambah Data
-                            </div>
+                            </router-link>
 
                             <!-- Table with stripped rows -->
                             <table class="table">
@@ -33,10 +36,10 @@
                                         <th scope="col">Nama Ayah</th>
                                         <th scope="col" class="text-center">NIK Ibu</th>
                                         <th scope="col" class="text-center">NIK Ayah</th>
-                                        <th scope="col" class="text-center">Info Orang Tua</th>
-                                        <th scope="col" class="text-center">Status Bumil</th>
-                                        <th scope="col" class="text-center">Tanggal Meninggal</th>
-                                        <th scope="col" class="text-center">Info Bumil</th>
+                                        <th scope="col">TTL Ibu</th>
+                                        <th scope="col">TTL Ayah</th>
+                                        <th scope="col">Alamat Ortu</th>
+                                        <th scope="col" class="text-center">Telpon</th>
                                         <th scope="col" class="text-center">Petugas Posyandu</th>
                                         <th scope="col" class="text-center">Aksi</th>
                                     </tr>
@@ -46,113 +49,25 @@
                                         <th scope="row">{{ index + 1 }}</th>
                                         <td>{{ item.nama_ibu }}</td>
                                         <td>{{ item.nama_ayah }}</td>
-                                        <td>{{ item.nik_ibu }}</td>
-                                        <td>{{ item.nik_ayah }}</td>
-                                        <td class="text-center">
-                                            <!-- Vertically centered Modal -->
-                                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" :data-bs-target="'#infoOrtu' + index">Detail</button>
-                                            <div class="modal fade" :id="'infoOrtu' + index" tabindex="-1">
-                                                <div class="modal-dialog modal-dialog-centered">
-                                                    <div class="modal-content">
-                                                        <div class="modal-header">
-                                                            <h5 class="modal-title">Detail Orang Tua</h5>
-                                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                                        </div>
-                                                        <div class="modal-body">
-                                                            <!-- Table with stripped rows -->
-                                                            <table class="table table-borderless">
-                                                                <tbody>
-                                                                    <tr>
-                                                                        <td class="text-start">TTL Ibu</td>
-                                                                        <td>:</td>
-                                                                        <td class="text-start">{{ item.tmpt_lahir_ibu }}, {{ item.tgl_lahir_ibu }}</td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td class="text-start">TTL Ayah</td>
-                                                                        <td>:</td>
-                                                                        <td class="text-start">{{ item.tmpt_lahir_ayah }}, {{ item.tgl_lahir_ayah }}</td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td class="text-start">Alamat Ortu</td>
-                                                                        <td>:</td>
-                                                                        <td class="text-start">{{ item.alamat }}</td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td class="text-start">Telpon</td>
-                                                                        <td>:</td>
-                                                                        <td class="text-start">{{ item.telp }}</td>
-                                                                    </tr>
-                                                                </tbody>
-                                                            </table>
-                                                            <!-- End Table with stripped rows -->
-                                                        </div>
-                                                        <div class="modal-footer">
-                                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <!-- End Vertically centered Modal-->
+                                        <td class="text-center">{{ item.nik_ibu }}</td>
+                                        <td class="text-center">{{ item.nik_ayah }}</td>
+                                        <td>
+                                            {{ item.tmpt_lahir_ibu }},
+                                            <br />
+                                            {{ item.tgl_lahir_ibu }}
                                         </td>
-                                        <td class="text-center">
-                                            <p v-if="item.stts_bumil == 0">Meniggal</p>
-                                            <p v-if="item.stts_bumil == 1">Hidup</p>
+                                        <td>
+                                            {{ item.tmpt_lahir_ayah }},
+                                            <br />
+                                            {{ item.tgl_lahir_ayah }}
                                         </td>
-                                        <td class="text-center">
-                                            <p v-if="item.tgl_meninggal == NULL">-</p>
-                                            <p v-if="item.tgl_meninggal != NULL">{{ item.tgl_meninggal }}</p>
-                                        </td>
-                                        <td class="text-center">
-                                            <!-- Vertically centered Modal -->
-                                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" :data-bs-target="'#infoBumil' + index">Detail</button>
-                                            <div class="modal fade" :id="'infoBumil' + index" tabindex="-1">
-                                                <div class="modal-dialog modal-dialog-centered">
-                                                    <div class="modal-content">
-                                                        <div class="modal-header">
-                                                            <h5 class="modal-title">Detail Pemeriksaan Bumil</h5>
-                                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                                        </div>
-                                                        <div class="modal-body">
-                                                            <!-- Table with stripped rows -->
-                                                            <table class="table table-borderless">
-                                                                <tbody>
-                                                                    <tr>
-                                                                        <td class="text-start">Tinggi Badan Bumil</td>
-                                                                        <td>:</td>
-                                                                        <td class="text-start">{{ datas.pemeriksaanBumils.tb }}</td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td class="text-start">Berat Badan</td>
-                                                                        <td>:</td>
-                                                                        <td class="text-start">{{ item.bb }}</td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td class="text-start">Lingkar Lengan Bumil</td>
-                                                                        <td>:</td>
-                                                                        <td class="text-start">{{ item.lila }}</td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td class="text-start">Keterangan</td>
-                                                                        <td>:</td>
-                                                                        <td class="text-start">{{ item.ket }}</td>
-                                                                    </tr>
-                                                                </tbody>
-                                                            </table>
-                                                            <!-- End Table with stripped rows -->
-                                                        </div>
-                                                        <div class="modal-footer">
-                                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <!-- End Vertically centered Modal-->
-                                        </td>
-                                        <td>{{ item.nama_kader }}</td>
+                                        <td>{{ item.alamat }}</td>
+                                        <td class="text-center">{{ item.telp }}</td>
+                                        <td class="text-center">{{ item.nama_kader }}</td>
                                         <td>
                                             <div class="text-center">
-                                                <a href="" class="btn btn-outline-warning"><i class="bi bi-pencil-fill"></i></a>
-                                                <button type="button" class="btn btn-outline-danger"><i class="bi bi-trash-fill"></i></button>
+                                                <router-link :to="{ name: 'form-edit-ortu', params: { id: item.id } }" class="btn btn-outline-warning"><i class="bi bi-pencil-fill"></i></router-link>
+                                                <button @click="deleteData(item.id)" type="button" class="btn btn-outline-danger"><i class="bi bi-trash-fill"></i></button>
                                             </div>
                                         </td>
                                     </tr>
@@ -201,6 +116,27 @@ export default {
             axios.get("/api/pemeriksaan-bumil").then((response) => {
                 this.datas.pemeriksaanBumils = response.data.data;
             });
+        },
+        deleteData: function (id) {
+            this.$swal
+                .fire({
+                    title: "Anda yakin?",
+                    text: "Data yang dihapus tidak dapat dikembalikan!",
+                    icon: "warning",
+                    showCancelButton: true,
+                    confirmButtonColor: "#3085d6",
+                    cancelButtonColor: "#d33",
+                    confirmButtonText: "Ya, Hapus data ini!",
+                    cancelButtonText: "Batal",
+                })
+                .then((result) => {
+                    if (result.value) {
+                        this.axios.delete("/api/ortu/" + id).then((response) => {
+                            this.$swal.fire("Terhapus!", "Data Orang Tua berhasil terhapus.", "success");
+                        });
+                        this.getDataOrtus();
+                    }
+                });
         },
     },
 };

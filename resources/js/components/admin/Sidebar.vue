@@ -31,9 +31,9 @@
                         </router-link>
                     </li>
                     <li>
-                        <router-link class="nav-link collapsed" :to="{ name: 'ortu' }">
+                        <router-link class="nav-link collapsed" :to="{ name: 'bumil' }">
                             <i class="bi bi-grid"></i>
-                            <span>Data Bumil</span>
+                            <span>Data Permeriksaan Bumil</span>
                         </router-link>
                     </li>
                 </ul>
