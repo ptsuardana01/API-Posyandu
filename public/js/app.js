@@ -2326,6 +2326,207 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/admin/pages/Bumil.vue?vue&type=script&lang=js&":
+/*!************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/admin/pages/Bumil.vue?vue&type=script&lang=js& ***!
+  \************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  data: function data() {
+    return {
+      pemeriksaanBumil: {},
+      kehamilan: {},
+      ortu: {}
+    };
+  },
+  mounted: function mounted() {
+    this.getPemeriksaanBumil();
+    this.getKehamilan();
+    this.getIdOrtu();
+  },
+  methods: {
+    getIdOrtu: function getIdOrtu() {
+      var _this = this;
+
+      axios.get("/api/ortu").then(function (response) {
+        _this.ortu = response.data.data; // console.log(this.ortu);
+      });
+    },
+    getPemeriksaanBumil: function getPemeriksaanBumil() {
+      var _this2 = this;
+
+      axios.get("/api/pemeriksaan-bumil").then(function (response) {
+        _this2.pemeriksaanBumil = response.data.data; // console.log(this.pemeriksaanBumil);
+      });
+    },
+    getKehamilan: function getKehamilan() {
+      var _this3 = this;
+
+      axios.get("/api/kehamilan").then(function (response) {
+        _this3.kehamilan = response.data.data;
+      });
+    },
+    deleteData: function deleteData(id) {
+      var _this4 = this;
+
+      this.$swal.fire({
+        title: "Anda yakin?",
+        text: "Data yang dihapus tidak dapat dikembalikan!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Ya, Hapus data ini!",
+        cancelButtonText: "Batal"
+      }).then(function (result) {
+        if (result.value) {
+          _this4.axios["delete"]("/api/pemeriksaan-bumil/" + id).then(function (response) {
+            _this4.$swal.fire("Terhapus!", "Data Orang Tua berhasil terhapus.", "success");
+          });
+
+          _this4.getPemeriksaanBumil();
+        }
+      });
+    }
+  }
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/admin/pages/Kader.vue?vue&type=script&lang=js&":
 /*!************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/admin/pages/Kader.vue?vue&type=script&lang=js& ***!
@@ -2942,6 +3143,164 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  data: function data() {
+    return {
+      ortu: {
+        nama_ibu: "",
+        nama_ayah: "",
+        nik_ibu: "",
+        nik_ayah: "",
+        tmpt_lahir_ibu: "",
+        tmpt_lahir_ayah: "",
+        tgl_lahir_ibu: "",
+        tgl_lahir_ayah: "",
+        alamat: "",
+        telp: "",
+        stts_bumil: "",
+        tgl_meninggal: "",
+        id_kader_bumil: ""
+      },
+      kader: {}
+    };
+  },
+  mounted: function mounted() {
+    var _this = this;
+
+    this.getIdKaderBumil(), axios.get("/api/ortu/" + this.$route.params.id, this.ortu).then(function (response) {
+      console.log(response.data);
+      _this.ortu.nama_ibu = response.data.nama_ibu;
+      _this.ortu.nik_ibu = response.data.nik_ibu;
+      _this.ortu.nama_ayah = response.data.nama_ayah;
+      _this.ortu.nik_ayah = response.data.nik_ayah;
+      _this.ortu.tmpt_lahir_ibu = response.data.tmpt_lahir_ibu;
+      _this.ortu.tmpt_lahir_ayah = response.data.tmpt_lahir_ayah;
+      _this.ortu.tgl_lahir_ibu = response.data.tgl_lahir_ibu;
+      _this.ortu.tgl_lahir_ayah = response.data.tgl_lahir_ayah;
+      _this.ortu.stts_bumil = response.data.stts_bumil;
+      _this.ortu.tgl_meninggal = response.data.tgl_meninggal;
+      _this.ortu.id_kader_bumil = response.data.id_kader_bumil;
+      _this.ortu.alamat = response.data.alamat;
+      _this.ortu.telp = response.data.telp;
+      _this.ortu.alamat = response.data.alamat;
+      console.log(_this.kader);
+    });
+  },
+  methods: {
+    getIdKaderBumil: function getIdKaderBumil() {
+      var _this2 = this;
+
+      axios.get("/api/kader").then(function (response) {
+        _this2.kader = response.data.data;
+      });
+    },
+    save: function save(e) {
+      var _this3 = this;
+
+      e.preventDefault();
+
+      if (this.$route.params.id) {
+        axios.put("/api/ortu/" + this.$route.params.id, this.ortu).then(function (response) {
+          _this3.$swal.fire({
+            title: "Success!",
+            text: response.data.message,
+            icon: "success",
+            timer: 1000
+          });
+
+          _this3.$router.push({
+            name: "ortu"
+          });
+        });
+      } else {
+        axios.post("/api/ortu", this.ortu).then(function (response) {
+          _this3.$swal.fire({
+            title: "Success!",
+            text: response.data.message,
+            icon: "success",
+            timer: 1000
+          });
+
+          _this3.ortu = response.data.data;
+
+          _this3.$router.push({
+            name: "ortu"
+          });
+        });
+      }
+    }
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/admin/pages/forms/formPemeriksaanBumil.vue?vue&type=script&lang=js&":
+/*!*********************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/admin/pages/forms/formPemeriksaanBumil.vue?vue&type=script&lang=js& ***!
+  \*********************************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -3003,53 +3362,33 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
-      ortu: {
-        nama_ibu: "",
-        nama_ayah: "",
-        nik_ibu: "",
-        nik_ayah: "",
-        tmpt_lahir_ibu: "",
-        tmpt_lahir_ayah: "",
-        tgl_lahir_ibu: "",
-        tgl_lahir_ayah: "",
-        alamat: "",
-        telp: "",
-        stts_bumil: "",
-        tgl_meninggal: "",
-        id_kader_bumil: ""
+      pemeriksaanBumil: {
+        id_bumil: "",
+        tb: "",
+        bb: "",
+        lila: ""
       },
-      kader: {}
+      ortu: {}
     };
   },
   mounted: function mounted() {
     var _this = this;
 
-    this.getIdKaderBumil(), axios.get("/api/ortu/" + this.$route.params.id, this.ortu).then(function (response) {
-      console.log(response.data);
-      _this.ortu.nama_ibu = response.data.nama_ibu;
-      _this.ortu.nik_ibu = response.data.nik_ibu;
-      _this.ortu.nama_ayah = response.data.nama_ayah;
-      _this.ortu.nik_ayah = response.data.nik_ayah;
-      _this.ortu.tmpt_lahir_ibu = response.data.tmpt_lahir_ibu;
-      _this.ortu.tmpt_lahir_ayah = response.data.tmpt_lahir_ayah;
-      _this.ortu.tgl_lahir_ibu = response.data.tgl_lahir_ibu;
-      _this.ortu.tgl_lahir_ayah = response.data.tgl_lahir_ayah;
-      _this.ortu.stts_bumil = response.data.stts_bumil;
-      _this.ortu.tgl_meninggal = response.data.tgl_meninggal;
-      _this.ortu.id_kader_bumil = response.data.id_kader_bumil;
-      _this.ortu.alamat = response.data.alamat;
-      _this.ortu.telp = response.data.telp;
-      _this.ortu.alamat = response.data.alamat;
-      console.log(_this.kader);
+    this.getIdOrtu();
+    axios.get("api/pemeriksaan-bumil" + this.$route.params.id, this.pemeriksaanBumil).then(function (response) {
+      _this.pemeriksaanBumil.id_bumil = response.data.id_bumil;
+      _this.pemeriksaanBumil.tb = response.data.tb;
+      _this.pemeriksaanBumil.bb = response.data.bb;
+      _this.pemeriksaanBumil.lila = response.data.lila;
     });
   },
   methods: {
-    getIdKaderBumil: function getIdKaderBumil() {
+    getIdOrtu: function getIdOrtu() {
       var _this2 = this;
 
-      axios.get("/api/kader").then(function (response) {
-        _this2.kader = response.data.data;
-        console.log(_this2.kader);
+      axios.get("/api/ortu").then(function (response) {
+        _this2.ortu = response.data.data;
+        console.log(_this2.ortu);
       });
     },
     save: function save(e) {
@@ -3058,7 +3397,7 @@ __webpack_require__.r(__webpack_exports__);
       e.preventDefault();
 
       if (this.$route.params.id) {
-        axios.put("/api/ortu/" + this.$route.params.id, this.ortu).then(function (response) {
+        axios.put("/api/pemeriksaan-bumil/" + this.$route.params.id, this.pemeriksaanBumil).then(function (response) {
           _this3.$swal.fire({
             title: "Success!",
             text: response.data.message,
@@ -3067,11 +3406,11 @@ __webpack_require__.r(__webpack_exports__);
           });
 
           _this3.$router.push({
-            name: "ortu"
+            name: "bumil"
           });
         });
       } else {
-        axios.post("/api/ortu", this.ortu).then(function (response) {
+        axios.post("/api/pemeriksaan-bumil", this.pemeriksaanBumil).then(function (response) {
           _this3.$swal.fire({
             title: "Success!",
             text: response.data.message,
@@ -3079,10 +3418,10 @@ __webpack_require__.r(__webpack_exports__);
             timer: 1000
           });
 
-          _this3.ortu = response.data.data;
+          _this3.pemeriksaanBumil = response.data.data;
 
           _this3.$router.push({
-            name: "ortu"
+            name: "bumil"
           });
         });
       }
@@ -3324,6 +3663,8 @@ var formKader = (__webpack_require__(/*! ../components/admin/pages/forms/formKad
 
 var formOrtu = (__webpack_require__(/*! ../components/admin/pages/forms/formOrtu.vue */ "./resources/js/components/admin/pages/forms/formOrtu.vue")["default"]);
 
+var formPemeriksaanBumil = (__webpack_require__(/*! ../components/admin/pages/forms/formPemeriksaanBumil.vue */ "./resources/js/components/admin/pages/forms/formPemeriksaanBumil.vue")["default"]);
+
 var adminRoutes = [{
   name: 'dashboard',
   path: '/admin/dashboard',
@@ -3356,11 +3697,21 @@ var adminRoutes = [{
   path: '/admin/orang-tua/edit-orang-tua/:id',
   component: formOrtu
 }, // End Orang Tua //
+// Pemeriksaan Bumil //
 {
   name: 'bumil',
   path: '/admin/orang-tua/data-bumil',
   component: Bumil
-}, // Balita //
+}, {
+  name: 'form-bumil',
+  path: '/admin/orang-tua/tambah-data-bumil',
+  component: formPemeriksaanBumil
+}, {
+  name: 'form-edit-bumil',
+  path: '/admin/orang-tua/edit-data-bumil',
+  component: formPemeriksaanBumil
+}, // End Pemeriksaan Bumil //
+// Balita //
 {
   name: 'balita',
   path: '/admin/balita',
@@ -24242,15 +24593,17 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var _Bumil_vue_vue_type_template_id_e03ea712___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Bumil.vue?vue&type=template&id=e03ea712& */ "./resources/js/components/admin/pages/Bumil.vue?vue&type=template&id=e03ea712&");
-/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! !../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+/* harmony import */ var _Bumil_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Bumil.vue?vue&type=script&lang=js& */ "./resources/js/components/admin/pages/Bumil.vue?vue&type=script&lang=js&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! !../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
-var script = {}
+
+
 
 
 /* normalize component */
 ;
-var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_1__["default"])(
-  script,
+var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _Bumil_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
   _Bumil_vue_vue_type_template_id_e03ea712___WEBPACK_IMPORTED_MODULE_0__.render,
   _Bumil_vue_vue_type_template_id_e03ea712___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns,
   false,
@@ -24460,6 +24813,45 @@ component.options.__file = "resources/js/components/admin/pages/forms/formOrtu.v
 
 /***/ }),
 
+/***/ "./resources/js/components/admin/pages/forms/formPemeriksaanBumil.vue":
+/*!****************************************************************************!*\
+  !*** ./resources/js/components/admin/pages/forms/formPemeriksaanBumil.vue ***!
+  \****************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _formPemeriksaanBumil_vue_vue_type_template_id_ba0cba56___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./formPemeriksaanBumil.vue?vue&type=template&id=ba0cba56& */ "./resources/js/components/admin/pages/forms/formPemeriksaanBumil.vue?vue&type=template&id=ba0cba56&");
+/* harmony import */ var _formPemeriksaanBumil_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./formPemeriksaanBumil.vue?vue&type=script&lang=js& */ "./resources/js/components/admin/pages/forms/formPemeriksaanBumil.vue?vue&type=script&lang=js&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! !../../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+;
+var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _formPemeriksaanBumil_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _formPemeriksaanBumil_vue_vue_type_template_id_ba0cba56___WEBPACK_IMPORTED_MODULE_0__.render,
+  _formPemeriksaanBumil_vue_vue_type_template_id_ba0cba56___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns,
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/admin/pages/forms/formPemeriksaanBumil.vue"
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (component.exports);
+
+/***/ }),
+
 /***/ "./resources/js/components/user/App.vue":
 /*!**********************************************!*\
   !*** ./resources/js/components/user/App.vue ***!
@@ -24623,6 +25015,22 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/components/admin/pages/Bumil.vue?vue&type=script&lang=js&":
+/*!********************************************************************************!*\
+  !*** ./resources/js/components/admin/pages/Bumil.vue?vue&type=script&lang=js& ***!
+  \********************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Bumil_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!../../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./Bumil.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/admin/pages/Bumil.vue?vue&type=script&lang=js&");
+ /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Bumil_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
 /***/ "./resources/js/components/admin/pages/Kader.vue?vue&type=script&lang=js&":
 /*!********************************************************************************!*\
   !*** ./resources/js/components/admin/pages/Kader.vue?vue&type=script&lang=js& ***!
@@ -24684,6 +25092,22 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_formOrtu_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!../../../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./formOrtu.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/admin/pages/forms/formOrtu.vue?vue&type=script&lang=js&");
  /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_formOrtu_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/admin/pages/forms/formPemeriksaanBumil.vue?vue&type=script&lang=js&":
+/*!*****************************************************************************************************!*\
+  !*** ./resources/js/components/admin/pages/forms/formPemeriksaanBumil.vue?vue&type=script&lang=js& ***!
+  \*****************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_formPemeriksaanBumil_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!../../../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./formPemeriksaanBumil.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/admin/pages/forms/formPemeriksaanBumil.vue?vue&type=script&lang=js&");
+ /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_formPemeriksaanBumil_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
 
 /***/ }),
 
@@ -24902,6 +25326,23 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "staticRenderFns": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_formOrtu_vue_vue_type_template_id_50e84c44___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
 /* harmony export */ });
 /* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_formOrtu_vue_vue_type_template_id_50e84c44___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./formOrtu.vue?vue&type=template&id=50e84c44& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/admin/pages/forms/formOrtu.vue?vue&type=template&id=50e84c44&");
+
+
+/***/ }),
+
+/***/ "./resources/js/components/admin/pages/forms/formPemeriksaanBumil.vue?vue&type=template&id=ba0cba56&":
+/*!***********************************************************************************************************!*\
+  !*** ./resources/js/components/admin/pages/forms/formPemeriksaanBumil.vue?vue&type=template&id=ba0cba56& ***!
+  \***********************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_formPemeriksaanBumil_vue_vue_type_template_id_ba0cba56___WEBPACK_IMPORTED_MODULE_0__.render),
+/* harmony export */   "staticRenderFns": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_formPemeriksaanBumil_vue_vue_type_template_id_ba0cba56___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
+/* harmony export */ });
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_formPemeriksaanBumil_vue_vue_type_template_id_ba0cba56___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./formPemeriksaanBumil.vue?vue&type=template&id=ba0cba56& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/admin/pages/forms/formPemeriksaanBumil.vue?vue&type=template&id=ba0cba56&");
 
 
 /***/ }),
@@ -25772,7 +26213,338 @@ var render = function () {
       ]),
     ]),
     _vm._v(" "),
-    _vm._m(0),
+    _c("section", { staticClass: "section" }, [
+      _c("div", { staticClass: "row" }, [
+        _c("div", { staticClass: "col-lg-12" }, [
+          _c("div", { staticClass: "card" }, [
+            _c(
+              "div",
+              { staticClass: "card-body" },
+              [
+                _c(
+                  "router-link",
+                  {
+                    staticClass: "btn btn-success",
+                    staticStyle: { "margin-top": "1.5rem" },
+                    attrs: { to: { name: "form-bumil" } },
+                  },
+                  [
+                    _c("i", { staticClass: "bi bi-file-earmark-plus" }),
+                    _vm._v(
+                      "\n                            Tambah Data\n                        "
+                    ),
+                  ]
+                ),
+                _vm._v(" "),
+                _c("table", { staticClass: "table" }, [
+                  _vm._m(0),
+                  _vm._v(" "),
+                  _c(
+                    "tbody",
+                    _vm._l(_vm.pemeriksaanBumil, function (item, index) {
+                      return _c(
+                        "tr",
+                        { key: index },
+                        [
+                          _c("th", { attrs: { scope: "row" } }, [
+                            _vm._v(_vm._s(index + 1)),
+                          ]),
+                          _vm._v(" "),
+                          _c("td", [_vm._v(_vm._s(item.nama_ibu))]),
+                          _vm._v(" "),
+                          _c("td", {}, [_vm._v(_vm._s(item.nik_ibu))]),
+                          _vm._v(" "),
+                          _c("td", [
+                            _vm._v(
+                              "\n                                        " +
+                                _vm._s(item.tmpt_lahir_ibu) +
+                                ",\n                                        "
+                            ),
+                            _c("br"),
+                            _vm._v(
+                              "\n                                        " +
+                                _vm._s(item.tgl_lahir_ibu) +
+                                "\n                                    "
+                            ),
+                          ]),
+                          _vm._v(" "),
+                          _c("td", { staticClass: "text-center" }, [
+                            item.stts_bumil == 0
+                              ? _c("p", [_vm._v("Meninggal")])
+                              : _vm._e(),
+                            _vm._v(" "),
+                            item.stts_bumil == 1
+                              ? _c("p", [_vm._v("Hidup")])
+                              : _vm._e(),
+                          ]),
+                          _vm._v(" "),
+                          _c("td", { staticClass: "text-center" }, [
+                            item.stts_bumil == 1
+                              ? _c("p", [_vm._v("-")])
+                              : _vm._e(),
+                            _vm._v(" "),
+                            item.stts_bumil == 0
+                              ? _c("p", [_vm._v(_vm._s(item.tgl_meninggal))])
+                              : _vm._e(),
+                          ]),
+                          _vm._v(" "),
+                          _vm._o(
+                            _vm._l(_vm.ortu, function (ortu, index) {
+                              return _c(
+                                "td",
+                                { key: index, staticClass: "text-center" },
+                                [
+                                  item.id_kader_bumil == ortu.id_kader_bumil
+                                    ? _c("span", [
+                                        _vm._v(
+                                          "\n                                            " +
+                                            _vm._s(ortu.nama_kader) +
+                                            "\n                                        "
+                                        ),
+                                      ])
+                                    : _vm._e(),
+                                ]
+                              )
+                            }),
+                            0,
+                            index
+                          ),
+                          _vm._v(" "),
+                          _c("td", { staticClass: "text-center" }, [
+                            _c(
+                              "button",
+                              {
+                                staticClass: "btn btn-outline-primary",
+                                attrs: {
+                                  type: "button",
+                                  "data-bs-toggle": "modal",
+                                  "data-bs-target":
+                                    "#verticalycentered" + index,
+                                },
+                              },
+                              [_vm._v("Detail")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "div",
+                              {
+                                staticClass: "modal fade",
+                                attrs: {
+                                  id: "verticalycentered" + index,
+                                  tabindex: "-1",
+                                },
+                              },
+                              [
+                                _c(
+                                  "div",
+                                  {
+                                    staticClass:
+                                      "modal-dialog modal-dialog-centered",
+                                  },
+                                  [
+                                    _c(
+                                      "div",
+                                      { staticClass: "modal-content" },
+                                      [
+                                        _c(
+                                          "div",
+                                          { staticClass: "modal-header" },
+                                          [
+                                            _c(
+                                              "h5",
+                                              { staticClass: "modal-title" },
+                                              [
+                                                _vm._v(
+                                                  "Data Pemeriksaan Kehamilan Ibu " +
+                                                    _vm._s(item.nama_ibu)
+                                                ),
+                                              ]
+                                            ),
+                                            _vm._v(" "),
+                                            _c("button", {
+                                              staticClass: "btn-close",
+                                              attrs: {
+                                                type: "button",
+                                                "data-bs-dismiss": "modal",
+                                                "aria-label": "Close",
+                                              },
+                                            }),
+                                          ]
+                                        ),
+                                        _vm._v(" "),
+                                        _c(
+                                          "div",
+                                          { staticClass: "modal-body" },
+                                          [
+                                            _c(
+                                              "table",
+                                              {
+                                                staticClass:
+                                                  "table table-borderless",
+                                              },
+                                              [
+                                                _c("tbody", [
+                                                  _c("tr", [
+                                                    _c(
+                                                      "td",
+                                                      {
+                                                        staticClass:
+                                                          "text-start",
+                                                      },
+                                                      [
+                                                        _vm._v(
+                                                          "Tinggi Badan Bumil"
+                                                        ),
+                                                      ]
+                                                    ),
+                                                    _vm._v(" "),
+                                                    _c("td", [_vm._v(":")]),
+                                                    _vm._v(" "),
+                                                    _c(
+                                                      "td",
+                                                      {
+                                                        staticClass:
+                                                          "text-start",
+                                                      },
+                                                      [
+                                                        _vm._v(
+                                                          _vm._s(item.tb) +
+                                                            " cm"
+                                                        ),
+                                                      ]
+                                                    ),
+                                                  ]),
+                                                  _vm._v(" "),
+                                                  _c("tr", [
+                                                    _c(
+                                                      "td",
+                                                      {
+                                                        staticClass:
+                                                          "text-start",
+                                                      },
+                                                      [_vm._v("Berat Badan")]
+                                                    ),
+                                                    _vm._v(" "),
+                                                    _c("td", [_vm._v(":")]),
+                                                    _vm._v(" "),
+                                                    _c(
+                                                      "td",
+                                                      {
+                                                        staticClass:
+                                                          "text-start",
+                                                      },
+                                                      [
+                                                        _vm._v(
+                                                          _vm._s(item.bb) +
+                                                            " kg"
+                                                        ),
+                                                      ]
+                                                    ),
+                                                  ]),
+                                                  _vm._v(" "),
+                                                  _c("tr", [
+                                                    _c(
+                                                      "td",
+                                                      {
+                                                        staticClass:
+                                                          "text-start",
+                                                      },
+                                                      [
+                                                        _vm._v(
+                                                          "Lingkar Lengan Bumil"
+                                                        ),
+                                                      ]
+                                                    ),
+                                                    _vm._v(" "),
+                                                    _c("td", [_vm._v(":")]),
+                                                    _vm._v(" "),
+                                                    _c(
+                                                      "td",
+                                                      {
+                                                        staticClass:
+                                                          "text-start",
+                                                      },
+                                                      [
+                                                        _vm._v(
+                                                          _vm._s(item.lila) +
+                                                            " cm"
+                                                        ),
+                                                      ]
+                                                    ),
+                                                  ]),
+                                                ]),
+                                              ]
+                                            ),
+                                          ]
+                                        ),
+                                        _vm._v(" "),
+                                        _vm._m(1, true),
+                                      ]
+                                    ),
+                                  ]
+                                ),
+                              ]
+                            ),
+                          ]),
+                          _vm._v(" "),
+                          _c("td", { staticClass: "text-center" }, [
+                            _vm._v(_vm._s(item.created_at)),
+                          ]),
+                          _vm._v(" "),
+                          _c("td", [
+                            _c(
+                              "div",
+                              { staticClass: "text-center" },
+                              [
+                                _c(
+                                  "router-link",
+                                  {
+                                    staticClass: "btn btn-outline-warning",
+                                    attrs: {
+                                      to: {
+                                        name: "form-edit-bumil",
+                                        params: { id: item.id },
+                                      },
+                                    },
+                                  },
+                                  [
+                                    _c("i", {
+                                      staticClass: "bi bi-pencil-fill",
+                                    }),
+                                  ]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "button",
+                                  {
+                                    staticClass: "btn btn-outline-danger",
+                                    attrs: { type: "button" },
+                                    on: {
+                                      click: function ($event) {
+                                        return _vm.deleteData(item.id)
+                                      },
+                                    },
+                                  },
+                                  [_c("i", { staticClass: "bi bi-trash-fill" })]
+                                ),
+                              ],
+                              1
+                            ),
+                          ]),
+                        ],
+                        2
+                      )
+                    }),
+                    0
+                  ),
+                ]),
+              ],
+              1
+            ),
+          ]),
+        ]),
+      ]),
+    ]),
   ])
 }
 var staticRenderFns = [
@@ -25780,84 +26552,57 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("section", { staticClass: "section" }, [
-      _c("div", { staticClass: "row" }, [
-        _c("div", { staticClass: "col-lg-12" }, [
-          _c("div", { staticClass: "card" }, [
-            _c("div", { staticClass: "card-body" }, [
-              _c(
-                "div",
-                {
-                  staticClass: "btn btn-success",
-                  staticStyle: { "margin-top": "1.5rem" },
-                },
-                [
-                  _c("i", { staticClass: "bi bi-file-earmark-plus" }),
-                  _vm._v(
-                    "\n                            Tambah Data\n                        "
-                  ),
-                ]
-              ),
-              _vm._v(" "),
-              _c("table", { staticClass: "table" }, [
-                _c("thead", [
-                  _c("tr", [
-                    _c("th", { attrs: { scope: "col" } }, [_vm._v("#")]),
-                    _vm._v(" "),
-                    _c("th", { attrs: { scope: "col" } }, [
-                      _vm._v("Nama Bumil"),
-                    ]),
-                    _vm._v(" "),
-                    _c(
-                      "th",
-                      { staticClass: "text-center", attrs: { scope: "col" } },
-                      [_vm._v("NIK Bumil")]
-                    ),
-                    _vm._v(" "),
-                    _c(
-                      "th",
-                      { staticClass: "text-center", attrs: { scope: "col" } },
-                      [_vm._v("TTL")]
-                    ),
-                    _vm._v(" "),
-                    _c(
-                      "th",
-                      { staticClass: "text-center", attrs: { scope: "col" } },
-                      [_vm._v("Status Bumil")]
-                    ),
-                    _vm._v(" "),
-                    _c(
-                      "th",
-                      { staticClass: "text-center", attrs: { scope: "col" } },
-                      [_vm._v("Info Orang Tua")]
-                    ),
-                    _vm._v(" "),
-                    _c(
-                      "th",
-                      { staticClass: "text-center", attrs: { scope: "col" } },
-                      [_vm._v("Tanggal Meninggal")]
-                    ),
-                    _vm._v(" "),
-                    _c(
-                      "th",
-                      { staticClass: "text-center", attrs: { scope: "col" } },
-                      [_vm._v("Petugas Posyandu")]
-                    ),
-                    _vm._v(" "),
-                    _c(
-                      "th",
-                      { staticClass: "text-center", attrs: { scope: "col" } },
-                      [_vm._v("Aksi")]
-                    ),
-                  ]),
-                ]),
-                _vm._v(" "),
-                _c("tbody"),
-              ]),
-            ]),
-          ]),
+    return _c("thead", [
+      _c("tr", [
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("#")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Nama Bumil")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("NIK Bumil")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [
+          _vm._v("Tempat, Tanggal Lahir"),
+        ]),
+        _vm._v(" "),
+        _c("th", { staticClass: "text-center", attrs: { scope: "col" } }, [
+          _vm._v("Status Bumil"),
+        ]),
+        _vm._v(" "),
+        _c("th", { staticClass: "text-center", attrs: { scope: "col" } }, [
+          _vm._v("Tanggal Meninggal"),
+        ]),
+        _vm._v(" "),
+        _c("th", { staticClass: "text-center", attrs: { scope: "col" } }, [
+          _vm._v("Petugas Posyandu"),
+        ]),
+        _vm._v(" "),
+        _c("th", { staticClass: "text-center", attrs: { scope: "col" } }, [
+          _vm._v("Data Pemeriksaan"),
+        ]),
+        _vm._v(" "),
+        _c("th", { staticClass: "text-center", attrs: { scope: "col" } }, [
+          _vm._v("Waktu Data Masuk"),
+        ]),
+        _vm._v(" "),
+        _c("th", { staticClass: "text-center", attrs: { scope: "col" } }, [
+          _vm._v("Aksi"),
         ]),
       ]),
+    ])
+  },
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "modal-footer" }, [
+      _c(
+        "button",
+        {
+          staticClass: "btn btn-secondary",
+          attrs: { type: "button", "data-bs-dismiss": "modal" },
+        },
+        [_vm._v("Close")]
+      ),
     ])
   },
 ]
@@ -26751,7 +27496,7 @@ var staticRenderFns = [
       _c(
         "button",
         { staticClass: "btn btn-primary", attrs: { type: "submit" } },
-        [_vm._v("Submit")]
+        [_vm._v("Save")]
       ),
     ])
   },
@@ -27214,7 +27959,7 @@ var render = function () {
                                       "option",
                                       {
                                         key: index,
-                                        attrs: { value: "kader.id" },
+                                        domProps: { value: kader.id },
                                       },
                                       [_vm._v(_vm._s(kader.nama))]
                                     )
@@ -27550,7 +28295,556 @@ var staticRenderFns = [
       _c(
         "button",
         { staticClass: "btn btn-primary", attrs: { type: "submit" } },
-        [_vm._v("Submit")]
+        [_vm._v("Save")]
+      ),
+    ])
+  },
+]
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/admin/pages/forms/formPemeriksaanBumil.vue?vue&type=template&id=ba0cba56&":
+/*!**************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/admin/pages/forms/formPemeriksaanBumil.vue?vue&type=template&id=ba0cba56& ***!
+  \**************************************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* binding */ render),
+/* harmony export */   "staticRenderFns": () => (/* binding */ staticRenderFns)
+/* harmony export */ });
+var render = function () {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("main", { staticClass: "main", attrs: { id: "main" } }, [
+    _c("div", { staticClass: "pagetitle" }, [
+      _c("h1", [_vm._v("Tambah Data Pemeriksaan Bumil")]),
+      _vm._v(" "),
+      _c("nav", [
+        _c("ol", { staticClass: "breadcrumb" }, [
+          _c(
+            "li",
+            { staticClass: "breadcrumb-item" },
+            [
+              _c("router-link", { attrs: { to: { name: "dashboard" } } }, [
+                _c("i", { staticClass: "bi bi-house-door" }),
+              ]),
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c("li", { staticClass: "breadcrumb-item active" }, [
+            _vm._v("Orang Tua"),
+          ]),
+          _vm._v(" "),
+          _c(
+            "li",
+            { staticClass: "breadcrumb-item active" },
+            [
+              _c("router-link", { attrs: { to: { name: "bumil" } } }, [
+                _vm._v("Data Pemeriksaan Bumil"),
+              ]),
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c(
+            "li",
+            { staticClass: "breadcrumb-item active" },
+            [
+              _c("router-link", { attrs: { to: { name: "form-bumil" } } }, [
+                _vm._v("Tambah Data Pemeriksaan Bumil"),
+              ]),
+            ],
+            1
+          ),
+        ]),
+      ]),
+    ]),
+    _vm._v(" "),
+    _c("section", { staticClass: "section" }, [
+      _c("div", { staticClass: "row" }, [
+        _c("div", { staticClass: "col-lg-6" }, [
+          _c("div", { staticClass: "card" }, [
+            _c("div", { staticClass: "card-body" }, [
+              _c("h5", { staticClass: "card-title" }, [
+                _vm._v("Form Tambah Data Pemeriksaan Bumil"),
+              ]),
+              _vm._v(" "),
+              _c(
+                "form",
+                {
+                  staticClass: "row g-3",
+                  on: {
+                    submit: function ($event) {
+                      $event.preventDefault()
+                      return _vm.save.apply(null, arguments)
+                    },
+                  },
+                },
+                [
+                  _vm._m(0),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    {
+                      staticClass: "tab-content pt-2",
+                      attrs: { id: "myTabjustifiedContent" },
+                    },
+                    [
+                      _c(
+                        "div",
+                        {
+                          staticClass: "tab-pane fade show row g-3 active",
+                          attrs: {
+                            id: "home-justified",
+                            role: "tabpanel",
+                            "aria-labelledby": "home-tab",
+                          },
+                        },
+                        [
+                          _c("div", { staticClass: "col-12" }, [
+                            _c(
+                              "label",
+                              {
+                                staticClass: "form-label",
+                                attrs: { for: "nama_bumil" },
+                              },
+                              [_vm._v("Nama Ibu Hamil")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "select",
+                              {
+                                directives: [
+                                  {
+                                    name: "model",
+                                    rawName: "v-model",
+                                    value: _vm.pemeriksaanBumil.id_bumil,
+                                    expression: "pemeriksaanBumil.id_bumil",
+                                  },
+                                ],
+                                staticClass: "form-select",
+                                attrs: {
+                                  "aria-label": "Default select example",
+                                  id: "nama_bumil",
+                                },
+                                on: {
+                                  change: function ($event) {
+                                    var $$selectedVal = Array.prototype.filter
+                                      .call(
+                                        $event.target.options,
+                                        function (o) {
+                                          return o.selected
+                                        }
+                                      )
+                                      .map(function (o) {
+                                        var val =
+                                          "_value" in o ? o._value : o.value
+                                        return val
+                                      })
+                                    _vm.$set(
+                                      _vm.pemeriksaanBumil,
+                                      "id_bumil",
+                                      $event.target.multiple
+                                        ? $$selectedVal
+                                        : $$selectedVal[0]
+                                    )
+                                  },
+                                },
+                              },
+                              [
+                                _c(
+                                  "option",
+                                  { attrs: { selected: "", disabled: "" } },
+                                  [_vm._v("Pilih Nama Ibu Hamil")]
+                                ),
+                                _vm._v(" "),
+                                _vm._l(_vm.ortu, function (ortu, index) {
+                                  return _c(
+                                    "option",
+                                    {
+                                      key: index,
+                                      domProps: { value: ortu.id },
+                                    },
+                                    [_vm._v(_vm._s(ortu.nama_ibu))]
+                                  )
+                                }),
+                              ],
+                              2
+                            ),
+                          ]),
+                          _vm._v(" "),
+                          _vm._l(_vm.ortu, function (ortu, index) {
+                            return _c(
+                              "div",
+                              { key: index, staticClass: "row g-3" },
+                              [
+                                _c("div", { staticClass: "col-12" }, [
+                                  _c(
+                                    "label",
+                                    {
+                                      staticClass: "form-label",
+                                      attrs: { for: "nik" },
+                                    },
+                                    [_vm._v("NIK")]
+                                  ),
+                                  _vm._v(" "),
+                                  _vm.pemeriksaanBumil.id_bumil == ortu.id
+                                    ? _c("input", {
+                                        staticClass: "form-control",
+                                        attrs: { type: "text", id: "nik" },
+                                        domProps: { value: ortu.nik_ibu },
+                                      })
+                                    : _vm._e(),
+                                  _vm._v(" "),
+                                  _vm.pemeriksaanBumil.id_bumil == !ortu.id
+                                    ? _c("input", {
+                                        staticClass: "form-control",
+                                        attrs: {
+                                          type: "text",
+                                          id: "nik",
+                                          disabled: "",
+                                        },
+                                      })
+                                    : _vm._e(),
+                                ]),
+                                _vm._v(" "),
+                                _c("div", { staticClass: "col-12" }, [
+                                  _c(
+                                    "label",
+                                    {
+                                      staticClass: "form-label",
+                                      attrs: { for: "stts_bumil" },
+                                    },
+                                    [_vm._v("Status Ibu Hamil")]
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "select",
+                                    {
+                                      staticClass: "form-select",
+                                      attrs: {
+                                        "aria-label": "Default select example",
+                                        id: "stts_bumil",
+                                      },
+                                    },
+                                    [
+                                      _vm.pemeriksaanBumil.id_bumil == !ortu.id
+                                        ? _c(
+                                            "option",
+                                            {
+                                              attrs: {
+                                                selected: "",
+                                                disabled: "",
+                                              },
+                                              domProps: {
+                                                value: ortu.stts_bumil,
+                                              },
+                                            },
+                                            [_vm._v("Status Ibu Hamil")]
+                                          )
+                                        : _vm._e(),
+                                      _vm._v(" "),
+                                      _vm.pemeriksaanBumil.id_bumil == ortu.id
+                                        ? _c(
+                                            "option",
+                                            {
+                                              attrs: {
+                                                selected: "",
+                                                disabled: "",
+                                              },
+                                              domProps: {
+                                                value: ortu.stts_bumil,
+                                              },
+                                            },
+                                            [_vm._v(_vm._s(ortu.stts_bumil))]
+                                          )
+                                        : _vm._e(),
+                                    ]
+                                  ),
+                                ]),
+                                _vm._v(" "),
+                                _c("div", { staticClass: "col-12" }, [
+                                  _c(
+                                    "label",
+                                    {
+                                      staticClass: "form-label",
+                                      attrs: { for: "kader" },
+                                    },
+                                    [_vm._v("Petugas Posyandu")]
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "select",
+                                    {
+                                      staticClass: "form-select",
+                                      attrs: {
+                                        "aria-label": "Default select example",
+                                        id: "kader",
+                                      },
+                                    },
+                                    [
+                                      _vm.pemeriksaanBumil.id_bumil == !ortu.id
+                                        ? _c(
+                                            "option",
+                                            {
+                                              attrs: {
+                                                selected: "",
+                                                disabled: "",
+                                              },
+                                              domProps: {
+                                                value: ortu.stts_bumil,
+                                              },
+                                            },
+                                            [_vm._v("Pilih Petugas Posyandu")]
+                                          )
+                                        : _vm._e(),
+                                      _vm._v(" "),
+                                      _vm.pemeriksaanBumil.id_bumil == ortu.id
+                                        ? _c(
+                                            "option",
+                                            {
+                                              attrs: {
+                                                selected: "",
+                                                disabled: "",
+                                              },
+                                              domProps: {
+                                                value: ortu.stts_bumil,
+                                              },
+                                            },
+                                            [_vm._v(_vm._s(ortu.nama_kader))]
+                                          )
+                                        : _vm._e(),
+                                    ]
+                                  ),
+                                ]),
+                              ]
+                            )
+                          }),
+                        ],
+                        2
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "div",
+                        {
+                          staticClass: "tab-pane row g-3 fade",
+                          attrs: {
+                            id: "profile-justified",
+                            role: "tabpanel",
+                            "aria-labelledby": "profile-tab",
+                          },
+                        },
+                        [
+                          _c("div", { staticClass: "row g-3" }, [
+                            _c("div", { staticClass: "col-6" }, [
+                              _c(
+                                "label",
+                                {
+                                  staticClass: "form-label",
+                                  attrs: { for: "tb" },
+                                },
+                                [_vm._v("Tinggi Badan")]
+                              ),
+                              _vm._v(" "),
+                              _c("input", {
+                                directives: [
+                                  {
+                                    name: "model",
+                                    rawName: "v-model",
+                                    value: _vm.pemeriksaanBumil.tb,
+                                    expression: "pemeriksaanBumil.tb",
+                                  },
+                                ],
+                                staticClass: "form-control",
+                                attrs: { type: "number", id: "tb" },
+                                domProps: { value: _vm.pemeriksaanBumil.tb },
+                                on: {
+                                  input: function ($event) {
+                                    if ($event.target.composing) {
+                                      return
+                                    }
+                                    _vm.$set(
+                                      _vm.pemeriksaanBumil,
+                                      "tb",
+                                      $event.target.value
+                                    )
+                                  },
+                                },
+                              }),
+                            ]),
+                            _vm._v(" "),
+                            _c("div", { staticClass: "col-6" }, [
+                              _c(
+                                "label",
+                                {
+                                  staticClass: "form-label",
+                                  attrs: { for: "bb" },
+                                },
+                                [_vm._v("Berat Badan")]
+                              ),
+                              _vm._v(" "),
+                              _c("input", {
+                                directives: [
+                                  {
+                                    name: "model",
+                                    rawName: "v-model",
+                                    value: _vm.pemeriksaanBumil.bb,
+                                    expression: "pemeriksaanBumil.bb",
+                                  },
+                                ],
+                                staticClass: "form-control",
+                                attrs: { type: "number", id: "bb" },
+                                domProps: { value: _vm.pemeriksaanBumil.bb },
+                                on: {
+                                  input: function ($event) {
+                                    if ($event.target.composing) {
+                                      return
+                                    }
+                                    _vm.$set(
+                                      _vm.pemeriksaanBumil,
+                                      "bb",
+                                      $event.target.value
+                                    )
+                                  },
+                                },
+                              }),
+                            ]),
+                            _vm._v(" "),
+                            _c("div", { staticClass: "col-6" }, [
+                              _c(
+                                "label",
+                                {
+                                  staticClass: "form-label",
+                                  attrs: { for: "lila" },
+                                },
+                                [_vm._v("Lingkar Lengan")]
+                              ),
+                              _vm._v(" "),
+                              _c("input", {
+                                directives: [
+                                  {
+                                    name: "model",
+                                    rawName: "v-model",
+                                    value: _vm.pemeriksaanBumil.lila,
+                                    expression: "pemeriksaanBumil.lila",
+                                  },
+                                ],
+                                staticClass: "form-control",
+                                attrs: { type: "number", id: "lila" },
+                                domProps: { value: _vm.pemeriksaanBumil.lila },
+                                on: {
+                                  input: function ($event) {
+                                    if ($event.target.composing) {
+                                      return
+                                    }
+                                    _vm.$set(
+                                      _vm.pemeriksaanBumil,
+                                      "lila",
+                                      $event.target.value
+                                    )
+                                  },
+                                },
+                              }),
+                            ]),
+                            _vm._v(" "),
+                            _vm._m(1),
+                          ]),
+                        ]
+                      ),
+                    ]
+                  ),
+                ]
+              ),
+            ]),
+          ]),
+        ]),
+      ]),
+    ]),
+  ])
+}
+var staticRenderFns = [
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "ul",
+      {
+        staticClass: "nav nav-tabs d-flex",
+        attrs: { id: "myTabjustified", role: "tablist" },
+      },
+      [
+        _c(
+          "li",
+          {
+            staticClass: "nav-item flex-fill",
+            attrs: { role: "presentation" },
+          },
+          [
+            _c(
+              "button",
+              {
+                staticClass: "nav-link w-100 active",
+                attrs: {
+                  id: "home-tab",
+                  "data-bs-toggle": "tab",
+                  "data-bs-target": "#home-justified",
+                  type: "button",
+                  role: "tab",
+                  "aria-controls": "home",
+                  "aria-selected": "true",
+                },
+              },
+              [_vm._v("Data Bumil")]
+            ),
+          ]
+        ),
+        _vm._v(" "),
+        _c(
+          "li",
+          {
+            staticClass: "nav-item flex-fill",
+            attrs: { role: "presentation" },
+          },
+          [
+            _c(
+              "button",
+              {
+                staticClass: "nav-link w-100",
+                attrs: {
+                  id: "profile-tab",
+                  "data-bs-toggle": "tab",
+                  "data-bs-target": "#profile-justified",
+                  type: "button",
+                  role: "tab",
+                  "aria-controls": "profile",
+                  "aria-selected": "false",
+                },
+              },
+              [_vm._v("Data Pemeriksaan Bumil")]
+            ),
+          ]
+        ),
+      ]
+    )
+  },
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", {}, [
+      _c(
+        "button",
+        { staticClass: "btn btn-primary", attrs: { type: "submit" } },
+        [_vm._v("Save")]
       ),
     ])
   },

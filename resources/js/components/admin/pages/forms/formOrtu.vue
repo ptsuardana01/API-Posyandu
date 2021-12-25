@@ -78,7 +78,7 @@
                                                 <label for="id_kader_bumil" class="form-label">Petugas Posyandu</label>
                                                 <select class="form-select" aria-label="Default select example" id="id_kader_bumil" v-model="ortu.id_kader_bumil">
                                                     <option selected disabled>Pilih Petugas Posyandu</option>
-                                                    <option v-for="(kader, index) in kader" :key="index" value="kader.id">{{ kader.nama }}</option>
+                                                    <option v-for="(kader, index) in kader" :key="index" :value="kader.id">{{ kader.nama }}</option>
                                                 </select>
                                             </div>
                                         </div>
@@ -117,70 +117,12 @@
                                             </div>
 
                                             <div class="">
-                                                <button type="submit" class="btn btn-primary">Submit</button>
+                                                <button type="submit" class="btn btn-primary">Save</button>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                                 <!-- End Default Tabs -->
-
-                                <!-- <div class="row g-3">
-                                    <div class="col-12">
-                                        <label for="nama_ibu" class="form-label">Nana Ibu</label>
-                                        <input type="text" class="form-control" id="nama_ibu" />
-                                    </div>
-
-                                    <div class="col-12">
-                                        <label for="nik_ibu" class="form-label">NIK Ibu</label>
-                                        <input type="text" class="form-control" id="nik_ibu" />
-                                    </div>
-
-                                    <div class="col-6">
-                                        <label for="tmpt_lahir_ibu" class="form-label">Tempat Lahir Ibu</label>
-                                        <input type="text" class="form-control" id="tmpt_lahir_ibu" />
-                                    </div>
-
-                                    <div class="col-6">
-                                        <label for="tgl_lahir_ibu" class="form-label">Tanggal Lahir Ibu</label>
-                                        <input type="date" class="form-control" id="tgl_lahir_ibu" />
-                                    </div>
-                                </div>
-
-                                <div class="row g-3">
-                                    <div class="col-12">
-                                        <label for="nama_ayah" class="form-label">Nama Ayah</label>
-                                        <input type="text" class="form-control" id="nama_ayah" />
-                                    </div>
-
-                                    <div class="col-6">
-                                        <label for="tmpt_lahir_ayah" class="form-label">Tempat Lahir Ayah</label>
-                                        <input type="text" class="form-control" id="tmpt_lahir_ayah" />
-                                    </div>
-
-                                    <div class="col-6">
-                                        <label for="tgl_lahir_ayah" class="form-label">Tanggal Lahir Ayah</label>
-                                        <input type="date" class="form-control" id="tgl_lahir_ayah" />
-                                    </div>
-                                </div>
-
-                                <div class="col-12">
-                                    <label for="email" class="form-label">Email</label>
-                                    <input type="email" class="form-control" id="email" />
-                                </div>
-
-                                <div class="col-12">
-                                    <label for="telp" class="form-label">Telp</label>
-                                    <input type="tel" class="form-control" id="telp" />
-                                </div>
-
-                                <div class="col-12">
-                                    <label for="alamat" class="form-label">Alamat</label>
-                                    <input type="text" class="form-control" id="alamat" />
-                                </div>
-
-                                <div class="">
-                                    <button type="submit" class="btn btn-primary">Submit</button>
-                                </div> -->
                             </form>
                             <!-- Vertical Form -->
                         </div>
@@ -238,7 +180,6 @@ export default {
         getIdKaderBumil: function () {
             axios.get("/api/kader").then((response) => {
                 this.kader = response.data.data;
-                console.log(this.kader);
             });
         },
         save(e) {

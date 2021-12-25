@@ -5,6 +5,7 @@ const Bumil = require('../components/admin/pages/Bumil.vue').default
 const Balita = require('../components/admin/pages/Balita.vue').default
 const formKader = require('../components/admin/pages/forms/formKader.vue').default
 const formOrtu = require('../components/admin/pages/forms/formOrtu.vue').default
+const formPemeriksaanBumil = require('../components/admin/pages/forms/formPemeriksaanBumil.vue').default
 
 export const adminRoutes = [
     {
@@ -48,12 +49,23 @@ export const adminRoutes = [
     },
     // End Orang Tua //
 
+    // Pemeriksaan Bumil //
     {
         name: 'bumil',
         path: '/admin/orang-tua/data-bumil',
         component: Bumil
     },
-
+    {
+        name: 'form-bumil',
+        path: '/admin/orang-tua/tambah-data-bumil',
+        component: formPemeriksaanBumil
+    },
+    {
+        name: 'form-edit-bumil',
+        path: '/admin/orang-tua/edit-data-bumil',
+        component: formPemeriksaanBumil
+    },
+    // End Pemeriksaan Bumil //
 
     // Balita //
     {

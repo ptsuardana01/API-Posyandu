@@ -65,7 +65,8 @@ class KehamilanController extends Controller
      */
     public function show($id)
     {
-        //
+        $kehamilans = Kehamilan::find($id);
+        return response()->json($kehamilans);
     }
 
     /**
