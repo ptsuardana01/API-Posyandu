@@ -14,6 +14,8 @@ Vue.use(VueRouter);
 Vue.use(VueSweetalert2);
 Vue.use(VueAxios, axios);
 
+Vue.component('pagination', require('laravel-vue-pagination'));
+
 import { adminRoutes } from "./routes/admin";
 import { userRoutes } from "./routes/user";
 

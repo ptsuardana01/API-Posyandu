@@ -19,13 +19,17 @@
                     <div class="card">
                         <div class="card-body">
                             <!-- <h5 class="card-title">Data Petugas Posyandu</h5> -->
-                            <div class="btn btn-success" style="margin-top: 1.5rem">
+                            <router-link class="btn btn-success" style="margin-top: 1.5rem" :to="{ name: 'form-balita' }">
                                 <i class="bi bi-file-earmark-plus"></i>
                                 Tambah Data
+                            </router-link>
+
+                            <div class="dataTable-search text-end">
+                                <input class="dataTable-input" placeholder="Search..." type="text" v-model="search" />
                             </div>
 
                             <!-- Table with stripped rows -->
-                            <table class="table datatable">
+                            <table class="table">
                                 <thead>
                                     <tr>
                                         <th scope="col">#</th>
@@ -47,16 +51,14 @@
                                             <p v-if="item.jk == 0">Perempuan</p>
                                             <p v-if="item.jk == 1">Laki-laki</p>
                                         </td>
-                                        <td>
-                                            modal
-                                        </td>
+                                        <td>modal</td>
                                         <td class="text-center">
                                             <p v-if="item.stts_balita == 0">Meniggal</p>
                                             <p v-if="item.stts_balita == 1">Hidup</p>
                                         </td>
                                         <td class="text-center">
-                                            <p v-if="item.tgl_meninggal == NULL"> - </p>
-                                            <p v-if="item.tgl_meninggal != NULL"> {{ item.tgl_meninggal }} </p>
+                                            <p v-if="item.stts_balita == 1">-</p>
+                                            <p v-if="item.stts_balita == 0">{{ item.tgl_meninggal }}</p>
                                         </td>
                                         <td>
                                             <div class="text-center">
@@ -90,11 +92,11 @@ export default {
         this.getDataBalitas();
     },
     methods: {
-        getDataBalitas: function () {
-            axios.get("/api/balita").then((response) => {
-                this.balitas = response.data.data;
+        getDataBalitas: function (page = 1) {
+            axios.get("/api/balita?page=" + page).then((response) => {
+                this.balitas = response.data;
             });
         },
     },
-}
+};
 </script>

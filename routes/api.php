@@ -28,7 +28,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::post('login', [AuthController::class, 'login']);
 
-Route::group(['middleware'=>'auth:sanctum'], function() {
+Route::group(['middleware' => 'auth:sanctum'], function () {
     // route kader
     Route::resource('kader', KadersController::class);
     // Route::put('/kader/{id}', [KadersController::class, 'update']);
@@ -47,6 +47,4 @@ Route::group(['middleware'=>'auth:sanctum'], function() {
 
     // route kehamilan
     Route::resource('kehamilan', KehamilanController::class);
-
 });
-

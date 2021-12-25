@@ -1,11 +1,17 @@
 const Dashboard = require('../components/admin/pages/Dashboard.vue').default
+
 const Kader = require('../components/admin/pages/Kader.vue').default
-const Ortu = require('../components/admin/pages/Ortu.vue').default
-const Bumil = require('../components/admin/pages/Bumil.vue').default
-const Balita = require('../components/admin/pages/Balita.vue').default
 const formKader = require('../components/admin/pages/forms/formKader.vue').default
+
+const Ortu = require('../components/admin/pages/Ortu.vue').default
 const formOrtu = require('../components/admin/pages/forms/formOrtu.vue').default
+const Bumil = require('../components/admin/pages/Bumil.vue').default
 const formPemeriksaanBumil = require('../components/admin/pages/forms/formPemeriksaanBumil.vue').default
+
+const Balita = require('../components/admin/pages/Balita.vue').default
+const formBalita = require('../components/admin/pages/forms/formBalita.vue').default
+
+const pemeriksaanBalita = require('../components/admin/pages/PemeriksaanBalita.vue').default
 
 export const adminRoutes = [
     {
@@ -73,4 +79,18 @@ export const adminRoutes = [
         path: '/admin/balita',
         component: Balita
     },
+    {
+        name: 'form-balita',
+        path: '/admin/balita/tambah-data-balita',
+        component: formBalita
+    },
+    // End Balita //
+
+    // Pemeriksaan Balita //
+    {
+        name: 'pemeriksaan-balita',
+        path: '/admin/pemeriksaan-balita',
+        component: pemeriksaanBalita
+    },
+    // End Pemeriksaan Balita //
 ]

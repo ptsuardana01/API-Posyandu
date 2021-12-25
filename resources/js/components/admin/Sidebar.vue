@@ -18,12 +18,12 @@
             </li>
 
             <li class="nav-item">
-                <a class="nav-link collapsed" data-bs-target="#tables-nav" data-bs-toggle="collapse" href="#">
+                <a class="nav-link collapsed" data-bs-target="#orang-tua" data-bs-toggle="collapse" href="#">
                     <i class="bi bi-layout-text-window-reverse"></i>
                     <span>Orang Tua</span>
                     <i class="bi bi-chevron-down ms-auto"></i>
                 </a>
-                <ul id="tables-nav" class="nav-content collapse" data-bs-parent="#sidebar-nav">
+                <ul id="orang-tua" class="nav-content collapse" data-bs-parent="#sidebar-nav">
                     <li class="nav-item">
                         <router-link class="nav-link collapsed" :to="{ name: 'ortu' }">
                             <i class="bi bi-grid"></i>
@@ -40,10 +40,25 @@
             </li>
 
             <li class="nav-item">
-                <router-link class="nav-link collapsed" :to="{ name: 'balita' }">
-                    <i class="bi bi-grid"></i>
+                <a class="nav-link collapsed" data-bs-target="#balita" data-bs-toggle="collapse" href="#">
+                    <i class="bi bi-layout-text-window-reverse"></i>
                     <span>Balita</span>
-                </router-link>
+                    <i class="bi bi-chevron-down ms-auto"></i>
+                </a>
+                <ul id="balita" class="nav-content collapse" data-bs-parent="#sidebar-nav">
+                    <li class="nav-item">
+                        <router-link class="nav-link collapsed" :to="{ name: 'balita' }">
+                            <i class="bi bi-grid"></i>
+                            <span>Data Balita</span>
+                        </router-link>
+                    </li>
+                    <li>
+                        <router-link class="nav-link collapsed" :to="{ name: 'pemeriksaan-balita' }">
+                            <i class="bi bi-grid"></i>
+                            <span>Data Permeriksaan Balita</span>
+                        </router-link>
+                    </li>
+                </ul>
             </li>
 
             <li class="nav-item">
@@ -54,10 +69,10 @@
                 </a>
                 <ul id="tables-nav" class="nav-content collapse" data-bs-parent="#sidebar-nav">
                     <li>
-                        <a href="tables-general.html">
+                        <router-link :to="{ name: 'paginate' }">
                             <i class="bi bi-circle"></i>
                             <span>General Tables</span>
-                        </a>
+                        </router-link>
                     </li>
                     <li>
                         <a href="tables-data.html">

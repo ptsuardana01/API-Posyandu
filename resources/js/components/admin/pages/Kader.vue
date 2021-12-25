@@ -24,6 +24,10 @@
                                 Tambah Data
                             </router-link>
 
+                            <div class="dataTable-search text-end">
+                                <input class="dataTable-input" placeholder="Search..." type="text" v-model="search" />
+                            </div>
+
                             <!-- Table with stripped rows -->
                             <table class="table">
                                 <thead>
@@ -41,7 +45,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr v-for="(item, index) in kaders" :key="index">
+                                    <tr v-for="(item, index) in kaders.data" :key="index">
                                         <th scope="row">{{ index + 1 }}</th>
                                         <td>{{ item.kd_kader }}</td>
                                         <td>{{ item.nama }}</td>
@@ -64,6 +68,10 @@
                                 </tbody>
                             </table>
                             <!-- End Table with stripped rows -->
+                            <pagination :data="this.kaders" @pagination-change-page="getDataKaders" align="right" :show-disabled="false">
+                                <span slot="prev-nav">&lt; Previous</span>
+                                <span slot="next-nav">Next &gt;</span>
+                            </pagination>
                         </div>
                     </div>
                 </div>
@@ -77,6 +85,7 @@ export default {
     data() {
         return {
             kaders: {},
+            search: "",
         };
     },
     mounted() {
@@ -86,9 +95,10 @@ export default {
         this.getDataKaders();
     },
     methods: {
-        getDataKaders: function () {
-            axios.get("/api/kader").then((response) => {
-                this.kaders = response.data.data;
+        getDataKaders: function (page = 1) {
+            axios.get("/api/kader?page=" + page).then((response) => {
+                this.kaders = response.data;
+                console.log(this.kaders);
             });
         },
         deleteData: function (id) {
@@ -113,5 +123,6 @@ export default {
                 });
         },
     },
+    watch: {},
 };
 </script>

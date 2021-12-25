@@ -27,6 +27,10 @@
                                 Tambah Data
                             </router-link>
 
+                            <div class="dataTable-search text-end">
+                                <input class="dataTable-input" placeholder="Search..." type="text" v-model="search" />
+                            </div>
+
                             <!-- Table with stripped rows -->
                             <table class="table">
                                 <thead>
@@ -45,7 +49,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr v-for="(item, index) in datas.ortus" :key="index">
+                                    <tr v-for="(item, index) in ortus.data" :key="index">
                                         <th scope="row">{{ index + 1 }}</th>
                                         <td>{{ item.nama_ibu }}</td>
                                         <td>{{ item.nama_ayah }}</td>
@@ -74,6 +78,7 @@
                                 </tbody>
                             </table>
                             <!-- End Table with stripped rows -->
+                            <pagination :data="this.ortus" @pagination-change-page="getDataOrtus" class="justify-end"></pagination>
                         </div>
                     </div>
                 </div>
@@ -86,11 +91,8 @@
 export default {
     data() {
         return {
-            datas: {
-                ortus: {},
-                kehamilans: {},
-                pemeriksaanBumils: {},
-            },
+            ortus: {},
+            search: "",
         };
     },
     mounted() {
@@ -98,23 +100,11 @@ export default {
         //     console.log(response);
         //});
         this.getDataOrtus();
-        this.getKehamilan();
-        this.getPemeriksaanBumil();
     },
     methods: {
-        getDataOrtus: function () {
-            axios.get("/api/ortu").then((response) => {
-                this.datas.ortus = response.data.data;
-            });
-        },
-        getKehamilan: function () {
-            axios.get("/api/kehamilan").then((response) => {
-                this.datas.kehamilans = response.data.data;
-            });
-        },
-        getPemeriksaanBumil: function () {
-            axios.get("/api/pemeriksaan-bumil").then((response) => {
-                this.datas.pemeriksaanBumils = response.data.data;
+        getDataOrtus: function (page = 1) {
+            axios.get("/api/ortu?page=" + page).then((response) => {
+                this.ortus = response.data;
             });
         },
         deleteData: function (id) {

@@ -27,6 +27,10 @@
                                 Tambah Data
                             </router-link>
 
+                            <div class="dataTable-search text-end">
+                                <input class="dataTable-input" placeholder="Search..." type="text" v-model="search" />
+                            </div>
+
                             <!-- Table with stripped rows -->
                             <table class="table">
                                 <thead>
