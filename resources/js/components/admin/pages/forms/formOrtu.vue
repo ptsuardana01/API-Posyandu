@@ -158,7 +158,7 @@ export default {
     mounted() {
         this.getIdKaderBumil(),
             axios.get("/api/ortu/" + this.$route.params.id, this.ortu).then((response) => {
-                console.log(response.data);
+                // console.log(response.data);
                 this.ortu.nama_ibu = response.data.nama_ibu;
                 this.ortu.nik_ibu = response.data.nik_ibu;
                 this.ortu.nama_ayah = response.data.nama_ayah;
@@ -170,10 +170,9 @@ export default {
                 this.ortu.stts_bumil = response.data.stts_bumil;
                 this.ortu.tgl_meninggal = response.data.tgl_meninggal;
                 this.ortu.id_kader_bumil = response.data.id_kader_bumil;
-                this.ortu.alamat = response.data.alamat;
                 this.ortu.telp = response.data.telp;
                 this.ortu.alamat = response.data.alamat;
-                console.log(this.kader);
+                // console.log(this.kader);
             });
     },
     methods: {

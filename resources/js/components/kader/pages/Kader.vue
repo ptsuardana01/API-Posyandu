@@ -98,7 +98,7 @@ export default {
         getDataKaders: function (page = 1) {
             axios.get("/api/kader?page=" + page).then((response) => {
                 this.kaders = response.data;
-                console.log(this.kaders);
+                // console.log(this.kaders);
             });
         },
         deleteData: function (id) {

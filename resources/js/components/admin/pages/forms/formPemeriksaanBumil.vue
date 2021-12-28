@@ -48,7 +48,7 @@
                                         </div>
 
                                         <div class="row g-3" v-for="(ortu, index) in ortu" :key="index">
-                                            <div class="col-12">
+                                            <div class="col-12" v-show="pemeriksaanBumil.id_bumil == ortu.id">
                                                 <label for="nik" class="form-label">NIK</label>
                                                 <input type="text" class="form-control" id="nik" v-if="pemeriksaanBumil.id_bumil == ortu.id" :value="ortu.nik_ibu" />
                                                 <input type="text" class="form-control" id="nik" v-if="pemeriksaanBumil.id_bumil == !ortu.id" disabled />
@@ -59,7 +59,7 @@
                                                 <input type="text" class="form-control" id="stts_bumil" v-if="pemeriksaanBumil.id_bumil == ortu.id" :value="ortu.stts_bumil" />
                                             </div> -->
 
-                                            <div class="col-12">
+                                            <div class="col-12" v-show="pemeriksaanBumil.id_bumil == ortu.id">
                                                 <label for="stts_bumil" class="form-label">Status Ibu Hamil</label>
                                                 <select class="form-select" aria-label="Default select example" id="stts_bumil">
                                                     <option v-if="pemeriksaanBumil.id_bumil == !ortu.id" :value="ortu.stts_bumil" selected disabled>Status Ibu Hamil</option>
@@ -67,7 +67,7 @@
                                                 </select>
                                             </div>
 
-                                            <div class="col-12">
+                                            <div class="col-12" v-show="pemeriksaanBumil.id_bumil == ortu.id">
                                                 <label for="kader" class="form-label">Petugas Posyandu</label>
                                                 <select class="form-select" aria-label="Default select example" id="kader">
                                                     <option v-if="pemeriksaanBumil.id_bumil == !ortu.id" :value="ortu.stts_bumil" selected disabled>Pilih Petugas Posyandu</option>
@@ -138,7 +138,7 @@ export default {
         getIdOrtu: function () {
             axios.get("/api/ortu").then((response) => {
                 this.ortu = response.data.data;
-                console.log(this.ortu);
+                // console.log(this.ortu);
             });
         },
         save(e) {

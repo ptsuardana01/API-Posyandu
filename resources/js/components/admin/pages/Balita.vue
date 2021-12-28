@@ -25,7 +25,8 @@
                             </router-link>
 
                             <div class="dataTable-search text-end">
-                                <input class="dataTable-input" placeholder="Search..." type="text" v-model="search" />
+                                <input class="dataTable-input" placeholder="Search..." type="text" v-model="s" />
+                                <button class="btn btn-primary" @click="searchData()">Cari</button>
                             </div>
 
                             <!-- Table with stripped rows -->
@@ -102,8 +103,8 @@
                                             <!-- End Vertically centered Modal-->
                                         </td>
                                         <td class="text-center">
-                                            <p v-if="item.stts_balita == 0">Meniggal</p>
-                                            <p v-if="item.stts_balita == 1">Hidup</p>
+                                            <p v-if="item.stts_balita == 0" class="badge bg-secondary">Meniggal</p>
+                                            <p v-if="item.stts_balita == 1" class="badge bg-light text-dark">Hidup</p>
                                         </td>
                                         <td class="text-center">
                                             <p v-if="item.stts_balita == 1">-</p>
@@ -186,7 +187,7 @@ export default {
             },
 
             no: 0,
-            search: "",
+            s: "",
         };
     },
     mounted() {
@@ -195,22 +196,17 @@ export default {
             this.tambahPemeriksaan.tb = response.data.tb;
             this.tambahPemeriksaan.bb = response.data.bb;
             this.tambahPemeriksaan.lk = response.data.lk;
-            console.log(this.tambahPemeriksaan);
+            // console.log(this.tambahPemeriksaan);
         });
         this.getDataBalitas();
         this.getDetailOrtu();
         this.getPemeriksaanBalita();
     },
     methods: {
-        // modalTambahHistory() {
-        //     // console.log("modal nih boss");
-        //     const modal = document.getElementById("#tambahHistory");
-        //     modal.modal("show");
-        //     $("#tambahHistory").modal("show");
-        // },
         getDataBalitas: function (page = 1) {
-            axios.get("/api/balita?page=" + page).then((response) => {
+            this.axios.get("/api/balita?page=" + page + "&search=" + this.s).then((response) => {
                 this.balitas = response.data;
+                console.log(this.balitas);
             });
         },
         getDetailOrtu: function (page = 1) {
@@ -245,37 +241,9 @@ export default {
                     }
                 });
         },
-        // deletePemeriksaan: function (id) {
-        //     this.$swal
-        //         .fire({
-        //             title: "Anda yakin?",
-        //             text: "Data yang dihapus tidak dapat dikembalikan!",
-        //             icon: "warning",
-        //             showCancelButton: true,
-        //             confirmButtonColor: "#3085d6",
-        //             cancelButtonColor: "#d33",
-        //             confirmButtonText: "Ya, Hapus data ini!",
-        //             cancelButtonText: "Batal",
-        //         })
-        //         .then((result) => {
-        //             if (result.value) {
-        //                 this.axios.delete("/api/pemeriksaan-balita/" + id).then((response) => {
-        //                     this.$swal.fire("Terhapus!", "Data Pemeriksaan Balita berhasil terhapus.", "success");
-        //                 });
-        //                 this.getPemeriksaanBalita();
-        //             }
-        //         });
-        // },
-
-        save(e) {
-            e.preventDefault();
-            axios.post("/api/pemeriksaan-balita", this.tambahPemeriksaan).then((response) => {
-                this.$swal.fire({ title: "Success!", text: response.data.message, icon: "success", timer: 1000 });
-                this.tambahPemeriksaan = response.data.data;
-                console.log("data udh masuk");
-                console.log(this.tambahPemeriksaan);
-            });
-            this.$forceUpdate();
+        searchData(e) {
+            // console.log(this.getDataBalitas);
+            this.getDataBalitas();
         },
     },
 };
