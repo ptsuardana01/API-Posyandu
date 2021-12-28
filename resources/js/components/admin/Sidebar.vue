@@ -69,7 +69,7 @@
                 </a>
                 <ul id="tables-nav" class="nav-content collapse" data-bs-parent="#sidebar-nav">
                     <li>
-                        <router-link :to="{ name: 'paginate' }">
+                        <router-link :to="{ name: '' }">
                             <i class="bi bi-circle"></i>
                             <span>General Tables</span>
                         </router-link>

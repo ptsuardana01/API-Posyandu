@@ -15,7 +15,7 @@ class KehamilanController extends Controller
      */
     public function index()
     {
-        $kehamilans = Kehamilan::getKehamilan()->paginate(5);
+        $kehamilans = Kehamilan::getKehamilan()->get('*');
         return response()->json($kehamilans);
     }
 

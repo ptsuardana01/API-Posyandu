@@ -16,7 +16,7 @@ class KadersController extends Controller
      */
     public function index()
     {
-        $kaders = Kaders::paginate(5);
+        $kaders = Kaders::paginate(10);
         return response()->json($kaders);
     }
 

@@ -34,24 +34,73 @@
                                     <tr>
                                         <th scope="col">#</th>
                                         <th scope="col">Nama</th>
-                                        <th scope="col">TTL</th>
+                                        <th scope="col" class="text-center">Tempat, Tanggal Lahir</th>
                                         <th scope="col" class="text-center">Gender</th>
-                                        <th scope="col">Detail Ortu</th>
-                                        <th scope="col">Status Balita</th>
+                                        <th scope="col" class="text-center">Detail Ortu</th>
+                                        <th scope="col" class="text-center">Status Balita</th>
                                         <th scope="col" class="text-center">Tanggal Meninggal</th>
                                         <th scope="col" class="text-center">Petugas Posyandu</th>
+                                        <th scope="col" class="text-center">History Pemeriksaan Balita</th>
+                                        <th scope="col" class="text-center">Aksi</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr v-for="(item, index) in balitas" :key="index">
+                                    <tr v-for="(item, index) in balitas.data" :key="index">
                                         <th scope="row">{{ index + 1 }}</th>
                                         <td>{{ item.nama }}</td>
-                                        <td>{{ item.tmpt_lahir }}, {{ item.tgl_lahir }}</td>
+                                        <td class="text-center">{{ item.tmpt_lahir }}, {{ item.tgl_lahir }}</td>
                                         <td class="text-center">
                                             <p v-if="item.jk == 0">Perempuan</p>
                                             <p v-if="item.jk == 1">Laki-laki</p>
                                         </td>
-                                        <td>modal</td>
+                                        <td class="text-center">
+                                            <!-- Vertically centered Modal -->
+                                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" :data-bs-target="'#detailOrtu' + index">
+                                                <i class="bi bi-info-circle"></i>
+                                            </button>
+                                            <div class="modal fade" :id="'detailOrtu' + index" tabindex="-1">
+                                                <div class="modal-dialog modal-dialog-centered">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title">Detail Orang Tua Balita {{ item.nama }}</h5>
+                                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <!-- Table with stripped rows -->
+                                                            <table class="table table-borderless" v-for="(detail, index) in ortu.data" :key="index">
+                                                                <tbody v-show="item.id_ortu == detail.id">
+                                                                    <tr>
+                                                                        <td class="text-start">Nama Ibu</td>
+                                                                        <td>:</td>
+                                                                        <td class="text-start">{{ detail.nama_ibu }}</td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td class="text-start">Nama Ayah</td>
+                                                                        <td>:</td>
+                                                                        <td class="text-start">{{ detail.nama_ayah }}</td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td class="text-start">Alamat</td>
+                                                                        <td>:</td>
+                                                                        <td class="text-start">{{ detail.alamat }}</td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td class="text-start">No Telepon</td>
+                                                                        <td>:</td>
+                                                                        <td class="text-start">{{ detail.telp }}</td>
+                                                                    </tr>
+                                                                </tbody>
+                                                            </table>
+                                                            <!-- End Table with stripped rows -->
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- End Vertically centered Modal-->
+                                        </td>
                                         <td class="text-center">
                                             <p v-if="item.stts_balita == 0">Meniggal</p>
                                             <p v-if="item.stts_balita == 1">Hidup</p>
@@ -60,10 +109,105 @@
                                             <p v-if="item.stts_balita == 1">-</p>
                                             <p v-if="item.stts_balita == 0">{{ item.tgl_meninggal }}</p>
                                         </td>
+                                        <td class="text-center">
+                                            {{ item.nama_kader }}
+                                        </td>
+                                        <td class="text-center">
+                                            <!-- Modal Dialog Scrollable -->
+                                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" :data-bs-target="'#detailPemeriksaan' + index"><i class="bi bi-file-earmark-medical-fill"></i></button>
+                                            <div class="modal fade" :id="'detailPemeriksaan' + index" tabindex="-1">
+                                                <div class="modal-dialog modal-dialog-scrollable">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title">History Pemeriksaan Balita {{ item.nama }}</h5>
+                                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <!-- Table with hoverable rows -->
+                                                            <table class="table table-hover">
+                                                                <thead>
+                                                                    <tr>
+                                                                        <th scope="col">#</th>
+                                                                        <th scope="col">Tinggi</th>
+                                                                        <th scope="col">Berat</th>
+                                                                        <th scope="col">Lingkar Kepala</th>
+                                                                        <th scope="col">created_at</th>
+                                                                        <th scope="col">Aksi</th>
+                                                                    </tr>
+                                                                </thead>
+                                                                <tbody v-for="(pemeriksaan, no) in pemeriksaanBalita" :key="no">
+                                                                    <tr v-show="pemeriksaan.id_balita == item.id">
+                                                                        <th scope="row">{{ no + 1 }}</th>
+                                                                        <td>{{ pemeriksaan.tb }} cm</td>
+                                                                        <td>{{ pemeriksaan.bb }} kg</td>
+                                                                        <td>{{ pemeriksaan.lk }} cm</td>
+                                                                        <td>{{ pemeriksaan.created_at }}</td>
+                                                                        <td>
+                                                                            <!-- <router-link :to="{ name: '', params: { id: pemeriksaan.id } }" class="btn btn-warning"><i class="bi bi-pencil-fill"></i></router-link> -->
+                                                                            <button @click="deletePemeriksaan(pemeriksaan.id)" type="button" class="btn btn-danger"><i class="bi bi-trash-fill"></i></button>
+                                                                        </td>
+                                                                    </tr>
+                                                                </tbody>
+                                                            </table>
+                                                            <!-- End Table with hoverable rows -->
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-success" data-bs-toggle="modal" :data-bs-target="'#tambahHistory' + item.id">
+                                                                <i class="bi bi-plus-circle"></i>
+                                                                Tambah Data Pemeriksaan
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- End Modal Dialog Scrollable-->
+
+                                            <!-- Modal Tambah History Permeriksaan Balita -->
+                                            <div class="modal fade" :id="'tambahHistory' + item.id" tabindex="-1">
+                                                <div class="modal-dialog modal-dialog-centered">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title">Tambah Pemeriksaan Balita {{ item.nama }}</h5>
+                                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                        </div>
+                                                        <div class="modal-body text-start">
+                                                            <!-- Vertical Form -->
+                                                            <form class="row g-3" @submit.prevent="save">
+                                                                <div class="col-12">
+                                                                    <label for="nama" class="form-label">Nama Balita</label>
+                                                                    <!-- <input type="text" class="form-control" id="nama" placeholder="Ketik Nama Balita"  /> -->
+                                                                    <select class="form-select" aria-label="Default select example" name="nama" id="nama" v-model="tambahPemeriksaan.id_balita">
+                                                                        <option :value="item.id" selected>{{ item.nama }}</option>
+                                                                    </select>
+                                                                </div>
+                                                                <div class="col-12">
+                                                                    <label for="tb" class="form-label">Tinggi badan</label>
+                                                                    <input type="number" class="form-control" id="tb" placeholder="Dalam cm" v-model="tambahPemeriksaan.tb" />
+                                                                </div>
+                                                                <div class="col-12">
+                                                                    <label for="bb" class="form-label">Berat badan</label>
+                                                                    <input type="number" class="form-control" id="bb" placeholder="Dalam kg" v-model="tambahPemeriksaan.bb" />
+                                                                </div>
+                                                                <div class="col-12">
+                                                                    <label for="lk" class="form-label">Lingkar Kepala</label>
+                                                                    <input type="number" class="form-control" id="lk" placeholder="Dalam cm" v-model="tambahPemeriksaan.lk" />
+                                                                </div>
+                                                                <div class="modal-footer">
+                                                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+                                                                    <button type="submit" class="btn btn-primary">Save</button>
+                                                                </div>
+                                                            </form>
+                                                            <!-- Vertical Form -->
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- End Modal Tambah History Permeriksaan Balita-->
+                                        </td>
                                         <td>
                                             <div class="text-center">
-                                                <a href="" class="btn btn-outline-warning"><i class="bi bi-pencil-fill"></i></a>
-                                                <button type="button" class="btn btn-outline-danger"><i class="bi bi-trash-fill"></i></button>
+                                                <router-link :to="{ name: 'form-edit-balita', params: { id: item.id } }" class="btn btn-warning"><i class="bi bi-pencil-fill"></i></router-link>
+                                                <button @click="deleteData(item.id)" type="button" class="btn btn-danger"><i class="bi bi-trash-fill"></i></button>
                                             </div>
                                         </td>
                                     </tr>
@@ -83,19 +227,109 @@ export default {
     data() {
         return {
             balitas: {},
+            kader: {},
+            ortu: {},
+            pemeriksaanBalita: {},
+            tambahPemeriksaan: {
+                id_balita: "",
+                tb: "",
+                bb: "",
+                lk: "",
+                id: "",
+            },
+
+            no: 0,
+            search: "",
         };
     },
     mounted() {
-        // axios.get("/api/balita").then((response) => {
-        //     console.log(response);
-        //});
+        axios.get("/api/balita" + this.$route.params.id, this.tambahPemeriksaan).then((response) => {
+            this.tambahPemeriksaan.id_balita = response.data.id_balita;
+            this.tambahPemeriksaan.tb = response.data.tb;
+            this.tambahPemeriksaan.bb = response.data.bb;
+            this.tambahPemeriksaan.lk = response.data.lk;
+            this.tambahPemeriksaan.id = response.data.id;
+            console.log(this.tambahPemeriksaan);
+        });
         this.getDataBalitas();
+        this.getDetailOrtu();
+        this.getPemeriksaanBalita();
     },
     methods: {
+        // modalTambahHistory() {
+        //     // console.log("modal nih boss");
+        //     const modal = document.getElementById("#tambahHistory");
+        //     modal.modal("show");
+        //     $("#tambahHistory").modal("show");
+        // },
         getDataBalitas: function (page = 1) {
             axios.get("/api/balita?page=" + page).then((response) => {
                 this.balitas = response.data;
             });
+        },
+        getDetailOrtu: function (page = 1) {
+            axios.get("/api/ortu").then((response) => {
+                this.ortu = response.data;
+            });
+        },
+        getPemeriksaanBalita: function () {
+            axios.get("/api/pemeriksaan-balita").then((response) => {
+                this.tambahPemeriksaan = response.data;
+                console.log(this.tambahPemeriksaan);
+            });
+        },
+        deleteData: function (id) {
+            this.$swal
+                .fire({
+                    title: "Anda yakin?",
+                    text: "Data yang dihapus tidak dapat dikembalikan!",
+                    icon: "warning",
+                    showCancelButton: true,
+                    confirmButtonColor: "#3085d6",
+                    cancelButtonColor: "#d33",
+                    confirmButtonText: "Ya, Hapus data ini!",
+                    cancelButtonText: "Batal",
+                })
+                .then((result) => {
+                    if (result.value) {
+                        this.axios.delete("/api/balita/" + id).then((response) => {
+                            this.$swal.fire("Terhapus!", "Data Balita berhasil terhapus.", "success");
+                        });
+                        this.getDataBalitas();
+                    }
+                });
+        },
+        deletePemeriksaan: function (id) {
+            this.$swal
+                .fire({
+                    title: "Anda yakin?",
+                    text: "Data yang dihapus tidak dapat dikembalikan!",
+                    icon: "warning",
+                    showCancelButton: true,
+                    confirmButtonColor: "#3085d6",
+                    cancelButtonColor: "#d33",
+                    confirmButtonText: "Ya, Hapus data ini!",
+                    cancelButtonText: "Batal",
+                })
+                .then((result) => {
+                    if (result.value) {
+                        this.axios.delete("/api/pemeriksaan-balita/" + id).then((response) => {
+                            this.$swal.fire("Terhapus!", "Data Pemeriksaan Balita berhasil terhapus.", "success");
+                        });
+                        this.getPemeriksaanBalita();
+                    }
+                });
+        },
+
+        save(e) {
+            e.preventDefault();
+            axios.post("/api/pemeriksaan-balita", this.tambahPemeriksaan).then((response) => {
+                this.$swal.fire({ title: "Success!", text: response.data.message, icon: "success", timer: 1000 });
+                this.tambahPemeriksaan = response.data.data;
+                console.log("data udh masuk");
+                console.log(this.tambahPemeriksaan);
+            });
+            this.$forceUpdate();
         },
     },
 };

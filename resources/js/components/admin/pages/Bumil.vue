@@ -65,14 +65,12 @@
                                             <p v-if="item.stts_bumil == 1">-</p>
                                             <p v-if="item.stts_bumil == 0">{{ item.tgl_meninggal }}</p>
                                         </td>
-                                        <td class="text-center" v-for="(ortu, index) in ortu" :key="index" v-once>
-                                            <span v-if="item.id_kader_bumil == ortu.id_kader_bumil">
-                                                {{ ortu.nama_kader }}
-                                            </span>
+                                        <td class="text-center">
+                                            {{ item.id_kader_bumil }}
                                         </td>
                                         <td class="text-center">
                                             <!-- Vertically centered Modal -->
-                                            <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" :data-bs-target="'#verticalycentered' + index">Detail</button>
+                                            <button type="button" class="btn btn-info" data-bs-toggle="modal" :data-bs-target="'#verticalycentered' + index"><i class="bi bi-info-circle"></i></button>
                                             <div class="modal fade" :id="'verticalycentered' + index" tabindex="-1">
                                                 <div class="modal-dialog modal-dialog-centered">
                                                     <div class="modal-content">
@@ -114,8 +112,8 @@
                                         <td class="text-center">{{ item.created_at }}</td>
                                         <td>
                                             <div class="text-center">
-                                                <router-link :to="{ name: 'form-edit-bumil', params: { id: item.id } }" class="btn btn-outline-warning"><i class="bi bi-pencil-fill"></i></router-link>
-                                                <button @click="deleteData(item.id)" type="button" class="btn btn-outline-danger"><i class="bi bi-trash-fill"></i></button>
+                                                <router-link :to="{ name: 'form-edit-bumil', params: { id: item.id } }" class="btn btn-warning"><i class="bi bi-pencil-fill"></i></router-link>
+                                                <button @click="deleteData(item.id)" type="button" class="btn btn-danger"><i class="bi bi-trash-fill"></i></button>
                                             </div>
                                         </td>
                                     </tr>
@@ -137,6 +135,7 @@ export default {
             pemeriksaanBumil: {},
             kehamilan: {},
             ortu: {},
+            search: "",
         };
     },
     mounted() {
@@ -153,7 +152,7 @@ export default {
         },
         getPemeriksaanBumil: function () {
             axios.get("/api/pemeriksaan-bumil").then((response) => {
-                this.pemeriksaanBumil = response.data.data;
+                this.pemeriksaanBumil = response.data;
                 // console.log(this.pemeriksaanBumil);
             });
         },

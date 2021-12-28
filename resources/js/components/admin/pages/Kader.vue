@@ -60,8 +60,8 @@
                                         <td>{{ item.email }}</td>
                                         <td>
                                             <div class="text-center">
-                                                <router-link :to="{ name: 'form-edit-kader', params: { id: item.id } }" class="btn btn-outline-warning"><i class="bi bi-pencil-fill"></i></router-link>
-                                                <button @click="deleteData(item.id)" type="submit" class="btn btn-outline-danger"><i class="bi bi-trash-fill"></i></button>
+                                                <router-link :to="{ name: 'form-edit-kader', params: { id: item.id } }" class="btn btn-warning"><i class="bi bi-pencil-fill"></i></router-link>
+                                                <button @click="deleteData(item.id)" type="submit" class="btn btn-danger"><i class="bi bi-trash-fill"></i></button>
                                             </div>
                                         </td>
                                     </tr>

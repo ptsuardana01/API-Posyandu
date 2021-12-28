@@ -2303,26 +2303,275 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
-      balitas: {}
+      balitas: {},
+      kader: {},
+      ortu: {},
+      pemeriksaanBalita: {},
+      tambahPemeriksaan: {
+        id_balita: "",
+        tb: "",
+        bb: "",
+        lk: "",
+        id: ""
+      },
+      no: 0,
+      search: ""
     };
   },
   mounted: function mounted() {
-    // axios.get("/api/balita").then((response) => {
-    //     console.log(response);
-    //});
+    var _this = this;
+
+    axios.get("/api/balita" + this.$route.params.id, this.tambahPemeriksaan).then(function (response) {
+      _this.tambahPemeriksaan.id_balita = response.data.id_balita;
+      _this.tambahPemeriksaan.tb = response.data.tb;
+      _this.tambahPemeriksaan.bb = response.data.bb;
+      _this.tambahPemeriksaan.lk = response.data.lk;
+      _this.tambahPemeriksaan.id = response.data.id;
+      console.log(_this.tambahPemeriksaan);
+    });
     this.getDataBalitas();
+    this.getDetailOrtu();
+    this.getPemeriksaanBalita();
   },
   methods: {
+    // modalTambahHistory() {
+    //     // console.log("modal nih boss");
+    //     const modal = document.getElementById("#tambahHistory");
+    //     modal.modal("show");
+    //     $("#tambahHistory").modal("show");
+    // },
     getDataBalitas: function getDataBalitas() {
-      var _this = this;
+      var _this2 = this;
 
       var page = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1;
       axios.get("/api/balita?page=" + page).then(function (response) {
-        _this.balitas = response.data;
+        _this2.balitas = response.data;
       });
+    },
+    getDetailOrtu: function getDetailOrtu() {
+      var _this3 = this;
+
+      var page = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1;
+      axios.get("/api/ortu").then(function (response) {
+        _this3.ortu = response.data;
+      });
+    },
+    getPemeriksaanBalita: function getPemeriksaanBalita() {
+      var _this4 = this;
+
+      axios.get("/api/pemeriksaan-balita").then(function (response) {
+        _this4.tambahPemeriksaan = response.data;
+        console.log(_this4.tambahPemeriksaan);
+      });
+    },
+    deleteData: function deleteData(id) {
+      var _this5 = this;
+
+      this.$swal.fire({
+        title: "Anda yakin?",
+        text: "Data yang dihapus tidak dapat dikembalikan!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Ya, Hapus data ini!",
+        cancelButtonText: "Batal"
+      }).then(function (result) {
+        if (result.value) {
+          _this5.axios["delete"]("/api/balita/" + id).then(function (response) {
+            _this5.$swal.fire("Terhapus!", "Data Balita berhasil terhapus.", "success");
+          });
+
+          _this5.getDataBalitas();
+        }
+      });
+    },
+    deletePemeriksaan: function deletePemeriksaan(id) {
+      var _this6 = this;
+
+      this.$swal.fire({
+        title: "Anda yakin?",
+        text: "Data yang dihapus tidak dapat dikembalikan!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Ya, Hapus data ini!",
+        cancelButtonText: "Batal"
+      }).then(function (result) {
+        if (result.value) {
+          _this6.axios["delete"]("/api/pemeriksaan-balita/" + id).then(function (response) {
+            _this6.$swal.fire("Terhapus!", "Data Pemeriksaan Balita berhasil terhapus.", "success");
+          });
+
+          _this6.getPemeriksaanBalita();
+        }
+      });
+    },
+    save: function save(e) {
+      var _this7 = this;
+
+      e.preventDefault();
+      axios.post("/api/pemeriksaan-balita", this.tambahPemeriksaan).then(function (response) {
+        _this7.$swal.fire({
+          title: "Success!",
+          text: response.data.message,
+          icon: "success",
+          timer: 1000
+        });
+
+        _this7.tambahPemeriksaan = response.data.data;
+        console.log("data udh masuk");
+        console.log(_this7.tambahPemeriksaan);
+      });
+      this.$forceUpdate();
     }
   }
 });
@@ -2470,14 +2719,13 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
       pemeriksaanBumil: {},
       kehamilan: {},
-      ortu: {}
+      ortu: {},
+      search: ""
     };
   },
   mounted: function mounted() {
@@ -2497,7 +2745,7 @@ __webpack_require__.r(__webpack_exports__);
       var _this2 = this;
 
       axios.get("/api/pemeriksaan-bumil").then(function (response) {
-        _this2.pemeriksaanBumil = response.data.data; // console.log(this.pemeriksaanBumil);
+        _this2.pemeriksaanBumil = response.data; // console.log(this.pemeriksaanBumil);
       });
     },
     getKehamilan: function getKehamilan() {
@@ -2821,6 +3069,202 @@ __webpack_require__.r(__webpack_exports__);
           _this2.getDataOrtus();
         }
       });
+    }
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/admin/pages/forms/formBalita.vue?vue&type=script&lang=js&":
+/*!***********************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/admin/pages/forms/formBalita.vue?vue&type=script&lang=js& ***!
+  \***********************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  data: function data() {
+    return {
+      balita: {
+        nama: "",
+        tmpt_lahir: "",
+        tgl_lahir: "",
+        jk: "",
+        stts_balita: "",
+        tgl_meninggal: "",
+        id_ortu: "",
+        id_kader_balita: ""
+      },
+      ortu: {},
+      kader: {}
+    };
+  },
+  mounted: function mounted() {
+    var _this = this;
+
+    this.getIdOrtu();
+    this.getIdKader();
+    axios.get("/api/balita/" + this.$route.params.id, this.balita).then(function (response) {
+      // console.log(response.data);
+      _this.balita.nama = response.data.nama;
+      _this.balita.tmpt_lahir = response.data.tmpt_lahir;
+      _this.balita.jk = response.data.jk;
+      _this.balita.stts_balita = response.data.stts_balita;
+      _this.balita.tgl_meninggal = response.data.tgl_meninggal;
+      _this.balita.id_ortu = response.data.id_ortu;
+      _this.balita.id_kader_balita = response.data.id_kader_balita; // console.log(this.balita);
+    });
+  },
+  methods: {
+    getIdOrtu: function getIdOrtu() {
+      var _this2 = this;
+
+      axios.get("/api/ortu").then(function (response) {
+        _this2.ortu = response.data.data; // console.log(this.ortu);
+        // console.log(response.all);
+      });
+    },
+    getIdKader: function getIdKader() {
+      var _this3 = this;
+
+      axios.get("/api/kader").then(function (response) {
+        _this3.kader = response.data.data; // console.log(this.kader);
+      });
+    },
+    save: function save(e) {
+      var _this4 = this;
+
+      e.preventDefault();
+
+      if (this.$route.params.id) {
+        axios.put("/api/balita/" + this.$route.params.id, this.balita).then(function (response) {
+          _this4.$swal.fire({
+            title: "Success!",
+            text: response.data.message,
+            icon: "success",
+            timer: 1000
+          });
+
+          _this4.$router.push({
+            name: "balita"
+          });
+        });
+      } else {
+        axios.post("/api/balita", this.balita).then(function (response) {
+          _this4.$swal.fire({
+            title: "Success!",
+            text: response.data.message,
+            icon: "success",
+            timer: 1000
+          });
+
+          _this4.balita = response.data.data;
+
+          _this4.$router.push({
+            name: "balita"
+          });
+        });
+      }
     }
   }
 });
@@ -3563,14 +4007,17 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _components_admin_App_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/admin/App.vue */ "./resources/js/components/admin/App.vue");
-/* harmony import */ var _components_user_App_vue__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/user/App.vue */ "./resources/js/components/user/App.vue");
-/* harmony import */ var vue_router__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! vue-router */ "./node_modules/vue-router/dist/vue-router.esm.js");
-/* harmony import */ var vue_sweetalert2__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! vue-sweetalert2 */ "./node_modules/vue-sweetalert2/dist/vue-sweetalert.umd.js");
-/* harmony import */ var vue_sweetalert2__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(vue_sweetalert2__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var sweetalert2_dist_sweetalert2_all__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! sweetalert2/dist/sweetalert2.all */ "./node_modules/sweetalert2/dist/sweetalert2.all.js");
-/* harmony import */ var sweetalert2_dist_sweetalert2_all__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(sweetalert2_dist_sweetalert2_all__WEBPACK_IMPORTED_MODULE_5__);
-/* harmony import */ var _routes_admin__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./routes/admin */ "./resources/js/routes/admin.js");
-/* harmony import */ var _routes_user__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./routes/user */ "./resources/js/routes/user.js");
+/* harmony import */ var _components_kader_App_vue__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/kader/App.vue */ "./resources/js/components/kader/App.vue");
+/* harmony import */ var _components_user_App_vue__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./components/user/App.vue */ "./resources/js/components/user/App.vue");
+/* harmony import */ var vue_router__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! vue-router */ "./node_modules/vue-router/dist/vue-router.esm.js");
+/* harmony import */ var vue_sweetalert2__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! vue-sweetalert2 */ "./node_modules/vue-sweetalert2/dist/vue-sweetalert.umd.js");
+/* harmony import */ var vue_sweetalert2__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(vue_sweetalert2__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var sweetalert2_dist_sweetalert2_all__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! sweetalert2/dist/sweetalert2.all */ "./node_modules/sweetalert2/dist/sweetalert2.all.js");
+/* harmony import */ var sweetalert2_dist_sweetalert2_all__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(sweetalert2_dist_sweetalert2_all__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var _routes_admin__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./routes/admin */ "./resources/js/routes/admin.js");
+/* harmony import */ var _routes_kader__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./routes/kader */ "./resources/js/routes/kader.js");
+/* harmony import */ var _routes_kader__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(_routes_kader__WEBPACK_IMPORTED_MODULE_9__);
+/* harmony import */ var _routes_user__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./routes/user */ "./resources/js/routes/user.js");
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 window.Vue = (__webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm.js")["default"]);
@@ -3581,21 +4028,28 @@ window.Vue = (__webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm.js
 
 
 
-Vue.use(vue_router__WEBPACK_IMPORTED_MODULE_6__["default"]);
-Vue.use((vue_sweetalert2__WEBPACK_IMPORTED_MODULE_4___default()));
+
+Vue.use(vue_router__WEBPACK_IMPORTED_MODULE_7__["default"]);
+Vue.use((vue_sweetalert2__WEBPACK_IMPORTED_MODULE_5___default()));
 Vue.use(vue_axios__WEBPACK_IMPORTED_MODULE_0__["default"], (axios__WEBPACK_IMPORTED_MODULE_1___default()));
 Vue.component('pagination', __webpack_require__(/*! laravel-vue-pagination */ "./node_modules/laravel-vue-pagination/dist/laravel-vue-pagination.common.js"));
 
 
-var adminRouter = new vue_router__WEBPACK_IMPORTED_MODULE_6__["default"]({
+
+var adminRouter = new vue_router__WEBPACK_IMPORTED_MODULE_7__["default"]({
   linkActiveClass: 'router-link-exact-active',
   mode: "history",
-  routes: _routes_admin__WEBPACK_IMPORTED_MODULE_7__.adminRoutes
+  routes: _routes_admin__WEBPACK_IMPORTED_MODULE_8__.adminRoutes
 });
-var userRouter = new vue_router__WEBPACK_IMPORTED_MODULE_6__["default"]({
+var kaderRouter = new vue_router__WEBPACK_IMPORTED_MODULE_7__["default"]({
+  linkActiveClass: 'router-link-exact-active',
+  mode: "history",
+  routes: _routes_kader__WEBPACK_IMPORTED_MODULE_9__.kaderRoutes
+});
+var userRouter = new vue_router__WEBPACK_IMPORTED_MODULE_7__["default"]({
   linkActiveClass: "active",
   mode: "history",
-  routes: _routes_user__WEBPACK_IMPORTED_MODULE_8__.userRoutes
+  routes: _routes_user__WEBPACK_IMPORTED_MODULE_10__.userRoutes
 });
 var admin = new Vue({
   el: "#admin",
@@ -3604,11 +4058,18 @@ var admin = new Vue({
     return h(_components_admin_App_vue__WEBPACK_IMPORTED_MODULE_2__["default"]);
   }
 });
+var kader = new Vue({
+  el: "#kader",
+  router: kaderRouter,
+  render: function render(h) {
+    return h(_components_kader_App_vue__WEBPACK_IMPORTED_MODULE_3__["default"]);
+  }
+});
 var user = new Vue({
   el: "#user",
   router: userRouter,
   render: function render(h) {
-    return h(_components_user_App_vue__WEBPACK_IMPORTED_MODULE_3__["default"]);
+    return h(_components_user_App_vue__WEBPACK_IMPORTED_MODULE_4__["default"]);
   }
 });
 
@@ -3672,9 +4133,8 @@ var formPemeriksaanBumil = (__webpack_require__(/*! ../components/admin/pages/fo
 
 var Balita = (__webpack_require__(/*! ../components/admin/pages/Balita.vue */ "./resources/js/components/admin/pages/Balita.vue")["default"]);
 
-var formBalita = (__webpack_require__(/*! ../components/admin/pages/forms/formBalita.vue */ "./resources/js/components/admin/pages/forms/formBalita.vue")["default"]);
+var formBalita = (__webpack_require__(/*! ../components/admin/pages/forms/formBalita.vue */ "./resources/js/components/admin/pages/forms/formBalita.vue")["default"]); // const formPemeriksaanBalita = require('../components/admin/pages/forms/formPemeriksaanBalita.vue').default
 
-var pemeriksaanBalita = (__webpack_require__(/*! ../components/admin/pages/PemeriksaanBalita.vue */ "./resources/js/components/admin/pages/PemeriksaanBalita.vue")["default"]);
 
 var adminRoutes = [{
   name: 'dashboard',
@@ -3731,14 +4191,29 @@ var adminRoutes = [{
   name: 'form-balita',
   path: '/admin/balita/tambah-data-balita',
   component: formBalita
-}, // End Balita //
+}, {
+  name: 'form-edit-balita',
+  path: '/admin/balita/edit-data-balita/:id',
+  component: formBalita
+} // End Balita //
 // Pemeriksaan Balita //
-{
-  name: 'pemeriksaan-balita',
-  path: '/admin/pemeriksaan-balita',
-  component: pemeriksaanBalita
-} // End Pemeriksaan Balita //
+// {
+//     name: 'edit-pemeriksaan-balita',
+//     path: '/admin/edit-pemeriksaan-balita/:id',
+//     component: formPemeriksaanBalita
+// },
+// End Pemeriksaan Balita //
 ];
+
+/***/ }),
+
+/***/ "./resources/js/routes/kader.js":
+/*!**************************************!*\
+  !*** ./resources/js/routes/kader.js ***!
+  \**************************************/
+/***/ (() => {
+
+
 
 /***/ }),
 
@@ -25349,43 +25824,6 @@ component.options.__file = "resources/js/components/admin/pages/Ortu.vue"
 
 /***/ }),
 
-/***/ "./resources/js/components/admin/pages/PemeriksaanBalita.vue":
-/*!*******************************************************************!*\
-  !*** ./resources/js/components/admin/pages/PemeriksaanBalita.vue ***!
-  \*******************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var _PemeriksaanBalita_vue_vue_type_template_id_a07c0ef6___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./PemeriksaanBalita.vue?vue&type=template&id=a07c0ef6& */ "./resources/js/components/admin/pages/PemeriksaanBalita.vue?vue&type=template&id=a07c0ef6&");
-/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! !../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
-
-var script = {}
-
-
-/* normalize component */
-;
-var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_1__["default"])(
-  script,
-  _PemeriksaanBalita_vue_vue_type_template_id_a07c0ef6___WEBPACK_IMPORTED_MODULE_0__.render,
-  _PemeriksaanBalita_vue_vue_type_template_id_a07c0ef6___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns,
-  false,
-  null,
-  null,
-  null
-  
-)
-
-/* hot reload */
-if (false) { var api; }
-component.options.__file = "resources/js/components/admin/pages/PemeriksaanBalita.vue"
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (component.exports);
-
-/***/ }),
-
 /***/ "./resources/js/components/admin/pages/forms/formBalita.vue":
 /*!******************************************************************!*\
   !*** ./resources/js/components/admin/pages/forms/formBalita.vue ***!
@@ -25398,15 +25836,17 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var _formBalita_vue_vue_type_template_id_bfe436ba___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./formBalita.vue?vue&type=template&id=bfe436ba& */ "./resources/js/components/admin/pages/forms/formBalita.vue?vue&type=template&id=bfe436ba&");
-/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! !../../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+/* harmony import */ var _formBalita_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./formBalita.vue?vue&type=script&lang=js& */ "./resources/js/components/admin/pages/forms/formBalita.vue?vue&type=script&lang=js&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! !../../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
-var script = {}
+
+
 
 
 /* normalize component */
 ;
-var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_1__["default"])(
-  script,
+var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _formBalita_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
   _formBalita_vue_vue_type_template_id_bfe436ba___WEBPACK_IMPORTED_MODULE_0__.render,
   _formBalita_vue_vue_type_template_id_bfe436ba___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns,
   false,
@@ -25536,6 +25976,40 @@ var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__
 /* hot reload */
 if (false) { var api; }
 component.options.__file = "resources/js/components/admin/pages/forms/formPemeriksaanBumil.vue"
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/kader/App.vue":
+/*!***********************************************!*\
+  !*** ./resources/js/components/kader/App.vue ***!
+  \***********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! !../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+var render, staticRenderFns
+var script = {}
+
+
+/* normalize component */
+;
+var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_0__["default"])(
+  script,
+  render,
+  staticRenderFns,
+  false,
+  null,
+  null,
+  null
+  
+)
+
+component.options.__file = "resources/js/components/kader/App.vue"
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (component.exports);
 
 /***/ }),
@@ -25748,6 +26222,22 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Ortu_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!../../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./Ortu.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/admin/pages/Ortu.vue?vue&type=script&lang=js&");
  /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Ortu_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/admin/pages/forms/formBalita.vue?vue&type=script&lang=js&":
+/*!*******************************************************************************************!*\
+  !*** ./resources/js/components/admin/pages/forms/formBalita.vue?vue&type=script&lang=js& ***!
+  \*******************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_formBalita_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!../../../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./formBalita.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/admin/pages/forms/formBalita.vue?vue&type=script&lang=js&");
+ /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_formBalita_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
 
 /***/ }),
 
@@ -25980,23 +26470,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "staticRenderFns": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Ortu_vue_vue_type_template_id_2b25f68c___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
 /* harmony export */ });
 /* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Ortu_vue_vue_type_template_id_2b25f68c___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./Ortu.vue?vue&type=template&id=2b25f68c& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/admin/pages/Ortu.vue?vue&type=template&id=2b25f68c&");
-
-
-/***/ }),
-
-/***/ "./resources/js/components/admin/pages/PemeriksaanBalita.vue?vue&type=template&id=a07c0ef6&":
-/*!**************************************************************************************************!*\
-  !*** ./resources/js/components/admin/pages/PemeriksaanBalita.vue?vue&type=template&id=a07c0ef6& ***!
-  \**************************************************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "render": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_PemeriksaanBalita_vue_vue_type_template_id_a07c0ef6___WEBPACK_IMPORTED_MODULE_0__.render),
-/* harmony export */   "staticRenderFns": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_PemeriksaanBalita_vue_vue_type_template_id_a07c0ef6___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
-/* harmony export */ });
-/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_PemeriksaanBalita_vue_vue_type_template_id_a07c0ef6___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./PemeriksaanBalita.vue?vue&type=template&id=a07c0ef6& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/admin/pages/PemeriksaanBalita.vue?vue&type=template&id=a07c0ef6&");
 
 
 /***/ }),
@@ -26649,7 +27122,7 @@ var render = function () {
             _c(
               "li",
               [
-                _c("router-link", { attrs: { to: { name: "paginate" } } }, [
+                _c("router-link", { attrs: { to: { name: "" } } }, [
                   _c("i", { staticClass: "bi bi-circle" }),
                   _vm._v(" "),
                   _c("span", [_vm._v("General Tables")]),
@@ -26846,7 +27319,7 @@ var render = function () {
                   _vm._v(" "),
                   _c(
                     "tbody",
-                    _vm._l(_vm.balitas, function (item, index) {
+                    _vm._l(_vm.balitas.data, function (item, index) {
                       return _c("tr", { key: index }, [
                         _c("th", { attrs: { scope: "row" } }, [
                           _vm._v(_vm._s(index + 1)),
@@ -26854,7 +27327,7 @@ var render = function () {
                         _vm._v(" "),
                         _c("td", [_vm._v(_vm._s(item.nama))]),
                         _vm._v(" "),
-                        _c("td", [
+                        _c("td", { staticClass: "text-center" }, [
                           _vm._v(
                             _vm._s(item.tmpt_lahir) +
                               ", " +
@@ -26872,7 +27345,209 @@ var render = function () {
                             : _vm._e(),
                         ]),
                         _vm._v(" "),
-                        _c("td", [_vm._v("modal")]),
+                        _c("td", { staticClass: "text-center" }, [
+                          _c(
+                            "button",
+                            {
+                              staticClass: "btn btn-primary",
+                              attrs: {
+                                type: "button",
+                                "data-bs-toggle": "modal",
+                                "data-bs-target": "#detailOrtu" + index,
+                              },
+                            },
+                            [_c("i", { staticClass: "bi bi-info-circle" })]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "div",
+                            {
+                              staticClass: "modal fade",
+                              attrs: {
+                                id: "detailOrtu" + index,
+                                tabindex: "-1",
+                              },
+                            },
+                            [
+                              _c(
+                                "div",
+                                {
+                                  staticClass:
+                                    "modal-dialog modal-dialog-centered",
+                                },
+                                [
+                                  _c("div", { staticClass: "modal-content" }, [
+                                    _c("div", { staticClass: "modal-header" }, [
+                                      _c("h5", { staticClass: "modal-title" }, [
+                                        _vm._v(
+                                          "Detail Orang Tua Balita " +
+                                            _vm._s(item.nama)
+                                        ),
+                                      ]),
+                                      _vm._v(" "),
+                                      _c("button", {
+                                        staticClass: "btn-close",
+                                        attrs: {
+                                          type: "button",
+                                          "data-bs-dismiss": "modal",
+                                          "aria-label": "Close",
+                                        },
+                                      }),
+                                    ]),
+                                    _vm._v(" "),
+                                    _c(
+                                      "div",
+                                      { staticClass: "modal-body" },
+                                      _vm._l(
+                                        _vm.ortu.data,
+                                        function (detail, index) {
+                                          return _c(
+                                            "table",
+                                            {
+                                              key: index,
+                                              staticClass:
+                                                "table table-borderless",
+                                            },
+                                            [
+                                              _c(
+                                                "tbody",
+                                                {
+                                                  directives: [
+                                                    {
+                                                      name: "show",
+                                                      rawName: "v-show",
+                                                      value:
+                                                        item.id_ortu ==
+                                                        detail.id,
+                                                      expression:
+                                                        "item.id_ortu == detail.id",
+                                                    },
+                                                  ],
+                                                },
+                                                [
+                                                  _c("tr", [
+                                                    _c(
+                                                      "td",
+                                                      {
+                                                        staticClass:
+                                                          "text-start",
+                                                      },
+                                                      [_vm._v("Nama Ibu")]
+                                                    ),
+                                                    _vm._v(" "),
+                                                    _c("td", [_vm._v(":")]),
+                                                    _vm._v(" "),
+                                                    _c(
+                                                      "td",
+                                                      {
+                                                        staticClass:
+                                                          "text-start",
+                                                      },
+                                                      [
+                                                        _vm._v(
+                                                          _vm._s(
+                                                            detail.nama_ibu
+                                                          )
+                                                        ),
+                                                      ]
+                                                    ),
+                                                  ]),
+                                                  _vm._v(" "),
+                                                  _c("tr", [
+                                                    _c(
+                                                      "td",
+                                                      {
+                                                        staticClass:
+                                                          "text-start",
+                                                      },
+                                                      [_vm._v("Nama Ayah")]
+                                                    ),
+                                                    _vm._v(" "),
+                                                    _c("td", [_vm._v(":")]),
+                                                    _vm._v(" "),
+                                                    _c(
+                                                      "td",
+                                                      {
+                                                        staticClass:
+                                                          "text-start",
+                                                      },
+                                                      [
+                                                        _vm._v(
+                                                          _vm._s(
+                                                            detail.nama_ayah
+                                                          )
+                                                        ),
+                                                      ]
+                                                    ),
+                                                  ]),
+                                                  _vm._v(" "),
+                                                  _c("tr", [
+                                                    _c(
+                                                      "td",
+                                                      {
+                                                        staticClass:
+                                                          "text-start",
+                                                      },
+                                                      [_vm._v("Alamat")]
+                                                    ),
+                                                    _vm._v(" "),
+                                                    _c("td", [_vm._v(":")]),
+                                                    _vm._v(" "),
+                                                    _c(
+                                                      "td",
+                                                      {
+                                                        staticClass:
+                                                          "text-start",
+                                                      },
+                                                      [
+                                                        _vm._v(
+                                                          _vm._s(detail.alamat)
+                                                        ),
+                                                      ]
+                                                    ),
+                                                  ]),
+                                                  _vm._v(" "),
+                                                  _c("tr", [
+                                                    _c(
+                                                      "td",
+                                                      {
+                                                        staticClass:
+                                                          "text-start",
+                                                      },
+                                                      [_vm._v("No Telepon")]
+                                                    ),
+                                                    _vm._v(" "),
+                                                    _c("td", [_vm._v(":")]),
+                                                    _vm._v(" "),
+                                                    _c(
+                                                      "td",
+                                                      {
+                                                        staticClass:
+                                                          "text-start",
+                                                      },
+                                                      [
+                                                        _vm._v(
+                                                          _vm._s(detail.telp)
+                                                        ),
+                                                      ]
+                                                    ),
+                                                  ]),
+                                                ]
+                                              ),
+                                            ]
+                                          )
+                                        }
+                                      ),
+                                      0
+                                    ),
+                                    _vm._v(" "),
+                                    _vm._m(1, true),
+                                  ]),
+                                ]
+                              ),
+                            ]
+                          ),
+                        ]),
                         _vm._v(" "),
                         _c("td", { staticClass: "text-center" }, [
                           item.stts_balita == 0
@@ -26894,7 +27569,543 @@ var render = function () {
                             : _vm._e(),
                         ]),
                         _vm._v(" "),
-                        _vm._m(1, true),
+                        _c("td", { staticClass: "text-center" }, [
+                          _vm._v(
+                            "\n                                        " +
+                              _vm._s(item.nama_kader) +
+                              "\n                                    "
+                          ),
+                        ]),
+                        _vm._v(" "),
+                        _c("td", { staticClass: "text-center" }, [
+                          _c(
+                            "button",
+                            {
+                              staticClass: "btn btn-primary",
+                              attrs: {
+                                type: "button",
+                                "data-bs-toggle": "modal",
+                                "data-bs-target": "#detailPemeriksaan" + index,
+                              },
+                            },
+                            [
+                              _c("i", {
+                                staticClass: "bi bi-file-earmark-medical-fill",
+                              }),
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "div",
+                            {
+                              staticClass: "modal fade",
+                              attrs: {
+                                id: "detailPemeriksaan" + index,
+                                tabindex: "-1",
+                              },
+                            },
+                            [
+                              _c(
+                                "div",
+                                {
+                                  staticClass:
+                                    "modal-dialog modal-dialog-scrollable",
+                                },
+                                [
+                                  _c("div", { staticClass: "modal-content" }, [
+                                    _c("div", { staticClass: "modal-header" }, [
+                                      _c("h5", { staticClass: "modal-title" }, [
+                                        _vm._v(
+                                          "History Pemeriksaan Balita " +
+                                            _vm._s(item.nama)
+                                        ),
+                                      ]),
+                                      _vm._v(" "),
+                                      _c("button", {
+                                        staticClass: "btn-close",
+                                        attrs: {
+                                          type: "button",
+                                          "data-bs-dismiss": "modal",
+                                          "aria-label": "Close",
+                                        },
+                                      }),
+                                    ]),
+                                    _vm._v(" "),
+                                    _c("div", { staticClass: "modal-body" }, [
+                                      _c(
+                                        "table",
+                                        { staticClass: "table table-hover" },
+                                        [
+                                          _vm._m(2, true),
+                                          _vm._v(" "),
+                                          _vm._l(
+                                            _vm.pemeriksaanBalita,
+                                            function (pemeriksaan, no) {
+                                              return _c("tbody", { key: no }, [
+                                                _c(
+                                                  "tr",
+                                                  {
+                                                    directives: [
+                                                      {
+                                                        name: "show",
+                                                        rawName: "v-show",
+                                                        value:
+                                                          pemeriksaan.id_balita ==
+                                                          item.id,
+                                                        expression:
+                                                          "pemeriksaan.id_balita == item.id",
+                                                      },
+                                                    ],
+                                                  },
+                                                  [
+                                                    _c(
+                                                      "th",
+                                                      {
+                                                        attrs: { scope: "row" },
+                                                      },
+                                                      [_vm._v(_vm._s(no + 1))]
+                                                    ),
+                                                    _vm._v(" "),
+                                                    _c("td", [
+                                                      _vm._v(
+                                                        _vm._s(pemeriksaan.tb) +
+                                                          " cm"
+                                                      ),
+                                                    ]),
+                                                    _vm._v(" "),
+                                                    _c("td", [
+                                                      _vm._v(
+                                                        _vm._s(pemeriksaan.bb) +
+                                                          " kg"
+                                                      ),
+                                                    ]),
+                                                    _vm._v(" "),
+                                                    _c("td", [
+                                                      _vm._v(
+                                                        _vm._s(pemeriksaan.lk) +
+                                                          " cm"
+                                                      ),
+                                                    ]),
+                                                    _vm._v(" "),
+                                                    _c("td", [
+                                                      _vm._v(
+                                                        _vm._s(
+                                                          pemeriksaan.created_at
+                                                        )
+                                                      ),
+                                                    ]),
+                                                    _vm._v(" "),
+                                                    _c("td", [
+                                                      _c(
+                                                        "button",
+                                                        {
+                                                          staticClass:
+                                                            "btn btn-danger",
+                                                          attrs: {
+                                                            type: "button",
+                                                          },
+                                                          on: {
+                                                            click: function (
+                                                              $event
+                                                            ) {
+                                                              return _vm.deletePemeriksaan(
+                                                                pemeriksaan.id
+                                                              )
+                                                            },
+                                                          },
+                                                        },
+                                                        [
+                                                          _c("i", {
+                                                            staticClass:
+                                                              "bi bi-trash-fill",
+                                                          }),
+                                                        ]
+                                                      ),
+                                                    ]),
+                                                  ]
+                                                ),
+                                              ])
+                                            }
+                                          ),
+                                        ],
+                                        2
+                                      ),
+                                    ]),
+                                    _vm._v(" "),
+                                    _c("div", { staticClass: "modal-footer" }, [
+                                      _c(
+                                        "button",
+                                        {
+                                          staticClass: "btn btn-success",
+                                          attrs: {
+                                            type: "button",
+                                            "data-bs-toggle": "modal",
+                                            "data-bs-target":
+                                              "#tambahHistory" + item.id,
+                                          },
+                                        },
+                                        [
+                                          _c("i", {
+                                            staticClass: "bi bi-plus-circle",
+                                          }),
+                                          _vm._v(
+                                            "\n                                                            Tambah Data Pemeriksaan\n                                                        "
+                                          ),
+                                        ]
+                                      ),
+                                    ]),
+                                  ]),
+                                ]
+                              ),
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "div",
+                            {
+                              staticClass: "modal fade",
+                              attrs: {
+                                id: "tambahHistory" + item.id,
+                                tabindex: "-1",
+                              },
+                            },
+                            [
+                              _c(
+                                "div",
+                                {
+                                  staticClass:
+                                    "modal-dialog modal-dialog-centered",
+                                },
+                                [
+                                  _c("div", { staticClass: "modal-content" }, [
+                                    _c("div", { staticClass: "modal-header" }, [
+                                      _c("h5", { staticClass: "modal-title" }, [
+                                        _vm._v(
+                                          "Tambah Pemeriksaan Balita " +
+                                            _vm._s(item.nama)
+                                        ),
+                                      ]),
+                                      _vm._v(" "),
+                                      _c("button", {
+                                        staticClass: "btn-close",
+                                        attrs: {
+                                          type: "button",
+                                          "data-bs-dismiss": "modal",
+                                          "aria-label": "Close",
+                                        },
+                                      }),
+                                    ]),
+                                    _vm._v(" "),
+                                    _c(
+                                      "div",
+                                      { staticClass: "modal-body text-start" },
+                                      [
+                                        _c(
+                                          "form",
+                                          {
+                                            staticClass: "row g-3",
+                                            on: {
+                                              submit: function ($event) {
+                                                $event.preventDefault()
+                                                return _vm.save.apply(
+                                                  null,
+                                                  arguments
+                                                )
+                                              },
+                                            },
+                                          },
+                                          [
+                                            _c(
+                                              "div",
+                                              { staticClass: "col-12" },
+                                              [
+                                                _c(
+                                                  "label",
+                                                  {
+                                                    staticClass: "form-label",
+                                                    attrs: { for: "nama" },
+                                                  },
+                                                  [_vm._v("Nama Balita")]
+                                                ),
+                                                _vm._v(" "),
+                                                _c(
+                                                  "select",
+                                                  {
+                                                    directives: [
+                                                      {
+                                                        name: "model",
+                                                        rawName: "v-model",
+                                                        value:
+                                                          _vm.tambahPemeriksaan
+                                                            .id_balita,
+                                                        expression:
+                                                          "tambahPemeriksaan.id_balita",
+                                                      },
+                                                    ],
+                                                    staticClass: "form-select",
+                                                    attrs: {
+                                                      "aria-label":
+                                                        "Default select example",
+                                                      name: "nama",
+                                                      id: "nama",
+                                                    },
+                                                    on: {
+                                                      change: function (
+                                                        $event
+                                                      ) {
+                                                        var $$selectedVal =
+                                                          Array.prototype.filter
+                                                            .call(
+                                                              $event.target
+                                                                .options,
+                                                              function (o) {
+                                                                return o.selected
+                                                              }
+                                                            )
+                                                            .map(function (o) {
+                                                              var val =
+                                                                "_value" in o
+                                                                  ? o._value
+                                                                  : o.value
+                                                              return val
+                                                            })
+                                                        _vm.$set(
+                                                          _vm.tambahPemeriksaan,
+                                                          "id_balita",
+                                                          $event.target.multiple
+                                                            ? $$selectedVal
+                                                            : $$selectedVal[0]
+                                                        )
+                                                      },
+                                                    },
+                                                  },
+                                                  [
+                                                    _c(
+                                                      "option",
+                                                      {
+                                                        attrs: { selected: "" },
+                                                        domProps: {
+                                                          value: item.id,
+                                                        },
+                                                      },
+                                                      [
+                                                        _vm._v(
+                                                          _vm._s(item.nama)
+                                                        ),
+                                                      ]
+                                                    ),
+                                                  ]
+                                                ),
+                                              ]
+                                            ),
+                                            _vm._v(" "),
+                                            _c(
+                                              "div",
+                                              { staticClass: "col-12" },
+                                              [
+                                                _c(
+                                                  "label",
+                                                  {
+                                                    staticClass: "form-label",
+                                                    attrs: { for: "tb" },
+                                                  },
+                                                  [_vm._v("Tinggi badan")]
+                                                ),
+                                                _vm._v(" "),
+                                                _c("input", {
+                                                  directives: [
+                                                    {
+                                                      name: "model",
+                                                      rawName: "v-model",
+                                                      value:
+                                                        _vm.tambahPemeriksaan
+                                                          .tb,
+                                                      expression:
+                                                        "tambahPemeriksaan.tb",
+                                                    },
+                                                  ],
+                                                  staticClass: "form-control",
+                                                  attrs: {
+                                                    type: "number",
+                                                    id: "tb",
+                                                    placeholder: "Dalam cm",
+                                                  },
+                                                  domProps: {
+                                                    value:
+                                                      _vm.tambahPemeriksaan.tb,
+                                                  },
+                                                  on: {
+                                                    input: function ($event) {
+                                                      if (
+                                                        $event.target.composing
+                                                      ) {
+                                                        return
+                                                      }
+                                                      _vm.$set(
+                                                        _vm.tambahPemeriksaan,
+                                                        "tb",
+                                                        $event.target.value
+                                                      )
+                                                    },
+                                                  },
+                                                }),
+                                              ]
+                                            ),
+                                            _vm._v(" "),
+                                            _c(
+                                              "div",
+                                              { staticClass: "col-12" },
+                                              [
+                                                _c(
+                                                  "label",
+                                                  {
+                                                    staticClass: "form-label",
+                                                    attrs: { for: "bb" },
+                                                  },
+                                                  [_vm._v("Berat badan")]
+                                                ),
+                                                _vm._v(" "),
+                                                _c("input", {
+                                                  directives: [
+                                                    {
+                                                      name: "model",
+                                                      rawName: "v-model",
+                                                      value:
+                                                        _vm.tambahPemeriksaan
+                                                          .bb,
+                                                      expression:
+                                                        "tambahPemeriksaan.bb",
+                                                    },
+                                                  ],
+                                                  staticClass: "form-control",
+                                                  attrs: {
+                                                    type: "number",
+                                                    id: "bb",
+                                                    placeholder: "Dalam kg",
+                                                  },
+                                                  domProps: {
+                                                    value:
+                                                      _vm.tambahPemeriksaan.bb,
+                                                  },
+                                                  on: {
+                                                    input: function ($event) {
+                                                      if (
+                                                        $event.target.composing
+                                                      ) {
+                                                        return
+                                                      }
+                                                      _vm.$set(
+                                                        _vm.tambahPemeriksaan,
+                                                        "bb",
+                                                        $event.target.value
+                                                      )
+                                                    },
+                                                  },
+                                                }),
+                                              ]
+                                            ),
+                                            _vm._v(" "),
+                                            _c(
+                                              "div",
+                                              { staticClass: "col-12" },
+                                              [
+                                                _c(
+                                                  "label",
+                                                  {
+                                                    staticClass: "form-label",
+                                                    attrs: { for: "lk" },
+                                                  },
+                                                  [_vm._v("Lingkar Kepala")]
+                                                ),
+                                                _vm._v(" "),
+                                                _c("input", {
+                                                  directives: [
+                                                    {
+                                                      name: "model",
+                                                      rawName: "v-model",
+                                                      value:
+                                                        _vm.tambahPemeriksaan
+                                                          .lk,
+                                                      expression:
+                                                        "tambahPemeriksaan.lk",
+                                                    },
+                                                  ],
+                                                  staticClass: "form-control",
+                                                  attrs: {
+                                                    type: "number",
+                                                    id: "lk",
+                                                    placeholder: "Dalam cm",
+                                                  },
+                                                  domProps: {
+                                                    value:
+                                                      _vm.tambahPemeriksaan.lk,
+                                                  },
+                                                  on: {
+                                                    input: function ($event) {
+                                                      if (
+                                                        $event.target.composing
+                                                      ) {
+                                                        return
+                                                      }
+                                                      _vm.$set(
+                                                        _vm.tambahPemeriksaan,
+                                                        "lk",
+                                                        $event.target.value
+                                                      )
+                                                    },
+                                                  },
+                                                }),
+                                              ]
+                                            ),
+                                            _vm._v(" "),
+                                            _vm._m(3, true),
+                                          ]
+                                        ),
+                                      ]
+                                    ),
+                                  ]),
+                                ]
+                              ),
+                            ]
+                          ),
+                        ]),
+                        _vm._v(" "),
+                        _c("td", [
+                          _c(
+                            "div",
+                            { staticClass: "text-center" },
+                            [
+                              _c(
+                                "router-link",
+                                {
+                                  staticClass: "btn btn-warning",
+                                  attrs: {
+                                    to: {
+                                      name: "form-edit-balita",
+                                      params: { id: item.id },
+                                    },
+                                  },
+                                },
+                                [_c("i", { staticClass: "bi bi-pencil-fill" })]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "button",
+                                {
+                                  staticClass: "btn btn-danger",
+                                  attrs: { type: "button" },
+                                  on: {
+                                    click: function ($event) {
+                                      return _vm.deleteData(item.id)
+                                    },
+                                  },
+                                },
+                                [_c("i", { staticClass: "bi bi-trash-fill" })]
+                              ),
+                            ],
+                            1
+                          ),
+                        ]),
                       ])
                     }),
                     0
@@ -26920,15 +28131,21 @@ var staticRenderFns = [
         _vm._v(" "),
         _c("th", { attrs: { scope: "col" } }, [_vm._v("Nama")]),
         _vm._v(" "),
-        _c("th", { attrs: { scope: "col" } }, [_vm._v("TTL")]),
+        _c("th", { staticClass: "text-center", attrs: { scope: "col" } }, [
+          _vm._v("Tempat, Tanggal Lahir"),
+        ]),
         _vm._v(" "),
         _c("th", { staticClass: "text-center", attrs: { scope: "col" } }, [
           _vm._v("Gender"),
         ]),
         _vm._v(" "),
-        _c("th", { attrs: { scope: "col" } }, [_vm._v("Detail Ortu")]),
+        _c("th", { staticClass: "text-center", attrs: { scope: "col" } }, [
+          _vm._v("Detail Ortu"),
+        ]),
         _vm._v(" "),
-        _c("th", { attrs: { scope: "col" } }, [_vm._v("Status Balita")]),
+        _c("th", { staticClass: "text-center", attrs: { scope: "col" } }, [
+          _vm._v("Status Balita"),
+        ]),
         _vm._v(" "),
         _c("th", { staticClass: "text-center", attrs: { scope: "col" } }, [
           _vm._v("Tanggal Meninggal"),
@@ -26937,6 +28154,14 @@ var staticRenderFns = [
         _c("th", { staticClass: "text-center", attrs: { scope: "col" } }, [
           _vm._v("Petugas Posyandu"),
         ]),
+        _vm._v(" "),
+        _c("th", { staticClass: "text-center", attrs: { scope: "col" } }, [
+          _vm._v("History Pemeriksaan Balita"),
+        ]),
+        _vm._v(" "),
+        _c("th", { staticClass: "text-center", attrs: { scope: "col" } }, [
+          _vm._v("Aksi"),
+        ]),
       ]),
     ])
   },
@@ -26944,20 +28169,56 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("td", [
-      _c("div", { staticClass: "text-center" }, [
-        _c(
-          "a",
-          { staticClass: "btn btn-outline-warning", attrs: { href: "" } },
-          [_c("i", { staticClass: "bi bi-pencil-fill" })]
-        ),
+    return _c("div", { staticClass: "modal-footer" }, [
+      _c(
+        "button",
+        {
+          staticClass: "btn btn-secondary",
+          attrs: { type: "button", "data-bs-dismiss": "modal" },
+        },
+        [_vm._v("Close")]
+      ),
+    ])
+  },
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("thead", [
+      _c("tr", [
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("#")]),
         _vm._v(" "),
-        _c(
-          "button",
-          { staticClass: "btn btn-outline-danger", attrs: { type: "button" } },
-          [_c("i", { staticClass: "bi bi-trash-fill" })]
-        ),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Tinggi")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Berat")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Lingkar Kepala")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("created_at")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Aksi")]),
       ]),
+    ])
+  },
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "modal-footer" }, [
+      _c(
+        "button",
+        {
+          staticClass: "btn btn-secondary",
+          attrs: { type: "button", "data-bs-dismiss": "modal" },
+        },
+        [_vm._v("Batal")]
+      ),
+      _vm._v(" "),
+      _c(
+        "button",
+        { staticClass: "btn btn-primary", attrs: { type: "submit" } },
+        [_vm._v("Save")]
+      ),
     ])
   },
 ]
@@ -27071,298 +28332,228 @@ var render = function () {
                   _c(
                     "tbody",
                     _vm._l(_vm.pemeriksaanBumil, function (item, index) {
-                      return _c(
-                        "tr",
-                        { key: index },
-                        [
-                          _c("th", { attrs: { scope: "row" } }, [
-                            _vm._v(_vm._s(index + 1)),
-                          ]),
+                      return _c("tr", { key: index }, [
+                        _c("th", { attrs: { scope: "row" } }, [
+                          _vm._v(_vm._s(index + 1)),
+                        ]),
+                        _vm._v(" "),
+                        _c("td", [_vm._v(_vm._s(item.nama_ibu))]),
+                        _vm._v(" "),
+                        _c("td", {}, [_vm._v(_vm._s(item.nik_ibu))]),
+                        _vm._v(" "),
+                        _c("td", [
+                          _vm._v(
+                            "\n                                        " +
+                              _vm._s(item.tmpt_lahir_ibu) +
+                              ",\n                                        "
+                          ),
+                          _c("br"),
+                          _vm._v(
+                            "\n                                        " +
+                              _vm._s(item.tgl_lahir_ibu) +
+                              "\n                                    "
+                          ),
+                        ]),
+                        _vm._v(" "),
+                        _c("td", { staticClass: "text-center" }, [
+                          item.stts_bumil == 0
+                            ? _c("p", [_vm._v("Meninggal")])
+                            : _vm._e(),
                           _vm._v(" "),
-                          _c("td", [_vm._v(_vm._s(item.nama_ibu))]),
+                          item.stts_bumil == 1
+                            ? _c("p", [_vm._v("Hidup")])
+                            : _vm._e(),
+                        ]),
+                        _vm._v(" "),
+                        _c("td", { staticClass: "text-center" }, [
+                          item.stts_bumil == 1
+                            ? _c("p", [_vm._v("-")])
+                            : _vm._e(),
                           _vm._v(" "),
-                          _c("td", {}, [_vm._v(_vm._s(item.nik_ibu))]),
-                          _vm._v(" "),
-                          _c("td", [
-                            _vm._v(
-                              "\n                                        " +
-                                _vm._s(item.tmpt_lahir_ibu) +
-                                ",\n                                        "
-                            ),
-                            _c("br"),
-                            _vm._v(
-                              "\n                                        " +
-                                _vm._s(item.tgl_lahir_ibu) +
-                                "\n                                    "
-                            ),
-                          ]),
-                          _vm._v(" "),
-                          _c("td", { staticClass: "text-center" }, [
-                            item.stts_bumil == 0
-                              ? _c("p", [_vm._v("Meninggal")])
-                              : _vm._e(),
-                            _vm._v(" "),
-                            item.stts_bumil == 1
-                              ? _c("p", [_vm._v("Hidup")])
-                              : _vm._e(),
-                          ]),
-                          _vm._v(" "),
-                          _c("td", { staticClass: "text-center" }, [
-                            item.stts_bumil == 1
-                              ? _c("p", [_vm._v("-")])
-                              : _vm._e(),
-                            _vm._v(" "),
-                            item.stts_bumil == 0
-                              ? _c("p", [_vm._v(_vm._s(item.tgl_meninggal))])
-                              : _vm._e(),
-                          ]),
-                          _vm._v(" "),
-                          _vm._o(
-                            _vm._l(_vm.ortu, function (ortu, index) {
-                              return _c(
-                                "td",
-                                { key: index, staticClass: "text-center" },
-                                [
-                                  item.id_kader_bumil == ortu.id_kader_bumil
-                                    ? _c("span", [
-                                        _vm._v(
-                                          "\n                                            " +
-                                            _vm._s(ortu.nama_kader) +
-                                            "\n                                        "
-                                        ),
-                                      ])
-                                    : _vm._e(),
-                                ]
-                              )
-                            }),
-                            0,
-                            index
+                          item.stts_bumil == 0
+                            ? _c("p", [_vm._v(_vm._s(item.tgl_meninggal))])
+                            : _vm._e(),
+                        ]),
+                        _vm._v(" "),
+                        _c("td", { staticClass: "text-center" }, [
+                          _vm._v(
+                            "\n                                        " +
+                              _vm._s(item.id_kader_bumil) +
+                              "\n                                    "
+                          ),
+                        ]),
+                        _vm._v(" "),
+                        _c("td", { staticClass: "text-center" }, [
+                          _c(
+                            "button",
+                            {
+                              staticClass: "btn btn-info",
+                              attrs: {
+                                type: "button",
+                                "data-bs-toggle": "modal",
+                                "data-bs-target": "#verticalycentered" + index,
+                              },
+                            },
+                            [_c("i", { staticClass: "bi bi-info-circle" })]
                           ),
                           _vm._v(" "),
-                          _c("td", { staticClass: "text-center" }, [
-                            _c(
-                              "button",
-                              {
-                                staticClass: "btn btn-outline-primary",
-                                attrs: {
-                                  type: "button",
-                                  "data-bs-toggle": "modal",
-                                  "data-bs-target":
-                                    "#verticalycentered" + index,
-                                },
+                          _c(
+                            "div",
+                            {
+                              staticClass: "modal fade",
+                              attrs: {
+                                id: "verticalycentered" + index,
+                                tabindex: "-1",
                               },
-                              [_vm._v("Detail")]
-                            ),
-                            _vm._v(" "),
-                            _c(
-                              "div",
-                              {
-                                staticClass: "modal fade",
-                                attrs: {
-                                  id: "verticalycentered" + index,
-                                  tabindex: "-1",
+                            },
+                            [
+                              _c(
+                                "div",
+                                {
+                                  staticClass:
+                                    "modal-dialog modal-dialog-centered",
                                 },
-                              },
-                              [
-                                _c(
-                                  "div",
-                                  {
-                                    staticClass:
-                                      "modal-dialog modal-dialog-centered",
-                                  },
-                                  [
-                                    _c(
-                                      "div",
-                                      { staticClass: "modal-content" },
-                                      [
-                                        _c(
-                                          "div",
-                                          { staticClass: "modal-header" },
-                                          [
-                                            _c(
-                                              "h5",
-                                              { staticClass: "modal-title" },
-                                              [
-                                                _vm._v(
-                                                  "Data Pemeriksaan Kehamilan Ibu " +
-                                                    _vm._s(item.nama_ibu)
-                                                ),
-                                              ]
-                                            ),
+                                [
+                                  _c("div", { staticClass: "modal-content" }, [
+                                    _c("div", { staticClass: "modal-header" }, [
+                                      _c("h5", { staticClass: "modal-title" }, [
+                                        _vm._v(
+                                          "Data Pemeriksaan Kehamilan Ibu " +
+                                            _vm._s(item.nama_ibu)
+                                        ),
+                                      ]),
+                                      _vm._v(" "),
+                                      _c("button", {
+                                        staticClass: "btn-close",
+                                        attrs: {
+                                          type: "button",
+                                          "data-bs-dismiss": "modal",
+                                          "aria-label": "Close",
+                                        },
+                                      }),
+                                    ]),
+                                    _vm._v(" "),
+                                    _c("div", { staticClass: "modal-body" }, [
+                                      _c(
+                                        "table",
+                                        {
+                                          staticClass: "table table-borderless",
+                                        },
+                                        [
+                                          _c("tbody", [
+                                            _c("tr", [
+                                              _c(
+                                                "td",
+                                                { staticClass: "text-start" },
+                                                [_vm._v("Tinggi Badan Bumil")]
+                                              ),
+                                              _vm._v(" "),
+                                              _c("td", [_vm._v(":")]),
+                                              _vm._v(" "),
+                                              _c(
+                                                "td",
+                                                { staticClass: "text-start" },
+                                                [
+                                                  _vm._v(
+                                                    _vm._s(item.tb) + " cm"
+                                                  ),
+                                                ]
+                                              ),
+                                            ]),
                                             _vm._v(" "),
-                                            _c("button", {
-                                              staticClass: "btn-close",
-                                              attrs: {
-                                                type: "button",
-                                                "data-bs-dismiss": "modal",
-                                                "aria-label": "Close",
-                                              },
-                                            }),
-                                          ]
-                                        ),
-                                        _vm._v(" "),
-                                        _c(
-                                          "div",
-                                          { staticClass: "modal-body" },
-                                          [
-                                            _c(
-                                              "table",
-                                              {
-                                                staticClass:
-                                                  "table table-borderless",
-                                              },
-                                              [
-                                                _c("tbody", [
-                                                  _c("tr", [
-                                                    _c(
-                                                      "td",
-                                                      {
-                                                        staticClass:
-                                                          "text-start",
-                                                      },
-                                                      [
-                                                        _vm._v(
-                                                          "Tinggi Badan Bumil"
-                                                        ),
-                                                      ]
-                                                    ),
-                                                    _vm._v(" "),
-                                                    _c("td", [_vm._v(":")]),
-                                                    _vm._v(" "),
-                                                    _c(
-                                                      "td",
-                                                      {
-                                                        staticClass:
-                                                          "text-start",
-                                                      },
-                                                      [
-                                                        _vm._v(
-                                                          _vm._s(item.tb) +
-                                                            " cm"
-                                                        ),
-                                                      ]
-                                                    ),
-                                                  ]),
-                                                  _vm._v(" "),
-                                                  _c("tr", [
-                                                    _c(
-                                                      "td",
-                                                      {
-                                                        staticClass:
-                                                          "text-start",
-                                                      },
-                                                      [_vm._v("Berat Badan")]
-                                                    ),
-                                                    _vm._v(" "),
-                                                    _c("td", [_vm._v(":")]),
-                                                    _vm._v(" "),
-                                                    _c(
-                                                      "td",
-                                                      {
-                                                        staticClass:
-                                                          "text-start",
-                                                      },
-                                                      [
-                                                        _vm._v(
-                                                          _vm._s(item.bb) +
-                                                            " kg"
-                                                        ),
-                                                      ]
-                                                    ),
-                                                  ]),
-                                                  _vm._v(" "),
-                                                  _c("tr", [
-                                                    _c(
-                                                      "td",
-                                                      {
-                                                        staticClass:
-                                                          "text-start",
-                                                      },
-                                                      [
-                                                        _vm._v(
-                                                          "Lingkar Lengan Bumil"
-                                                        ),
-                                                      ]
-                                                    ),
-                                                    _vm._v(" "),
-                                                    _c("td", [_vm._v(":")]),
-                                                    _vm._v(" "),
-                                                    _c(
-                                                      "td",
-                                                      {
-                                                        staticClass:
-                                                          "text-start",
-                                                      },
-                                                      [
-                                                        _vm._v(
-                                                          _vm._s(item.lila) +
-                                                            " cm"
-                                                        ),
-                                                      ]
-                                                    ),
-                                                  ]),
-                                                ]),
-                                              ]
-                                            ),
-                                          ]
-                                        ),
-                                        _vm._v(" "),
-                                        _vm._m(1, true),
-                                      ]
-                                    ),
-                                  ]
-                                ),
-                              ]
-                            ),
-                          ]),
-                          _vm._v(" "),
-                          _c("td", { staticClass: "text-center" }, [
-                            _vm._v(_vm._s(item.created_at)),
-                          ]),
-                          _vm._v(" "),
-                          _c("td", [
-                            _c(
-                              "div",
-                              { staticClass: "text-center" },
-                              [
-                                _c(
-                                  "router-link",
-                                  {
-                                    staticClass: "btn btn-outline-warning",
-                                    attrs: {
-                                      to: {
-                                        name: "form-edit-bumil",
-                                        params: { id: item.id },
-                                      },
+                                            _c("tr", [
+                                              _c(
+                                                "td",
+                                                { staticClass: "text-start" },
+                                                [_vm._v("Berat Badan")]
+                                              ),
+                                              _vm._v(" "),
+                                              _c("td", [_vm._v(":")]),
+                                              _vm._v(" "),
+                                              _c(
+                                                "td",
+                                                { staticClass: "text-start" },
+                                                [
+                                                  _vm._v(
+                                                    _vm._s(item.bb) + " kg"
+                                                  ),
+                                                ]
+                                              ),
+                                            ]),
+                                            _vm._v(" "),
+                                            _c("tr", [
+                                              _c(
+                                                "td",
+                                                { staticClass: "text-start" },
+                                                [_vm._v("Lingkar Lengan Bumil")]
+                                              ),
+                                              _vm._v(" "),
+                                              _c("td", [_vm._v(":")]),
+                                              _vm._v(" "),
+                                              _c(
+                                                "td",
+                                                { staticClass: "text-start" },
+                                                [
+                                                  _vm._v(
+                                                    _vm._s(item.lila) + " cm"
+                                                  ),
+                                                ]
+                                              ),
+                                            ]),
+                                          ]),
+                                        ]
+                                      ),
+                                    ]),
+                                    _vm._v(" "),
+                                    _vm._m(1, true),
+                                  ]),
+                                ]
+                              ),
+                            ]
+                          ),
+                        ]),
+                        _vm._v(" "),
+                        _c("td", { staticClass: "text-center" }, [
+                          _vm._v(_vm._s(item.created_at)),
+                        ]),
+                        _vm._v(" "),
+                        _c("td", [
+                          _c(
+                            "div",
+                            { staticClass: "text-center" },
+                            [
+                              _c(
+                                "router-link",
+                                {
+                                  staticClass: "btn btn-warning",
+                                  attrs: {
+                                    to: {
+                                      name: "form-edit-bumil",
+                                      params: { id: item.id },
                                     },
                                   },
-                                  [
-                                    _c("i", {
-                                      staticClass: "bi bi-pencil-fill",
-                                    }),
-                                  ]
-                                ),
-                                _vm._v(" "),
-                                _c(
-                                  "button",
-                                  {
-                                    staticClass: "btn btn-outline-danger",
-                                    attrs: { type: "button" },
-                                    on: {
-                                      click: function ($event) {
-                                        return _vm.deleteData(item.id)
-                                      },
+                                },
+                                [_c("i", { staticClass: "bi bi-pencil-fill" })]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "button",
+                                {
+                                  staticClass: "btn btn-danger",
+                                  attrs: { type: "button" },
+                                  on: {
+                                    click: function ($event) {
+                                      return _vm.deleteData(item.id)
                                     },
                                   },
-                                  [_c("i", { staticClass: "bi bi-trash-fill" })]
-                                ),
-                              ],
-                              1
-                            ),
-                          ]),
-                        ],
-                        2
-                      )
+                                },
+                                [_c("i", { staticClass: "bi bi-trash-fill" })]
+                              ),
+                            ],
+                            1
+                          ),
+                        ]),
+                      ])
                     }),
                     0
                   ),
@@ -27625,7 +28816,7 @@ var render = function () {
                               _c(
                                 "router-link",
                                 {
-                                  staticClass: "btn btn-outline-warning",
+                                  staticClass: "btn btn-warning",
                                   attrs: {
                                     to: {
                                       name: "form-edit-kader",
@@ -27639,7 +28830,7 @@ var render = function () {
                               _c(
                                 "button",
                                 {
-                                  staticClass: "btn btn-outline-danger",
+                                  staticClass: "btn btn-danger",
                                   attrs: { type: "submit" },
                                   on: {
                                     click: function ($event) {
@@ -27903,7 +29094,7 @@ var render = function () {
                               _c(
                                 "router-link",
                                 {
-                                  staticClass: "btn btn-outline-warning",
+                                  staticClass: "btn btn-warning",
                                   attrs: {
                                     to: {
                                       name: "form-edit-ortu",
@@ -27917,7 +29108,7 @@ var render = function () {
                               _c(
                                 "button",
                                 {
-                                  staticClass: "btn btn-outline-danger",
+                                  staticClass: "btn btn-danger",
                                   attrs: { type: "button" },
                                   on: {
                                     click: function ($event) {
@@ -27999,31 +29190,6 @@ render._withStripped = true
 
 /***/ }),
 
-/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/admin/pages/PemeriksaanBalita.vue?vue&type=template&id=a07c0ef6&":
-/*!*****************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/admin/pages/PemeriksaanBalita.vue?vue&type=template&id=a07c0ef6& ***!
-  \*****************************************************************************************************************************************************************************************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "render": () => (/* binding */ render),
-/* harmony export */   "staticRenderFns": () => (/* binding */ staticRenderFns)
-/* harmony export */ });
-var render = function () {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c("div")
-}
-var staticRenderFns = []
-render._withStripped = true
-
-
-
-/***/ }),
-
 /***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/admin/pages/forms/formBalita.vue?vue&type=template&id=bfe436ba&":
 /*!****************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/admin/pages/forms/formBalita.vue?vue&type=template&id=bfe436ba& ***!
@@ -28091,15 +29257,444 @@ var render = function () {
                 _vm._v("Form Tambah Balita"),
               ]),
               _vm._v(" "),
-              _c("form", {
-                staticClass: "row g-3",
-                on: {
-                  submit: function ($event) {
-                    $event.preventDefault()
-                    return _vm.save.apply(null, arguments)
+              _c(
+                "form",
+                {
+                  staticClass: "row g-3",
+                  on: {
+                    submit: function ($event) {
+                      $event.preventDefault()
+                      return _vm.save.apply(null, arguments)
+                    },
                   },
                 },
-              }),
+                [
+                  _c("div", { staticClass: "col-12" }, [
+                    _c(
+                      "label",
+                      { staticClass: "form-label", attrs: { for: "nama" } },
+                      [_vm._v("Nama Balita")]
+                    ),
+                    _vm._v(" "),
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.balita.nama,
+                          expression: "balita.nama",
+                        },
+                      ],
+                      staticClass: "form-control",
+                      attrs: { type: "text", id: "nama" },
+                      domProps: { value: _vm.balita.nama },
+                      on: {
+                        input: function ($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.$set(_vm.balita, "nama", $event.target.value)
+                        },
+                      },
+                    }),
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "col-12" }, [
+                    _c(
+                      "label",
+                      {
+                        staticClass: "form-label",
+                        attrs: { for: "tmpt_lahir" },
+                      },
+                      [_vm._v("Tempat Lahir")]
+                    ),
+                    _vm._v(" "),
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.balita.tmpt_lahir,
+                          expression: "balita.tmpt_lahir",
+                        },
+                      ],
+                      staticClass: "form-control",
+                      attrs: { type: "text", id: "tmpt_lahir" },
+                      domProps: { value: _vm.balita.tmpt_lahir },
+                      on: {
+                        input: function ($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.$set(
+                            _vm.balita,
+                            "tmpt_lahir",
+                            $event.target.value
+                          )
+                        },
+                      },
+                    }),
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "col-12" }, [
+                    _c(
+                      "label",
+                      {
+                        staticClass: "form-label",
+                        attrs: { for: "tgl_lahir" },
+                      },
+                      [_vm._v("Tanggal Lahir")]
+                    ),
+                    _vm._v(" "),
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.balita.tgl_lahir,
+                          expression: "balita.tgl_lahir",
+                        },
+                      ],
+                      staticClass: "form-control",
+                      attrs: { type: "date", id: "tgl_lahir" },
+                      domProps: { value: _vm.balita.tgl_lahir },
+                      on: {
+                        input: function ($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.$set(_vm.balita, "tgl_lahir", $event.target.value)
+                        },
+                      },
+                    }),
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "col-12" }, [
+                    _c(
+                      "label",
+                      { staticClass: "form-label", attrs: { for: "jk" } },
+                      [_vm._v("Jenis Kelamin")]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "select",
+                      {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.balita.jk,
+                            expression: "balita.jk",
+                          },
+                        ],
+                        staticClass: "form-select",
+                        attrs: {
+                          "aria-label": "Default select example",
+                          id: "jk",
+                        },
+                        on: {
+                          change: function ($event) {
+                            var $$selectedVal = Array.prototype.filter
+                              .call($event.target.options, function (o) {
+                                return o.selected
+                              })
+                              .map(function (o) {
+                                var val = "_value" in o ? o._value : o.value
+                                return val
+                              })
+                            _vm.$set(
+                              _vm.balita,
+                              "jk",
+                              $event.target.multiple
+                                ? $$selectedVal
+                                : $$selectedVal[0]
+                            )
+                          },
+                        },
+                      },
+                      [
+                        _c(
+                          "option",
+                          { attrs: { selected: "", disabled: "" } },
+                          [_vm._v("Pilih Jenis Kelamin")]
+                        ),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "0" } }, [
+                          _vm._v("Perempuan"),
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "1" } }, [
+                          _vm._v("Laki-Laki"),
+                        ]),
+                      ]
+                    ),
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "col-12" }, [
+                    _c(
+                      "label",
+                      {
+                        staticClass: "form-label",
+                        attrs: { for: "stts_balita" },
+                      },
+                      [_vm._v("Status Balita")]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "select",
+                      {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.balita.stts_balita,
+                            expression: "balita.stts_balita",
+                          },
+                        ],
+                        staticClass: "form-select",
+                        attrs: {
+                          "aria-label": "Default select example",
+                          id: "stts_balita",
+                        },
+                        on: {
+                          change: function ($event) {
+                            var $$selectedVal = Array.prototype.filter
+                              .call($event.target.options, function (o) {
+                                return o.selected
+                              })
+                              .map(function (o) {
+                                var val = "_value" in o ? o._value : o.value
+                                return val
+                              })
+                            _vm.$set(
+                              _vm.balita,
+                              "stts_balita",
+                              $event.target.multiple
+                                ? $$selectedVal
+                                : $$selectedVal[0]
+                            )
+                          },
+                        },
+                      },
+                      [
+                        _c(
+                          "option",
+                          { attrs: { selected: "", disabled: "" } },
+                          [_vm._v("Pilih Jenis Kelamin")]
+                        ),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "0" } }, [
+                          _vm._v("Meninggal"),
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "1" } }, [
+                          _vm._v("Hidup"),
+                        ]),
+                      ]
+                    ),
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "col-12" }, [
+                    _c(
+                      "label",
+                      {
+                        staticClass: "form-label",
+                        attrs: { for: "tgl_meninggal" },
+                      },
+                      [_vm._v("Tanggal Meninggal")]
+                    ),
+                    _vm._v(" "),
+                    _vm.balita.stts_balita == 1
+                      ? _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.balita.tgl_meninggal,
+                              expression: "balita.tgl_meninggal",
+                            },
+                          ],
+                          staticClass: "form-control",
+                          attrs: {
+                            type: "date",
+                            id: "tgl_meninggal",
+                            disabled: "",
+                          },
+                          domProps: { value: _vm.balita.tgl_meninggal },
+                          on: {
+                            input: function ($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.$set(
+                                _vm.balita,
+                                "tgl_meninggal",
+                                $event.target.value
+                              )
+                            },
+                          },
+                        })
+                      : _vm._e(),
+                    _vm._v(" "),
+                    _vm.balita.stts_balita == 0
+                      ? _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.balita.tgl_meninggal,
+                              expression: "balita.tgl_meninggal",
+                            },
+                          ],
+                          staticClass: "form-control",
+                          attrs: { type: "date", id: "tgl_meninggal" },
+                          domProps: { value: _vm.balita.tgl_meninggal },
+                          on: {
+                            input: function ($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.$set(
+                                _vm.balita,
+                                "tgl_meninggal",
+                                $event.target.value
+                              )
+                            },
+                          },
+                        })
+                      : _vm._e(),
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "col-12" }, [
+                    _c(
+                      "label",
+                      { staticClass: "form-label", attrs: { for: "id_ortu" } },
+                      [_vm._v("Nama Ibu")]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "select",
+                      {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.balita.id_ortu,
+                            expression: "balita.id_ortu",
+                          },
+                        ],
+                        staticClass: "form-select",
+                        attrs: {
+                          "aria-label": "Default select example",
+                          id: "id_ortu",
+                        },
+                        on: {
+                          change: function ($event) {
+                            var $$selectedVal = Array.prototype.filter
+                              .call($event.target.options, function (o) {
+                                return o.selected
+                              })
+                              .map(function (o) {
+                                var val = "_value" in o ? o._value : o.value
+                                return val
+                              })
+                            _vm.$set(
+                              _vm.balita,
+                              "id_ortu",
+                              $event.target.multiple
+                                ? $$selectedVal
+                                : $$selectedVal[0]
+                            )
+                          },
+                        },
+                      },
+                      [
+                        _c(
+                          "option",
+                          { attrs: { selected: "", disabled: "" } },
+                          [_vm._v("nama Ibu Balita")]
+                        ),
+                        _vm._v(" "),
+                        _vm._l(_vm.ortu, function (ortu, index) {
+                          return _c(
+                            "option",
+                            { key: index, domProps: { value: ortu.id } },
+                            [_vm._v(_vm._s(ortu.nama_ibu))]
+                          )
+                        }),
+                      ],
+                      2
+                    ),
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "col-12" }, [
+                    _c(
+                      "label",
+                      {
+                        staticClass: "form-label",
+                        attrs: { for: "id_kader_balita" },
+                      },
+                      [_vm._v("Nama Petugas Posyandu")]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "select",
+                      {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.balita.id_kader_balita,
+                            expression: "balita.id_kader_balita",
+                          },
+                        ],
+                        staticClass: "form-select",
+                        attrs: {
+                          "aria-label": "Default select example",
+                          id: "id_kader_balita",
+                        },
+                        on: {
+                          change: function ($event) {
+                            var $$selectedVal = Array.prototype.filter
+                              .call($event.target.options, function (o) {
+                                return o.selected
+                              })
+                              .map(function (o) {
+                                var val = "_value" in o ? o._value : o.value
+                                return val
+                              })
+                            _vm.$set(
+                              _vm.balita,
+                              "id_kader_balita",
+                              $event.target.multiple
+                                ? $$selectedVal
+                                : $$selectedVal[0]
+                            )
+                          },
+                        },
+                      },
+                      [
+                        _c(
+                          "option",
+                          { attrs: { selected: "", disabled: "" } },
+                          [_vm._v("Nama Petugas yang bertugas")]
+                        ),
+                        _vm._v(" "),
+                        _vm._l(_vm.kader, function (kader, index) {
+                          return _c(
+                            "option",
+                            { key: index, domProps: { value: kader.id } },
+                            [_vm._v(_vm._s(kader.nama))]
+                          )
+                        }),
+                      ],
+                      2
+                    ),
+                  ]),
+                  _vm._v(" "),
+                  _vm._m(0),
+                ]
+              ),
             ]),
           ]),
         ]),
@@ -28107,7 +29702,20 @@ var render = function () {
     ]),
   ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", {}, [
+      _c(
+        "button",
+        { staticClass: "btn btn-primary", attrs: { type: "submit" } },
+        [_vm._v("Save")]
+      ),
+    ])
+  },
+]
 render._withStripped = true
 
 

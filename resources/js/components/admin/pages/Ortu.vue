@@ -70,8 +70,8 @@
                                         <td class="text-center">{{ item.nama_kader }}</td>
                                         <td>
                                             <div class="text-center">
-                                                <router-link :to="{ name: 'form-edit-ortu', params: { id: item.id } }" class="btn btn-outline-warning"><i class="bi bi-pencil-fill"></i></router-link>
-                                                <button @click="deleteData(item.id)" type="button" class="btn btn-outline-danger"><i class="bi bi-trash-fill"></i></button>
+                                                <router-link :to="{ name: 'form-edit-ortu', params: { id: item.id } }" class="btn btn-warning"><i class="bi bi-pencil-fill"></i></router-link>
+                                                <button @click="deleteData(item.id)" type="button" class="btn btn-danger"><i class="bi bi-trash-fill"></i></button>
                                             </div>
                                         </td>
                                     </tr>
