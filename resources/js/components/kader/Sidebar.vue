@@ -9,14 +9,6 @@
                 </router-link>
             </li>
             <!-- End Dashboard Nav -->
-
-            <li class="nav-item">
-                <router-link class="nav-link collapsed" :to="{ name: 'kader' }">
-                    <i class="bi bi-grid"></i>
-                    <span>Petugas Posyandu</span>
-                </router-link>
-            </li>
-
             <li class="nav-item">
                 <a class="nav-link collapsed" data-bs-target="#orang-tua" data-bs-toggle="collapse" href="#">
                     <i class="bi bi-layout-text-window-reverse"></i>

@@ -8,6 +8,9 @@
                         <router-link :to="{ name: 'dashboard' }"><i class="bi bi-house-door"></i></router-link>
                     </li>
                     <li class="breadcrumb-item active">Balita</li>
+                    <li class="breadcrumb-item active">
+                        <router-link :to="{ name: 'balita' }">Data Balita</router-link>
+                    </li>
                 </ol>
             </nav>
         </div>

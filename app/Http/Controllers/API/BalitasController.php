@@ -70,7 +70,8 @@ class BalitasController extends Controller
      */
     public function show($id)
     {
-        //
+        $balitas = Balitas::find($id)->first();
+        return response()->json($balitas);
     }
 
     /**
