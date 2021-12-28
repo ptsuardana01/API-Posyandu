@@ -31,9 +31,7 @@
                         <h1 class="text-4xl font-bold text-pink-400">
                             Cari data anda !
                         </h1>
-                        <p class="text-xl mb-4">
-                            Masukan data untuk mencari jadwal :
-                        </p>
+                        <p class="text-xl mb-4">Cari Data Anda :</p>
                     </div>
                     <form class="flex gap-5" action="">
                         <input
@@ -53,12 +51,56 @@
                         />
                         <button
                             class="rounded-lg bg-blue-100 w-52 px-7 py-4 font-bold text-lg shadow-lg hover:bg-indigo-500 cursor-pointer transition duration-700 transform hover:scale-110 motion-reduce:transform-none hover:text-white"
+                            data-bs-toggle="modal"
+                            data-bs-target="#largeModal"
                         >
                             Cari
                         </button>
+                        <div class="modal fade" id="largeModal" tabindex="-1">
+                            <div class="modal-dialog modal-lg">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title">Large Modal</h5>
+                                        <button
+                                            type="button"
+                                            class="btn-close"
+                                            data-bs-dismiss="modal"
+                                            aria-label="Close"
+                                        ></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        Non omnis incidunt qui sed occaecati
+                                        magni asperiores est mollitia. Soluta at
+                                        et reprehenderit. Placeat autem numquam
+                                        et fuga numquam. Tempora in facere
+                                        consequatur sit dolor ipsum. Consequatur
+                                        nemo amet incidunt est facilis. Dolorem
+                                        neque recusandae quo sit molestias sint
+                                        dignissimos.
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button
+                                            type="button"
+                                            class="btn btn-secondary"
+                                            data-bs-dismiss="modal"
+                                        >
+                                            Close
+                                        </button>
+                                        <button
+                                            type="button"
+                                            class="btn btn-primary"
+                                        >
+                                            Save changes
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- End Large Modal-->
                     </form>
                 </div>
             </div>
+
             <div id="tentang" class="h-full">
                 <h1
                     class="text-2xl pt-5 pb-12 text-pink-500 font-bold flex items-center justify-center"
