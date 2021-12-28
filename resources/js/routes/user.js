@@ -3,7 +3,7 @@ const Registrasi = require("../components/user/pages/Registrasi.vue").default;
 export const userRoutes = [
     {
         name: "Homepage",
-        path: "/user/dashboad",
+        path: "/user/dashboard",
         component: Homepage,
     },
     {

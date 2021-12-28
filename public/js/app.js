@@ -2200,6 +2200,49 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   methods: {
     logout: function logout() {
@@ -6493,7 +6536,7 @@ var Registrasi = (__webpack_require__(/*! ../components/user/pages/Registrasi.vu
 
 var userRoutes = [{
   name: "Homepage",
-  path: "/user/dashboad",
+  path: "/user/dashboard",
   component: Homepage
 }, {
   name: "Registrasi",
@@ -30514,13 +30557,13 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("footer", { staticClass: "footer", attrs: { id: "footer" } }, [
       _c("div", { staticClass: "copyright" }, [
-        _vm._v("\n    © Copyright "),
+        _vm._v("\n        © Copyright "),
         _c("strong", [_c("span", [_vm._v("PS2001")])]),
-        _vm._v(". All Rights Reserved\n  "),
+        _vm._v(". All Rights Reserved\n    "),
       ]),
       _vm._v(" "),
       _c("div", { staticClass: "credits" }, [
-        _vm._v("\n    Designed by "),
+        _vm._v("\n        Designed by\n        "),
         _c("a", { attrs: { href: "https:www.instagram.com/ptsuardana01" } }, [
           _vm._v("ptsuardana01"),
         ]),
@@ -30546,263 +30589,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "render": () => (/* binding */ render),
 /* harmony export */   "staticRenderFns": () => (/* binding */ staticRenderFns)
 /* harmony export */ });
-var render = function () {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c(
-    "header",
-    {
-      staticClass: "header fixed-top d-flex align-items-center",
-      attrs: { id: "header" },
-    },
-    [
-      _vm._m(0),
-      _vm._v(" "),
-      _vm._m(1),
-      _vm._v(" "),
-      _c("nav", { staticClass: "header-nav ms-auto" }, [
-        _c("ul", { staticClass: "d-flex align-items-center" }, [
-          _vm._m(2),
-          _vm._v(" "),
-          _c("li", { staticClass: "nav-item dropdown pe-3" }, [
-            _vm._m(3),
-            _vm._v(" "),
-            _c(
-              "ul",
-              {
-                staticClass:
-                  "dropdown-menu dropdown-menu-end dropdown-menu-arrow profile",
-              },
-              [
-                _vm._m(4),
-                _vm._v(" "),
-                _vm._m(5),
-                _vm._v(" "),
-                _vm._m(6),
-                _vm._v(" "),
-                _vm._m(7),
-                _vm._v(" "),
-                _vm._m(8),
-                _vm._v(" "),
-                _vm._m(9),
-                _vm._v(" "),
-                _vm._m(10),
-                _vm._v(" "),
-                _vm._m(11),
-                _vm._v(" "),
-                _c("li", [
-                  _c(
-                    "button",
-                    {
-                      staticClass: "dropdown-item d-flex align-items-center",
-                      on: {
-                        click: function ($event) {
-                          return _vm.logout()
-                        },
-                      },
-                    },
-                    [
-                      _c("i", { staticClass: "bi bi-box-arrow-right" }),
-                      _vm._v(" "),
-                      _c("span", [_vm._v("Sign Out")]),
-                    ]
-                  ),
-                ]),
-              ]
-            ),
-          ]),
-        ]),
-      ]),
-    ]
-  )
-}
-var staticRenderFns = [
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      { staticClass: "d-flex align-items-center justify-content-between" },
-      [
-        _c(
-          "a",
-          {
-            staticClass: "logo d-flex align-items-center",
-            attrs: { href: "index.html" },
-          },
-          [
-            _c("img", { attrs: { src: "assets/img/logo.png", alt: "" } }),
-            _vm._v(" "),
-            _c("span", { staticClass: "d-none d-lg-block" }, [
-              _vm._v("Admin Posyandu"),
-            ]),
-          ]
-        ),
-        _vm._v(" "),
-        _c("i", { staticClass: "bi bi-list toggle-sidebar-btn" }),
-      ]
-    )
-  },
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "search-bar" }, [
-      _c(
-        "form",
-        {
-          staticClass: "search-form d-flex align-items-center",
-          attrs: { method: "POST", action: "#" },
-        },
-        [
-          _c("input", {
-            attrs: {
-              type: "text",
-              name: "query",
-              placeholder: "Search",
-              title: "Enter search keyword",
-            },
-          }),
-          _vm._v(" "),
-          _c("button", { attrs: { type: "submit", title: "Search" } }, [
-            _c("i", { staticClass: "bi bi-search" }),
-          ]),
-        ]
-      ),
-    ])
-  },
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("li", { staticClass: "nav-item d-block d-lg-none" }, [
-      _c(
-        "a",
-        {
-          staticClass: "nav-link nav-icon search-bar-toggle",
-          attrs: { href: "#" },
-        },
-        [_c("i", { staticClass: "bi bi-search" })]
-      ),
-    ])
-  },
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "a",
-      {
-        staticClass: "nav-link nav-profile d-flex align-items-center pe-0",
-        attrs: { href: "#", "data-bs-toggle": "dropdown" },
-      },
-      [
-        _c("img", {
-          staticClass: "rounded-circle",
-          attrs: { src: "/assets/img/profile-img.jpg", alt: "Profile" },
-        }),
-        _vm._v(" "),
-        _c("span", { staticClass: "d-none d-md-block dropdown-toggle ps-2" }, [
-          _vm._v("K. Anderson"),
-        ]),
-      ]
-    )
-  },
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("li", { staticClass: "dropdown-header" }, [
-      _c("h6", [_vm._v("Kevin Anderson")]),
-      _vm._v(" "),
-      _c("span", [_vm._v("Web Designer")]),
-    ])
-  },
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("li", [_c("hr", { staticClass: "dropdown-divider" })])
-  },
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("li", [
-      _c(
-        "a",
-        {
-          staticClass: "dropdown-item d-flex align-items-center",
-          attrs: { href: "users-profile.html" },
-        },
-        [
-          _c("i", { staticClass: "bi bi-person" }),
-          _vm._v(" "),
-          _c("span", [_vm._v("My Profile")]),
-        ]
-      ),
-    ])
-  },
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("li", [_c("hr", { staticClass: "dropdown-divider" })])
-  },
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("li", [
-      _c(
-        "a",
-        {
-          staticClass: "dropdown-item d-flex align-items-center",
-          attrs: { href: "users-profile.html" },
-        },
-        [
-          _c("i", { staticClass: "bi bi-gear" }),
-          _vm._v(" "),
-          _c("span", [_vm._v("Account Settings")]),
-        ]
-      ),
-    ])
-  },
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("li", [_c("hr", { staticClass: "dropdown-divider" })])
-  },
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("li", [
-      _c(
-        "a",
-        {
-          staticClass: "dropdown-item d-flex align-items-center",
-          attrs: { href: "pages-faq.html" },
-        },
-        [
-          _c("i", { staticClass: "bi bi-question-circle" }),
-          _vm._v(" "),
-          _c("span", [_vm._v("Need Help?")]),
-        ]
-      ),
-    ])
-  },
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("li", [_c("hr", { staticClass: "dropdown-divider" })])
-  },
-]
-render._withStripped = true
+var render = function () {}
+var staticRenderFns = []
 
 
 
@@ -41002,9 +40790,7 @@ var staticRenderFns = [
                   ),
                   _vm._v(" "),
                   _c("p", { staticClass: "text-xl mb-4" }, [
-                    _vm._v(
-                      "\n                        Masukan data untuk mencari jadwal :\n                    "
-                    ),
+                    _vm._v("Cari Data Anda :"),
                   ]),
                 ]),
                 _vm._v(" "),
@@ -41041,11 +40827,80 @@ var staticRenderFns = [
                       {
                         staticClass:
                           "rounded-lg bg-blue-100 w-52 px-7 py-4 font-bold text-lg shadow-lg hover:bg-indigo-500 cursor-pointer transition duration-700 transform hover:scale-110 motion-reduce:transform-none hover:text-white",
+                        attrs: {
+                          "data-bs-toggle": "modal",
+                          "data-bs-target": "#largeModal",
+                        },
                       },
                       [
                         _vm._v(
                           "\n                        Cari\n                    "
                         ),
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      {
+                        staticClass: "modal fade",
+                        attrs: { id: "largeModal", tabindex: "-1" },
+                      },
+                      [
+                        _c("div", { staticClass: "modal-dialog modal-lg" }, [
+                          _c("div", { staticClass: "modal-content" }, [
+                            _c("div", { staticClass: "modal-header" }, [
+                              _c("h5", { staticClass: "modal-title" }, [
+                                _vm._v("Large Modal"),
+                              ]),
+                              _vm._v(" "),
+                              _c("button", {
+                                staticClass: "btn-close",
+                                attrs: {
+                                  type: "button",
+                                  "data-bs-dismiss": "modal",
+                                  "aria-label": "Close",
+                                },
+                              }),
+                            ]),
+                            _vm._v(" "),
+                            _c("div", { staticClass: "modal-body" }, [
+                              _vm._v(
+                                "\n                                    Non omnis incidunt qui sed occaecati\n                                    magni asperiores est mollitia. Soluta at\n                                    et reprehenderit. Placeat autem numquam\n                                    et fuga numquam. Tempora in facere\n                                    consequatur sit dolor ipsum. Consequatur\n                                    nemo amet incidunt est facilis. Dolorem\n                                    neque recusandae quo sit molestias sint\n                                    dignissimos.\n                                "
+                              ),
+                            ]),
+                            _vm._v(" "),
+                            _c("div", { staticClass: "modal-footer" }, [
+                              _c(
+                                "button",
+                                {
+                                  staticClass: "btn btn-secondary",
+                                  attrs: {
+                                    type: "button",
+                                    "data-bs-dismiss": "modal",
+                                  },
+                                },
+                                [
+                                  _vm._v(
+                                    "\n                                        Close\n                                    "
+                                  ),
+                                ]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "button",
+                                {
+                                  staticClass: "btn btn-primary",
+                                  attrs: { type: "button" },
+                                },
+                                [
+                                  _vm._v(
+                                    "\n                                        Save changes\n                                    "
+                                  ),
+                                ]
+                              ),
+                            ]),
+                          ]),
+                        ]),
                       ]
                     ),
                   ]
