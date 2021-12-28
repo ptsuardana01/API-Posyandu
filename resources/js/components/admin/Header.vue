@@ -30,25 +30,9 @@
                 <!-- End Search Icon-->
 
                 <li class="nav-item dropdown pe-3">
-<<<<<<< HEAD
-                    <a
-                        class="nav-link nav-profile d-flex align-items-center pe-0"
-                        href="#"
-                        data-bs-toggle="dropdown"
-                    >
-                        <img
-                            src="/assets/img/profile-img.jpg"
-                            alt="Profile"
-                            class="rounded-circle"
-                        />
-                        <span class="d-none d-md-block dropdown-toggle ps-2"
-                            >K. Anderson</span
-                        >
-=======
                     <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
                         <img src="/assets/img/profile-img.jpg" alt="Profile" class="rounded-circle" />
                         <span class="d-none d-md-block dropdown-toggle ps-2">K. Anderson</span>
->>>>>>> 6be93c525d58a537c85b12fd384119ece3dedb16
                     </a>
                     <!-- End Profile Iamge Icon -->
 
@@ -92,14 +76,7 @@
                         </li>
 
                         <li>
-<<<<<<< HEAD
-                            <button
-                                @click="logout()"
-                                class="dropdown-item d-flex align-items-center"
-                            >
-=======
                             <button @click="logout()" class="dropdown-item d-flex align-items-center">
->>>>>>> 6be93c525d58a537c85b12fd384119ece3dedb16
                                 <i class="bi bi-box-arrow-right"></i>
                                 <span>Sign Out</span>
                             </button>
