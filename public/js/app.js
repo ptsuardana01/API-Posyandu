@@ -2216,13 +2216,8 @@ __webpack_require__.r(__webpack_exports__);
 /*!*************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/admin/pages/Balita.vue?vue&type=script&lang=js& ***!
   \*************************************************************************************************************************************************************************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+/***/ (() => {
 
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
 //
 //
 //
@@ -2396,89 +2391,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  data: function data() {
-    return {
-      balitas: {},
-      kader: {},
-      ortu: {},
-      pemeriksaanBalita: {},
-      tambahPemeriksaan: {
-        id_balita: "",
-        tb: "",
-        bb: "",
-        lk: ""
-      },
-      no: 0,
-      s: ""
-    };
-  },
-  mounted: function mounted() {
-    var _this = this;
-
-    axios.get("/api/balita" + this.$route.params.id, this.tambahPemeriksaan).then(function (response) {
-      _this.tambahPemeriksaan.id_balita = response.data.id_balita;
-      _this.tambahPemeriksaan.tb = response.data.tb;
-      _this.tambahPemeriksaan.bb = response.data.bb;
-      _this.tambahPemeriksaan.lk = response.data.lk; // console.log(this.tambahPemeriksaan);
-    });
-    this.getDataBalitas();
-    this.getDetailOrtu();
-    this.getPemeriksaanBalita();
-  },
-  methods: {
-    getDataBalitas: function getDataBalitas() {
-      var _this2 = this;
-
-      var page = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1;
-      this.axios.get("/api/balita?page=" + page + "&search=" + this.s).then(function (response) {
-        _this2.balitas = response.data;
-        console.log(_this2.balitas);
-      });
-    },
-    getDetailOrtu: function getDetailOrtu() {
-      var _this3 = this;
-
-      var page = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1;
-      axios.get("/api/ortu").then(function (response) {
-        _this3.ortu = response.data;
-      });
-    },
-    getPemeriksaanBalita: function getPemeriksaanBalita() {
-      var _this4 = this;
-
-      axios.get("/api/pemeriksaan-balita").then(function (response) {
-        _this4.pemeriksaanBalita = response.data; //console.log(this.pemeriksaanBalita);
-      });
-    },
-    deleteData: function deleteData(id) {
-      var _this5 = this;
-
-      this.$swal.fire({
-        title: "Anda yakin?",
-        text: "Data yang dihapus tidak dapat dikembalikan!",
-        icon: "warning",
-        showCancelButton: true,
-        confirmButtonColor: "#3085d6",
-        cancelButtonColor: "#d33",
-        confirmButtonText: "Ya, Hapus data ini!",
-        cancelButtonText: "Batal"
-      }).then(function (result) {
-        if (result.value) {
-          _this5.axios["delete"]("/api/balita/" + id).then(function (response) {
-            _this5.$swal.fire("Terhapus!", "Data Balita berhasil terhapus.", "success");
-          });
-
-          _this5.getDataBalitas();
-        }
-      });
-    },
-    searchData: function searchData(e) {
-      // console.log(this.getDataBalitas);
-      this.getDataBalitas();
-    }
-  }
-});
 
 /***/ }),
 
@@ -4509,6 +4421,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
@@ -4523,7 +4436,7 @@ __webpack_require__.r(__webpack_exports__);
         lk: ""
       },
       no: 0,
-      search: ""
+      s: ""
     };
   },
   mounted: function mounted() {
@@ -4540,18 +4453,13 @@ __webpack_require__.r(__webpack_exports__);
     this.getPemeriksaanBalita();
   },
   methods: {
-    // modalTambahHistory() {
-    //     // console.log("modal nih boss");
-    //     const modal = document.getElementById("#tambahHistory");
-    //     modal.modal("show");
-    //     $("#tambahHistory").modal("show");
-    // },
     getDataBalitas: function getDataBalitas() {
       var _this2 = this;
 
       var page = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1;
-      axios.get("/api/balita?page=" + page).then(function (response) {
+      this.axios.get("/api/balita?page=" + page + "&search=" + this.s).then(function (response) {
         _this2.balitas = response.data;
+        console.log(_this2.balitas);
       });
     },
     getDetailOrtu: function getDetailOrtu() {
@@ -4590,38 +4498,11 @@ __webpack_require__.r(__webpack_exports__);
           _this5.getDataBalitas();
         }
       });
-    } // deletePemeriksaan: function (id) {
-    //     this.$swal
-    //         .fire({
-    //             title: "Anda yakin?",
-    //             text: "Data yang dihapus tidak dapat dikembalikan!",
-    //             icon: "warning",
-    //             showCancelButton: true,
-    //             confirmButtonColor: "#3085d6",
-    //             cancelButtonColor: "#d33",
-    //             confirmButtonText: "Ya, Hapus data ini!",
-    //             cancelButtonText: "Batal",
-    //         })
-    //         .then((result) => {
-    //             if (result.value) {
-    //                 this.axios.delete("/api/pemeriksaan-balita/" + id).then((response) => {
-    //                     this.$swal.fire("Terhapus!", "Data Pemeriksaan Balita berhasil terhapus.", "success");
-    //                 });
-    //                 this.getPemeriksaanBalita();
-    //             }
-    //         });
-    // },
-    // save(e) {
-    //     e.preventDefault();
-    //     axios.post("/api/pemeriksaan-balita", this.tambahPemeriksaan).then((response) => {
-    //         this.$swal.fire({ title: "Success!", text: response.data.message, icon: "success", timer: 1000 });
-    //         this.tambahPemeriksaan = response.data.data;
-    //         console.log("data udh masuk");
-    //         console.log(this.tambahPemeriksaan);
-    //     });
-    //     this.$forceUpdate();
-    // },
-
+    },
+    searchData: function searchData(e) {
+      // console.log(this.getDataBalitas);
+      this.getDataBalitas();
+    }
   }
 });
 
@@ -4931,11 +4812,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
       ortus: {},
-      search: ""
+      s: ""
     };
   },
   mounted: function mounted() {
@@ -4944,12 +4826,13 @@ __webpack_require__.r(__webpack_exports__);
     //});
     this.getDataOrtus();
   },
+  watch: {},
   methods: {
     getDataOrtus: function getDataOrtus() {
       var _this = this;
 
       var page = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1;
-      axios.get("/api/ortu?page=" + page).then(function (response) {
+      this.axios.get("/api/ortu?page=" + page + "&search=" + this.s).then(function (response) {
         _this.ortus = response.data;
       });
     },
@@ -4974,6 +4857,10 @@ __webpack_require__.r(__webpack_exports__);
           _this2.getDataOrtus();
         }
       });
+    },
+    searchData: function searchData(e) {
+      // console.log(this.s);
+      this.getDataOrtus();
     }
   }
 });
@@ -28973,6 +28860,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _Balita_vue_vue_type_template_id_7f4fc87f___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Balita.vue?vue&type=template&id=7f4fc87f& */ "./resources/js/components/admin/pages/Balita.vue?vue&type=template&id=7f4fc87f&");
 /* harmony import */ var _Balita_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Balita.vue?vue&type=script&lang=js& */ "./resources/js/components/admin/pages/Balita.vue?vue&type=script&lang=js&");
+/* harmony reexport (unknown) */ var __WEBPACK_REEXPORT_OBJECT__ = {};
+/* harmony reexport (unknown) */ for(const __WEBPACK_IMPORT_KEY__ in _Balita_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__) if(__WEBPACK_IMPORT_KEY__ !== "default") __WEBPACK_REEXPORT_OBJECT__[__WEBPACK_IMPORT_KEY__] = () => _Balita_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__[__WEBPACK_IMPORT_KEY__]
+/* harmony reexport (unknown) */ __webpack_require__.d(__webpack_exports__, __WEBPACK_REEXPORT_OBJECT__);
 /* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! !../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
@@ -30127,7 +30017,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Balita_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!../../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./Balita.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/admin/pages/Balita.vue?vue&type=script&lang=js&");
- /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Balita_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Balita_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Balita_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__);
+/* harmony reexport (unknown) */ var __WEBPACK_REEXPORT_OBJECT__ = {};
+/* harmony reexport (unknown) */ for(const __WEBPACK_IMPORT_KEY__ in _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Balita_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__) if(__WEBPACK_IMPORT_KEY__ !== "default") __WEBPACK_REEXPORT_OBJECT__[__WEBPACK_IMPORT_KEY__] = () => _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Balita_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__[__WEBPACK_IMPORT_KEY__]
+/* harmony reexport (unknown) */ __webpack_require__.d(__webpack_exports__, __WEBPACK_REEXPORT_OBJECT__);
+ /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((_node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Balita_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0___default())); 
 
 /***/ }),
 
@@ -37613,22 +37507,35 @@ var render = function () {
                       {
                         name: "model",
                         rawName: "v-model",
-                        value: _vm.search,
-                        expression: "search",
+                        value: _vm.s,
+                        expression: "s",
                       },
                     ],
                     staticClass: "dataTable-input",
                     attrs: { placeholder: "Search...", type: "text" },
-                    domProps: { value: _vm.search },
+                    domProps: { value: _vm.s },
                     on: {
                       input: function ($event) {
                         if ($event.target.composing) {
                           return
                         }
-                        _vm.search = $event.target.value
+                        _vm.s = $event.target.value
                       },
                     },
                   }),
+                  _vm._v(" "),
+                  _c(
+                    "button",
+                    {
+                      staticClass: "btn btn-primary",
+                      on: {
+                        click: function ($event) {
+                          return _vm.searchData()
+                        },
+                      },
+                    },
+                    [_vm._v("Cari")]
+                  ),
                 ]),
                 _vm._v(" "),
                 _c("table", { staticClass: "table" }, [
@@ -38714,22 +38621,35 @@ var render = function () {
                       {
                         name: "model",
                         rawName: "v-model",
-                        value: _vm.search,
-                        expression: "search",
+                        value: _vm.s,
+                        expression: "s",
                       },
                     ],
                     staticClass: "dataTable-input",
                     attrs: { placeholder: "Search...", type: "text" },
-                    domProps: { value: _vm.search },
+                    domProps: { value: _vm.s },
                     on: {
                       input: function ($event) {
                         if ($event.target.composing) {
                           return
                         }
-                        _vm.search = $event.target.value
+                        _vm.s = $event.target.value
                       },
                     },
                   }),
+                  _vm._v(" "),
+                  _c(
+                    "button",
+                    {
+                      staticClass: "btn btn-primary",
+                      on: {
+                        click: function ($event) {
+                          return _vm.searchData()
+                        },
+                      },
+                    },
+                    [_vm._v("Cari")]
+                  ),
                 ]),
                 _vm._v(" "),
                 _c("table", { staticClass: "table" }, [
