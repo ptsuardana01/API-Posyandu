@@ -16,7 +16,7 @@ class PemeriksaanBalitasController extends Controller
      */
     public function index()
     {
-        $data_balita = PemeriksaanBalitas::getPemeriksaanBalita()->paginate(5);
+        $data_balita = PemeriksaanBalitas::getPemeriksaanBalita()->get('*');
         return response()->json($data_balita);
     }
 
@@ -67,7 +67,8 @@ class PemeriksaanBalitasController extends Controller
      */
     public function show($id)
     {
-        //
+        $pemeriksaanBalita = PemeriksaanBalitas::find($id)->first();
+        return response()->json($pemeriksaanBalita);
     }
 
     /**

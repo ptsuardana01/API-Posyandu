@@ -30,5 +30,13 @@ class AdminAccountSeeder extends Seeder
         ]);
 
         $user2->attachRole('user');
+
+        $user3 = User::create([
+            'name' => "kader",
+            'email' => "kader@kader.com",
+            'password' => Hash::make('12345678'),
+        ]);
+
+        $user3->attachRole('kader');
     }
 }

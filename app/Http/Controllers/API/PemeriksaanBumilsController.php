@@ -15,7 +15,7 @@ class PemeriksaanBumilsController extends Controller
      */
     public function index()
     {
-        $data_bumil = PemeriksaanBumils::getPemeriksaanBumil()->paginate(5);
+        $data_bumil = PemeriksaanBumils::getPemeriksaanBumil()->get('*');
         return response()->json($data_bumil);
     }
 
@@ -66,7 +66,8 @@ class PemeriksaanBumilsController extends Controller
      */
     public function show($id)
     {
-        //
+        $pemeriksaanBumil = PemeriksaanBumils::find($id)->first();
+        return response()->json($pemeriksaanBumil);
     }
 
     /**
