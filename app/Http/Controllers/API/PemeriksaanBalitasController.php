@@ -67,7 +67,8 @@ class PemeriksaanBalitasController extends Controller
      */
     public function show($id)
     {
-        //
+        $pemeriksaanBalita = PemeriksaanBalitas::find($id)->first();
+        return response()->json($pemeriksaanBalita);
     }
 
     /**

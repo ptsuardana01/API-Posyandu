@@ -11,7 +11,8 @@ const formPemeriksaanBumil = require('../components/admin/pages/forms/formPemeri
 const Balita = require('../components/admin/pages/Balita.vue').default
 const formBalita = require('../components/admin/pages/forms/formBalita.vue').default
 
-// const formPemeriksaanBalita = require('../components/admin/pages/forms/formPemeriksaanBalita.vue').default
+const formPemeriksaanBalita = require('../components/admin/pages/forms/formPemeriksaanBalita.vue').default
+const PemeriksaanBalita = require('../components/admin/pages/PemeriksaanBalita.vue').default
 
 export const adminRoutes = [
     {
@@ -92,10 +93,20 @@ export const adminRoutes = [
     // End Balita //
 
     // Pemeriksaan Balita //
-    // {
-    //     name: 'edit-pemeriksaan-balita',
-    //     path: '/admin/edit-pemeriksaan-balita/:id',
-    //     component: formPemeriksaanBalita
-    // },
+    {
+        name: 'pemeriksaan-balita',
+        path: '/admin/pemeriksaan-balita/',
+        component: PemeriksaanBalita
+    },
+    {
+        name: 'form-pemeriksaan-balita',
+        path: '/admin/tambah-pemeriksaan-balita',
+        component: formPemeriksaanBalita
+    },
+    {
+        name: 'edit-pemeriksaan-balita',
+        path: '/admin/edit-pemeriksaan-balita',
+        component: formPemeriksaanBalita
+    },
     // End Pemeriksaan Balita //
 ]

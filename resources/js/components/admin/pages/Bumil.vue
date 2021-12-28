@@ -38,7 +38,6 @@
                                         <th scope="col">#</th>
                                         <th scope="col">Nama Bumil</th>
                                         <th scope="col" class="">NIK Bumil</th>
-                                        <th scope="col" class="">Tempat, Tanggal Lahir</th>
                                         <th scope="col" class="text-center">Status Bumil</th>
                                         <th scope="col" class="text-center">Tanggal Meninggal</th>
                                         <th scope="col" class="text-center">Petugas Posyandu</th>

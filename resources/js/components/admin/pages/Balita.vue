@@ -132,7 +132,6 @@
                                                                         <th scope="col">Berat</th>
                                                                         <th scope="col">Lingkar Kepala</th>
                                                                         <th scope="col">created_at</th>
-                                                                        <th scope="col">Aksi</th>
                                                                     </tr>
                                                                 </thead>
                                                                 <tbody v-for="(pemeriksaan, no) in pemeriksaanBalita" :key="no">
@@ -142,67 +141,16 @@
                                                                         <td>{{ pemeriksaan.bb }} kg</td>
                                                                         <td>{{ pemeriksaan.lk }} cm</td>
                                                                         <td>{{ pemeriksaan.created_at }}</td>
-                                                                        <td>
-                                                                            <!-- <router-link :to="{ name: '', params: { id: pemeriksaan.id } }" class="btn btn-warning"><i class="bi bi-pencil-fill"></i></router-link> -->
-                                                                            <button @click="deletePemeriksaan(pemeriksaan.id)" type="button" class="btn btn-danger"><i class="bi bi-trash-fill"></i></button>
-                                                                        </td>
                                                                     </tr>
                                                                 </tbody>
                                                             </table>
                                                             <!-- End Table with hoverable rows -->
                                                         </div>
-                                                        <div class="modal-footer">
-                                                            <button type="button" class="btn btn-success" data-bs-toggle="modal" :data-bs-target="'#tambahHistory' + item.id">
-                                                                <i class="bi bi-plus-circle"></i>
-                                                                Tambah Data Pemeriksaan
-                                                            </button>
-                                                        </div>
+                                                        <div class="modal-footer"></div>
                                                     </div>
                                                 </div>
                                             </div>
                                             <!-- End Modal Dialog Scrollable-->
-
-                                            <!-- Modal Tambah History Permeriksaan Balita -->
-                                            <div class="modal fade" :id="'tambahHistory' + item.id" tabindex="-1">
-                                                <div class="modal-dialog modal-dialog-centered">
-                                                    <div class="modal-content">
-                                                        <div class="modal-header">
-                                                            <h5 class="modal-title">Tambah Pemeriksaan Balita {{ item.nama }}</h5>
-                                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                                        </div>
-                                                        <div class="modal-body text-start">
-                                                            <!-- Vertical Form -->
-                                                            <form class="row g-3" @submit.prevent="save">
-                                                                <div class="col-12">
-                                                                    <label for="nama" class="form-label">Nama Balita</label>
-                                                                    <!-- <input type="text" class="form-control" id="nama" placeholder="Ketik Nama Balita"  /> -->
-                                                                    <select class="form-select" aria-label="Default select example" name="nama" id="nama" v-model="tambahPemeriksaan.id_balita">
-                                                                        <option :value="item.id" selected>{{ item.nama }}</option>
-                                                                    </select>
-                                                                </div>
-                                                                <div class="col-12">
-                                                                    <label for="tb" class="form-label">Tinggi badan</label>
-                                                                    <input type="number" class="form-control" id="tb" placeholder="Dalam cm" v-model="tambahPemeriksaan.tb" />
-                                                                </div>
-                                                                <div class="col-12">
-                                                                    <label for="bb" class="form-label">Berat badan</label>
-                                                                    <input type="number" class="form-control" id="bb" placeholder="Dalam kg" v-model="tambahPemeriksaan.bb" />
-                                                                </div>
-                                                                <div class="col-12">
-                                                                    <label for="lk" class="form-label">Lingkar Kepala</label>
-                                                                    <input type="number" class="form-control" id="lk" placeholder="Dalam cm" v-model="tambahPemeriksaan.lk" />
-                                                                </div>
-                                                                <div class="modal-footer">
-                                                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
-                                                                    <button type="submit" class="btn btn-primary">Save</button>
-                                                                </div>
-                                                            </form>
-                                                            <!-- Vertical Form -->
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <!-- End Modal Tambah History Permeriksaan Balita-->
                                         </td>
                                         <td>
                                             <div class="text-center">
@@ -235,7 +183,6 @@ export default {
                 tb: "",
                 bb: "",
                 lk: "",
-                id: "",
             },
 
             no: 0,
@@ -248,7 +195,6 @@ export default {
             this.tambahPemeriksaan.tb = response.data.tb;
             this.tambahPemeriksaan.bb = response.data.bb;
             this.tambahPemeriksaan.lk = response.data.lk;
-            this.tambahPemeriksaan.id = response.data.id;
             console.log(this.tambahPemeriksaan);
         });
         this.getDataBalitas();
@@ -299,27 +245,27 @@ export default {
                     }
                 });
         },
-        deletePemeriksaan: function (id) {
-            this.$swal
-                .fire({
-                    title: "Anda yakin?",
-                    text: "Data yang dihapus tidak dapat dikembalikan!",
-                    icon: "warning",
-                    showCancelButton: true,
-                    confirmButtonColor: "#3085d6",
-                    cancelButtonColor: "#d33",
-                    confirmButtonText: "Ya, Hapus data ini!",
-                    cancelButtonText: "Batal",
-                })
-                .then((result) => {
-                    if (result.value) {
-                        this.axios.delete("/api/pemeriksaan-balita/" + id).then((response) => {
-                            this.$swal.fire("Terhapus!", "Data Pemeriksaan Balita berhasil terhapus.", "success");
-                        });
-                        this.getPemeriksaanBalita();
-                    }
-                });
-        },
+        // deletePemeriksaan: function (id) {
+        //     this.$swal
+        //         .fire({
+        //             title: "Anda yakin?",
+        //             text: "Data yang dihapus tidak dapat dikembalikan!",
+        //             icon: "warning",
+        //             showCancelButton: true,
+        //             confirmButtonColor: "#3085d6",
+        //             cancelButtonColor: "#d33",
+        //             confirmButtonText: "Ya, Hapus data ini!",
+        //             cancelButtonText: "Batal",
+        //         })
+        //         .then((result) => {
+        //             if (result.value) {
+        //                 this.axios.delete("/api/pemeriksaan-balita/" + id).then((response) => {
+        //                     this.$swal.fire("Terhapus!", "Data Pemeriksaan Balita berhasil terhapus.", "success");
+        //                 });
+        //                 this.getPemeriksaanBalita();
+        //             }
+        //         });
+        // },
 
         save(e) {
             e.preventDefault();

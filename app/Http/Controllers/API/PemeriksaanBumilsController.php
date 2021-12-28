@@ -66,7 +66,8 @@ class PemeriksaanBumilsController extends Controller
      */
     public function show($id)
     {
-        //
+        $pemeriksaanBumil = PemeriksaanBumils::find($id)->first();
+        return response()->json($pemeriksaanBumil);
     }
 
     /**

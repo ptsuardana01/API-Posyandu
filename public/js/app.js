@@ -2395,58 +2395,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
@@ -2458,8 +2406,7 @@ __webpack_require__.r(__webpack_exports__);
         id_balita: "",
         tb: "",
         bb: "",
-        lk: "",
-        id: ""
+        lk: ""
       },
       no: 0,
       search: ""
@@ -2473,7 +2420,6 @@ __webpack_require__.r(__webpack_exports__);
       _this.tambahPemeriksaan.tb = response.data.tb;
       _this.tambahPemeriksaan.bb = response.data.bb;
       _this.tambahPemeriksaan.lk = response.data.lk;
-      _this.tambahPemeriksaan.id = response.data.id;
       console.log(_this.tambahPemeriksaan);
     });
     this.getDataBalitas();
@@ -2532,43 +2478,42 @@ __webpack_require__.r(__webpack_exports__);
         }
       });
     },
-    deletePemeriksaan: function deletePemeriksaan(id) {
-      var _this6 = this;
-
-      this.$swal.fire({
-        title: "Anda yakin?",
-        text: "Data yang dihapus tidak dapat dikembalikan!",
-        icon: "warning",
-        showCancelButton: true,
-        confirmButtonColor: "#3085d6",
-        cancelButtonColor: "#d33",
-        confirmButtonText: "Ya, Hapus data ini!",
-        cancelButtonText: "Batal"
-      }).then(function (result) {
-        if (result.value) {
-          _this6.axios["delete"]("/api/pemeriksaan-balita/" + id).then(function (response) {
-            _this6.$swal.fire("Terhapus!", "Data Pemeriksaan Balita berhasil terhapus.", "success");
-          });
-
-          _this6.getPemeriksaanBalita();
-        }
-      });
-    },
+    // deletePemeriksaan: function (id) {
+    //     this.$swal
+    //         .fire({
+    //             title: "Anda yakin?",
+    //             text: "Data yang dihapus tidak dapat dikembalikan!",
+    //             icon: "warning",
+    //             showCancelButton: true,
+    //             confirmButtonColor: "#3085d6",
+    //             cancelButtonColor: "#d33",
+    //             confirmButtonText: "Ya, Hapus data ini!",
+    //             cancelButtonText: "Batal",
+    //         })
+    //         .then((result) => {
+    //             if (result.value) {
+    //                 this.axios.delete("/api/pemeriksaan-balita/" + id).then((response) => {
+    //                     this.$swal.fire("Terhapus!", "Data Pemeriksaan Balita berhasil terhapus.", "success");
+    //                 });
+    //                 this.getPemeriksaanBalita();
+    //             }
+    //         });
+    // },
     save: function save(e) {
-      var _this7 = this;
+      var _this6 = this;
 
       e.preventDefault();
       axios.post("/api/pemeriksaan-balita", this.tambahPemeriksaan).then(function (response) {
-        _this7.$swal.fire({
+        _this6.$swal.fire({
           title: "Success!",
           text: response.data.message,
           icon: "success",
           timer: 1000
         });
 
-        _this7.tambahPemeriksaan = response.data.data;
+        _this6.tambahPemeriksaan = response.data.data;
         console.log("data udh masuk");
-        console.log(_this7.tambahPemeriksaan);
+        console.log(_this6.tambahPemeriksaan);
       });
       this.$forceUpdate();
     }
@@ -2588,7 +2533,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-//
 //
 //
 //
@@ -3066,6 +3010,192 @@ __webpack_require__.r(__webpack_exports__);
           });
 
           _this2.getDataOrtus();
+        }
+      });
+    }
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/admin/pages/PemeriksaanBalita.vue?vue&type=script&lang=js&":
+/*!************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/admin/pages/PemeriksaanBalita.vue?vue&type=script&lang=js& ***!
+  \************************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  data: function data() {
+    return {
+      balita: {},
+      pemeriksaanBalita: {},
+      search: ""
+    };
+  },
+  mounted: function mounted() {
+    this.getPemeriksaanBalita();
+  },
+  methods: {
+    getPemeriksaanBalita: function getPemeriksaanBalita() {
+      var _this = this;
+
+      axios.get("/api/pemeriksaan-balita").then(function (response) {
+        _this.pemeriksaanBalita = response.data; //console.log(this.pemeriksaanBalita);
+      });
+    },
+    deleteData: function deleteData(id) {
+      var _this2 = this;
+
+      this.$swal.fire({
+        title: "Anda yakin?",
+        text: "Data yang dihapus tidak dapat dikembalikan!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Ya, Hapus data ini!",
+        cancelButtonText: "Batal"
+      }).then(function (result) {
+        if (result.value) {
+          _this2.axios["delete"]("/api/pemeriksaan-balita/" + id).then(function (response) {
+            _this2.$swal.fire("Terhapus!", "Data Balita berhasil terhapus.", "success");
+          });
+
+          _this2.getPemeriksaanBalita();
         }
       });
     }
@@ -3683,6 +3813,203 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/admin/pages/forms/formPemeriksaanBalita.vue?vue&type=script&lang=js&":
+/*!**********************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/admin/pages/forms/formPemeriksaanBalita.vue?vue&type=script&lang=js& ***!
+  \**********************************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  data: function data() {
+    return {
+      balita: {},
+      pemeriksaanBalita: {
+        id_balita: "",
+        tb: "",
+        bb: "",
+        lk: ""
+      }
+    };
+  },
+  mounted: function mounted() {
+    var _this = this;
+
+    this.getIdBalita();
+    axios.get("/api/pemeriksaan-balita/" + this.$route.params.id, this.pemeriksaanBalita).then(function (response) {
+      _this.pemeriksaanBalita.id_balita = response.data.id_balita;
+      _this.pemeriksaanBalita.tb = response.data.tb;
+      _this.pemeriksaanBalita.bb = response.data.bb;
+      _this.pemeriksaanBalita.lk = response.data.lk;
+      console.log(_this.pemeriksaanBalita);
+    });
+  },
+  methods: {
+    getIdBalita: function getIdBalita() {
+      var _this2 = this;
+
+      axios.get("/api/balita").then(function (response) {
+        _this2.balita = response.data.data;
+        console.log(_this2.balita);
+      });
+    },
+    save: function save(e) {
+      var _this3 = this;
+
+      e.preventDefault();
+
+      if (this.$route.params.id) {
+        axios.put("/api/pemeriksaan-balita/" + this.$route.params.id, this.pemeriksaanBalita).then(function (response) {
+          _this3.$swal.fire({
+            title: "Success!",
+            text: response.data.message,
+            icon: "success",
+            timer: 1000
+          });
+
+          _this3.$router.push({
+            name: "pemeriksaan-balita"
+          });
+        });
+      } else {
+        axios.post("/api/pemeriksaan-balita", this.pemeriksaanBalita).then(function (response) {
+          _this3.$swal.fire({
+            title: "Success!",
+            text: response.data.message,
+            icon: "success",
+            timer: 1000
+          });
+
+          _this3.pemeriksaanBalita = response.data.data;
+
+          _this3.$router.push({
+            name: "pemeriksaan-balita"
+          });
+        });
+      }
+    }
+  }
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/admin/pages/forms/formPemeriksaanBumil.vue?vue&type=script&lang=js&":
 /*!*********************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/admin/pages/forms/formPemeriksaanBumil.vue?vue&type=script&lang=js& ***!
@@ -4132,8 +4459,11 @@ var formPemeriksaanBumil = (__webpack_require__(/*! ../components/admin/pages/fo
 
 var Balita = (__webpack_require__(/*! ../components/admin/pages/Balita.vue */ "./resources/js/components/admin/pages/Balita.vue")["default"]);
 
-var formBalita = (__webpack_require__(/*! ../components/admin/pages/forms/formBalita.vue */ "./resources/js/components/admin/pages/forms/formBalita.vue")["default"]); // const formPemeriksaanBalita = require('../components/admin/pages/forms/formPemeriksaanBalita.vue').default
+var formBalita = (__webpack_require__(/*! ../components/admin/pages/forms/formBalita.vue */ "./resources/js/components/admin/pages/forms/formBalita.vue")["default"]);
 
+var formPemeriksaanBalita = (__webpack_require__(/*! ../components/admin/pages/forms/formPemeriksaanBalita.vue */ "./resources/js/components/admin/pages/forms/formPemeriksaanBalita.vue")["default"]);
+
+var PemeriksaanBalita = (__webpack_require__(/*! ../components/admin/pages/PemeriksaanBalita.vue */ "./resources/js/components/admin/pages/PemeriksaanBalita.vue")["default"]);
 
 var adminRoutes = [{
   name: 'dashboard',
@@ -4194,14 +4524,21 @@ var adminRoutes = [{
   name: 'form-edit-balita',
   path: '/admin/balita/edit-data-balita/:id',
   component: formBalita
-} // End Balita //
+}, // End Balita //
 // Pemeriksaan Balita //
-// {
-//     name: 'edit-pemeriksaan-balita',
-//     path: '/admin/edit-pemeriksaan-balita/:id',
-//     component: formPemeriksaanBalita
-// },
-// End Pemeriksaan Balita //
+{
+  name: 'pemeriksaan-balita',
+  path: '/admin/pemeriksaan-balita/',
+  component: PemeriksaanBalita
+}, {
+  name: 'form-pemeriksaan-balita',
+  path: '/admin/tambah-pemeriksaan-balita',
+  component: formPemeriksaanBalita
+}, {
+  name: 'edit-pemeriksaan-balita',
+  path: '/admin/edit-pemeriksaan-balita',
+  component: formPemeriksaanBalita
+} // End Pemeriksaan Balita //
 ];
 
 /***/ }),
@@ -25823,6 +26160,45 @@ component.options.__file = "resources/js/components/admin/pages/Ortu.vue"
 
 /***/ }),
 
+/***/ "./resources/js/components/admin/pages/PemeriksaanBalita.vue":
+/*!*******************************************************************!*\
+  !*** ./resources/js/components/admin/pages/PemeriksaanBalita.vue ***!
+  \*******************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _PemeriksaanBalita_vue_vue_type_template_id_a07c0ef6___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./PemeriksaanBalita.vue?vue&type=template&id=a07c0ef6& */ "./resources/js/components/admin/pages/PemeriksaanBalita.vue?vue&type=template&id=a07c0ef6&");
+/* harmony import */ var _PemeriksaanBalita_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./PemeriksaanBalita.vue?vue&type=script&lang=js& */ "./resources/js/components/admin/pages/PemeriksaanBalita.vue?vue&type=script&lang=js&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! !../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+;
+var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _PemeriksaanBalita_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _PemeriksaanBalita_vue_vue_type_template_id_a07c0ef6___WEBPACK_IMPORTED_MODULE_0__.render,
+  _PemeriksaanBalita_vue_vue_type_template_id_a07c0ef6___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns,
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/admin/pages/PemeriksaanBalita.vue"
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (component.exports);
+
+/***/ }),
+
 /***/ "./resources/js/components/admin/pages/forms/formBalita.vue":
 /*!******************************************************************!*\
   !*** ./resources/js/components/admin/pages/forms/formBalita.vue ***!
@@ -25936,6 +26312,45 @@ var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__
 /* hot reload */
 if (false) { var api; }
 component.options.__file = "resources/js/components/admin/pages/forms/formOrtu.vue"
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/admin/pages/forms/formPemeriksaanBalita.vue":
+/*!*****************************************************************************!*\
+  !*** ./resources/js/components/admin/pages/forms/formPemeriksaanBalita.vue ***!
+  \*****************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _formPemeriksaanBalita_vue_vue_type_template_id_6154c43e___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./formPemeriksaanBalita.vue?vue&type=template&id=6154c43e& */ "./resources/js/components/admin/pages/forms/formPemeriksaanBalita.vue?vue&type=template&id=6154c43e&");
+/* harmony import */ var _formPemeriksaanBalita_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./formPemeriksaanBalita.vue?vue&type=script&lang=js& */ "./resources/js/components/admin/pages/forms/formPemeriksaanBalita.vue?vue&type=script&lang=js&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! !../../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+;
+var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _formPemeriksaanBalita_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _formPemeriksaanBalita_vue_vue_type_template_id_6154c43e___WEBPACK_IMPORTED_MODULE_0__.render,
+  _formPemeriksaanBalita_vue_vue_type_template_id_6154c43e___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns,
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/admin/pages/forms/formPemeriksaanBalita.vue"
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (component.exports);
 
 /***/ }),
@@ -26224,6 +26639,22 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/components/admin/pages/PemeriksaanBalita.vue?vue&type=script&lang=js&":
+/*!********************************************************************************************!*\
+  !*** ./resources/js/components/admin/pages/PemeriksaanBalita.vue?vue&type=script&lang=js& ***!
+  \********************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_PemeriksaanBalita_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!../../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./PemeriksaanBalita.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/admin/pages/PemeriksaanBalita.vue?vue&type=script&lang=js&");
+ /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_PemeriksaanBalita_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
 /***/ "./resources/js/components/admin/pages/forms/formBalita.vue?vue&type=script&lang=js&":
 /*!*******************************************************************************************!*\
   !*** ./resources/js/components/admin/pages/forms/formBalita.vue?vue&type=script&lang=js& ***!
@@ -26269,6 +26700,22 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_formOrtu_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!../../../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./formOrtu.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/admin/pages/forms/formOrtu.vue?vue&type=script&lang=js&");
  /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_formOrtu_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/admin/pages/forms/formPemeriksaanBalita.vue?vue&type=script&lang=js&":
+/*!******************************************************************************************************!*\
+  !*** ./resources/js/components/admin/pages/forms/formPemeriksaanBalita.vue?vue&type=script&lang=js& ***!
+  \******************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_formPemeriksaanBalita_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!../../../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./formPemeriksaanBalita.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/admin/pages/forms/formPemeriksaanBalita.vue?vue&type=script&lang=js&");
+ /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_formPemeriksaanBalita_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
 
 /***/ }),
 
@@ -26473,6 +26920,23 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/components/admin/pages/PemeriksaanBalita.vue?vue&type=template&id=a07c0ef6&":
+/*!**************************************************************************************************!*\
+  !*** ./resources/js/components/admin/pages/PemeriksaanBalita.vue?vue&type=template&id=a07c0ef6& ***!
+  \**************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_PemeriksaanBalita_vue_vue_type_template_id_a07c0ef6___WEBPACK_IMPORTED_MODULE_0__.render),
+/* harmony export */   "staticRenderFns": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_PemeriksaanBalita_vue_vue_type_template_id_a07c0ef6___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
+/* harmony export */ });
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_PemeriksaanBalita_vue_vue_type_template_id_a07c0ef6___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./PemeriksaanBalita.vue?vue&type=template&id=a07c0ef6& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/admin/pages/PemeriksaanBalita.vue?vue&type=template&id=a07c0ef6&");
+
+
+/***/ }),
+
 /***/ "./resources/js/components/admin/pages/forms/formBalita.vue?vue&type=template&id=bfe436ba&":
 /*!*************************************************************************************************!*\
   !*** ./resources/js/components/admin/pages/forms/formBalita.vue?vue&type=template&id=bfe436ba& ***!
@@ -26520,6 +26984,23 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "staticRenderFns": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_formOrtu_vue_vue_type_template_id_50e84c44___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
 /* harmony export */ });
 /* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_formOrtu_vue_vue_type_template_id_50e84c44___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./formOrtu.vue?vue&type=template&id=50e84c44& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/admin/pages/forms/formOrtu.vue?vue&type=template&id=50e84c44&");
+
+
+/***/ }),
+
+/***/ "./resources/js/components/admin/pages/forms/formPemeriksaanBalita.vue?vue&type=template&id=6154c43e&":
+/*!************************************************************************************************************!*\
+  !*** ./resources/js/components/admin/pages/forms/formPemeriksaanBalita.vue?vue&type=template&id=6154c43e& ***!
+  \************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_formPemeriksaanBalita_vue_vue_type_template_id_6154c43e___WEBPACK_IMPORTED_MODULE_0__.render),
+/* harmony export */   "staticRenderFns": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_formPemeriksaanBalita_vue_vue_type_template_id_6154c43e___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
+/* harmony export */ });
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_formPemeriksaanBalita_vue_vue_type_template_id_6154c43e___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./formPemeriksaanBalita.vue?vue&type=template&id=6154c43e& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/admin/pages/forms/formPemeriksaanBalita.vue?vue&type=template&id=6154c43e&");
 
 
 /***/ }),
@@ -27693,34 +28174,6 @@ var render = function () {
                                                         )
                                                       ),
                                                     ]),
-                                                    _vm._v(" "),
-                                                    _c("td", [
-                                                      _c(
-                                                        "button",
-                                                        {
-                                                          staticClass:
-                                                            "btn btn-danger",
-                                                          attrs: {
-                                                            type: "button",
-                                                          },
-                                                          on: {
-                                                            click: function (
-                                                              $event
-                                                            ) {
-                                                              return _vm.deletePemeriksaan(
-                                                                pemeriksaan.id
-                                                              )
-                                                            },
-                                                          },
-                                                        },
-                                                        [
-                                                          _c("i", {
-                                                            staticClass:
-                                                              "bi bi-trash-fill",
-                                                          }),
-                                                        ]
-                                                      ),
-                                                    ]),
                                                   ]
                                                 ),
                                               ])
@@ -27731,337 +28184,7 @@ var render = function () {
                                       ),
                                     ]),
                                     _vm._v(" "),
-                                    _c("div", { staticClass: "modal-footer" }, [
-                                      _c(
-                                        "button",
-                                        {
-                                          staticClass: "btn btn-success",
-                                          attrs: {
-                                            type: "button",
-                                            "data-bs-toggle": "modal",
-                                            "data-bs-target":
-                                              "#tambahHistory" + item.id,
-                                          },
-                                        },
-                                        [
-                                          _c("i", {
-                                            staticClass: "bi bi-plus-circle",
-                                          }),
-                                          _vm._v(
-                                            "\n                                                            Tambah Data Pemeriksaan\n                                                        "
-                                          ),
-                                        ]
-                                      ),
-                                    ]),
-                                  ]),
-                                ]
-                              ),
-                            ]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "div",
-                            {
-                              staticClass: "modal fade",
-                              attrs: {
-                                id: "tambahHistory" + item.id,
-                                tabindex: "-1",
-                              },
-                            },
-                            [
-                              _c(
-                                "div",
-                                {
-                                  staticClass:
-                                    "modal-dialog modal-dialog-centered",
-                                },
-                                [
-                                  _c("div", { staticClass: "modal-content" }, [
-                                    _c("div", { staticClass: "modal-header" }, [
-                                      _c("h5", { staticClass: "modal-title" }, [
-                                        _vm._v(
-                                          "Tambah Pemeriksaan Balita " +
-                                            _vm._s(item.nama)
-                                        ),
-                                      ]),
-                                      _vm._v(" "),
-                                      _c("button", {
-                                        staticClass: "btn-close",
-                                        attrs: {
-                                          type: "button",
-                                          "data-bs-dismiss": "modal",
-                                          "aria-label": "Close",
-                                        },
-                                      }),
-                                    ]),
-                                    _vm._v(" "),
-                                    _c(
-                                      "div",
-                                      { staticClass: "modal-body text-start" },
-                                      [
-                                        _c(
-                                          "form",
-                                          {
-                                            staticClass: "row g-3",
-                                            on: {
-                                              submit: function ($event) {
-                                                $event.preventDefault()
-                                                return _vm.save.apply(
-                                                  null,
-                                                  arguments
-                                                )
-                                              },
-                                            },
-                                          },
-                                          [
-                                            _c(
-                                              "div",
-                                              { staticClass: "col-12" },
-                                              [
-                                                _c(
-                                                  "label",
-                                                  {
-                                                    staticClass: "form-label",
-                                                    attrs: { for: "nama" },
-                                                  },
-                                                  [_vm._v("Nama Balita")]
-                                                ),
-                                                _vm._v(" "),
-                                                _c(
-                                                  "select",
-                                                  {
-                                                    directives: [
-                                                      {
-                                                        name: "model",
-                                                        rawName: "v-model",
-                                                        value:
-                                                          _vm.tambahPemeriksaan
-                                                            .id_balita,
-                                                        expression:
-                                                          "tambahPemeriksaan.id_balita",
-                                                      },
-                                                    ],
-                                                    staticClass: "form-select",
-                                                    attrs: {
-                                                      "aria-label":
-                                                        "Default select example",
-                                                      name: "nama",
-                                                      id: "nama",
-                                                    },
-                                                    on: {
-                                                      change: function (
-                                                        $event
-                                                      ) {
-                                                        var $$selectedVal =
-                                                          Array.prototype.filter
-                                                            .call(
-                                                              $event.target
-                                                                .options,
-                                                              function (o) {
-                                                                return o.selected
-                                                              }
-                                                            )
-                                                            .map(function (o) {
-                                                              var val =
-                                                                "_value" in o
-                                                                  ? o._value
-                                                                  : o.value
-                                                              return val
-                                                            })
-                                                        _vm.$set(
-                                                          _vm.tambahPemeriksaan,
-                                                          "id_balita",
-                                                          $event.target.multiple
-                                                            ? $$selectedVal
-                                                            : $$selectedVal[0]
-                                                        )
-                                                      },
-                                                    },
-                                                  },
-                                                  [
-                                                    _c(
-                                                      "option",
-                                                      {
-                                                        attrs: { selected: "" },
-                                                        domProps: {
-                                                          value: item.id,
-                                                        },
-                                                      },
-                                                      [
-                                                        _vm._v(
-                                                          _vm._s(item.nama)
-                                                        ),
-                                                      ]
-                                                    ),
-                                                  ]
-                                                ),
-                                              ]
-                                            ),
-                                            _vm._v(" "),
-                                            _c(
-                                              "div",
-                                              { staticClass: "col-12" },
-                                              [
-                                                _c(
-                                                  "label",
-                                                  {
-                                                    staticClass: "form-label",
-                                                    attrs: { for: "tb" },
-                                                  },
-                                                  [_vm._v("Tinggi badan")]
-                                                ),
-                                                _vm._v(" "),
-                                                _c("input", {
-                                                  directives: [
-                                                    {
-                                                      name: "model",
-                                                      rawName: "v-model",
-                                                      value:
-                                                        _vm.tambahPemeriksaan
-                                                          .tb,
-                                                      expression:
-                                                        "tambahPemeriksaan.tb",
-                                                    },
-                                                  ],
-                                                  staticClass: "form-control",
-                                                  attrs: {
-                                                    type: "number",
-                                                    id: "tb",
-                                                    placeholder: "Dalam cm",
-                                                  },
-                                                  domProps: {
-                                                    value:
-                                                      _vm.tambahPemeriksaan.tb,
-                                                  },
-                                                  on: {
-                                                    input: function ($event) {
-                                                      if (
-                                                        $event.target.composing
-                                                      ) {
-                                                        return
-                                                      }
-                                                      _vm.$set(
-                                                        _vm.tambahPemeriksaan,
-                                                        "tb",
-                                                        $event.target.value
-                                                      )
-                                                    },
-                                                  },
-                                                }),
-                                              ]
-                                            ),
-                                            _vm._v(" "),
-                                            _c(
-                                              "div",
-                                              { staticClass: "col-12" },
-                                              [
-                                                _c(
-                                                  "label",
-                                                  {
-                                                    staticClass: "form-label",
-                                                    attrs: { for: "bb" },
-                                                  },
-                                                  [_vm._v("Berat badan")]
-                                                ),
-                                                _vm._v(" "),
-                                                _c("input", {
-                                                  directives: [
-                                                    {
-                                                      name: "model",
-                                                      rawName: "v-model",
-                                                      value:
-                                                        _vm.tambahPemeriksaan
-                                                          .bb,
-                                                      expression:
-                                                        "tambahPemeriksaan.bb",
-                                                    },
-                                                  ],
-                                                  staticClass: "form-control",
-                                                  attrs: {
-                                                    type: "number",
-                                                    id: "bb",
-                                                    placeholder: "Dalam kg",
-                                                  },
-                                                  domProps: {
-                                                    value:
-                                                      _vm.tambahPemeriksaan.bb,
-                                                  },
-                                                  on: {
-                                                    input: function ($event) {
-                                                      if (
-                                                        $event.target.composing
-                                                      ) {
-                                                        return
-                                                      }
-                                                      _vm.$set(
-                                                        _vm.tambahPemeriksaan,
-                                                        "bb",
-                                                        $event.target.value
-                                                      )
-                                                    },
-                                                  },
-                                                }),
-                                              ]
-                                            ),
-                                            _vm._v(" "),
-                                            _c(
-                                              "div",
-                                              { staticClass: "col-12" },
-                                              [
-                                                _c(
-                                                  "label",
-                                                  {
-                                                    staticClass: "form-label",
-                                                    attrs: { for: "lk" },
-                                                  },
-                                                  [_vm._v("Lingkar Kepala")]
-                                                ),
-                                                _vm._v(" "),
-                                                _c("input", {
-                                                  directives: [
-                                                    {
-                                                      name: "model",
-                                                      rawName: "v-model",
-                                                      value:
-                                                        _vm.tambahPemeriksaan
-                                                          .lk,
-                                                      expression:
-                                                        "tambahPemeriksaan.lk",
-                                                    },
-                                                  ],
-                                                  staticClass: "form-control",
-                                                  attrs: {
-                                                    type: "number",
-                                                    id: "lk",
-                                                    placeholder: "Dalam cm",
-                                                  },
-                                                  domProps: {
-                                                    value:
-                                                      _vm.tambahPemeriksaan.lk,
-                                                  },
-                                                  on: {
-                                                    input: function ($event) {
-                                                      if (
-                                                        $event.target.composing
-                                                      ) {
-                                                        return
-                                                      }
-                                                      _vm.$set(
-                                                        _vm.tambahPemeriksaan,
-                                                        "lk",
-                                                        $event.target.value
-                                                      )
-                                                    },
-                                                  },
-                                                }),
-                                              ]
-                                            ),
-                                            _vm._v(" "),
-                                            _vm._m(3, true),
-                                          ]
-                                        ),
-                                      ]
-                                    ),
+                                    _c("div", { staticClass: "modal-footer" }),
                                   ]),
                                 ]
                               ),
@@ -28194,30 +28317,7 @@ var staticRenderFns = [
         _c("th", { attrs: { scope: "col" } }, [_vm._v("Lingkar Kepala")]),
         _vm._v(" "),
         _c("th", { attrs: { scope: "col" } }, [_vm._v("created_at")]),
-        _vm._v(" "),
-        _c("th", { attrs: { scope: "col" } }, [_vm._v("Aksi")]),
       ]),
-    ])
-  },
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "modal-footer" }, [
-      _c(
-        "button",
-        {
-          staticClass: "btn btn-secondary",
-          attrs: { type: "button", "data-bs-dismiss": "modal" },
-        },
-        [_vm._v("Batal")]
-      ),
-      _vm._v(" "),
-      _c(
-        "button",
-        { staticClass: "btn btn-primary", attrs: { type: "submit" } },
-        [_vm._v("Save")]
-      ),
     ])
   },
 ]
@@ -28578,10 +28678,6 @@ var staticRenderFns = [
         _c("th", { attrs: { scope: "col" } }, [_vm._v("Nama Bumil")]),
         _vm._v(" "),
         _c("th", { attrs: { scope: "col" } }, [_vm._v("NIK Bumil")]),
-        _vm._v(" "),
-        _c("th", { attrs: { scope: "col" } }, [
-          _vm._v("Tempat, Tanggal Lahir"),
-        ]),
         _vm._v(" "),
         _c("th", { staticClass: "text-center", attrs: { scope: "col" } }, [
           _vm._v("Status Bumil"),
@@ -29180,6 +29276,415 @@ var staticRenderFns = [
           _vm._v("Aksi"),
         ]),
       ]),
+    ])
+  },
+]
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/admin/pages/PemeriksaanBalita.vue?vue&type=template&id=a07c0ef6&":
+/*!*****************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/admin/pages/PemeriksaanBalita.vue?vue&type=template&id=a07c0ef6& ***!
+  \*****************************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* binding */ render),
+/* harmony export */   "staticRenderFns": () => (/* binding */ staticRenderFns)
+/* harmony export */ });
+var render = function () {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("main", { staticClass: "main", attrs: { id: "main" } }, [
+    _c("div", { staticClass: "pagetitle" }, [
+      _c("h1", [_vm._v("Pemeriksaan Balita")]),
+      _vm._v(" "),
+      _c("nav", [
+        _c("ol", { staticClass: "breadcrumb" }, [
+          _c(
+            "li",
+            { staticClass: "breadcrumb-item" },
+            [
+              _c("router-link", { attrs: { to: { name: "dashboard" } } }, [
+                _c("i", { staticClass: "bi bi-house-door" }),
+              ]),
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c(
+            "li",
+            { staticClass: "breadcrumb-item" },
+            [
+              _c("router-link", { attrs: { to: { name: "balita" } } }, [
+                _vm._v("Balita"),
+              ]),
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c(
+            "li",
+            { staticClass: "breadcrumb-item active" },
+            [
+              _c(
+                "router-link",
+                { attrs: { to: { name: "pemeriksaan-balita" } } },
+                [_vm._v("Pemeriksaan Balita")]
+              ),
+            ],
+            1
+          ),
+        ]),
+      ]),
+    ]),
+    _vm._v(" "),
+    _c("section", { staticClass: "section" }, [
+      _c("div", { staticClass: "row" }, [
+        _c("div", { staticClass: "col-lg-12" }, [
+          _c("div", { staticClass: "card" }, [
+            _c(
+              "div",
+              { staticClass: "card-body" },
+              [
+                _c(
+                  "router-link",
+                  {
+                    staticClass: "btn btn-success",
+                    staticStyle: { "margin-top": "1.5rem" },
+                    attrs: { to: { name: "form-pemeriksaan-balita" } },
+                  },
+                  [
+                    _c("i", { staticClass: "bi bi-file-earmark-plus" }),
+                    _vm._v(
+                      "\n                            Tambah Data\n                        "
+                    ),
+                  ]
+                ),
+                _vm._v(" "),
+                _c("div", { staticClass: "dataTable-search text-end" }, [
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.search,
+                        expression: "search",
+                      },
+                    ],
+                    staticClass: "dataTable-input",
+                    attrs: { placeholder: "Search...", type: "text" },
+                    domProps: { value: _vm.search },
+                    on: {
+                      input: function ($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.search = $event.target.value
+                      },
+                    },
+                  }),
+                ]),
+                _vm._v(" "),
+                _c("table", { staticClass: "table" }, [
+                  _vm._m(0),
+                  _vm._v(" "),
+                  _c(
+                    "tbody",
+                    _vm._l(_vm.pemeriksaanBalita, function (item, index) {
+                      return _c("tr", { key: index }, [
+                        _c("th", { attrs: { scope: "row" } }, [
+                          _vm._v(_vm._s(index + 1)),
+                        ]),
+                        _vm._v(" "),
+                        _c("td", [_vm._v(_vm._s(item.nama))]),
+                        _vm._v(" "),
+                        _c("td", [
+                          _vm._v(
+                            "\n                                        " +
+                              _vm._s(item.tmpt_lahir) +
+                              ",\n                                        "
+                          ),
+                          _c("br"),
+                          _vm._v(
+                            "\n                                        " +
+                              _vm._s(item.tgl_lahir) +
+                              "\n                                    "
+                          ),
+                        ]),
+                        _vm._v(" "),
+                        _c("td", { staticClass: "text-center" }, [
+                          item.stts_balita == 0
+                            ? _c("p", [_vm._v("Meninggal")])
+                            : _vm._e(),
+                          _vm._v(" "),
+                          item.stts_balita == 1
+                            ? _c("p", [_vm._v("Hidup")])
+                            : _vm._e(),
+                        ]),
+                        _vm._v(" "),
+                        _c("td", { staticClass: "text-center" }, [
+                          item.stts_balita == 1
+                            ? _c("p", [_vm._v("-")])
+                            : _vm._e(),
+                          _vm._v(" "),
+                          item.stts_balita == 0
+                            ? _c("p", [_vm._v(_vm._s(item.tgl_meninggal))])
+                            : _vm._e(),
+                        ]),
+                        _vm._v(" "),
+                        _c("td", { staticClass: "text-center" }, [
+                          _vm._v(
+                            "\n                                        " +
+                              _vm._s(item.id_kader_balita) +
+                              "\n                                    "
+                          ),
+                        ]),
+                        _vm._v(" "),
+                        _c("td", { staticClass: "text-center" }, [
+                          _c(
+                            "button",
+                            {
+                              staticClass: "btn btn-info",
+                              attrs: {
+                                type: "button",
+                                "data-bs-toggle": "modal",
+                                "data-bs-target": "#verticalycentered" + index,
+                              },
+                            },
+                            [_c("i", { staticClass: "bi bi-info-circle" })]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "div",
+                            {
+                              staticClass: "modal fade",
+                              attrs: {
+                                id: "verticalycentered" + index,
+                                tabindex: "-1",
+                              },
+                            },
+                            [
+                              _c(
+                                "div",
+                                {
+                                  staticClass:
+                                    "modal-dialog modal-dialog-centered",
+                                },
+                                [
+                                  _c("div", { staticClass: "modal-content" }, [
+                                    _c("div", { staticClass: "modal-header" }, [
+                                      _c("h5", { staticClass: "modal-title" }, [
+                                        _vm._v(
+                                          "Data Pemeriksaan Kehamilan Ibu " +
+                                            _vm._s(item.nama)
+                                        ),
+                                      ]),
+                                      _vm._v(" "),
+                                      _c("button", {
+                                        staticClass: "btn-close",
+                                        attrs: {
+                                          type: "button",
+                                          "data-bs-dismiss": "modal",
+                                          "aria-label": "Close",
+                                        },
+                                      }),
+                                    ]),
+                                    _vm._v(" "),
+                                    _c("div", { staticClass: "modal-body" }, [
+                                      _c(
+                                        "table",
+                                        {
+                                          staticClass: "table table-borderless",
+                                        },
+                                        [
+                                          _c("tbody", [
+                                            _c("tr", [
+                                              _c(
+                                                "td",
+                                                { staticClass: "text-start" },
+                                                [_vm._v("Tinggi Badan Bumil")]
+                                              ),
+                                              _vm._v(" "),
+                                              _c("td", [_vm._v(":")]),
+                                              _vm._v(" "),
+                                              _c(
+                                                "td",
+                                                { staticClass: "text-start" },
+                                                [
+                                                  _vm._v(
+                                                    _vm._s(item.tb) + " cm"
+                                                  ),
+                                                ]
+                                              ),
+                                            ]),
+                                            _vm._v(" "),
+                                            _c("tr", [
+                                              _c(
+                                                "td",
+                                                { staticClass: "text-start" },
+                                                [_vm._v("Berat Badan")]
+                                              ),
+                                              _vm._v(" "),
+                                              _c("td", [_vm._v(":")]),
+                                              _vm._v(" "),
+                                              _c(
+                                                "td",
+                                                { staticClass: "text-start" },
+                                                [
+                                                  _vm._v(
+                                                    _vm._s(item.bb) + " kg"
+                                                  ),
+                                                ]
+                                              ),
+                                            ]),
+                                            _vm._v(" "),
+                                            _c("tr", [
+                                              _c(
+                                                "td",
+                                                { staticClass: "text-start" },
+                                                [_vm._v("Lingkar Lengan Bumil")]
+                                              ),
+                                              _vm._v(" "),
+                                              _c("td", [_vm._v(":")]),
+                                              _vm._v(" "),
+                                              _c(
+                                                "td",
+                                                { staticClass: "text-start" },
+                                                [
+                                                  _vm._v(
+                                                    _vm._s(item.lk) + " cm"
+                                                  ),
+                                                ]
+                                              ),
+                                            ]),
+                                          ]),
+                                        ]
+                                      ),
+                                    ]),
+                                    _vm._v(" "),
+                                    _vm._m(1, true),
+                                  ]),
+                                ]
+                              ),
+                            ]
+                          ),
+                        ]),
+                        _vm._v(" "),
+                        _c("td", { staticClass: "text-center" }, [
+                          _vm._v(_vm._s(item.created_at)),
+                        ]),
+                        _vm._v(" "),
+                        _c("td", [
+                          _c(
+                            "div",
+                            { staticClass: "text-center" },
+                            [
+                              _c(
+                                "router-link",
+                                {
+                                  staticClass: "btn btn-warning",
+                                  attrs: {
+                                    to: {
+                                      name: "edit-pemeriksaan-balita",
+                                      params: { id: item.id },
+                                    },
+                                  },
+                                },
+                                [_c("i", { staticClass: "bi bi-pencil-fill" })]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "button",
+                                {
+                                  staticClass: "btn btn-danger",
+                                  attrs: { type: "button" },
+                                  on: {
+                                    click: function ($event) {
+                                      return _vm.deleteData(item.id)
+                                    },
+                                  },
+                                },
+                                [_c("i", { staticClass: "bi bi-trash-fill" })]
+                              ),
+                            ],
+                            1
+                          ),
+                        ]),
+                      ])
+                    }),
+                    0
+                  ),
+                ]),
+              ],
+              1
+            ),
+          ]),
+        ]),
+      ]),
+    ]),
+  ])
+}
+var staticRenderFns = [
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("thead", [
+      _c("tr", [
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("#")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Nama Balita")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [
+          _vm._v("Tempat, Tanggal Lahir"),
+        ]),
+        _vm._v(" "),
+        _c("th", { staticClass: "text-center", attrs: { scope: "col" } }, [
+          _vm._v("Status Balita"),
+        ]),
+        _vm._v(" "),
+        _c("th", { staticClass: "text-center", attrs: { scope: "col" } }, [
+          _vm._v("Tanggal Meninggal"),
+        ]),
+        _vm._v(" "),
+        _c("th", { staticClass: "text-center", attrs: { scope: "col" } }, [
+          _vm._v("Petugas Posyandu"),
+        ]),
+        _vm._v(" "),
+        _c("th", { staticClass: "text-center", attrs: { scope: "col" } }, [
+          _vm._v("Data Pemeriksaan"),
+        ]),
+        _vm._v(" "),
+        _c("th", { staticClass: "text-center", attrs: { scope: "col" } }, [
+          _vm._v("Waktu Data Masuk"),
+        ]),
+        _vm._v(" "),
+        _c("th", { staticClass: "text-center", attrs: { scope: "col" } }, [
+          _vm._v("Aksi"),
+        ]),
+      ]),
+    ])
+  },
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "modal-footer" }, [
+      _c(
+        "button",
+        {
+          staticClass: "btn btn-secondary",
+          attrs: { type: "button", "data-bs-dismiss": "modal" },
+        },
+        [_vm._v("Close")]
+      ),
     ])
   },
 ]
@@ -30911,6 +31416,535 @@ var staticRenderFns = [
                 },
               },
               [_vm._v("Data Suami Bumil")]
+            ),
+          ]
+        ),
+      ]
+    )
+  },
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", {}, [
+      _c(
+        "button",
+        { staticClass: "btn btn-primary", attrs: { type: "submit" } },
+        [_vm._v("Save")]
+      ),
+    ])
+  },
+]
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/admin/pages/forms/formPemeriksaanBalita.vue?vue&type=template&id=6154c43e&":
+/*!***************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/admin/pages/forms/formPemeriksaanBalita.vue?vue&type=template&id=6154c43e& ***!
+  \***************************************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* binding */ render),
+/* harmony export */   "staticRenderFns": () => (/* binding */ staticRenderFns)
+/* harmony export */ });
+var render = function () {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("main", { staticClass: "main", attrs: { id: "main" } }, [
+    _c("div", { staticClass: "pagetitle" }, [
+      _c("h1", [_vm._v("Tambah Data Pemeriksaan Baltia")]),
+      _vm._v(" "),
+      _c("nav", [
+        _c("ol", { staticClass: "breadcrumb" }, [
+          _c(
+            "li",
+            { staticClass: "breadcrumb-item" },
+            [
+              _c("router-link", { attrs: { to: { name: "dashboard" } } }, [
+                _c("i", { staticClass: "bi bi-house-door" }),
+              ]),
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c("li", { staticClass: "breadcrumb-item active" }, [
+            _vm._v("Balita"),
+          ]),
+          _vm._v(" "),
+          _c(
+            "li",
+            { staticClass: "breadcrumb-item active" },
+            [
+              _c("router-link", { attrs: { to: { name: "balita" } } }, [
+                _vm._v("Data Pemeriksaan Balita"),
+              ]),
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c(
+            "li",
+            { staticClass: "breadcrumb-item active" },
+            [
+              _c(
+                "router-link",
+                { attrs: { to: { name: "form-pemeriksaan-balita" } } },
+                [_vm._v("Tambah Data Pemeriksaan Balita")]
+              ),
+            ],
+            1
+          ),
+        ]),
+      ]),
+    ]),
+    _vm._v(" "),
+    _c("section", { staticClass: "section" }, [
+      _c("div", { staticClass: "row" }, [
+        _c("div", { staticClass: "col-lg-6" }, [
+          _c("div", { staticClass: "card" }, [
+            _c("div", { staticClass: "card-body" }, [
+              _c("h5", { staticClass: "card-title" }, [
+                _vm._v("Form Tambah Data Pemeriksaan Bumil"),
+              ]),
+              _vm._v(" "),
+              _c(
+                "form",
+                {
+                  staticClass: "row g-3",
+                  on: {
+                    submit: function ($event) {
+                      $event.preventDefault()
+                      return _vm.save.apply(null, arguments)
+                    },
+                  },
+                },
+                [
+                  _vm._m(0),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    {
+                      staticClass: "tab-content pt-2",
+                      attrs: { id: "myTabjustifiedContent" },
+                    },
+                    [
+                      _c(
+                        "div",
+                        {
+                          staticClass: "tab-pane fade show row g-3 active",
+                          attrs: {
+                            id: "home-justified",
+                            role: "tabpanel",
+                            "aria-labelledby": "home-tab",
+                          },
+                        },
+                        [
+                          _c("div", { staticClass: "col-12" }, [
+                            _c(
+                              "label",
+                              {
+                                staticClass: "form-label",
+                                attrs: { for: "nama_bumil" },
+                              },
+                              [_vm._v("Nama Ibu Hamil")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "select",
+                              {
+                                directives: [
+                                  {
+                                    name: "model",
+                                    rawName: "v-model",
+                                    value: _vm.pemeriksaanBalita.id_balita,
+                                    expression: "pemeriksaanBalita.id_balita",
+                                  },
+                                ],
+                                staticClass: "form-select",
+                                attrs: {
+                                  "aria-label": "Default select example",
+                                  id: "nama_bumil",
+                                },
+                                on: {
+                                  change: function ($event) {
+                                    var $$selectedVal = Array.prototype.filter
+                                      .call(
+                                        $event.target.options,
+                                        function (o) {
+                                          return o.selected
+                                        }
+                                      )
+                                      .map(function (o) {
+                                        var val =
+                                          "_value" in o ? o._value : o.value
+                                        return val
+                                      })
+                                    _vm.$set(
+                                      _vm.pemeriksaanBalita,
+                                      "id_balita",
+                                      $event.target.multiple
+                                        ? $$selectedVal
+                                        : $$selectedVal[0]
+                                    )
+                                  },
+                                },
+                              },
+                              [
+                                _c(
+                                  "option",
+                                  { attrs: { selected: "", disabled: "" } },
+                                  [_vm._v("Pilih Nama Ibu Hamil")]
+                                ),
+                                _vm._v(" "),
+                                _vm._l(_vm.balita, function (balita, index) {
+                                  return _c(
+                                    "option",
+                                    {
+                                      key: index,
+                                      domProps: { value: balita.id },
+                                    },
+                                    [_vm._v(_vm._s(balita.nama))]
+                                  )
+                                }),
+                              ],
+                              2
+                            ),
+                          ]),
+                          _vm._v(" "),
+                          _vm._l(_vm.balita, function (balita, index) {
+                            return _c(
+                              "div",
+                              { key: index, staticClass: "row g-3" },
+                              [
+                                _c("div", { staticClass: "col-12" }, [
+                                  _c(
+                                    "label",
+                                    {
+                                      staticClass: "form-label",
+                                      attrs: { for: "stts_bumil" },
+                                    },
+                                    [_vm._v("Status Balita")]
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "select",
+                                    {
+                                      staticClass: "form-select",
+                                      attrs: {
+                                        "aria-label": "Default select example",
+                                        id: "stts_bumil",
+                                      },
+                                    },
+                                    [
+                                      _vm.pemeriksaanBalita.id_balita ==
+                                      !balita.id
+                                        ? _c(
+                                            "option",
+                                            {
+                                              attrs: {
+                                                selected: "",
+                                                disabled: "",
+                                              },
+                                              domProps: {
+                                                value: balita.stts_balita,
+                                              },
+                                            },
+                                            [_vm._v("Status Balita")]
+                                          )
+                                        : _vm._e(),
+                                      _vm._v(" "),
+                                      _vm.pemeriksaanBalita.id_balita ==
+                                      balita.id
+                                        ? _c(
+                                            "option",
+                                            {
+                                              attrs: {
+                                                selected: "",
+                                                disabled: "",
+                                              },
+                                              domProps: {
+                                                value: balita.stts_balita,
+                                              },
+                                            },
+                                            [_vm._v(_vm._s(balita.stts_balita))]
+                                          )
+                                        : _vm._e(),
+                                    ]
+                                  ),
+                                ]),
+                                _vm._v(" "),
+                                _c("div", { staticClass: "col-12" }, [
+                                  _c(
+                                    "label",
+                                    {
+                                      staticClass: "form-label",
+                                      attrs: { for: "kader" },
+                                    },
+                                    [_vm._v("Petugas Posyandu")]
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "select",
+                                    {
+                                      staticClass: "form-select",
+                                      attrs: {
+                                        "aria-label": "Default select example",
+                                        id: "kader",
+                                      },
+                                    },
+                                    [
+                                      _vm.pemeriksaanBalita.id_balita ==
+                                      !balita.id
+                                        ? _c(
+                                            "option",
+                                            {
+                                              attrs: {
+                                                selected: "",
+                                                disabled: "",
+                                              },
+                                              domProps: {
+                                                value: balita.id_kader_balita,
+                                              },
+                                            },
+                                            [_vm._v("Pilih Petugas Posyandu")]
+                                          )
+                                        : _vm._e(),
+                                      _vm._v(" "),
+                                      _vm.pemeriksaanBalita.id_balita ==
+                                      balita.id
+                                        ? _c(
+                                            "option",
+                                            {
+                                              attrs: {
+                                                selected: "",
+                                                disabled: "",
+                                              },
+                                              domProps: {
+                                                value: balita.id_kader_balita,
+                                              },
+                                            },
+                                            [
+                                              _vm._v(
+                                                _vm._s(balita.id_kader_balita)
+                                              ),
+                                            ]
+                                          )
+                                        : _vm._e(),
+                                    ]
+                                  ),
+                                ]),
+                              ]
+                            )
+                          }),
+                        ],
+                        2
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "div",
+                        {
+                          staticClass: "tab-pane row g-3 fade",
+                          attrs: {
+                            id: "profile-justified",
+                            role: "tabpanel",
+                            "aria-labelledby": "profile-tab",
+                          },
+                        },
+                        [
+                          _c("div", { staticClass: "row g-3" }, [
+                            _c("div", { staticClass: "col-6" }, [
+                              _c(
+                                "label",
+                                {
+                                  staticClass: "form-label",
+                                  attrs: { for: "tb" },
+                                },
+                                [_vm._v("Tinggi Badan")]
+                              ),
+                              _vm._v(" "),
+                              _c("input", {
+                                directives: [
+                                  {
+                                    name: "model",
+                                    rawName: "v-model",
+                                    value: _vm.pemeriksaanBalita.tb,
+                                    expression: "pemeriksaanBalita.tb",
+                                  },
+                                ],
+                                staticClass: "form-control",
+                                attrs: { type: "number", id: "tb" },
+                                domProps: { value: _vm.pemeriksaanBalita.tb },
+                                on: {
+                                  input: function ($event) {
+                                    if ($event.target.composing) {
+                                      return
+                                    }
+                                    _vm.$set(
+                                      _vm.pemeriksaanBalita,
+                                      "tb",
+                                      $event.target.value
+                                    )
+                                  },
+                                },
+                              }),
+                            ]),
+                            _vm._v(" "),
+                            _c("div", { staticClass: "col-6" }, [
+                              _c(
+                                "label",
+                                {
+                                  staticClass: "form-label",
+                                  attrs: { for: "bb" },
+                                },
+                                [_vm._v("Berat Badan")]
+                              ),
+                              _vm._v(" "),
+                              _c("input", {
+                                directives: [
+                                  {
+                                    name: "model",
+                                    rawName: "v-model",
+                                    value: _vm.pemeriksaanBalita.bb,
+                                    expression: "pemeriksaanBalita.bb",
+                                  },
+                                ],
+                                staticClass: "form-control",
+                                attrs: { type: "number", id: "bb" },
+                                domProps: { value: _vm.pemeriksaanBalita.bb },
+                                on: {
+                                  input: function ($event) {
+                                    if ($event.target.composing) {
+                                      return
+                                    }
+                                    _vm.$set(
+                                      _vm.pemeriksaanBalita,
+                                      "bb",
+                                      $event.target.value
+                                    )
+                                  },
+                                },
+                              }),
+                            ]),
+                            _vm._v(" "),
+                            _c("div", { staticClass: "col-6" }, [
+                              _c(
+                                "label",
+                                {
+                                  staticClass: "form-label",
+                                  attrs: { for: "lila" },
+                                },
+                                [_vm._v("Lingkar Kepala")]
+                              ),
+                              _vm._v(" "),
+                              _c("input", {
+                                directives: [
+                                  {
+                                    name: "model",
+                                    rawName: "v-model",
+                                    value: _vm.pemeriksaanBalita.lk,
+                                    expression: "pemeriksaanBalita.lk",
+                                  },
+                                ],
+                                staticClass: "form-control",
+                                attrs: { type: "number", id: "lila" },
+                                domProps: { value: _vm.pemeriksaanBalita.lk },
+                                on: {
+                                  input: function ($event) {
+                                    if ($event.target.composing) {
+                                      return
+                                    }
+                                    _vm.$set(
+                                      _vm.pemeriksaanBalita,
+                                      "lk",
+                                      $event.target.value
+                                    )
+                                  },
+                                },
+                              }),
+                            ]),
+                            _vm._v(" "),
+                            _vm._m(1),
+                          ]),
+                        ]
+                      ),
+                    ]
+                  ),
+                ]
+              ),
+            ]),
+          ]),
+        ]),
+      ]),
+    ]),
+  ])
+}
+var staticRenderFns = [
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "ul",
+      {
+        staticClass: "nav nav-tabs d-flex",
+        attrs: { id: "myTabjustified", role: "tablist" },
+      },
+      [
+        _c(
+          "li",
+          {
+            staticClass: "nav-item flex-fill",
+            attrs: { role: "presentation" },
+          },
+          [
+            _c(
+              "button",
+              {
+                staticClass: "nav-link w-100 active",
+                attrs: {
+                  id: "home-tab",
+                  "data-bs-toggle": "tab",
+                  "data-bs-target": "#home-justified",
+                  type: "button",
+                  role: "tab",
+                  "aria-controls": "home",
+                  "aria-selected": "true",
+                },
+              },
+              [_vm._v("Data Balita")]
+            ),
+          ]
+        ),
+        _vm._v(" "),
+        _c(
+          "li",
+          {
+            staticClass: "nav-item flex-fill",
+            attrs: { role: "presentation" },
+          },
+          [
+            _c(
+              "button",
+              {
+                staticClass: "nav-link w-100",
+                attrs: {
+                  id: "profile-tab",
+                  "data-bs-toggle": "tab",
+                  "data-bs-target": "#profile-justified",
+                  type: "button",
+                  role: "tab",
+                  "aria-controls": "profile",
+                  "aria-selected": "false",
+                },
+              },
+              [_vm._v("Data Pemeriksaan Balita")]
             ),
           ]
         ),
