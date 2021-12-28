@@ -28,7 +28,8 @@
                             </router-link>
 
                             <div class="dataTable-search text-end">
-                                <input class="dataTable-input" placeholder="Search..." type="text" v-model="search" />
+                                <input class="dataTable-input" placeholder="Search..." type="text" v-model="s" />
+                                <button class="btn btn-primary" @click="searchData()">Cari</button>
                             </div>
 
                             <!-- Table with stripped rows -->
@@ -92,7 +93,7 @@ export default {
     data() {
         return {
             ortus: {},
-            search: "",
+            s: "",
         };
     },
     mounted() {
@@ -101,9 +102,10 @@ export default {
         //});
         this.getDataOrtus();
     },
+    watch: {},
     methods: {
         getDataOrtus: function (page = 1) {
-            axios.get("/api/ortu?page=" + page).then((response) => {
+            this.axios.get("/api/ortu?page=" + page + "&search=" + this.s).then((response) => {
                 this.ortus = response.data;
             });
         },
@@ -127,6 +129,10 @@ export default {
                         this.getDataOrtus();
                     }
                 });
+        },
+        searchData(e) {
+            // console.log(this.s);
+            this.getDataOrtus();
         },
     },
 };
