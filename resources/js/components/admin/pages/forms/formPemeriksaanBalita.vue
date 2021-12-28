@@ -131,14 +131,14 @@ export default {
             this.pemeriksaanBalita.tb = response.data.tb;
             this.pemeriksaanBalita.bb = response.data.bb;
             this.pemeriksaanBalita.lk = response.data.lk;
-            console.log(this.pemeriksaanBalita);
+            // console.log(this.pemeriksaanBalita);
         });
     },
     methods: {
         getIdBalita: function () {
             axios.get("/api/balita").then((response) => {
                 this.balita = response.data.data;
-                console.log(this.balita);
+                // console.log(this.balita);
             });
         },
         save(e) {

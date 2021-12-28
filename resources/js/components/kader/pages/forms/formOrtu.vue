@@ -172,7 +172,6 @@ export default {
                 this.ortu.id_kader_bumil = response.data.id_kader_bumil;
                 this.ortu.alamat = response.data.alamat;
                 this.ortu.telp = response.data.telp;
-                this.ortu.alamat = response.data.alamat;
                 // console.log(this.kader);
             });
     },

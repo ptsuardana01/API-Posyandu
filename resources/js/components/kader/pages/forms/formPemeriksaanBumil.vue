@@ -138,7 +138,7 @@ export default {
         getIdOrtu: function () {
             axios.get("/api/ortu").then((response) => {
                 this.ortu = response.data.data;
-                console.log(this.ortu);
+                // console.log(this.ortu);
             });
         },
         save(e) {

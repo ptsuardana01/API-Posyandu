@@ -15,7 +15,11 @@ class BalitasController extends Controller
      */
     public function index()
     {
-        $balitas = Balitas::getBalitas()->paginate(5);
+        if (isset($_GET['search']) && $_GET['search'] != '') {
+            $balitas = Balitas::getBalitas()->where('nama_ibu', 'like', '%' . $_GET['search'] . '%')->paginate(10);
+        } else {
+            $balitas = Balitas::getBalitas()->paginate(10);
+        }
         return response()->json($balitas);
     }
 

@@ -267,16 +267,16 @@ export default {
         //         });
         // },
 
-        save(e) {
-            e.preventDefault();
-            axios.post("/api/pemeriksaan-balita", this.tambahPemeriksaan).then((response) => {
-                this.$swal.fire({ title: "Success!", text: response.data.message, icon: "success", timer: 1000 });
-                this.tambahPemeriksaan = response.data.data;
-                console.log("data udh masuk");
-                console.log(this.tambahPemeriksaan);
-            });
-            this.$forceUpdate();
-        },
+        // save(e) {
+        //     e.preventDefault();
+        //     axios.post("/api/pemeriksaan-balita", this.tambahPemeriksaan).then((response) => {
+        //         this.$swal.fire({ title: "Success!", text: response.data.message, icon: "success", timer: 1000 });
+        //         this.tambahPemeriksaan = response.data.data;
+        //         console.log("data udh masuk");
+        //         console.log(this.tambahPemeriksaan);
+        //     });
+        //     this.$forceUpdate();
+        // },
     },
 };
 </script>

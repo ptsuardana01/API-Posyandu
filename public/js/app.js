@@ -2395,6 +2395,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
@@ -2409,7 +2410,7 @@ __webpack_require__.r(__webpack_exports__);
         lk: ""
       },
       no: 0,
-      search: ""
+      s: ""
     };
   },
   mounted: function mounted() {
@@ -2426,18 +2427,13 @@ __webpack_require__.r(__webpack_exports__);
     this.getPemeriksaanBalita();
   },
   methods: {
-    // modalTambahHistory() {
-    //     // console.log("modal nih boss");
-    //     const modal = document.getElementById("#tambahHistory");
-    //     modal.modal("show");
-    //     $("#tambahHistory").modal("show");
-    // },
     getDataBalitas: function getDataBalitas() {
       var _this2 = this;
 
       var page = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1;
-      axios.get("/api/balita?page=" + page).then(function (response) {
+      this.axios.get("/api/balita?page=" + page + "&search=" + this.s).then(function (response) {
         _this2.balitas = response.data;
+        console.log(_this2.balitas);
       });
     },
     getDetailOrtu: function getDetailOrtu() {
@@ -2477,44 +2473,9 @@ __webpack_require__.r(__webpack_exports__);
         }
       });
     },
-    // deletePemeriksaan: function (id) {
-    //     this.$swal
-    //         .fire({
-    //             title: "Anda yakin?",
-    //             text: "Data yang dihapus tidak dapat dikembalikan!",
-    //             icon: "warning",
-    //             showCancelButton: true,
-    //             confirmButtonColor: "#3085d6",
-    //             cancelButtonColor: "#d33",
-    //             confirmButtonText: "Ya, Hapus data ini!",
-    //             cancelButtonText: "Batal",
-    //         })
-    //         .then((result) => {
-    //             if (result.value) {
-    //                 this.axios.delete("/api/pemeriksaan-balita/" + id).then((response) => {
-    //                     this.$swal.fire("Terhapus!", "Data Pemeriksaan Balita berhasil terhapus.", "success");
-    //                 });
-    //                 this.getPemeriksaanBalita();
-    //             }
-    //         });
-    // },
-    save: function save(e) {
-      var _this6 = this;
-
-      e.preventDefault();
-      axios.post("/api/pemeriksaan-balita", this.tambahPemeriksaan).then(function (response) {
-        _this6.$swal.fire({
-          title: "Success!",
-          text: response.data.message,
-          icon: "success",
-          timer: 1000
-        });
-
-        _this6.tambahPemeriksaan = response.data.data;
-        console.log("data udh masuk");
-        console.log(_this6.tambahPemeriksaan);
-      });
-      this.$forceUpdate();
+    searchData: function searchData(e) {
+      // console.log(this.getDataBalitas);
+      this.getDataBalitas();
     }
   }
 });
@@ -2968,11 +2929,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
       ortus: {},
-      search: ""
+      s: ""
     };
   },
   mounted: function mounted() {
@@ -2981,12 +2943,13 @@ __webpack_require__.r(__webpack_exports__);
     //});
     this.getDataOrtus();
   },
+  watch: {},
   methods: {
     getDataOrtus: function getDataOrtus() {
       var _this = this;
 
       var page = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1;
-      axios.get("/api/ortu?page=" + page).then(function (response) {
+      this.axios.get("/api/ortu?page=" + page + "&search=" + this.s).then(function (response) {
         _this.ortus = response.data;
       });
     },
@@ -3011,6 +2974,10 @@ __webpack_require__.r(__webpack_exports__);
           _this2.getDataOrtus();
         }
       });
+    },
+    searchData: function searchData(e) {
+      // console.log(this.s);
+      this.getDataOrtus();
     }
   }
 });
@@ -3758,7 +3725,6 @@ __webpack_require__.r(__webpack_exports__);
       _this.ortu.stts_bumil = response.data.stts_bumil;
       _this.ortu.tgl_meninggal = response.data.tgl_meninggal;
       _this.ortu.id_kader_bumil = response.data.id_kader_bumil;
-      _this.ortu.alamat = response.data.alamat;
       _this.ortu.telp = response.data.telp;
       _this.ortu.alamat = response.data.alamat; // console.log(this.kader);
     });
@@ -3955,8 +3921,7 @@ __webpack_require__.r(__webpack_exports__);
       _this.pemeriksaanBalita.id_balita = response.data.id_balita;
       _this.pemeriksaanBalita.tb = response.data.tb;
       _this.pemeriksaanBalita.bb = response.data.bb;
-      _this.pemeriksaanBalita.lk = response.data.lk;
-      console.log(_this.pemeriksaanBalita);
+      _this.pemeriksaanBalita.lk = response.data.lk; // console.log(this.pemeriksaanBalita);
     });
   },
   methods: {
@@ -3964,8 +3929,7 @@ __webpack_require__.r(__webpack_exports__);
       var _this2 = this;
 
       axios.get("/api/balita").then(function (response) {
-        _this2.balita = response.data.data;
-        console.log(_this2.balita);
+        _this2.balita = response.data.data; // console.log(this.balita);
       });
     },
     save: function save(e) {
@@ -4161,8 +4125,7 @@ __webpack_require__.r(__webpack_exports__);
       var _this2 = this;
 
       axios.get("/api/ortu").then(function (response) {
-        _this2.ortu = response.data.data;
-        console.log(_this2.ortu);
+        _this2.ortu = response.data.data; // console.log(this.ortu);
       });
     },
     save: function save(e) {
@@ -4627,8 +4590,7 @@ __webpack_require__.r(__webpack_exports__);
           _this5.getDataBalitas();
         }
       });
-    },
-    // deletePemeriksaan: function (id) {
+    } // deletePemeriksaan: function (id) {
     //     this.$swal
     //         .fire({
     //             title: "Anda yakin?",
@@ -4649,24 +4611,17 @@ __webpack_require__.r(__webpack_exports__);
     //             }
     //         });
     // },
-    save: function save(e) {
-      var _this6 = this;
+    // save(e) {
+    //     e.preventDefault();
+    //     axios.post("/api/pemeriksaan-balita", this.tambahPemeriksaan).then((response) => {
+    //         this.$swal.fire({ title: "Success!", text: response.data.message, icon: "success", timer: 1000 });
+    //         this.tambahPemeriksaan = response.data.data;
+    //         console.log("data udh masuk");
+    //         console.log(this.tambahPemeriksaan);
+    //     });
+    //     this.$forceUpdate();
+    // },
 
-      e.preventDefault();
-      axios.post("/api/pemeriksaan-balita", this.tambahPemeriksaan).then(function (response) {
-        _this6.$swal.fire({
-          title: "Success!",
-          text: response.data.message,
-          icon: "success",
-          timer: 1000
-        });
-
-        _this6.tambahPemeriksaan = response.data.data;
-        console.log("data udh masuk");
-        console.log(_this6.tambahPemeriksaan);
-      });
-      this.$forceUpdate();
-    }
   }
 });
 
@@ -5591,8 +5546,7 @@ __webpack_require__.r(__webpack_exports__);
       _this.ortu.tgl_meninggal = response.data.tgl_meninggal;
       _this.ortu.id_kader_bumil = response.data.id_kader_bumil;
       _this.ortu.alamat = response.data.alamat;
-      _this.ortu.telp = response.data.telp;
-      _this.ortu.alamat = response.data.alamat; // console.log(this.kader);
+      _this.ortu.telp = response.data.telp; // console.log(this.kader);
     });
   },
   methods: {
@@ -5787,8 +5741,7 @@ __webpack_require__.r(__webpack_exports__);
       _this.pemeriksaanBalita.id_balita = response.data.id_balita;
       _this.pemeriksaanBalita.tb = response.data.tb;
       _this.pemeriksaanBalita.bb = response.data.bb;
-      _this.pemeriksaanBalita.lk = response.data.lk;
-      console.log(_this.pemeriksaanBalita);
+      _this.pemeriksaanBalita.lk = response.data.lk; // console.log(this.pemeriksaanBalita);
     });
   },
   methods: {
@@ -5796,8 +5749,7 @@ __webpack_require__.r(__webpack_exports__);
       var _this2 = this;
 
       axios.get("/api/balita").then(function (response) {
-        _this2.balita = response.data.data;
-        console.log(_this2.balita);
+        _this2.balita = response.data.data; // console.log(this.balita);
       });
     },
     save: function save(e) {
@@ -5993,8 +5945,7 @@ __webpack_require__.r(__webpack_exports__);
       var _this2 = this;
 
       axios.get("/api/ortu").then(function (response) {
-        _this2.ortu = response.data.data;
-        console.log(_this2.ortu);
+        _this2.ortu = response.data.data; // console.log(this.ortu);
       });
     },
     save: function save(e) {
@@ -30536,22 +30487,35 @@ var render = function () {
                       {
                         name: "model",
                         rawName: "v-model",
-                        value: _vm.search,
-                        expression: "search",
+                        value: _vm.s,
+                        expression: "s",
                       },
                     ],
                     staticClass: "dataTable-input",
                     attrs: { placeholder: "Search...", type: "text" },
-                    domProps: { value: _vm.search },
+                    domProps: { value: _vm.s },
                     on: {
                       input: function ($event) {
                         if ($event.target.composing) {
                           return
                         }
-                        _vm.search = $event.target.value
+                        _vm.s = $event.target.value
                       },
                     },
                   }),
+                  _vm._v(" "),
+                  _c(
+                    "button",
+                    {
+                      staticClass: "btn btn-primary",
+                      on: {
+                        click: function ($event) {
+                          return _vm.searchData()
+                        },
+                      },
+                    },
+                    [_vm._v("Cari")]
+                  ),
                 ]),
                 _vm._v(" "),
                 _c("table", { staticClass: "table" }, [
@@ -31547,7 +31511,276 @@ var staticRenderFns = [
         ]),
       ]),
       _vm._v(" "),
-      _c("section", { staticClass: "section dashboard" }),
+      _c("section", { staticClass: "section dashboard row" }, [
+        _c("div", { staticClass: "card" }, [
+          _c("div", { staticClass: "card-body" }, [
+            _c("h5", { staticClass: "card-title" }, [
+              _vm._v("Haii Dammy Admin"),
+            ]),
+            _vm._v(
+              "\n                Selamat datang di Website Sistem Informasi Posyandu Admin Posyandu. Jangan lupa jaga kesehatan ya :)\n            "
+            ),
+          ]),
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-xxl-4 col-md-6" }, [
+          _c("div", { staticClass: "card info-card sales-card" }, [
+            _c("div", { staticClass: "filter" }, [
+              _c(
+                "a",
+                {
+                  staticClass: "icon",
+                  attrs: { href: "#", "data-bs-toggle": "dropdown" },
+                },
+                [_c("i", { staticClass: "bi bi-three-dots" })]
+              ),
+              _vm._v(" "),
+              _c(
+                "ul",
+                {
+                  staticClass:
+                    "dropdown-menu dropdown-menu-end dropdown-menu-arrow",
+                },
+                [
+                  _c("li", { staticClass: "dropdown-header text-start" }, [
+                    _c("h6", [_vm._v("Filter")]),
+                  ]),
+                  _vm._v(" "),
+                  _c("li", [
+                    _c(
+                      "a",
+                      { staticClass: "dropdown-item", attrs: { href: "#" } },
+                      [_vm._v("Today")]
+                    ),
+                  ]),
+                  _vm._v(" "),
+                  _c("li", [
+                    _c(
+                      "a",
+                      { staticClass: "dropdown-item", attrs: { href: "#" } },
+                      [_vm._v("This Month")]
+                    ),
+                  ]),
+                  _vm._v(" "),
+                  _c("li", [
+                    _c(
+                      "a",
+                      { staticClass: "dropdown-item", attrs: { href: "#" } },
+                      [_vm._v("This Year")]
+                    ),
+                  ]),
+                ]
+              ),
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "card-body" }, [
+              _c("h5", { staticClass: "card-title" }, [
+                _vm._v(
+                  "\n                        Sales\n                        "
+                ),
+                _c("span", [_vm._v("| Today")]),
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "d-flex align-items-center" }, [
+                _c(
+                  "div",
+                  {
+                    staticClass:
+                      "card-icon rounded-circle d-flex align-items-center justify-content-center",
+                  },
+                  [_c("i", { staticClass: "bi bi-cart" })]
+                ),
+                _vm._v(" "),
+                _c("div", { staticClass: "ps-3" }, [
+                  _c("h6", [_vm._v("145")]),
+                  _vm._v(" "),
+                  _c(
+                    "span",
+                    { staticClass: "text-success small pt-1 fw-bold" },
+                    [_vm._v("12%")]
+                  ),
+                  _vm._v(" "),
+                  _c("span", { staticClass: "text-muted small pt-2 ps-1" }, [
+                    _vm._v("increase"),
+                  ]),
+                ]),
+              ]),
+            ]),
+          ]),
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-xxl-4 col-md-6" }, [
+          _c("div", { staticClass: "card info-card revenue-card" }, [
+            _c("div", { staticClass: "filter" }, [
+              _c(
+                "a",
+                {
+                  staticClass: "icon",
+                  attrs: { href: "#", "data-bs-toggle": "dropdown" },
+                },
+                [_c("i", { staticClass: "bi bi-three-dots" })]
+              ),
+              _vm._v(" "),
+              _c(
+                "ul",
+                {
+                  staticClass:
+                    "dropdown-menu dropdown-menu-end dropdown-menu-arrow",
+                },
+                [
+                  _c("li", { staticClass: "dropdown-header text-start" }, [
+                    _c("h6", [_vm._v("Filter")]),
+                  ]),
+                  _vm._v(" "),
+                  _c("li", [
+                    _c(
+                      "a",
+                      { staticClass: "dropdown-item", attrs: { href: "#" } },
+                      [_vm._v("Today")]
+                    ),
+                  ]),
+                  _vm._v(" "),
+                  _c("li", [
+                    _c(
+                      "a",
+                      { staticClass: "dropdown-item", attrs: { href: "#" } },
+                      [_vm._v("This Month")]
+                    ),
+                  ]),
+                  _vm._v(" "),
+                  _c("li", [
+                    _c(
+                      "a",
+                      { staticClass: "dropdown-item", attrs: { href: "#" } },
+                      [_vm._v("This Year")]
+                    ),
+                  ]),
+                ]
+              ),
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "card-body" }, [
+              _c("h5", { staticClass: "card-title" }, [
+                _vm._v(
+                  "\n                        Revenue\n                        "
+                ),
+                _c("span", [_vm._v("| This Month")]),
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "d-flex align-items-center" }, [
+                _c(
+                  "div",
+                  {
+                    staticClass:
+                      "card-icon rounded-circle d-flex align-items-center justify-content-center",
+                  },
+                  [_c("i", { staticClass: "bi bi-currency-dollar" })]
+                ),
+                _vm._v(" "),
+                _c("div", { staticClass: "ps-3" }, [
+                  _c("h6", [_vm._v("$3,264")]),
+                  _vm._v(" "),
+                  _c(
+                    "span",
+                    { staticClass: "text-success small pt-1 fw-bold" },
+                    [_vm._v("8%")]
+                  ),
+                  _vm._v(" "),
+                  _c("span", { staticClass: "text-muted small pt-2 ps-1" }, [
+                    _vm._v("increase"),
+                  ]),
+                ]),
+              ]),
+            ]),
+          ]),
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-xxl-4 col-xl-12" }, [
+          _c("div", { staticClass: "card info-card customers-card" }, [
+            _c("div", { staticClass: "filter" }, [
+              _c(
+                "a",
+                {
+                  staticClass: "icon",
+                  attrs: { href: "#", "data-bs-toggle": "dropdown" },
+                },
+                [_c("i", { staticClass: "bi bi-three-dots" })]
+              ),
+              _vm._v(" "),
+              _c(
+                "ul",
+                {
+                  staticClass:
+                    "dropdown-menu dropdown-menu-end dropdown-menu-arrow",
+                },
+                [
+                  _c("li", { staticClass: "dropdown-header text-start" }, [
+                    _c("h6", [_vm._v("Filter")]),
+                  ]),
+                  _vm._v(" "),
+                  _c("li", [
+                    _c(
+                      "a",
+                      { staticClass: "dropdown-item", attrs: { href: "#" } },
+                      [_vm._v("Today")]
+                    ),
+                  ]),
+                  _vm._v(" "),
+                  _c("li", [
+                    _c(
+                      "a",
+                      { staticClass: "dropdown-item", attrs: { href: "#" } },
+                      [_vm._v("This Month")]
+                    ),
+                  ]),
+                  _vm._v(" "),
+                  _c("li", [
+                    _c(
+                      "a",
+                      { staticClass: "dropdown-item", attrs: { href: "#" } },
+                      [_vm._v("This Year")]
+                    ),
+                  ]),
+                ]
+              ),
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "card-body" }, [
+              _c("h5", { staticClass: "card-title" }, [
+                _vm._v(
+                  "\n                        Customers\n                        "
+                ),
+                _c("span", [_vm._v("| This Year")]),
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "d-flex align-items-center" }, [
+                _c(
+                  "div",
+                  {
+                    staticClass:
+                      "card-icon rounded-circle d-flex align-items-center justify-content-center",
+                  },
+                  [_c("i", { staticClass: "bi bi-people" })]
+                ),
+                _vm._v(" "),
+                _c("div", { staticClass: "ps-3" }, [
+                  _c("h6", [_vm._v("1244")]),
+                  _vm._v(" "),
+                  _c(
+                    "span",
+                    { staticClass: "text-danger small pt-1 fw-bold" },
+                    [_vm._v("12%")]
+                  ),
+                  _vm._v(" "),
+                  _c("span", { staticClass: "text-muted small pt-2 ps-1" }, [
+                    _vm._v("decrease"),
+                  ]),
+                ]),
+              ]),
+            ]),
+          ]),
+        ]),
+      ]),
     ])
   },
 ]
@@ -31880,22 +32113,35 @@ var render = function () {
                       {
                         name: "model",
                         rawName: "v-model",
-                        value: _vm.search,
-                        expression: "search",
+                        value: _vm.s,
+                        expression: "s",
                       },
                     ],
                     staticClass: "dataTable-input",
                     attrs: { placeholder: "Search...", type: "text" },
-                    domProps: { value: _vm.search },
+                    domProps: { value: _vm.s },
                     on: {
                       input: function ($event) {
                         if ($event.target.composing) {
                           return
                         }
-                        _vm.search = $event.target.value
+                        _vm.s = $event.target.value
                       },
                     },
                   }),
+                  _vm._v(" "),
+                  _c(
+                    "button",
+                    {
+                      staticClass: "btn btn-primary",
+                      on: {
+                        click: function ($event) {
+                          return _vm.searchData()
+                        },
+                      },
+                    },
+                    [_vm._v("Cari")]
+                  ),
                 ]),
                 _vm._v(" "),
                 _c("table", { staticClass: "table" }, [

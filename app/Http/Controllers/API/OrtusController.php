@@ -15,7 +15,15 @@ class OrtusController extends Controller
      */
     public function index()
     {
-        $ortus = Ortus::getOrtus()->paginate(5);
+        if (isset($_GET['search']) && $_GET['search'] != '') {
+            $ortus = Ortus::getOrtus()
+                ->where('nama_ibu', 'like', '%' . $_GET['search'] . '%')
+                ->orWhere('nama_ayah', 'like', '%' . $_GET['search'] . '%')
+                ->orWhere('nik_ibu', 'like', '%' . $_GET['search'] . '%')
+                ->paginate(10);
+        } else {
+            $ortus = Ortus::getOrtus()->paginate(10);
+        }
         return response()->json($ortus);
     }
 
