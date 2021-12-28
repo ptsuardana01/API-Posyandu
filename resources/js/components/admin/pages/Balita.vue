@@ -274,8 +274,8 @@ export default {
         },
         getPemeriksaanBalita: function () {
             axios.get("/api/pemeriksaan-balita").then((response) => {
-                this.tambahPemeriksaan = response.data;
-                console.log(this.tambahPemeriksaan);
+                this.pemeriksaanBalita = response.data;
+                //console.log(this.pemeriksaanBalita);
             });
         },
         deleteData: function (id) {

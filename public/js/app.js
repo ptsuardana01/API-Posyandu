@@ -2507,8 +2507,7 @@ __webpack_require__.r(__webpack_exports__);
       var _this4 = this;
 
       axios.get("/api/pemeriksaan-balita").then(function (response) {
-        _this4.tambahPemeriksaan = response.data;
-        console.log(_this4.tambahPemeriksaan);
+        _this4.pemeriksaanBalita = response.data; //console.log(this.pemeriksaanBalita);
       });
     },
     deleteData: function deleteData(id) {
