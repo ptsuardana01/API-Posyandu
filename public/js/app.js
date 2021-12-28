@@ -41387,295 +41387,966 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c("div", { staticClass: "bg-white h-full py-24" }, [
+    _c("div", { attrs: { id: "beranda" } }, [
+      _vm._m(0),
+      _vm._v(" "),
+      _vm._m(1),
+      _vm._v(" "),
+      _c(
+        "div",
+        { staticClass: "flex items-center justify-center mt-4 mb-40" },
+        [
+          _c(
+            "div",
+            { staticClass: "p-8 bg-white w-4/5 shadow-lg rounded-lg" },
+            [
+              _vm._m(2),
+              _vm._v(" "),
+              _c("form", { staticClass: "flex gap-5", attrs: { action: "" } }, [
+                _c("input", {
+                  staticClass:
+                    "py-2 px-4 w-1/4 bg-gray-100 shadow-md rounded-lg",
+                  attrs: { type: "text", placeholder: "Masukan Nama Orangtua" },
+                }),
+                _vm._v(" "),
+                _c("input", {
+                  staticClass:
+                    "py-2 px-4 w-1/4 bg-gray-100 shadow-md rounded-lg",
+                  attrs: { type: "text", placeholder: "NIK Orangtua balita" },
+                }),
+                _vm._v(" "),
+                _c("input", {
+                  staticClass:
+                    "py-2 px-4 w-1/4 bg-gray-100 shadow-md rounded-lg",
+                  attrs: { type: "text", placeholder: "Nama Balita" },
+                }),
+                _vm._v(" "),
+                _c(
+                  "button",
+                  {
+                    staticClass:
+                      "rounded-lg bg-blue-100 w-52 px-7 py-4 font-bold text-lg shadow-lg hover:bg-indigo-500 cursor-pointer transition duration-700 transform hover:scale-110 motion-reduce:transform-none hover:text-white",
+                    attrs: {
+                      "data-bs-toggle": "modal",
+                      "data-bs-target": "#largeModal",
+                    },
+                  },
+                  [
+                    _vm._v(
+                      "\n                        Cari\n                    "
+                    ),
+                  ]
+                ),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  {
+                    staticClass: "modal fade",
+                    attrs: { id: "largeModal", tabindex: "-1" },
+                  },
+                  [
+                    _c("div", { staticClass: "modal-dialog modal-lg" }, [
+                      _c("div", { staticClass: "modal-content" }, [
+                        _vm._m(3),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "modal-body" }, [
+                          _c("div", { staticClass: "card" }, [
+                            _c("div", { staticClass: "card-body" }, [
+                              _c("h5", { staticClass: "card-title" }, [
+                                _vm._v(
+                                  "\n                                                Data Anda\n                                            "
+                                ),
+                              ]),
+                              _vm._v(" "),
+                              _vm._m(4),
+                              _vm._v(" "),
+                              _c(
+                                "div",
+                                {
+                                  staticClass: "tab-content pt-2",
+                                  attrs: { id: "myTabContent" },
+                                },
+                                [
+                                  _c(
+                                    "div",
+                                    {
+                                      staticClass: "tab-pane fade show active",
+                                      attrs: {
+                                        id: "pills-home",
+                                        role: "tabpanel",
+                                        "aria-labelledby": "home-tab",
+                                      },
+                                    },
+                                    _vm._l(
+                                      _vm.ortu.data,
+                                      function (ortu, index) {
+                                        return _c(
+                                          "table",
+                                          {
+                                            key: index,
+                                            staticClass:
+                                              "table table-borderless",
+                                          },
+                                          [
+                                            _c("tbody", [
+                                              _c("tr", [
+                                                _c(
+                                                  "td",
+                                                  { staticClass: "text-start" },
+                                                  [
+                                                    _vm._v(
+                                                      "\n                                                                    Nama Ibu\n                                                                "
+                                                    ),
+                                                  ]
+                                                ),
+                                                _vm._v(" "),
+                                                _c("td", [_vm._v(":")]),
+                                                _vm._v(" "),
+                                                _c(
+                                                  "td",
+                                                  { staticClass: "text-start" },
+                                                  [
+                                                    _vm._v(
+                                                      "\n                                                                    " +
+                                                        _vm._s(ortu.nama_ibu) +
+                                                        "\n                                                                "
+                                                    ),
+                                                  ]
+                                                ),
+                                              ]),
+                                              _vm._v(" "),
+                                              _c("tr", [
+                                                _c(
+                                                  "td",
+                                                  { staticClass: "text-start" },
+                                                  [
+                                                    _vm._v(
+                                                      "\n                                                                    Nama\n                                                                    Ayah\n                                                                "
+                                                    ),
+                                                  ]
+                                                ),
+                                                _vm._v(" "),
+                                                _c("td", [_vm._v(":")]),
+                                                _vm._v(" "),
+                                                _c(
+                                                  "td",
+                                                  { staticClass: "text-start" },
+                                                  [
+                                                    _vm._v(
+                                                      "\n                                                                    " +
+                                                        _vm._s(ortu.nama_ayah) +
+                                                        "\n                                                                "
+                                                    ),
+                                                  ]
+                                                ),
+                                              ]),
+                                              _vm._v(" "),
+                                              _c("tr", [
+                                                _c(
+                                                  "td",
+                                                  { staticClass: "text-start" },
+                                                  [
+                                                    _vm._v(
+                                                      "\n                                                                    NIK Ibu\n                                                                "
+                                                    ),
+                                                  ]
+                                                ),
+                                                _vm._v(" "),
+                                                _c("td", [_vm._v(":")]),
+                                                _vm._v(" "),
+                                                _c(
+                                                  "td",
+                                                  { staticClass: "text-start" },
+                                                  [
+                                                    _vm._v(
+                                                      "\n                                                                    " +
+                                                        _vm._s(ortu.nik_ibu) +
+                                                        "\n                                                                "
+                                                    ),
+                                                  ]
+                                                ),
+                                              ]),
+                                              _vm._v(" "),
+                                              _c("tr", [
+                                                _c(
+                                                  "td",
+                                                  { staticClass: "text-start" },
+                                                  [
+                                                    _vm._v(
+                                                      "\n                                                                    NIK Ayah\n                                                                "
+                                                    ),
+                                                  ]
+                                                ),
+                                                _vm._v(" "),
+                                                _c("td", [_vm._v(":")]),
+                                                _vm._v(" "),
+                                                _c(
+                                                  "td",
+                                                  { staticClass: "text-start" },
+                                                  [
+                                                    _vm._v(
+                                                      "\n                                                                    " +
+                                                        _vm._s(ortu.nik_ayah) +
+                                                        "\n                                                                "
+                                                    ),
+                                                  ]
+                                                ),
+                                              ]),
+                                              _vm._v(" "),
+                                              _c("tr", [
+                                                _c(
+                                                  "td",
+                                                  { staticClass: "text-start" },
+                                                  [
+                                                    _vm._v(
+                                                      "\n                                                                    Tempat\n                                                                    Lahir\n                                                                    Ibu\n                                                                "
+                                                    ),
+                                                  ]
+                                                ),
+                                                _vm._v(" "),
+                                                _c("td", [_vm._v(":")]),
+                                                _vm._v(" "),
+                                                _c(
+                                                  "td",
+                                                  { staticClass: "text-start" },
+                                                  [
+                                                    _vm._v(
+                                                      "\n                                                                    " +
+                                                        _vm._s(
+                                                          ortu.tmpt_lahir_ibu
+                                                        ) +
+                                                        "\n                                                                "
+                                                    ),
+                                                  ]
+                                                ),
+                                              ]),
+                                              _vm._v(" "),
+                                              _c("tr", [
+                                                _c(
+                                                  "td",
+                                                  { staticClass: "text-start" },
+                                                  [
+                                                    _vm._v(
+                                                      "\n                                                                    Tempat\n                                                                    Lahir\n                                                                    Ayah\n                                                                "
+                                                    ),
+                                                  ]
+                                                ),
+                                                _vm._v(" "),
+                                                _c("td", [_vm._v(":")]),
+                                                _vm._v(" "),
+                                                _c(
+                                                  "td",
+                                                  { staticClass: "text-start" },
+                                                  [
+                                                    _vm._v(
+                                                      "\n                                                                    " +
+                                                        _vm._s(
+                                                          ortu.tmpt_lahir_ayah
+                                                        ) +
+                                                        "\n                                                                "
+                                                    ),
+                                                  ]
+                                                ),
+                                              ]),
+                                              _vm._v(" "),
+                                              _c("tr", [
+                                                _c(
+                                                  "td",
+                                                  { staticClass: "text-start" },
+                                                  [
+                                                    _vm._v(
+                                                      "\n                                                                    Tanggal\n                                                                    Lahir\n                                                                    Ibu\n                                                                "
+                                                    ),
+                                                  ]
+                                                ),
+                                                _vm._v(" "),
+                                                _c("td", [_vm._v(":")]),
+                                                _vm._v(" "),
+                                                _c(
+                                                  "td",
+                                                  { staticClass: "text-start" },
+                                                  [
+                                                    _vm._v(
+                                                      "\n                                                                    " +
+                                                        _vm._s(
+                                                          ortu.tgl_lahir_ibu
+                                                        ) +
+                                                        "\n                                                                "
+                                                    ),
+                                                  ]
+                                                ),
+                                              ]),
+                                              _vm._v(" "),
+                                              _c("tr", [
+                                                _c(
+                                                  "td",
+                                                  { staticClass: "text-start" },
+                                                  [
+                                                    _vm._v(
+                                                      "\n                                                                    Tanggal\n                                                                    Lahir\n                                                                    Ayah\n                                                                "
+                                                    ),
+                                                  ]
+                                                ),
+                                                _vm._v(" "),
+                                                _c("td", [_vm._v(":")]),
+                                                _vm._v(" "),
+                                                _c(
+                                                  "td",
+                                                  { staticClass: "text-start" },
+                                                  [
+                                                    _vm._v(
+                                                      "\n                                                                    " +
+                                                        _vm._s(
+                                                          ortu.tgl_lahir_ayah
+                                                        ) +
+                                                        "\n                                                                "
+                                                    ),
+                                                  ]
+                                                ),
+                                              ]),
+                                              _vm._v(" "),
+                                              _c("tr", [
+                                                _c(
+                                                  "td",
+                                                  { staticClass: "text-start" },
+                                                  [
+                                                    _vm._v(
+                                                      "\n                                                                    Status\n                                                                    Ibu\n                                                                    Hamil\n                                                                "
+                                                    ),
+                                                  ]
+                                                ),
+                                                _vm._v(" "),
+                                                _c("td", [_vm._v(":")]),
+                                                _vm._v(" "),
+                                                _c(
+                                                  "td",
+                                                  { staticClass: "text-start" },
+                                                  [
+                                                    _vm._v(
+                                                      "\n                                                                    " +
+                                                        _vm._s(
+                                                          ortu.stts_bumil
+                                                        ) +
+                                                        "\n                                                                "
+                                                    ),
+                                                  ]
+                                                ),
+                                              ]),
+                                              _vm._v(" "),
+                                              _c("tr", [
+                                                _c(
+                                                  "td",
+                                                  { staticClass: "text-start" },
+                                                  [
+                                                    _vm._v(
+                                                      "\n                                                                    Tanggal\n                                                                    Meninggal\n                                                                "
+                                                    ),
+                                                  ]
+                                                ),
+                                                _vm._v(" "),
+                                                _c("td", [_vm._v(":")]),
+                                                _vm._v(" "),
+                                                _c(
+                                                  "td",
+                                                  { staticClass: "text-start" },
+                                                  [
+                                                    _vm._v(
+                                                      "\n                                                                    " +
+                                                        _vm._s(
+                                                          ortu.tgl_meninggal
+                                                        ) +
+                                                        "\n                                                                "
+                                                    ),
+                                                  ]
+                                                ),
+                                              ]),
+                                              _vm._v(" "),
+                                              _c("tr", [
+                                                _c(
+                                                  "td",
+                                                  { staticClass: "text-start" },
+                                                  [
+                                                    _vm._v(
+                                                      "\n                                                                    Alamat\n                                                                "
+                                                    ),
+                                                  ]
+                                                ),
+                                                _vm._v(" "),
+                                                _c("td", [_vm._v(":")]),
+                                                _vm._v(" "),
+                                                _c(
+                                                  "td",
+                                                  { staticClass: "text-start" },
+                                                  [
+                                                    _vm._v(
+                                                      "\n                                                                    " +
+                                                        _vm._s(ortu.alamat) +
+                                                        "\n                                                                "
+                                                    ),
+                                                  ]
+                                                ),
+                                              ]),
+                                              _vm._v(" "),
+                                              _c("tr", [
+                                                _c(
+                                                  "td",
+                                                  { staticClass: "text-start" },
+                                                  [
+                                                    _vm._v(
+                                                      "\n                                                                    No\n                                                                    Telepon\n                                                                "
+                                                    ),
+                                                  ]
+                                                ),
+                                                _vm._v(" "),
+                                                _c("td", [_vm._v(":")]),
+                                                _vm._v(" "),
+                                                _c(
+                                                  "td",
+                                                  { staticClass: "text-start" },
+                                                  [
+                                                    _vm._v(
+                                                      "\n                                                                    " +
+                                                        _vm._s(ortu.telp) +
+                                                        "\n                                                                "
+                                                    ),
+                                                  ]
+                                                ),
+                                              ]),
+                                            ]),
+                                          ]
+                                        )
+                                      }
+                                    ),
+                                    0
+                                  ),
+                                  _vm._v(" "),
+                                  _vm._m(5),
+                                  _vm._v(" "),
+                                  _vm._m(6),
+                                ]
+                              ),
+                            ]),
+                          ]),
+                        ]),
+                        _vm._v(" "),
+                        _vm._m(7),
+                      ]),
+                    ]),
+                  ]
+                ),
+              ]),
+            ]
+          ),
+        ]
+      ),
+      _vm._v(" "),
+      _vm._m(8),
+    ]),
+  ])
 }
 var staticRenderFns = [
   function () {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "bg-white h-full py-24" }, [
-      _c("div", { attrs: { id: "beranda" } }, [
-        _c("div", { staticClass: "py-12" }, [
-          _c("div", { staticClass: "max-w-7xl mx-auto sm:px-6 lg:px-8" }, [
+    return _c("div", { staticClass: "py-12" }, [
+      _c("div", { staticClass: "max-w-7xl mx-auto sm:px-6 lg:px-8" }, [
+        _c(
+          "div",
+          { staticClass: "bg-white overflow-hidden shadow-sm sm:rounded-lg" },
+          [
             _c(
               "div",
               {
-                staticClass: "bg-white overflow-hidden shadow-sm sm:rounded-lg",
+                staticClass:
+                  "p-6 bg-gray-100 font-bold border-b border-gray-200 shadow-lg text-center animate-pulse",
               },
               [
-                _c(
-                  "div",
-                  {
-                    staticClass:
-                      "p-6 bg-gray-100 font-bold border-b border-gray-200 shadow-lg text-center animate-pulse",
-                  },
-                  [
-                    _vm._v(
-                      "\n                        You're logged in!\n                    "
-                    ),
-                  ]
+                _vm._v(
+                  "\n                        You're logged in!\n                    "
                 ),
               ]
             ),
-          ]),
+          ]
+        ),
+      ]),
+    ])
+  },
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      {
+        staticClass:
+          "flex text-5xl justify-center items-center font-bold text-pink-400 bg-white sm:rounded md:rounded-lg shadow-lg w-full",
+      },
+      [
+        _c("div", { staticClass: "flex items-center justify-center pr-44" }, [
+          _vm._v("\n                Pos Layanan Terpadu (POSYANDU)"),
+          _c("br"),
+          _vm._v(
+            "\n                Demi Generasi Muda Yang Maju !\n            "
+          ),
         ]),
         _vm._v(" "),
-        _c(
-          "div",
-          {
-            staticClass:
-              "flex text-5xl justify-center items-center font-bold text-pink-400 bg-white sm:rounded md:rounded-lg shadow-lg w-full",
-          },
-          [
-            _c(
-              "div",
-              { staticClass: "flex items-center justify-center pr-44" },
-              [
-                _vm._v("\n                Pos Layanan Terpadu (POSYANDU)"),
+        _c("div", [
+          _c("img", {
+            staticClass: "w-82",
+            attrs: { src: "/img/Breastfeeding (1).gif", alt: "" },
+          }),
+        ]),
+      ]
+    )
+  },
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", {}, [
+      _c("h1", { staticClass: "text-4xl font-bold text-pink-400" }, [
+        _vm._v(
+          "\n                        Cari data anda !\n                    "
+        ),
+      ]),
+      _vm._v(" "),
+      _c("p", { staticClass: "text-xl mb-4" }, [_vm._v("Cari Data Anda :")]),
+    ])
+  },
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "modal-header" }, [
+      _c("button", {
+        staticClass: "btn-close",
+        attrs: {
+          type: "button",
+          "data-bs-dismiss": "modal",
+          "aria-label": "Close",
+        },
+      }),
+    ])
+  },
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "ul",
+      {
+        staticClass: "nav nav-pills mb-3",
+        attrs: { id: "pills-tab", role: "tablist" },
+      },
+      [
+        _c("li", { staticClass: "nav-item", attrs: { role: "presentation" } }, [
+          _c(
+            "button",
+            {
+              staticClass: "nav-link active",
+              attrs: {
+                id: "pills-home-tab",
+                "data-bs-toggle": "pill",
+                "data-bs-target": "#pills-home",
+                type: "button",
+                role: "tab",
+                "aria-controls": "pills-home",
+                "aria-selected": "true",
+              },
+            },
+            [
+              _vm._v(
+                "\n                                                        Data Orangtua\n                                                    "
+              ),
+            ]
+          ),
+        ]),
+        _vm._v(" "),
+        _c("li", { staticClass: "nav-item", attrs: { role: "presentation" } }, [
+          _c(
+            "button",
+            {
+              staticClass: "nav-link",
+              attrs: {
+                id: "pills-profile-tab",
+                "data-bs-toggle": "pill",
+                "data-bs-target": "#pills-profile",
+                type: "button",
+                role: "tab",
+                "aria-controls": "pills-profile",
+                "aria-selected": "false",
+              },
+            },
+            [
+              _vm._v(
+                "\n                                                        Data Balita\n                                                    "
+              ),
+            ]
+          ),
+        ]),
+        _vm._v(" "),
+        _c("li", { staticClass: "nav-item", attrs: { role: "presentation" } }, [
+          _c(
+            "button",
+            {
+              staticClass: "nav-link",
+              attrs: {
+                id: "pills-contact-tab",
+                "data-bs-toggle": "pill",
+                "data-bs-target": "#pills-contact",
+                type: "button",
+                role: "tab",
+                "aria-controls": "pills-contact",
+                "aria-selected": "false",
+              },
+            },
+            [
+              _vm._v(
+                "\n                                                        Data Pemeriksaan\n                                                        Bumil & Balita\n                                                    "
+              ),
+            ]
+          ),
+        ]),
+      ]
+    )
+  },
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      {
+        staticClass: "tab-pane fade",
+        attrs: {
+          id: "pills-profile",
+          role: "tabpanel",
+          "aria-labelledby": "profile-tab",
+        },
+      },
+      [
+        _c("tbody", [
+          _c("tr", [
+            _c("td", { staticClass: "text-start" }, [
+              _vm._v(
+                "\n                                                                Nama Balita\n                                                            "
+              ),
+            ]),
+            _vm._v(" "),
+            _c("td", [_vm._v(":")]),
+            _vm._v(" "),
+            _c("td", { staticClass: "text-start" }, [
+              _vm._v(
+                "\n                                                                {{}}\n                                                            "
+              ),
+            ]),
+          ]),
+          _vm._v(" "),
+          _c("tr", [
+            _c("td", { staticClass: "text-start" }, [
+              _vm._v(
+                "\n                                                                Tempat Lahir\n                                                            "
+              ),
+            ]),
+            _vm._v(" "),
+            _c("td", [_vm._v(":")]),
+            _vm._v(" "),
+            _c("td", { staticClass: "text-start" }, [
+              _vm._v(
+                "\n                                                                {{}}\n                                                            "
+              ),
+            ]),
+          ]),
+          _vm._v(" "),
+          _c("tr", [
+            _c("td", { staticClass: "text-start" }, [
+              _vm._v(
+                "\n                                                                Tanggal\n                                                                Lahir\n                                                            "
+              ),
+            ]),
+            _vm._v(" "),
+            _c("td", [_vm._v(":")]),
+            _vm._v(" "),
+            _c("td", { staticClass: "text-start" }, [
+              _vm._v(
+                "\n                                                                {{}}\n                                                            "
+              ),
+            ]),
+          ]),
+          _vm._v(" "),
+          _c("tr", [
+            _c("td", { staticClass: "text-start" }, [
+              _vm._v(
+                "\n                                                               Jenis Kelamin\n                                                            "
+              ),
+            ]),
+            _vm._v(" "),
+            _c("td", [_vm._v(":")]),
+            _vm._v(" "),
+            _c("td", { staticClass: "text-start" }, [
+              _vm._v(
+                "\n                                                                {{}}\n                                                            "
+              ),
+            ]),
+          ]),
+          _vm._v(" "),
+          _c("tr", [
+            _c("td", { staticClass: "text-start" }, [
+              _vm._v(
+                "\n                                                                Setatus Balita\n                                                            "
+              ),
+            ]),
+            _vm._v(" "),
+            _c("td", [_vm._v(":")]),
+            _vm._v(" "),
+            _c("td", { staticClass: "text-start" }, [
+              _vm._v(
+                "\n                                                                {{}}\n                                                            "
+              ),
+            ]),
+          ]),
+          _vm._v(" "),
+          _c("tr", [
+            _c("td", { staticClass: "text-start" }, [
+              _vm._v(
+                "\n                                                                Tanggal Meninggal\n                                                            "
+              ),
+            ]),
+            _vm._v(" "),
+            _c("td", [_vm._v(":")]),
+            _vm._v(" "),
+            _c("td", { staticClass: "text-start" }, [
+              _vm._v(
+                "\n                                                                {{}}\n                                                            "
+              ),
+            ]),
+          ]),
+        ]),
+      ]
+    )
+  },
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      {
+        staticClass: "tab-pane fade",
+        attrs: {
+          id: "pills-contact",
+          role: "tabpanel",
+          "aria-labelledby": "contact-tab",
+        },
+      },
+      [
+        _c("tbody", [
+          _c("h1", [_vm._v("Pemeriksaan Ibu Hamil")]),
+          _vm._v(" "),
+          _c("tr", [
+            _c("td", { staticClass: "text-start" }, [
+              _vm._v(
+                "\n                                                                Tinggi Badan\n                                                            "
+              ),
+            ]),
+            _vm._v(" "),
+            _c("td", [_vm._v(":")]),
+            _vm._v(" "),
+            _c("td", { staticClass: "text-start" }, [
+              _vm._v(
+                "\n                                                                {{}}\n                                                            "
+              ),
+            ]),
+          ]),
+          _vm._v(" "),
+          _c("tr", [
+            _c("td", { staticClass: "text-start" }, [
+              _vm._v(
+                "\n                                                                Berat Badan\n                                                            "
+              ),
+            ]),
+            _vm._v(" "),
+            _c("td", [_vm._v(":")]),
+            _vm._v(" "),
+            _c("td", { staticClass: "text-start" }, [
+              _vm._v(
+                "\n                                                                {{}}\n                                                            "
+              ),
+            ]),
+          ]),
+          _vm._v(" "),
+          _c("tr", [
+            _c("td", { staticClass: "text-start" }, [
+              _vm._v(
+                "\n                                                               Lingkar Lengan\n                                                            "
+              ),
+            ]),
+            _vm._v(" "),
+            _c("td", [_vm._v(":")]),
+            _vm._v(" "),
+            _c("td", { staticClass: "text-start" }, [
+              _vm._v(
+                "\n                                                                {{}}\n                                                            "
+              ),
+            ]),
+          ]),
+          _vm._v(" "),
+          _c("h1", [_vm._v("Pemeriksaan Balita")]),
+          _vm._v(" "),
+          _c("tr", [
+            _c("td", { staticClass: "text-start" }, [
+              _vm._v(
+                "\n                                                               Tinggi Badan\n                                                            "
+              ),
+            ]),
+            _vm._v(" "),
+            _c("td", [_vm._v(":")]),
+            _vm._v(" "),
+            _c("td", { staticClass: "text-start" }, [
+              _vm._v(
+                "\n                                                                {{}}\n                                                            "
+              ),
+            ]),
+          ]),
+          _vm._v(" "),
+          _c("tr", [
+            _c("td", { staticClass: "text-start" }, [
+              _vm._v(
+                "\n                                                                Berat Badan\n                                                            "
+              ),
+            ]),
+            _vm._v(" "),
+            _c("td", [_vm._v(":")]),
+            _vm._v(" "),
+            _c("td", { staticClass: "text-start" }, [
+              _vm._v(
+                "\n                                                                {{}}\n                                                            "
+              ),
+            ]),
+          ]),
+          _vm._v(" "),
+          _c("tr", [
+            _c("td", { staticClass: "text-start" }, [
+              _vm._v(
+                "\n                                                                Lingkar Kepala\n                                                            "
+              ),
+            ]),
+            _vm._v(" "),
+            _c("td", [_vm._v(":")]),
+            _vm._v(" "),
+            _c("td", { staticClass: "text-start" }, [
+              _vm._v(
+                "\n                                                                {{}}\n                                                            "
+              ),
+            ]),
+          ]),
+        ]),
+      ]
+    )
+  },
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "modal-footer" }, [
+      _c(
+        "button",
+        {
+          staticClass: "btn btn-secondary",
+          attrs: { type: "button", "data-bs-dismiss": "modal" },
+        },
+        [
+          _vm._v(
+            "\n                                        Close\n                                    "
+          ),
+        ]
+      ),
+    ])
+  },
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "h-full", attrs: { id: "tentang" } }, [
+      _c(
+        "h1",
+        {
+          staticClass:
+            "text-2xl pt-5 pb-12 text-pink-500 font-bold flex items-center justify-center",
+        },
+        [_vm._v("\n                Informasi untuk Anda\n            ")]
+      ),
+      _vm._v(" "),
+      _c("div", { staticClass: "px-24 grid grid-cols-2 bg-gray-100" }, [
+        _c("div", { staticClass: "flex items-center justify-center" }, [
+          _c("img", {
+            staticClass: "w-1/2 p-12",
+            attrs: { src: "/img/Asset scroll.png", alt: "images not found" },
+          }),
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "flex items-center justify-center" }, [
+          _c("div", { staticClass: "text-right" }, [
+            _c("h1", { staticClass: "text-4xl text-pink-300 font-bold" }, [
+              _vm._v(
+                "\n                            Manfaat ASI bagi Balita\n                        "
+              ),
+            ]),
+            _vm._v(" "),
+            _c("p", {}, [
+              _vm._v(
+                "\n                            Para ahli telah sepakat bahwa ASI merupakan\n                            asupan terbaik bagi bayi karena mengandung\n                            banyak nutrisi penting yang dibutuhkan bayi\n                            dalam tumbuh kembangnya. Kandungannya mulai dari\n                            vitamin, protein, lemak, karbohidrat, dan\n                            berbagai mineral penting lainnya. Mengingat\n                            begitu penting dan banyaknya manfaat ASI,\n                            pemerintah mengeluarkan peraturan tentang ASI\n                            eksklusif selama 6 bulan pertama.\n                        "
+              ),
+            ]),
+          ]),
+        ]),
+      ]),
+      _vm._v(" "),
+      _c("div", {}, [
+        _c("div", { staticClass: "px-24 grid grid-cols-2" }, [
+          _c("div", { staticClass: "flex items-center justify-center" }, [
+            _c("div", {}, [
+              _c("h1", { staticClass: "text-4xl text-pink-300 font-bold" }, [
+                _vm._v(
+                  "\n                                5 MEJA POSYANDU\n                            "
+                ),
+              ]),
+              _vm._v(" "),
+              _c("p", {}, [
+                _vm._v(
+                  "\n                                Meja 1 Pendaftaran balita, ibu hamil, ibu\n                                menyusui;"
+                ),
                 _c("br"),
                 _vm._v(
-                  "\n                Demi Generasi Muda Yang Maju !\n            "
+                  "\n                                Meja 2 Penimbangan dan pengukuran balita;"
                 ),
-              ]
-            ),
-            _vm._v(" "),
-            _c("div", [
-              _c("img", {
-                staticClass: "w-82",
-                attrs: { src: "/img/Breastfeeding (1).gif", alt: "" },
-              }),
-            ]),
-          ]
-        ),
-        _vm._v(" "),
-        _c(
-          "div",
-          { staticClass: "flex items-center justify-center mt-4 mb-40" },
-          [
-            _c(
-              "div",
-              { staticClass: "p-8 bg-white w-4/5 shadow-lg rounded-lg" },
-              [
-                _c("div", {}, [
-                  _c(
-                    "h1",
-                    { staticClass: "text-4xl font-bold text-pink-400" },
-                    [
-                      _vm._v(
-                        "\n                        Cari data anda !\n                    "
-                      ),
-                    ]
-                  ),
-                  _vm._v(" "),
-                  _c("p", { staticClass: "text-xl mb-4" }, [
-                    _vm._v("Cari Data Anda :"),
-                  ]),
-                ]),
-                _vm._v(" "),
-                _c(
-                  "form",
-                  { staticClass: "flex gap-5", attrs: { action: "" } },
-                  [
-                    _c("input", {
-                      staticClass:
-                        "py-2 px-4 w-1/4 bg-gray-100 shadow-md rounded-lg",
-                      attrs: {
-                        type: "text",
-                        placeholder: "Masukan Nama Orangtua",
-                      },
-                    }),
-                    _vm._v(" "),
-                    _c("input", {
-                      staticClass:
-                        "py-2 px-4 w-1/4 bg-gray-100 shadow-md rounded-lg",
-                      attrs: {
-                        type: "text",
-                        placeholder: "NIK Orangtua balita",
-                      },
-                    }),
-                    _vm._v(" "),
-                    _c("input", {
-                      staticClass:
-                        "py-2 px-4 w-1/4 bg-gray-100 shadow-md rounded-lg",
-                      attrs: { type: "text", placeholder: "Nama Balita" },
-                    }),
-                    _vm._v(" "),
-                    _c(
-                      "button",
-                      {
-                        staticClass:
-                          "rounded-lg bg-blue-100 w-52 px-7 py-4 font-bold text-lg shadow-lg hover:bg-indigo-500 cursor-pointer transition duration-700 transform hover:scale-110 motion-reduce:transform-none hover:text-white",
-                        attrs: {
-                          "data-bs-toggle": "modal",
-                          "data-bs-target": "#largeModal",
-                        },
-                      },
-                      [
-                        _vm._v(
-                          "\n                        Cari\n                    "
-                        ),
-                      ]
-                    ),
-                    _vm._v(" "),
-                    _c(
-                      "div",
-                      {
-                        staticClass: "modal fade",
-                        attrs: { id: "largeModal", tabindex: "-1" },
-                      },
-                      [
-                        _c("div", { staticClass: "modal-dialog modal-lg" }, [
-                          _c("div", { staticClass: "modal-content" }, [
-                            _c("div", { staticClass: "modal-header" }, [
-                              _c("h5", { staticClass: "modal-title" }, [
-                                _vm._v("Large Modal"),
-                              ]),
-                              _vm._v(" "),
-                              _c("button", {
-                                staticClass: "btn-close",
-                                attrs: {
-                                  type: "button",
-                                  "data-bs-dismiss": "modal",
-                                  "aria-label": "Close",
-                                },
-                              }),
-                            ]),
-                            _vm._v(" "),
-                            _c("div", { staticClass: "modal-body" }, [
-                              _vm._v(
-                                "\n                                    Non omnis incidunt qui sed occaecati\n                                    magni asperiores est mollitia. Soluta at\n                                    et reprehenderit. Placeat autem numquam\n                                    et fuga numquam. Tempora in facere\n                                    consequatur sit dolor ipsum. Consequatur\n                                    nemo amet incidunt est facilis. Dolorem\n                                    neque recusandae quo sit molestias sint\n                                    dignissimos.\n                                "
-                              ),
-                            ]),
-                            _vm._v(" "),
-                            _c("div", { staticClass: "modal-footer" }, [
-                              _c(
-                                "button",
-                                {
-                                  staticClass: "btn btn-secondary",
-                                  attrs: {
-                                    type: "button",
-                                    "data-bs-dismiss": "modal",
-                                  },
-                                },
-                                [
-                                  _vm._v(
-                                    "\n                                        Close\n                                    "
-                                  ),
-                                ]
-                              ),
-                              _vm._v(" "),
-                              _c(
-                                "button",
-                                {
-                                  staticClass: "btn btn-primary",
-                                  attrs: { type: "button" },
-                                },
-                                [
-                                  _vm._v(
-                                    "\n                                        Save changes\n                                    "
-                                  ),
-                                ]
-                              ),
-                            ]),
-                          ]),
-                        ]),
-                      ]
-                    ),
-                  ]
+                _c("br"),
+                _vm._v(
+                  "\n                                Meja 3 Pencatatan hasil penimbangan dan\n                                pengukuran;"
                 ),
-              ]
-            ),
-          ]
-        ),
-        _vm._v(" "),
-        _c("div", { staticClass: "h-full", attrs: { id: "tentang" } }, [
-          _c(
-            "h1",
-            {
-              staticClass:
-                "text-2xl pt-5 pb-12 text-pink-500 font-bold flex items-center justify-center",
-            },
-            [_vm._v("\n                Informasi untuk Anda\n            ")]
-          ),
-          _vm._v(" "),
-          _c("div", { staticClass: "px-24 grid grid-cols-2 bg-gray-100" }, [
-            _c("div", { staticClass: "flex items-center justify-center" }, [
-              _c("img", {
-                staticClass: "w-1/2 p-12",
-                attrs: {
-                  src: "/img/Asset scroll.png",
-                  alt: "images not found",
-                },
-              }),
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "flex items-center justify-center" }, [
-              _c("div", { staticClass: "text-right" }, [
-                _c("h1", { staticClass: "text-4xl text-pink-300 font-bold" }, [
-                  _vm._v(
-                    "\n                            Manfaat ASI bagi Balita\n                        "
-                  ),
-                ]),
-                _vm._v(" "),
-                _c("p", {}, [
-                  _vm._v(
-                    "\n                            Para ahli telah sepakat bahwa ASI merupakan\n                            asupan terbaik bagi bayi karena mengandung\n                            banyak nutrisi penting yang dibutuhkan bayi\n                            dalam tumbuh kembangnya. Kandungannya mulai dari\n                            vitamin, protein, lemak, karbohidrat, dan\n                            berbagai mineral penting lainnya. Mengingat\n                            begitu penting dan banyaknya manfaat ASI,\n                            pemerintah mengeluarkan peraturan tentang ASI\n                            eksklusif selama 6 bulan pertama.\n                        "
-                  ),
-                ]),
+                _c("br"),
+                _vm._v(
+                  "\n                                Meja 4 Penyuluhan dan Pelayanan gizi bagi\n                                ibu balita, ibu hamil dan ibu menyusui;\n                                dan."
+                ),
+                _c("br"),
+                _vm._v(
+                  "\n                                Meja 5 Pelayanan kesehatan, KB dan\n                                Imunisasi."
+                ),
+                _c("br"),
               ]),
             ]),
           ]),
           _vm._v(" "),
-          _c("div", {}, [
-            _c("div", { staticClass: "px-24 grid grid-cols-2" }, [
-              _c("div", { staticClass: "flex items-center justify-center" }, [
-                _c("div", {}, [
-                  _c(
-                    "h1",
-                    { staticClass: "text-4xl text-pink-300 font-bold" },
-                    [
-                      _vm._v(
-                        "\n                                5 MEJA POSYANDU\n                            "
-                      ),
-                    ]
-                  ),
-                  _vm._v(" "),
-                  _c("p", {}, [
-                    _vm._v(
-                      "\n                                Meja 1 Pendaftaran balita, ibu hamil, ibu\n                                menyusui;"
-                    ),
-                    _c("br"),
-                    _vm._v(
-                      "\n                                Meja 2 Penimbangan dan pengukuran balita;"
-                    ),
-                    _c("br"),
-                    _vm._v(
-                      "\n                                Meja 3 Pencatatan hasil penimbangan dan\n                                pengukuran;"
-                    ),
-                    _c("br"),
-                    _vm._v(
-                      "\n                                Meja 4 Penyuluhan dan Pelayanan gizi bagi\n                                ibu balita, ibu hamil dan ibu menyusui;\n                                dan."
-                    ),
-                    _c("br"),
-                    _vm._v(
-                      "\n                                Meja 5 Pelayanan kesehatan, KB dan\n                                Imunisasi."
-                    ),
-                    _c("br"),
-                  ]),
-                ]),
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "flex items-center justify-center" }, [
-                _c("img", {
-                  staticClass: "w-1/2 p-16",
-                  attrs: {
-                    src: "/img/Asset Posyandu 1.png",
-                    alt: "images not found",
-                  },
-                }),
-              ]),
-            ]),
+          _c("div", { staticClass: "flex items-center justify-center" }, [
+            _c("img", {
+              staticClass: "w-1/2 p-16",
+              attrs: {
+                src: "/img/Asset Posyandu 1.png",
+                alt: "images not found",
+              },
+            }),
           ]),
         ]),
       ]),

@@ -60,7 +60,6 @@
                             <div class="modal-dialog modal-lg">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h5 class="modal-title">Large Modal</h5>
                                         <button
                                             type="button"
                                             class="btn-close"
@@ -69,14 +68,440 @@
                                         ></button>
                                     </div>
                                     <div class="modal-body">
-                                        Non omnis incidunt qui sed occaecati
-                                        magni asperiores est mollitia. Soluta at
-                                        et reprehenderit. Placeat autem numquam
-                                        et fuga numquam. Tempora in facere
-                                        consequatur sit dolor ipsum. Consequatur
-                                        nemo amet incidunt est facilis. Dolorem
-                                        neque recusandae quo sit molestias sint
-                                        dignissimos.
+                                        <div class="card">
+                                            <div class="card-body">
+                                                <h5 class="card-title">
+                                                    Data Anda
+                                                </h5>
+
+                                                <!-- Pills Tabs -->
+                                                <ul
+                                                    class="nav nav-pills mb-3"
+                                                    id="pills-tab"
+                                                    role="tablist"
+                                                >
+                                                    <li
+                                                        class="nav-item"
+                                                        role="presentation"
+                                                    >
+                                                        <button
+                                                            class="nav-link active"
+                                                            id="pills-home-tab"
+                                                            data-bs-toggle="pill"
+                                                            data-bs-target="#pills-home"
+                                                            type="button"
+                                                            role="tab"
+                                                            aria-controls="pills-home"
+                                                            aria-selected="true"
+                                                        >
+                                                            Data Orangtua
+                                                        </button>
+                                                    </li>
+                                                    <li
+                                                        class="nav-item"
+                                                        role="presentation"
+                                                    >
+                                                        <button
+                                                            class="nav-link"
+                                                            id="pills-profile-tab"
+                                                            data-bs-toggle="pill"
+                                                            data-bs-target="#pills-profile"
+                                                            type="button"
+                                                            role="tab"
+                                                            aria-controls="pills-profile"
+                                                            aria-selected="false"
+                                                        >
+                                                            Data Balita
+                                                        </button>
+                                                    </li>
+                                                    <li
+                                                        class="nav-item"
+                                                        role="presentation"
+                                                    >
+                                                        <button
+                                                            class="nav-link"
+                                                            id="pills-contact-tab"
+                                                            data-bs-toggle="pill"
+                                                            data-bs-target="#pills-contact"
+                                                            type="button"
+                                                            role="tab"
+                                                            aria-controls="pills-contact"
+                                                            aria-selected="false"
+                                                        >
+                                                            Data Pemeriksaan
+                                                            Bumil & Balita
+                                                        </button>
+                                                    </li>
+                                                </ul>
+                                                <div
+                                                    class="tab-content pt-2"
+                                                    id="myTabContent"
+                                                >
+                                                    <div
+                                                        class="tab-pane fade show active"
+                                                        id="pills-home"
+                                                        role="tabpanel"
+                                                        aria-labelledby="home-tab"
+                                                    >
+                                                        <table
+                                                            class="table table-borderless" v-for="(ortu, index) in ortu.data" :key="index"
+                                                        >
+                                                            <tbody>
+                                                                <tr>
+                                                                    <td
+                                                                        class="text-start"
+                                                                    >
+                                                                        Nama Ibu
+                                                                    </td>
+                                                                    <td>:</td>
+                                                                    <td
+                                                                        class="text-start"
+                                                                    >
+                                                                        {{ ortu.nama_ibu }}
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td
+                                                                        class="text-start"
+                                                                    >
+                                                                        Nama
+                                                                        Ayah
+                                                                    </td>
+                                                                    <td>:</td>
+                                                                    <td
+                                                                        class="text-start"
+                                                                    >
+                                                                        {{ortu.nama_ayah }}
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td
+                                                                        class="text-start"
+                                                                    >
+                                                                        NIK Ibu
+                                                                    </td>
+                                                                    <td>:</td>
+                                                                    <td
+                                                                        class="text-start"
+                                                                    >
+                                                                        {{ortu.nik_ibu }}
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td
+                                                                        class="text-start"
+                                                                    >
+                                                                        NIK Ayah
+                                                                    </td>
+                                                                    <td>:</td>
+                                                                    <td
+                                                                        class="text-start"
+                                                                    >
+                                                                        {{ortu.nik_ayah}}
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td
+                                                                        class="text-start"
+                                                                    >
+                                                                        Tempat
+                                                                        Lahir
+                                                                        Ibu
+                                                                    </td>
+                                                                    <td>:</td>
+                                                                    <td
+                                                                        class="text-start"
+                                                                    >
+                                                                        {{ortu.tmpt_lahir_ibu}}
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td
+                                                                        class="text-start"
+                                                                    >
+                                                                        Tempat
+                                                                        Lahir
+                                                                        Ayah
+                                                                    </td>
+                                                                    <td>:</td>
+                                                                    <td
+                                                                        class="text-start"
+                                                                    >
+                                                                        {{ortu.tmpt_lahir_ayah}}
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td
+                                                                        class="text-start"
+                                                                    >
+                                                                        Tanggal
+                                                                        Lahir
+                                                                        Ibu
+                                                                    </td>
+                                                                    <td>:</td>
+                                                                    <td
+                                                                        class="text-start"
+                                                                    >
+                                                                        {{ortu.tgl_lahir_ibu}}
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td
+                                                                        class="text-start"
+                                                                    >
+                                                                        Tanggal
+                                                                        Lahir
+                                                                        Ayah
+                                                                    </td>
+                                                                    <td>:</td>
+                                                                    <td
+                                                                        class="text-start"
+                                                                    >
+                                                                        {{ortu.tgl_lahir_ayah}}
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td
+                                                                        class="text-start"
+                                                                    >
+                                                                        Status
+                                                                        Ibu
+                                                                        Hamil
+                                                                    </td>
+                                                                    <td>:</td>
+                                                                    <td
+                                                                        class="text-start"
+                                                                    >
+                                                                        {{ortu.stts_bumil}}
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td
+                                                                        class="text-start"
+                                                                    >
+                                                                        Tanggal
+                                                                        Meninggal
+                                                                    </td>
+                                                                    <td>:</td>
+                                                                    <td
+                                                                        class="text-start"
+                                                                    >
+                                                                        {{ortu.tgl_meninggal}}
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td
+                                                                        class="text-start"
+                                                                    >
+                                                                        Alamat
+                                                                    </td>
+                                                                    <td>:</td>
+                                                                    <td
+                                                                        class="text-start"
+                                                                    >
+                                                                        {{ortu.alamat}}
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td
+                                                                        class="text-start"
+                                                                    >
+                                                                        No
+                                                                        Telepon
+                                                                    </td>
+                                                                    <td>:</td>
+                                                                    <td
+                                                                        class="text-start"
+                                                                    >
+                                                                        {{ortu.telp}}
+                                                                    </td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                    <div
+                                                        class="tab-pane fade"
+                                                        id="pills-profile"
+                                                        role="tabpanel"
+                                                        aria-labelledby="profile-tab"
+                                                    >
+                                                        <tbody>
+                                                            <tr>
+                                                                <td
+                                                                    class="text-start"
+                                                                >
+                                                                    Nama Balita
+                                                                </td>
+                                                                <td>:</td>
+                                                                <td
+                                                                    class="text-start"
+                                                                >
+                                                                    {{}}
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td
+                                                                    class="text-start"
+                                                                >
+                                                                    Tempat Lahir
+                                                                </td>
+                                                                <td>:</td>
+                                                                <td
+                                                                    class="text-start"
+                                                                >
+                                                                    {{}}
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td
+                                                                    class="text-start"
+                                                                >
+                                                                    Tanggal
+                                                                    Lahir
+                                                                </td>
+                                                                <td>:</td>
+                                                                <td
+                                                                    class="text-start"
+                                                                >
+                                                                    {{}}
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td
+                                                                    class="text-start"
+                                                                >
+                                                                   Jenis Kelamin
+                                                                </td>
+                                                                <td>:</td>
+                                                                <td
+                                                                    class="text-start"
+                                                                >
+                                                                    {{}}
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td
+                                                                    class="text-start"
+                                                                >
+                                                                    Setatus Balita
+                                                                </td>
+                                                                <td>:</td>
+                                                                <td
+                                                                    class="text-start"
+                                                                >
+                                                                    {{}}
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td
+                                                                    class="text-start"
+                                                                >
+                                                                    Tanggal Meninggal
+                                                                </td>
+                                                                <td>:</td>
+                                                                <td
+                                                                    class="text-start"
+                                                                >
+                                                                    {{}}
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </div>
+                                                    <div
+                                                        class="tab-pane fade"
+                                                        id="pills-contact"
+                                                        role="tabpanel"
+                                                        aria-labelledby="contact-tab"
+                                                    >
+                                                        <tbody>
+                                                            <h1>Pemeriksaan Ibu Hamil</h1>
+                                                            <tr>
+                                                                <td
+                                                                    class="text-start"
+                                                                >
+                                                                    Tinggi Badan
+                                                                </td>
+                                                                <td>:</td>
+                                                                <td
+                                                                    class="text-start"
+                                                                >
+                                                                    {{}}
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td
+                                                                    class="text-start"
+                                                                >
+                                                                    Berat Badan
+                                                                </td>
+                                                                <td>:</td>
+                                                                <td
+                                                                    class="text-start"
+                                                                >
+                                                                    {{}}
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td
+                                                                    class="text-start"
+                                                                >
+                                                                   Lingkar Lengan
+                                                                </td>
+                                                                <td>:</td>
+                                                                <td
+                                                                    class="text-start"
+                                                                >
+                                                                    {{}}
+                                                                </td>
+                                                            </tr>
+
+                                                            <h1>Pemeriksaan Balita</h1>
+
+                                                            <tr>
+                                                                <td
+                                                                    class="text-start"
+                                                                >
+                                                                   Tinggi Badan
+                                                                </td>
+                                                                <td>:</td>
+                                                                <td
+                                                                    class="text-start"
+                                                                >
+                                                                    {{}}
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td
+                                                                    class="text-start"
+                                                                >
+                                                                    Berat Badan
+                                                                </td>
+                                                                <td>:</td>
+                                                                <td
+                                                                    class="text-start"
+                                                                >
+                                                                    {{}}
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td
+                                                                    class="text-start"
+                                                                >
+                                                                    Lingkar Kepala
+                                                                </td>
+                                                                <td>:</td>
+                                                                <td
+                                                                    class="text-start"
+                                                                >
+                                                                    {{}}
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </div>
+                                                </div>
+                                                <!-- End Pills Tabs -->
+                                            </div>
+                                        </div>
                                     </div>
                                     <div class="modal-footer">
                                         <button
@@ -85,12 +510,6 @@
                                             data-bs-dismiss="modal"
                                         >
                                             Close
-                                        </button>
-                                        <button
-                                            type="button"
-                                            class="btn btn-primary"
-                                        >
-                                            Save changes
                                         </button>
                                     </div>
                                 </div>
@@ -168,6 +587,7 @@
         </div>
     </div>
 </template>
+
 
 <style scoped>
 * {
