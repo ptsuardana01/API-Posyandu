@@ -587,7 +587,55 @@
         </div>
     </div>
 </template>
-
+<script>
+export default {
+    data() {
+        return {
+            s: "",
+            ortu: {},
+            balita: {},
+            pemeriksaanBumil: {},
+            pemeriksaanBalita: {},
+        };
+    },
+    mounted() {
+        this.getOrtu();
+        this.getBalita();
+        this.getpemeriksaanBumil();
+        this.getpemeriksaanBalita();
+    },
+    methods: {
+        getOrtu: function (page = 1) {
+            this.axios
+                .get("/api/ortu?page=" + page + "&search=" + this.s)
+                .then((response) => {
+                    this.ortu = response.data;
+                    console.log(this.ortu);
+                });
+        },
+        getBalita: function (page = 1) {
+            this.axios
+                .get("/api/balita?page=" + page + "&search=" + this.s)
+                .then((response) => {
+                    this.balita = response.data;
+                    console.log(this.balita);
+                });
+        },
+        getpemeriksaanBumil: function () {
+            this.axios.get("/api/pemeriksaan-bumil").then((response) => {
+                this.pemeriksaanBumil = response.data;
+                console.log(this.pemeriksaanBumil);
+            });
+        },
+        getpemeriksaanBalita: function () {
+            this.axios.get("/api/pemeriksaan-balita").then((response) => {
+                this.pemeriksaanBalita = response.data;
+                console.log(this.pemeriksaanBalita);
+            });
+        },
+    },
+};
+</script>
 
 <style scoped>
 * {
