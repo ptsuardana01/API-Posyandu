@@ -2216,8 +2216,13 @@ __webpack_require__.r(__webpack_exports__);
 /*!*************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/admin/pages/Balita.vue?vue&type=script&lang=js& ***!
   \*************************************************************************************************************************************************************************************************************************/
-/***/ (() => {
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
 //
 //
 //
@@ -2391,6 +2396,89 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  data: function data() {
+    return {
+      balitas: {},
+      kader: {},
+      ortu: {},
+      pemeriksaanBalita: {},
+      tambahPemeriksaan: {
+        id_balita: "",
+        tb: "",
+        bb: "",
+        lk: ""
+      },
+      no: 0,
+      s: ""
+    };
+  },
+  mounted: function mounted() {
+    var _this = this;
+
+    axios.get("/api/balita" + this.$route.params.id, this.tambahPemeriksaan).then(function (response) {
+      _this.tambahPemeriksaan.id_balita = response.data.id_balita;
+      _this.tambahPemeriksaan.tb = response.data.tb;
+      _this.tambahPemeriksaan.bb = response.data.bb;
+      _this.tambahPemeriksaan.lk = response.data.lk; // console.log(this.tambahPemeriksaan);
+    });
+    this.getDataBalitas();
+    this.getDetailOrtu();
+    this.getPemeriksaanBalita();
+  },
+  methods: {
+    getDataBalitas: function getDataBalitas() {
+      var _this2 = this;
+
+      var page = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1;
+      this.axios.get("/api/balita?page=" + page + "&search=" + this.s).then(function (response) {
+        _this2.balitas = response.data;
+        console.log(_this2.balitas);
+      });
+    },
+    getDetailOrtu: function getDetailOrtu() {
+      var _this3 = this;
+
+      var page = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1;
+      axios.get("/api/ortu").then(function (response) {
+        _this3.ortu = response.data;
+      });
+    },
+    getPemeriksaanBalita: function getPemeriksaanBalita() {
+      var _this4 = this;
+
+      axios.get("/api/pemeriksaan-balita").then(function (response) {
+        _this4.pemeriksaanBalita = response.data; //console.log(this.pemeriksaanBalita);
+      });
+    },
+    deleteData: function deleteData(id) {
+      var _this5 = this;
+
+      this.$swal.fire({
+        title: "Anda yakin?",
+        text: "Data yang dihapus tidak dapat dikembalikan!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Ya, Hapus data ini!",
+        cancelButtonText: "Batal"
+      }).then(function (result) {
+        if (result.value) {
+          _this5.axios["delete"]("/api/balita/" + id).then(function (response) {
+            _this5.$swal.fire("Terhapus!", "Data Balita berhasil terhapus.", "success");
+          });
+
+          _this5.getDataBalitas();
+        }
+      });
+    },
+    searchData: function searchData(e) {
+      // console.log(this.getDataBalitas);
+      this.getDataBalitas();
+    }
+  }
+});
 
 /***/ }),
 
@@ -6279,321 +6367,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
@@ -6644,6 +6417,11 @@ __webpack_require__.r(__webpack_exports__);
         _this4.pemeriksaanBalita = response.data;
         console.log(_this4.pemeriksaanBalita);
       });
+    },
+    getDataSearch: function getDataSearch(s) {
+      this.s = this.getOrtu();
+      console.log(this.s);
+      console.log("data udh ketangkep");
     }
   }
 });
@@ -7032,7 +6810,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n*[data-v-48cc2842] {\r\n    scroll-behavior: smooth;\n}\nbody[data-v-48cc2842] {\r\n    font-family: \"Nunito\", sans-serif;\n}\r\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n*[data-v-48cc2842] {\n    scroll-behavior: smooth;\n}\nbody[data-v-48cc2842] {\n    font-family: \"Nunito\", sans-serif;\n}\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -28860,9 +28638,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _Balita_vue_vue_type_template_id_7f4fc87f___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Balita.vue?vue&type=template&id=7f4fc87f& */ "./resources/js/components/admin/pages/Balita.vue?vue&type=template&id=7f4fc87f&");
 /* harmony import */ var _Balita_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Balita.vue?vue&type=script&lang=js& */ "./resources/js/components/admin/pages/Balita.vue?vue&type=script&lang=js&");
-/* harmony reexport (unknown) */ var __WEBPACK_REEXPORT_OBJECT__ = {};
-/* harmony reexport (unknown) */ for(const __WEBPACK_IMPORT_KEY__ in _Balita_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__) if(__WEBPACK_IMPORT_KEY__ !== "default") __WEBPACK_REEXPORT_OBJECT__[__WEBPACK_IMPORT_KEY__] = () => _Balita_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__[__WEBPACK_IMPORT_KEY__]
-/* harmony reexport (unknown) */ __webpack_require__.d(__webpack_exports__, __WEBPACK_REEXPORT_OBJECT__);
 /* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! !../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
@@ -30017,11 +29792,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Balita_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!../../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./Balita.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/admin/pages/Balita.vue?vue&type=script&lang=js&");
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Balita_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Balita_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__);
-/* harmony reexport (unknown) */ var __WEBPACK_REEXPORT_OBJECT__ = {};
-/* harmony reexport (unknown) */ for(const __WEBPACK_IMPORT_KEY__ in _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Balita_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__) if(__WEBPACK_IMPORT_KEY__ !== "default") __WEBPACK_REEXPORT_OBJECT__[__WEBPACK_IMPORT_KEY__] = () => _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Balita_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__[__WEBPACK_IMPORT_KEY__]
-/* harmony reexport (unknown) */ __webpack_require__.d(__webpack_exports__, __WEBPACK_REEXPORT_OBJECT__);
- /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((_node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Balita_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0___default())); 
+ /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Balita_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
 
 /***/ }),
 
@@ -41997,23 +41768,74 @@ var render = function () {
             [
               _vm._m(2),
               _vm._v(" "),
-              _c("form", { staticClass: "flex gap-5", attrs: { action: "" } }, [
+              _c("div", { staticClass: "flex gap-5", attrs: { action: "" } }, [
                 _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.s,
+                      expression: "s",
+                    },
+                  ],
                   staticClass:
                     "py-2 px-4 w-1/4 bg-gray-100 shadow-md rounded-lg",
                   attrs: { type: "text", placeholder: "Masukan Nama Orangtua" },
+                  domProps: { value: _vm.s },
+                  on: {
+                    input: function ($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.s = $event.target.value
+                    },
+                  },
                 }),
                 _vm._v(" "),
                 _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.s,
+                      expression: "s",
+                    },
+                  ],
                   staticClass:
                     "py-2 px-4 w-1/4 bg-gray-100 shadow-md rounded-lg",
                   attrs: { type: "text", placeholder: "NIK Orangtua balita" },
+                  domProps: { value: _vm.s },
+                  on: {
+                    input: function ($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.s = $event.target.value
+                    },
+                  },
                 }),
                 _vm._v(" "),
                 _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.s,
+                      expression: "s",
+                    },
+                  ],
                   staticClass:
                     "py-2 px-4 w-1/4 bg-gray-100 shadow-md rounded-lg",
                   attrs: { type: "text", placeholder: "Nama Balita" },
+                  domProps: { value: _vm.s },
+                  on: {
+                    input: function ($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.s = $event.target.value
+                    },
+                  },
                 }),
                 _vm._v(" "),
                 _c(
@@ -42025,12 +41847,13 @@ var render = function () {
                       "data-bs-toggle": "modal",
                       "data-bs-target": "#largeModal",
                     },
+                    on: {
+                      click: function ($event) {
+                        return _vm.getDataSearch()
+                      },
+                    },
                   },
-                  [
-                    _vm._v(
-                      "\n                        Cari\n                    "
-                    ),
-                  ]
+                  [_vm._v("Cari")]
                 ),
                 _vm._v(" "),
                 _c(
@@ -42048,9 +41871,7 @@ var render = function () {
                           _c("div", { staticClass: "card" }, [
                             _c("div", { staticClass: "card-body" }, [
                               _c("h5", { staticClass: "card-title" }, [
-                                _vm._v(
-                                  "\n                                                Data Anda\n                                            "
-                                ),
+                                _vm._v("Data Anda"),
                               ]),
                               _vm._v(" "),
                               _vm._m(4),
@@ -42088,11 +41909,7 @@ var render = function () {
                                                 _c(
                                                   "td",
                                                   { staticClass: "text-start" },
-                                                  [
-                                                    _vm._v(
-                                                      "\n                                                                    Nama Ibu\n                                                                "
-                                                    ),
-                                                  ]
+                                                  [_vm._v("Nama Ibu")]
                                                 ),
                                                 _vm._v(" "),
                                                 _c("td", [_vm._v(":")]),
@@ -42114,11 +41931,7 @@ var render = function () {
                                                 _c(
                                                   "td",
                                                   { staticClass: "text-start" },
-                                                  [
-                                                    _vm._v(
-                                                      "\n                                                                    Nama\n                                                                    Ayah\n                                                                "
-                                                    ),
-                                                  ]
+                                                  [_vm._v("Nama Ayah")]
                                                 ),
                                                 _vm._v(" "),
                                                 _c("td", [_vm._v(":")]),
@@ -42140,11 +41953,7 @@ var render = function () {
                                                 _c(
                                                   "td",
                                                   { staticClass: "text-start" },
-                                                  [
-                                                    _vm._v(
-                                                      "\n                                                                    NIK Ibu\n                                                                "
-                                                    ),
-                                                  ]
+                                                  [_vm._v("NIK Ibu")]
                                                 ),
                                                 _vm._v(" "),
                                                 _c("td", [_vm._v(":")]),
@@ -42166,11 +41975,7 @@ var render = function () {
                                                 _c(
                                                   "td",
                                                   { staticClass: "text-start" },
-                                                  [
-                                                    _vm._v(
-                                                      "\n                                                                    NIK Ayah\n                                                                "
-                                                    ),
-                                                  ]
+                                                  [_vm._v("NIK Ayah")]
                                                 ),
                                                 _vm._v(" "),
                                                 _c("td", [_vm._v(":")]),
@@ -42192,11 +41997,7 @@ var render = function () {
                                                 _c(
                                                   "td",
                                                   { staticClass: "text-start" },
-                                                  [
-                                                    _vm._v(
-                                                      "\n                                                                    Tempat\n                                                                    Lahir\n                                                                    Ibu\n                                                                "
-                                                    ),
-                                                  ]
+                                                  [_vm._v("Tempat Lahir Ibu")]
                                                 ),
                                                 _vm._v(" "),
                                                 _c("td", [_vm._v(":")]),
@@ -42220,11 +42021,7 @@ var render = function () {
                                                 _c(
                                                   "td",
                                                   { staticClass: "text-start" },
-                                                  [
-                                                    _vm._v(
-                                                      "\n                                                                    Tempat\n                                                                    Lahir\n                                                                    Ayah\n                                                                "
-                                                    ),
-                                                  ]
+                                                  [_vm._v("Tempat Lahir Ayah")]
                                                 ),
                                                 _vm._v(" "),
                                                 _c("td", [_vm._v(":")]),
@@ -42248,11 +42045,7 @@ var render = function () {
                                                 _c(
                                                   "td",
                                                   { staticClass: "text-start" },
-                                                  [
-                                                    _vm._v(
-                                                      "\n                                                                    Tanggal\n                                                                    Lahir\n                                                                    Ibu\n                                                                "
-                                                    ),
-                                                  ]
+                                                  [_vm._v("Tanggal Lahir Ibu")]
                                                 ),
                                                 _vm._v(" "),
                                                 _c("td", [_vm._v(":")]),
@@ -42276,11 +42069,7 @@ var render = function () {
                                                 _c(
                                                   "td",
                                                   { staticClass: "text-start" },
-                                                  [
-                                                    _vm._v(
-                                                      "\n                                                                    Tanggal\n                                                                    Lahir\n                                                                    Ayah\n                                                                "
-                                                    ),
-                                                  ]
+                                                  [_vm._v("Tanggal Lahir Ayah")]
                                                 ),
                                                 _vm._v(" "),
                                                 _c("td", [_vm._v(":")]),
@@ -42304,11 +42093,7 @@ var render = function () {
                                                 _c(
                                                   "td",
                                                   { staticClass: "text-start" },
-                                                  [
-                                                    _vm._v(
-                                                      "\n                                                                    Status\n                                                                    Ibu\n                                                                    Hamil\n                                                                "
-                                                    ),
-                                                  ]
+                                                  [_vm._v("Status Ibu Hamil")]
                                                 ),
                                                 _vm._v(" "),
                                                 _c("td", [_vm._v(":")]),
@@ -42332,11 +42117,7 @@ var render = function () {
                                                 _c(
                                                   "td",
                                                   { staticClass: "text-start" },
-                                                  [
-                                                    _vm._v(
-                                                      "\n                                                                    Tanggal\n                                                                    Meninggal\n                                                                "
-                                                    ),
-                                                  ]
+                                                  [_vm._v("Tanggal Meninggal")]
                                                 ),
                                                 _vm._v(" "),
                                                 _c("td", [_vm._v(":")]),
@@ -42360,11 +42141,7 @@ var render = function () {
                                                 _c(
                                                   "td",
                                                   { staticClass: "text-start" },
-                                                  [
-                                                    _vm._v(
-                                                      "\n                                                                    Alamat\n                                                                "
-                                                    ),
-                                                  ]
+                                                  [_vm._v("Alamat")]
                                                 ),
                                                 _vm._v(" "),
                                                 _c("td", [_vm._v(":")]),
@@ -42386,11 +42163,7 @@ var render = function () {
                                                 _c(
                                                   "td",
                                                   { staticClass: "text-start" },
-                                                  [
-                                                    _vm._v(
-                                                      "\n                                                                    No\n                                                                    Telepon\n                                                                "
-                                                    ),
-                                                  ]
+                                                  [_vm._v("No Telepon")]
                                                 ),
                                                 _vm._v(" "),
                                                 _c("td", [_vm._v(":")]),
@@ -42456,11 +42229,7 @@ var staticRenderFns = [
                 staticClass:
                   "p-6 bg-gray-100 font-bold border-b border-gray-200 shadow-lg text-center animate-pulse",
               },
-              [
-                _vm._v(
-                  "\n                        You're logged in!\n                    "
-                ),
-              ]
+              [_vm._v("You're logged in!")]
             ),
           ]
         ),
@@ -42479,7 +42248,9 @@ var staticRenderFns = [
       },
       [
         _c("div", { staticClass: "flex items-center justify-center pr-44" }, [
-          _vm._v("\n                Pos Layanan Terpadu (POSYANDU)"),
+          _vm._v(
+            "\n                Pos Layanan Terpadu (POSYANDU)\n                "
+          ),
           _c("br"),
           _vm._v(
             "\n                Demi Generasi Muda Yang Maju !\n            "
@@ -42501,9 +42272,7 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("div", {}, [
       _c("h1", { staticClass: "text-4xl font-bold text-pink-400" }, [
-        _vm._v(
-          "\n                        Cari data anda !\n                    "
-        ),
+        _vm._v("Cari data anda !"),
       ]),
       _vm._v(" "),
       _c("p", { staticClass: "text-xl mb-4" }, [_vm._v("Cari Data Anda :")]),
@@ -42550,11 +42319,7 @@ var staticRenderFns = [
                 "aria-selected": "true",
               },
             },
-            [
-              _vm._v(
-                "\n                                                        Data Orangtua\n                                                    "
-              ),
-            ]
+            [_vm._v("Data Orangtua")]
           ),
         ]),
         _vm._v(" "),
@@ -42573,11 +42338,7 @@ var staticRenderFns = [
                 "aria-selected": "false",
               },
             },
-            [
-              _vm._v(
-                "\n                                                        Data Balita\n                                                    "
-              ),
-            ]
+            [_vm._v("Data Balita")]
           ),
         ]),
         _vm._v(" "),
@@ -42596,11 +42357,7 @@ var staticRenderFns = [
                 "aria-selected": "false",
               },
             },
-            [
-              _vm._v(
-                "\n                                                        Data Pemeriksaan\n                                                        Bumil & Balita\n                                                    "
-              ),
-            ]
+            [_vm._v("Data Pemeriksaan Bumil & Balita")]
           ),
         ]),
       ]
@@ -42623,99 +42380,53 @@ var staticRenderFns = [
       [
         _c("tbody", [
           _c("tr", [
-            _c("td", { staticClass: "text-start" }, [
-              _vm._v(
-                "\n                                                                Nama Balita\n                                                            "
-              ),
-            ]),
+            _c("td", { staticClass: "text-start" }, [_vm._v("Nama Balita")]),
             _vm._v(" "),
             _c("td", [_vm._v(":")]),
             _vm._v(" "),
-            _c("td", { staticClass: "text-start" }, [
-              _vm._v(
-                "\n                                                                {{}}\n                                                            "
-              ),
-            ]),
+            _c("td", { staticClass: "text-start" }, [_vm._v("{{}}")]),
+          ]),
+          _vm._v(" "),
+          _c("tr", [
+            _c("td", { staticClass: "text-start" }, [_vm._v("Tempat Lahir")]),
+            _vm._v(" "),
+            _c("td", [_vm._v(":")]),
+            _vm._v(" "),
+            _c("td", { staticClass: "text-start" }, [_vm._v("{{}}")]),
+          ]),
+          _vm._v(" "),
+          _c("tr", [
+            _c("td", { staticClass: "text-start" }, [_vm._v("Tanggal Lahir")]),
+            _vm._v(" "),
+            _c("td", [_vm._v(":")]),
+            _vm._v(" "),
+            _c("td", { staticClass: "text-start" }, [_vm._v("{{}}")]),
+          ]),
+          _vm._v(" "),
+          _c("tr", [
+            _c("td", { staticClass: "text-start" }, [_vm._v("Jenis Kelamin")]),
+            _vm._v(" "),
+            _c("td", [_vm._v(":")]),
+            _vm._v(" "),
+            _c("td", { staticClass: "text-start" }, [_vm._v("{{}}")]),
+          ]),
+          _vm._v(" "),
+          _c("tr", [
+            _c("td", { staticClass: "text-start" }, [_vm._v("Setatus Balita")]),
+            _vm._v(" "),
+            _c("td", [_vm._v(":")]),
+            _vm._v(" "),
+            _c("td", { staticClass: "text-start" }, [_vm._v("{{}}")]),
           ]),
           _vm._v(" "),
           _c("tr", [
             _c("td", { staticClass: "text-start" }, [
-              _vm._v(
-                "\n                                                                Tempat Lahir\n                                                            "
-              ),
+              _vm._v("Tanggal Meninggal"),
             ]),
             _vm._v(" "),
             _c("td", [_vm._v(":")]),
             _vm._v(" "),
-            _c("td", { staticClass: "text-start" }, [
-              _vm._v(
-                "\n                                                                {{}}\n                                                            "
-              ),
-            ]),
-          ]),
-          _vm._v(" "),
-          _c("tr", [
-            _c("td", { staticClass: "text-start" }, [
-              _vm._v(
-                "\n                                                                Tanggal\n                                                                Lahir\n                                                            "
-              ),
-            ]),
-            _vm._v(" "),
-            _c("td", [_vm._v(":")]),
-            _vm._v(" "),
-            _c("td", { staticClass: "text-start" }, [
-              _vm._v(
-                "\n                                                                {{}}\n                                                            "
-              ),
-            ]),
-          ]),
-          _vm._v(" "),
-          _c("tr", [
-            _c("td", { staticClass: "text-start" }, [
-              _vm._v(
-                "\n                                                               Jenis Kelamin\n                                                            "
-              ),
-            ]),
-            _vm._v(" "),
-            _c("td", [_vm._v(":")]),
-            _vm._v(" "),
-            _c("td", { staticClass: "text-start" }, [
-              _vm._v(
-                "\n                                                                {{}}\n                                                            "
-              ),
-            ]),
-          ]),
-          _vm._v(" "),
-          _c("tr", [
-            _c("td", { staticClass: "text-start" }, [
-              _vm._v(
-                "\n                                                                Setatus Balita\n                                                            "
-              ),
-            ]),
-            _vm._v(" "),
-            _c("td", [_vm._v(":")]),
-            _vm._v(" "),
-            _c("td", { staticClass: "text-start" }, [
-              _vm._v(
-                "\n                                                                {{}}\n                                                            "
-              ),
-            ]),
-          ]),
-          _vm._v(" "),
-          _c("tr", [
-            _c("td", { staticClass: "text-start" }, [
-              _vm._v(
-                "\n                                                                Tanggal Meninggal\n                                                            "
-              ),
-            ]),
-            _vm._v(" "),
-            _c("td", [_vm._v(":")]),
-            _vm._v(" "),
-            _c("td", { staticClass: "text-start" }, [
-              _vm._v(
-                "\n                                                                {{}}\n                                                            "
-              ),
-            ]),
+            _c("td", { staticClass: "text-start" }, [_vm._v("{{}}")]),
           ]),
         ]),
       ]
@@ -42740,101 +42451,53 @@ var staticRenderFns = [
           _c("h1", [_vm._v("Pemeriksaan Ibu Hamil")]),
           _vm._v(" "),
           _c("tr", [
-            _c("td", { staticClass: "text-start" }, [
-              _vm._v(
-                "\n                                                                Tinggi Badan\n                                                            "
-              ),
-            ]),
+            _c("td", { staticClass: "text-start" }, [_vm._v("Tinggi Badan")]),
             _vm._v(" "),
             _c("td", [_vm._v(":")]),
             _vm._v(" "),
-            _c("td", { staticClass: "text-start" }, [
-              _vm._v(
-                "\n                                                                {{}}\n                                                            "
-              ),
-            ]),
+            _c("td", { staticClass: "text-start" }, [_vm._v("{{}}")]),
           ]),
           _vm._v(" "),
           _c("tr", [
-            _c("td", { staticClass: "text-start" }, [
-              _vm._v(
-                "\n                                                                Berat Badan\n                                                            "
-              ),
-            ]),
+            _c("td", { staticClass: "text-start" }, [_vm._v("Berat Badan")]),
             _vm._v(" "),
             _c("td", [_vm._v(":")]),
             _vm._v(" "),
-            _c("td", { staticClass: "text-start" }, [
-              _vm._v(
-                "\n                                                                {{}}\n                                                            "
-              ),
-            ]),
+            _c("td", { staticClass: "text-start" }, [_vm._v("{{}}")]),
           ]),
           _vm._v(" "),
           _c("tr", [
-            _c("td", { staticClass: "text-start" }, [
-              _vm._v(
-                "\n                                                               Lingkar Lengan\n                                                            "
-              ),
-            ]),
+            _c("td", { staticClass: "text-start" }, [_vm._v("Lingkar Lengan")]),
             _vm._v(" "),
             _c("td", [_vm._v(":")]),
             _vm._v(" "),
-            _c("td", { staticClass: "text-start" }, [
-              _vm._v(
-                "\n                                                                {{}}\n                                                            "
-              ),
-            ]),
+            _c("td", { staticClass: "text-start" }, [_vm._v("{{}}")]),
           ]),
           _vm._v(" "),
           _c("h1", [_vm._v("Pemeriksaan Balita")]),
           _vm._v(" "),
           _c("tr", [
-            _c("td", { staticClass: "text-start" }, [
-              _vm._v(
-                "\n                                                               Tinggi Badan\n                                                            "
-              ),
-            ]),
+            _c("td", { staticClass: "text-start" }, [_vm._v("Tinggi Badan")]),
             _vm._v(" "),
             _c("td", [_vm._v(":")]),
             _vm._v(" "),
-            _c("td", { staticClass: "text-start" }, [
-              _vm._v(
-                "\n                                                                {{}}\n                                                            "
-              ),
-            ]),
+            _c("td", { staticClass: "text-start" }, [_vm._v("{{}}")]),
           ]),
           _vm._v(" "),
           _c("tr", [
-            _c("td", { staticClass: "text-start" }, [
-              _vm._v(
-                "\n                                                                Berat Badan\n                                                            "
-              ),
-            ]),
+            _c("td", { staticClass: "text-start" }, [_vm._v("Berat Badan")]),
             _vm._v(" "),
             _c("td", [_vm._v(":")]),
             _vm._v(" "),
-            _c("td", { staticClass: "text-start" }, [
-              _vm._v(
-                "\n                                                                {{}}\n                                                            "
-              ),
-            ]),
+            _c("td", { staticClass: "text-start" }, [_vm._v("{{}}")]),
           ]),
           _vm._v(" "),
           _c("tr", [
-            _c("td", { staticClass: "text-start" }, [
-              _vm._v(
-                "\n                                                                Lingkar Kepala\n                                                            "
-              ),
-            ]),
+            _c("td", { staticClass: "text-start" }, [_vm._v("Lingkar Kepala")]),
             _vm._v(" "),
             _c("td", [_vm._v(":")]),
             _vm._v(" "),
-            _c("td", { staticClass: "text-start" }, [
-              _vm._v(
-                "\n                                                                {{}}\n                                                            "
-              ),
-            ]),
+            _c("td", { staticClass: "text-start" }, [_vm._v("{{}}")]),
           ]),
         ]),
       ]
@@ -42851,11 +42514,7 @@ var staticRenderFns = [
           staticClass: "btn btn-secondary",
           attrs: { type: "button", "data-bs-dismiss": "modal" },
         },
-        [
-          _vm._v(
-            "\n                                        Close\n                                    "
-          ),
-        ]
+        [_vm._v("Close")]
       ),
     ])
   },
@@ -42870,7 +42529,7 @@ var staticRenderFns = [
           staticClass:
             "text-2xl pt-5 pb-12 text-pink-500 font-bold flex items-center justify-center",
         },
-        [_vm._v("\n                Informasi untuk Anda\n            ")]
+        [_vm._v("Informasi untuk Anda")]
       ),
       _vm._v(" "),
       _c("div", { staticClass: "px-24 grid grid-cols-2 bg-gray-100" }, [
@@ -42884,14 +42543,12 @@ var staticRenderFns = [
         _c("div", { staticClass: "flex items-center justify-center" }, [
           _c("div", { staticClass: "text-right" }, [
             _c("h1", { staticClass: "text-4xl text-pink-300 font-bold" }, [
-              _vm._v(
-                "\n                            Manfaat ASI bagi Balita\n                        "
-              ),
+              _vm._v("Manfaat ASI bagi Balita"),
             ]),
             _vm._v(" "),
             _c("p", {}, [
               _vm._v(
-                "\n                            Para ahli telah sepakat bahwa ASI merupakan\n                            asupan terbaik bagi bayi karena mengandung\n                            banyak nutrisi penting yang dibutuhkan bayi\n                            dalam tumbuh kembangnya. Kandungannya mulai dari\n                            vitamin, protein, lemak, karbohidrat, dan\n                            berbagai mineral penting lainnya. Mengingat\n                            begitu penting dan banyaknya manfaat ASI,\n                            pemerintah mengeluarkan peraturan tentang ASI\n                            eksklusif selama 6 bulan pertama.\n                        "
+                "Para ahli telah sepakat bahwa ASI merupakan asupan terbaik bagi bayi karena mengandung banyak nutrisi penting yang dibutuhkan bayi dalam tumbuh kembangnya. Kandungannya mulai dari vitamin, protein, lemak, karbohidrat, dan berbagai mineral penting lainnya. Mengingat begitu penting dan banyaknya manfaat ASI, pemerintah mengeluarkan peraturan tentang ASI eksklusif selama 6 bulan pertama."
               ),
             ]),
           ]),
@@ -42903,30 +42560,28 @@ var staticRenderFns = [
           _c("div", { staticClass: "flex items-center justify-center" }, [
             _c("div", {}, [
               _c("h1", { staticClass: "text-4xl text-pink-300 font-bold" }, [
-                _vm._v(
-                  "\n                                5 MEJA POSYANDU\n                            "
-                ),
+                _vm._v("5 MEJA POSYANDU"),
               ]),
               _vm._v(" "),
               _c("p", {}, [
                 _vm._v(
-                  "\n                                Meja 1 Pendaftaran balita, ibu hamil, ibu\n                                menyusui;"
+                  "\n                                Meja 1 Pendaftaran balita, ibu hamil, ibu menyusui;\n                                "
                 ),
                 _c("br"),
                 _vm._v(
-                  "\n                                Meja 2 Penimbangan dan pengukuran balita;"
+                  "\n                                Meja 2 Penimbangan dan pengukuran balita;\n                                "
                 ),
                 _c("br"),
                 _vm._v(
-                  "\n                                Meja 3 Pencatatan hasil penimbangan dan\n                                pengukuran;"
+                  "\n                                Meja 3 Pencatatan hasil penimbangan dan pengukuran;\n                                "
                 ),
                 _c("br"),
                 _vm._v(
-                  "\n                                Meja 4 Penyuluhan dan Pelayanan gizi bagi\n                                ibu balita, ibu hamil dan ibu menyusui;\n                                dan."
+                  "\n                                Meja 4 Penyuluhan dan Pelayanan gizi bagi ibu balita, ibu hamil dan ibu menyusui; dan.\n                                "
                 ),
                 _c("br"),
                 _vm._v(
-                  "\n                                Meja 5 Pelayanan kesehatan, KB dan\n                                Imunisasi."
+                  "\n                                Meja 5 Pelayanan kesehatan, KB dan Imunisasi.\n                                "
                 ),
                 _c("br"),
               ]),
@@ -58577,7 +58232,7 @@ Vue.compile = compileToFunctions;
 /***/ ((module) => {
 
 "use strict";
-module.exports = JSON.parse('{"_args":[["axios@0.21.4","C:\\\\laragon\\\\www\\\\API-Posyandu"]],"_development":true,"_from":"axios@0.21.4","_id":"axios@0.21.4","_inBundle":false,"_integrity":"sha512-ut5vewkiu8jjGBdqpM44XxjuCjq9LAKeHVmoVfHVzy8eHgxxq8SbAVQNovDA8mVi05kP0Ea/n/UzcSHcTJQfNg==","_location":"/axios","_phantomChildren":{},"_requested":{"type":"version","registry":true,"raw":"axios@0.21.4","name":"axios","escapedName":"axios","rawSpec":"0.21.4","saveSpec":null,"fetchSpec":"0.21.4"},"_requiredBy":["#DEV:/"],"_resolved":"https://registry.npmjs.org/axios/-/axios-0.21.4.tgz","_spec":"0.21.4","_where":"C:\\\\laragon\\\\www\\\\API-Posyandu","author":{"name":"Matt Zabriskie"},"browser":{"./lib/adapters/http.js":"./lib/adapters/xhr.js"},"bugs":{"url":"https://github.com/axios/axios/issues"},"bundlesize":[{"path":"./dist/axios.min.js","threshold":"5kB"}],"dependencies":{"follow-redirects":"^1.14.0"},"description":"Promise based HTTP client for the browser and node.js","devDependencies":{"coveralls":"^3.0.0","es6-promise":"^4.2.4","grunt":"^1.3.0","grunt-banner":"^0.6.0","grunt-cli":"^1.2.0","grunt-contrib-clean":"^1.1.0","grunt-contrib-watch":"^1.0.0","grunt-eslint":"^23.0.0","grunt-karma":"^4.0.0","grunt-mocha-test":"^0.13.3","grunt-ts":"^6.0.0-beta.19","grunt-webpack":"^4.0.2","istanbul-instrumenter-loader":"^1.0.0","jasmine-core":"^2.4.1","karma":"^6.3.2","karma-chrome-launcher":"^3.1.0","karma-firefox-launcher":"^2.1.0","karma-jasmine":"^1.1.1","karma-jasmine-ajax":"^0.1.13","karma-safari-launcher":"^1.0.0","karma-sauce-launcher":"^4.3.6","karma-sinon":"^1.0.5","karma-sourcemap-loader":"^0.3.8","karma-webpack":"^4.0.2","load-grunt-tasks":"^3.5.2","minimist":"^1.2.0","mocha":"^8.2.1","sinon":"^4.5.0","terser-webpack-plugin":"^4.2.3","typescript":"^4.0.5","url-search-params":"^0.10.0","webpack":"^4.44.2","webpack-dev-server":"^3.11.0"},"homepage":"https://axios-http.com","jsdelivr":"dist/axios.min.js","keywords":["xhr","http","ajax","promise","node"],"license":"MIT","main":"index.js","name":"axios","repository":{"type":"git","url":"git+https://github.com/axios/axios.git"},"scripts":{"build":"NODE_ENV=production grunt build","coveralls":"cat coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js","examples":"node ./examples/server.js","fix":"eslint --fix lib/**/*.js","postversion":"git push && git push --tags","preversion":"npm test","start":"node ./sandbox/server.js","test":"grunt test","version":"npm run build && grunt version && git add -A dist && git add CHANGELOG.md bower.json package.json"},"typings":"./index.d.ts","unpkg":"dist/axios.min.js","version":"0.21.4"}');
+module.exports = JSON.parse('{"_args":[["axios@0.21.4","D:\\\\Programming\\\\Web Programming\\\\Tugas Kampus\\\\Teknologi Web\\\\Posyandu-API"]],"_development":true,"_from":"axios@0.21.4","_id":"axios@0.21.4","_inBundle":false,"_integrity":"sha512-ut5vewkiu8jjGBdqpM44XxjuCjq9LAKeHVmoVfHVzy8eHgxxq8SbAVQNovDA8mVi05kP0Ea/n/UzcSHcTJQfNg==","_location":"/axios","_phantomChildren":{},"_requested":{"type":"version","registry":true,"raw":"axios@0.21.4","name":"axios","escapedName":"axios","rawSpec":"0.21.4","saveSpec":null,"fetchSpec":"0.21.4"},"_requiredBy":["#DEV:/"],"_resolved":"https://registry.npmjs.org/axios/-/axios-0.21.4.tgz","_spec":"0.21.4","_where":"D:\\\\Programming\\\\Web Programming\\\\Tugas Kampus\\\\Teknologi Web\\\\Posyandu-API","author":{"name":"Matt Zabriskie"},"browser":{"./lib/adapters/http.js":"./lib/adapters/xhr.js"},"bugs":{"url":"https://github.com/axios/axios/issues"},"bundlesize":[{"path":"./dist/axios.min.js","threshold":"5kB"}],"dependencies":{"follow-redirects":"^1.14.0"},"description":"Promise based HTTP client for the browser and node.js","devDependencies":{"coveralls":"^3.0.0","es6-promise":"^4.2.4","grunt":"^1.3.0","grunt-banner":"^0.6.0","grunt-cli":"^1.2.0","grunt-contrib-clean":"^1.1.0","grunt-contrib-watch":"^1.0.0","grunt-eslint":"^23.0.0","grunt-karma":"^4.0.0","grunt-mocha-test":"^0.13.3","grunt-ts":"^6.0.0-beta.19","grunt-webpack":"^4.0.2","istanbul-instrumenter-loader":"^1.0.0","jasmine-core":"^2.4.1","karma":"^6.3.2","karma-chrome-launcher":"^3.1.0","karma-firefox-launcher":"^2.1.0","karma-jasmine":"^1.1.1","karma-jasmine-ajax":"^0.1.13","karma-safari-launcher":"^1.0.0","karma-sauce-launcher":"^4.3.6","karma-sinon":"^1.0.5","karma-sourcemap-loader":"^0.3.8","karma-webpack":"^4.0.2","load-grunt-tasks":"^3.5.2","minimist":"^1.2.0","mocha":"^8.2.1","sinon":"^4.5.0","terser-webpack-plugin":"^4.2.3","typescript":"^4.0.5","url-search-params":"^0.10.0","webpack":"^4.44.2","webpack-dev-server":"^3.11.0"},"homepage":"https://axios-http.com","jsdelivr":"dist/axios.min.js","keywords":["xhr","http","ajax","promise","node"],"license":"MIT","main":"index.js","name":"axios","repository":{"type":"git","url":"git+https://github.com/axios/axios.git"},"scripts":{"build":"NODE_ENV=production grunt build","coveralls":"cat coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js","examples":"node ./examples/server.js","fix":"eslint --fix lib/**/*.js","postversion":"git push && git push --tags","preversion":"npm test","start":"node ./sandbox/server.js","test":"grunt test","version":"npm run build && grunt version && git add -A dist && git add CHANGELOG.md bower.json package.json"},"typings":"./index.d.ts","unpkg":"dist/axios.min.js","version":"0.21.4"}');
 
 /***/ })
 
