@@ -37,7 +37,8 @@
                                     <tr>
                                         <th scope="col">#</th>
                                         <th scope="col">Nama Bumil</th>
-                                        <th scope="col" class="">NIK Bumil</th>
+                                        <th scope="col" class="text-center">NIK Bumil</th>
+                                        <th scope="col" class="">Tempat, Tanggal Lahir</th>
                                         <th scope="col" class="text-center">Status Bumil</th>
                                         <th scope="col" class="text-center">Tanggal Meninggal</th>
                                         <th scope="col" class="text-center">Petugas Posyandu</th>
@@ -57,8 +58,8 @@
                                             {{ item.tgl_lahir_ibu }}
                                         </td>
                                         <td class="text-center">
-                                            <p v-if="item.stts_bumil == 0">Meninggal</p>
-                                            <p v-if="item.stts_bumil == 1">Hidup</p>
+                                            <p v-if="item.stts_bumil == 0" class="badge bg-secondary">Meninggal</p>
+                                            <p v-if="item.stts_bumil == 1" class="badge bg-light text-dark">Hidup</p>
                                         </td>
                                         <td class="text-center">
                                             <p v-if="item.stts_bumil == 1">-</p>

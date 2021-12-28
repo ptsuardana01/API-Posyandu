@@ -2419,8 +2419,7 @@ __webpack_require__.r(__webpack_exports__);
       _this.tambahPemeriksaan.id_balita = response.data.id_balita;
       _this.tambahPemeriksaan.tb = response.data.tb;
       _this.tambahPemeriksaan.bb = response.data.bb;
-      _this.tambahPemeriksaan.lk = response.data.lk;
-      console.log(_this.tambahPemeriksaan);
+      _this.tambahPemeriksaan.lk = response.data.lk; // console.log(this.tambahPemeriksaan);
     });
     this.getDataBalitas();
     this.getDetailOrtu();
@@ -2533,6 +2532,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
+//
 //
 //
 //
@@ -2837,8 +2837,7 @@ __webpack_require__.r(__webpack_exports__);
 
       var page = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1;
       axios.get("/api/kader?page=" + page).then(function (response) {
-        _this.kaders = response.data;
-        console.log(_this.kaders);
+        _this.kaders = response.data; // console.log(this.kaders);
       });
     },
     deleteData: function deleteData(id) {
@@ -3747,7 +3746,7 @@ __webpack_require__.r(__webpack_exports__);
     var _this = this;
 
     this.getIdKaderBumil(), axios.get("/api/ortu/" + this.$route.params.id, this.ortu).then(function (response) {
-      console.log(response.data);
+      // console.log(response.data);
       _this.ortu.nama_ibu = response.data.nama_ibu;
       _this.ortu.nik_ibu = response.data.nik_ibu;
       _this.ortu.nama_ayah = response.data.nama_ayah;
@@ -3761,8 +3760,7 @@ __webpack_require__.r(__webpack_exports__);
       _this.ortu.id_kader_bumil = response.data.id_kader_bumil;
       _this.ortu.alamat = response.data.alamat;
       _this.ortu.telp = response.data.telp;
-      _this.ortu.alamat = response.data.alamat;
-      console.log(_this.kader);
+      _this.ortu.alamat = response.data.alamat; // console.log(this.kader);
     });
   },
   methods: {
@@ -4548,9 +4546,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
@@ -4575,8 +4570,7 @@ __webpack_require__.r(__webpack_exports__);
       _this.tambahPemeriksaan.id_balita = response.data.id_balita;
       _this.tambahPemeriksaan.tb = response.data.tb;
       _this.tambahPemeriksaan.bb = response.data.bb;
-      _this.tambahPemeriksaan.lk = response.data.lk;
-      console.log(_this.tambahPemeriksaan);
+      _this.tambahPemeriksaan.lk = response.data.lk; // console.log(this.tambahPemeriksaan);
     });
     this.getDataBalitas();
     this.getDetailOrtu();
@@ -4689,6 +4683,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
+//
 //
 //
 //
@@ -5583,7 +5578,7 @@ __webpack_require__.r(__webpack_exports__);
     var _this = this;
 
     this.getIdKaderBumil(), axios.get("/api/ortu/" + this.$route.params.id, this.ortu).then(function (response) {
-      console.log(response.data);
+      // console.log(response.data);
       _this.ortu.nama_ibu = response.data.nama_ibu;
       _this.ortu.nik_ibu = response.data.nik_ibu;
       _this.ortu.nama_ayah = response.data.nama_ayah;
@@ -5597,8 +5592,7 @@ __webpack_require__.r(__webpack_exports__);
       _this.ortu.id_kader_bumil = response.data.id_kader_bumil;
       _this.ortu.alamat = response.data.alamat;
       _this.ortu.telp = response.data.telp;
-      _this.ortu.alamat = response.data.alamat;
-      console.log(_this.kader);
+      _this.ortu.alamat = response.data.alamat; // console.log(this.kader);
     });
   },
   methods: {
@@ -30797,11 +30791,17 @@ var render = function () {
                         _vm._v(" "),
                         _c("td", { staticClass: "text-center" }, [
                           item.stts_balita == 0
-                            ? _c("p", [_vm._v("Meniggal")])
+                            ? _c("p", { staticClass: "badge bg-secondary" }, [
+                                _vm._v("Meniggal"),
+                              ])
                             : _vm._e(),
                           _vm._v(" "),
                           item.stts_balita == 1
-                            ? _c("p", [_vm._v("Hidup")])
+                            ? _c(
+                                "p",
+                                { staticClass: "badge bg-light text-dark" },
+                                [_vm._v("Hidup")]
+                              )
                             : _vm._e(),
                         ]),
                         _vm._v(" "),
@@ -31222,11 +31222,17 @@ var render = function () {
                         _vm._v(" "),
                         _c("td", { staticClass: "text-center" }, [
                           item.stts_bumil == 0
-                            ? _c("p", [_vm._v("Meninggal")])
+                            ? _c("p", { staticClass: "badge bg-secondary" }, [
+                                _vm._v("Meninggal"),
+                              ])
                             : _vm._e(),
                           _vm._v(" "),
                           item.stts_bumil == 1
-                            ? _c("p", [_vm._v("Hidup")])
+                            ? _c(
+                                "p",
+                                { staticClass: "badge bg-light text-dark" },
+                                [_vm._v("Hidup")]
+                              )
                             : _vm._e(),
                         ]),
                         _vm._v(" "),
@@ -31443,7 +31449,13 @@ var staticRenderFns = [
         _vm._v(" "),
         _c("th", { attrs: { scope: "col" } }, [_vm._v("Nama Bumil")]),
         _vm._v(" "),
-        _c("th", { attrs: { scope: "col" } }, [_vm._v("NIK Bumil")]),
+        _c("th", { staticClass: "text-center", attrs: { scope: "col" } }, [
+          _vm._v("NIK Bumil"),
+        ]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [
+          _vm._v("Tempat, Tanggal Lahir"),
+        ]),
         _vm._v(" "),
         _c("th", { staticClass: "text-center", attrs: { scope: "col" } }, [
           _vm._v("Status Bumil"),
@@ -32187,11 +32199,17 @@ var render = function () {
                         _vm._v(" "),
                         _c("td", { staticClass: "text-center" }, [
                           item.stts_balita == 0
-                            ? _c("p", [_vm._v("Meninggal")])
+                            ? _c("p", { staticClass: "badge bg-secondary" }, [
+                                _vm._v("Meninggal"),
+                              ])
                             : _vm._e(),
                           _vm._v(" "),
                           item.stts_balita == 1
-                            ? _c("p", [_vm._v("Hidup")])
+                            ? _c(
+                                "p",
+                                { staticClass: "badge bg-light text-dark" },
+                                [_vm._v("Hidup")]
+                              )
                             : _vm._e(),
                         ]),
                         _vm._v(" "),
@@ -34319,7 +34337,7 @@ var render = function () {
                                 staticClass: "form-label",
                                 attrs: { for: "nama_bumil" },
                               },
-                              [_vm._v("Nama Ibu Hamil")]
+                              [_vm._v("Nama Balita")]
                             ),
                             _vm._v(" "),
                             _c(
@@ -34366,7 +34384,7 @@ var render = function () {
                                 _c(
                                   "option",
                                   { attrs: { selected: "", disabled: "" } },
-                                  [_vm._v("Pilih Nama Ibu Hamil")]
+                                  [_vm._v("Pilih Nama Balita")]
                                 ),
                                 _vm._v(" "),
                                 _vm._l(_vm.balita, function (balita, index) {
@@ -34389,123 +34407,163 @@ var render = function () {
                               "div",
                               { key: index, staticClass: "row g-3" },
                               [
-                                _c("div", { staticClass: "col-12" }, [
-                                  _c(
-                                    "label",
-                                    {
-                                      staticClass: "form-label",
-                                      attrs: { for: "stts_bumil" },
-                                    },
-                                    [_vm._v("Status Balita")]
-                                  ),
-                                  _vm._v(" "),
-                                  _c(
-                                    "select",
-                                    {
-                                      staticClass: "form-select",
-                                      attrs: {
-                                        "aria-label": "Default select example",
-                                        id: "stts_bumil",
+                                _c(
+                                  "div",
+                                  {
+                                    directives: [
+                                      {
+                                        name: "show",
+                                        rawName: "v-show",
+                                        value:
+                                          _vm.pemeriksaanBalita.id_balita ==
+                                          balita.id,
+                                        expression:
+                                          "pemeriksaanBalita.id_balita == balita.id",
                                       },
-                                    },
-                                    [
-                                      _vm.pemeriksaanBalita.id_balita ==
-                                      !balita.id
-                                        ? _c(
-                                            "option",
-                                            {
-                                              attrs: {
-                                                selected: "",
-                                                disabled: "",
+                                    ],
+                                    staticClass: "col-12",
+                                  },
+                                  [
+                                    _c(
+                                      "label",
+                                      {
+                                        staticClass: "form-label",
+                                        attrs: { for: "stts_bumil" },
+                                      },
+                                      [_vm._v("Status Balita")]
+                                    ),
+                                    _vm._v(" "),
+                                    _c(
+                                      "select",
+                                      {
+                                        staticClass: "form-select",
+                                        attrs: {
+                                          "aria-label":
+                                            "Default select example",
+                                          id: "stts_bumil",
+                                        },
+                                      },
+                                      [
+                                        _vm.pemeriksaanBalita.id_balita ==
+                                        !balita.id
+                                          ? _c(
+                                              "option",
+                                              {
+                                                attrs: {
+                                                  selected: "",
+                                                  disabled: "",
+                                                },
+                                                domProps: {
+                                                  value: balita.stts_balita,
+                                                },
                                               },
-                                              domProps: {
-                                                value: balita.stts_balita,
+                                              [_vm._v("Status Balita")]
+                                            )
+                                          : _vm._e(),
+                                        _vm._v(" "),
+                                        _vm.pemeriksaanBalita.id_balita ==
+                                        balita.id
+                                          ? _c(
+                                              "option",
+                                              {
+                                                attrs: {
+                                                  selected: "",
+                                                  disabled: "",
+                                                },
+                                                domProps: {
+                                                  value: balita.stts_balita,
+                                                },
                                               },
-                                            },
-                                            [_vm._v("Status Balita")]
-                                          )
-                                        : _vm._e(),
-                                      _vm._v(" "),
-                                      _vm.pemeriksaanBalita.id_balita ==
-                                      balita.id
-                                        ? _c(
-                                            "option",
-                                            {
-                                              attrs: {
-                                                selected: "",
-                                                disabled: "",
-                                              },
-                                              domProps: {
-                                                value: balita.stts_balita,
-                                              },
-                                            },
-                                            [_vm._v(_vm._s(balita.stts_balita))]
-                                          )
-                                        : _vm._e(),
-                                    ]
-                                  ),
-                                ]),
+                                              [
+                                                _vm._v(
+                                                  _vm._s(balita.stts_balita)
+                                                ),
+                                              ]
+                                            )
+                                          : _vm._e(),
+                                      ]
+                                    ),
+                                  ]
+                                ),
                                 _vm._v(" "),
-                                _c("div", { staticClass: "col-12" }, [
-                                  _c(
-                                    "label",
-                                    {
-                                      staticClass: "form-label",
-                                      attrs: { for: "kader" },
-                                    },
-                                    [_vm._v("Petugas Posyandu")]
-                                  ),
-                                  _vm._v(" "),
-                                  _c(
-                                    "select",
-                                    {
-                                      staticClass: "form-select",
-                                      attrs: {
-                                        "aria-label": "Default select example",
-                                        id: "kader",
+                                _c(
+                                  "div",
+                                  {
+                                    directives: [
+                                      {
+                                        name: "show",
+                                        rawName: "v-show",
+                                        value:
+                                          _vm.pemeriksaanBalita.id_balita ==
+                                          balita.id,
+                                        expression:
+                                          "pemeriksaanBalita.id_balita == balita.id",
                                       },
-                                    },
-                                    [
-                                      _vm.pemeriksaanBalita.id_balita ==
-                                      !balita.id
-                                        ? _c(
-                                            "option",
-                                            {
-                                              attrs: {
-                                                selected: "",
-                                                disabled: "",
+                                    ],
+                                    staticClass: "col-12",
+                                  },
+                                  [
+                                    _c(
+                                      "label",
+                                      {
+                                        staticClass: "form-label",
+                                        attrs: { for: "kader" },
+                                      },
+                                      [_vm._v("Petugas Posyandu")]
+                                    ),
+                                    _vm._v(" "),
+                                    _c(
+                                      "select",
+                                      {
+                                        staticClass: "form-select",
+                                        attrs: {
+                                          "aria-label":
+                                            "Default select example",
+                                          id: "kader",
+                                        },
+                                      },
+                                      [
+                                        _vm.pemeriksaanBalita.id_balita ==
+                                        !balita.id
+                                          ? _c(
+                                              "option",
+                                              {
+                                                attrs: {
+                                                  selected: "",
+                                                  disabled: "",
+                                                },
+                                                domProps: {
+                                                  value: balita.id_kader_balita,
+                                                },
                                               },
-                                              domProps: {
-                                                value: balita.id_kader_balita,
+                                              [_vm._v("Pilih Petugas Posyandu")]
+                                            )
+                                          : _vm._e(),
+                                        _vm._v(" "),
+                                        _vm.pemeriksaanBalita.id_balita ==
+                                        balita.id
+                                          ? _c(
+                                              "option",
+                                              {
+                                                attrs: {
+                                                  selected: "",
+                                                  disabled: "",
+                                                },
+                                                domProps: {
+                                                  value: balita.id_kader_balita,
+                                                },
                                               },
-                                            },
-                                            [_vm._v("Pilih Petugas Posyandu")]
-                                          )
-                                        : _vm._e(),
-                                      _vm._v(" "),
-                                      _vm.pemeriksaanBalita.id_balita ==
-                                      balita.id
-                                        ? _c(
-                                            "option",
-                                            {
-                                              attrs: {
-                                                selected: "",
-                                                disabled: "",
-                                              },
-                                              domProps: {
-                                                value: balita.id_kader_balita,
-                                              },
-                                            },
-                                            [
-                                              _vm._v(
-                                                _vm._s(balita.id_kader_balita)
-                                              ),
-                                            ]
-                                          )
-                                        : _vm._e(),
-                                    ]
-                                  ),
-                                ]),
+                                              [
+                                                _vm._v(
+                                                  _vm._s(balita.id_kader_balita)
+                                                ),
+                                              ]
+                                            )
+                                          : _vm._e(),
+                                      ]
+                                    ),
+                                  ]
+                                ),
                               ]
                             )
                           }),
@@ -34916,145 +34974,200 @@ var render = function () {
                               "div",
                               { key: index, staticClass: "row g-3" },
                               [
-                                _c("div", { staticClass: "col-12" }, [
-                                  _c(
-                                    "label",
-                                    {
-                                      staticClass: "form-label",
-                                      attrs: { for: "nik" },
-                                    },
-                                    [_vm._v("NIK")]
-                                  ),
-                                  _vm._v(" "),
-                                  _vm.pemeriksaanBumil.id_bumil == ortu.id
-                                    ? _c("input", {
-                                        staticClass: "form-control",
-                                        attrs: { type: "text", id: "nik" },
-                                        domProps: { value: ortu.nik_ibu },
-                                      })
-                                    : _vm._e(),
-                                  _vm._v(" "),
-                                  _vm.pemeriksaanBumil.id_bumil == !ortu.id
-                                    ? _c("input", {
-                                        staticClass: "form-control",
+                                _c(
+                                  "div",
+                                  {
+                                    directives: [
+                                      {
+                                        name: "show",
+                                        rawName: "v-show",
+                                        value:
+                                          _vm.pemeriksaanBumil.id_bumil ==
+                                          ortu.id,
+                                        expression:
+                                          "pemeriksaanBumil.id_bumil == ortu.id",
+                                      },
+                                    ],
+                                    staticClass: "col-12",
+                                  },
+                                  [
+                                    _c(
+                                      "label",
+                                      {
+                                        staticClass: "form-label",
+                                        attrs: { for: "nik" },
+                                      },
+                                      [_vm._v("NIK")]
+                                    ),
+                                    _vm._v(" "),
+                                    _vm.pemeriksaanBumil.id_bumil == ortu.id
+                                      ? _c("input", {
+                                          staticClass: "form-control",
+                                          attrs: { type: "text", id: "nik" },
+                                          domProps: { value: ortu.nik_ibu },
+                                        })
+                                      : _vm._e(),
+                                    _vm._v(" "),
+                                    _vm.pemeriksaanBumil.id_bumil == !ortu.id
+                                      ? _c("input", {
+                                          staticClass: "form-control",
+                                          attrs: {
+                                            type: "text",
+                                            id: "nik",
+                                            disabled: "",
+                                          },
+                                        })
+                                      : _vm._e(),
+                                  ]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "div",
+                                  {
+                                    directives: [
+                                      {
+                                        name: "show",
+                                        rawName: "v-show",
+                                        value:
+                                          _vm.pemeriksaanBumil.id_bumil ==
+                                          ortu.id,
+                                        expression:
+                                          "pemeriksaanBumil.id_bumil == ortu.id",
+                                      },
+                                    ],
+                                    staticClass: "col-12",
+                                  },
+                                  [
+                                    _c(
+                                      "label",
+                                      {
+                                        staticClass: "form-label",
+                                        attrs: { for: "stts_bumil" },
+                                      },
+                                      [_vm._v("Status Ibu Hamil")]
+                                    ),
+                                    _vm._v(" "),
+                                    _c(
+                                      "select",
+                                      {
+                                        staticClass: "form-select",
                                         attrs: {
-                                          type: "text",
-                                          id: "nik",
-                                          disabled: "",
+                                          "aria-label":
+                                            "Default select example",
+                                          id: "stts_bumil",
                                         },
-                                      })
-                                    : _vm._e(),
-                                ]),
-                                _vm._v(" "),
-                                _c("div", { staticClass: "col-12" }, [
-                                  _c(
-                                    "label",
-                                    {
-                                      staticClass: "form-label",
-                                      attrs: { for: "stts_bumil" },
-                                    },
-                                    [_vm._v("Status Ibu Hamil")]
-                                  ),
-                                  _vm._v(" "),
-                                  _c(
-                                    "select",
-                                    {
-                                      staticClass: "form-select",
-                                      attrs: {
-                                        "aria-label": "Default select example",
-                                        id: "stts_bumil",
                                       },
-                                    },
-                                    [
-                                      _vm.pemeriksaanBumil.id_bumil == !ortu.id
-                                        ? _c(
-                                            "option",
-                                            {
-                                              attrs: {
-                                                selected: "",
-                                                disabled: "",
+                                      [
+                                        _vm.pemeriksaanBumil.id_bumil ==
+                                        !ortu.id
+                                          ? _c(
+                                              "option",
+                                              {
+                                                attrs: {
+                                                  selected: "",
+                                                  disabled: "",
+                                                },
+                                                domProps: {
+                                                  value: ortu.stts_bumil,
+                                                },
                                               },
-                                              domProps: {
-                                                value: ortu.stts_bumil,
+                                              [_vm._v("Status Ibu Hamil")]
+                                            )
+                                          : _vm._e(),
+                                        _vm._v(" "),
+                                        _vm.pemeriksaanBumil.id_bumil == ortu.id
+                                          ? _c(
+                                              "option",
+                                              {
+                                                attrs: {
+                                                  selected: "",
+                                                  disabled: "",
+                                                },
+                                                domProps: {
+                                                  value: ortu.stts_bumil,
+                                                },
                                               },
-                                            },
-                                            [_vm._v("Status Ibu Hamil")]
-                                          )
-                                        : _vm._e(),
-                                      _vm._v(" "),
-                                      _vm.pemeriksaanBumil.id_bumil == ortu.id
-                                        ? _c(
-                                            "option",
-                                            {
-                                              attrs: {
-                                                selected: "",
-                                                disabled: "",
-                                              },
-                                              domProps: {
-                                                value: ortu.stts_bumil,
-                                              },
-                                            },
-                                            [_vm._v(_vm._s(ortu.stts_bumil))]
-                                          )
-                                        : _vm._e(),
-                                    ]
-                                  ),
-                                ]),
+                                              [_vm._v(_vm._s(ortu.stts_bumil))]
+                                            )
+                                          : _vm._e(),
+                                      ]
+                                    ),
+                                  ]
+                                ),
                                 _vm._v(" "),
-                                _c("div", { staticClass: "col-12" }, [
-                                  _c(
-                                    "label",
-                                    {
-                                      staticClass: "form-label",
-                                      attrs: { for: "kader" },
-                                    },
-                                    [_vm._v("Petugas Posyandu")]
-                                  ),
-                                  _vm._v(" "),
-                                  _c(
-                                    "select",
-                                    {
-                                      staticClass: "form-select",
-                                      attrs: {
-                                        "aria-label": "Default select example",
-                                        id: "kader",
+                                _c(
+                                  "div",
+                                  {
+                                    directives: [
+                                      {
+                                        name: "show",
+                                        rawName: "v-show",
+                                        value:
+                                          _vm.pemeriksaanBumil.id_bumil ==
+                                          ortu.id,
+                                        expression:
+                                          "pemeriksaanBumil.id_bumil == ortu.id",
                                       },
-                                    },
-                                    [
-                                      _vm.pemeriksaanBumil.id_bumil == !ortu.id
-                                        ? _c(
-                                            "option",
-                                            {
-                                              attrs: {
-                                                selected: "",
-                                                disabled: "",
+                                    ],
+                                    staticClass: "col-12",
+                                  },
+                                  [
+                                    _c(
+                                      "label",
+                                      {
+                                        staticClass: "form-label",
+                                        attrs: { for: "kader" },
+                                      },
+                                      [_vm._v("Petugas Posyandu")]
+                                    ),
+                                    _vm._v(" "),
+                                    _c(
+                                      "select",
+                                      {
+                                        staticClass: "form-select",
+                                        attrs: {
+                                          "aria-label":
+                                            "Default select example",
+                                          id: "kader",
+                                        },
+                                      },
+                                      [
+                                        _vm.pemeriksaanBumil.id_bumil ==
+                                        !ortu.id
+                                          ? _c(
+                                              "option",
+                                              {
+                                                attrs: {
+                                                  selected: "",
+                                                  disabled: "",
+                                                },
+                                                domProps: {
+                                                  value: ortu.stts_bumil,
+                                                },
                                               },
-                                              domProps: {
-                                                value: ortu.stts_bumil,
+                                              [_vm._v("Pilih Petugas Posyandu")]
+                                            )
+                                          : _vm._e(),
+                                        _vm._v(" "),
+                                        _vm.pemeriksaanBumil.id_bumil == ortu.id
+                                          ? _c(
+                                              "option",
+                                              {
+                                                attrs: {
+                                                  selected: "",
+                                                  disabled: "",
+                                                },
+                                                domProps: {
+                                                  value: ortu.stts_bumil,
+                                                },
                                               },
-                                            },
-                                            [_vm._v("Pilih Petugas Posyandu")]
-                                          )
-                                        : _vm._e(),
-                                      _vm._v(" "),
-                                      _vm.pemeriksaanBumil.id_bumil == ortu.id
-                                        ? _c(
-                                            "option",
-                                            {
-                                              attrs: {
-                                                selected: "",
-                                                disabled: "",
-                                              },
-                                              domProps: {
-                                                value: ortu.stts_bumil,
-                                              },
-                                            },
-                                            [_vm._v(_vm._s(ortu.nama_kader))]
-                                          )
-                                        : _vm._e(),
-                                    ]
-                                  ),
-                                ]),
+                                              [_vm._v(_vm._s(ortu.nama_kader))]
+                                            )
+                                          : _vm._e(),
+                                      ]
+                                    ),
+                                  ]
+                                ),
                               ]
                             )
                           }),
@@ -35935,17 +36048,6 @@ var render = function () {
           _c("li", { staticClass: "breadcrumb-item active" }, [
             _vm._v("Balita"),
           ]),
-          _vm._v(" "),
-          _c(
-            "li",
-            { staticClass: "breadcrumb-item active" },
-            [
-              _c("router-link", { attrs: { to: { name: "balita" } } }, [
-                _vm._v("Data Balita"),
-              ]),
-            ],
-            1
-          ),
         ]),
       ]),
     ]),
@@ -36234,11 +36336,17 @@ var render = function () {
                         _vm._v(" "),
                         _c("td", { staticClass: "text-center" }, [
                           item.stts_balita == 0
-                            ? _c("p", [_vm._v("Meniggal")])
+                            ? _c("p", { staticClass: "badge bg-secondary" }, [
+                                _vm._v("Meniggal"),
+                              ])
                             : _vm._e(),
                           _vm._v(" "),
                           item.stts_balita == 1
-                            ? _c("p", [_vm._v("Hidup")])
+                            ? _c(
+                                "p",
+                                { staticClass: "badge bg-light text-dark" },
+                                [_vm._v("Hidup")]
+                              )
                             : _vm._e(),
                         ]),
                         _vm._v(" "),
@@ -36659,11 +36767,17 @@ var render = function () {
                         _vm._v(" "),
                         _c("td", { staticClass: "text-center" }, [
                           item.stts_bumil == 0
-                            ? _c("p", [_vm._v("Meninggal")])
+                            ? _c("p", { staticClass: "badge bg-secondary" }, [
+                                _vm._v("Meninggal"),
+                              ])
                             : _vm._e(),
                           _vm._v(" "),
                           item.stts_bumil == 1
-                            ? _c("p", [_vm._v("Hidup")])
+                            ? _c(
+                                "p",
+                                { staticClass: "badge bg-light text-dark" },
+                                [_vm._v("Hidup")]
+                              )
                             : _vm._e(),
                         ]),
                         _vm._v(" "),
@@ -36880,7 +36994,13 @@ var staticRenderFns = [
         _vm._v(" "),
         _c("th", { attrs: { scope: "col" } }, [_vm._v("Nama Bumil")]),
         _vm._v(" "),
-        _c("th", { attrs: { scope: "col" } }, [_vm._v("NIK Bumil")]),
+        _c("th", { staticClass: "text-center", attrs: { scope: "col" } }, [
+          _vm._v("NIK Bumil"),
+        ]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [
+          _vm._v("Tempat, Tanggal Lahir"),
+        ]),
         _vm._v(" "),
         _c("th", { staticClass: "text-center", attrs: { scope: "col" } }, [
           _vm._v("Status Bumil"),
@@ -37381,11 +37501,17 @@ var render = function () {
                         _vm._v(" "),
                         _c("td", { staticClass: "text-center" }, [
                           item.stts_balita == 0
-                            ? _c("p", [_vm._v("Meninggal")])
+                            ? _c("p", { staticClass: "badge bg-secondary" }, [
+                                _vm._v("Meninggal"),
+                              ])
                             : _vm._e(),
                           _vm._v(" "),
                           item.stts_balita == 1
-                            ? _c("p", [_vm._v("Hidup")])
+                            ? _c(
+                                "p",
+                                { staticClass: "badge bg-light text-dark" },
+                                [_vm._v("Hidup")]
+                              )
                             : _vm._e(),
                         ]),
                         _vm._v(" "),
@@ -39097,7 +39223,7 @@ var render = function () {
                                 staticClass: "form-label",
                                 attrs: { for: "nama_bumil" },
                               },
-                              [_vm._v("Nama Ibu Hamil")]
+                              [_vm._v("Nama Balita")]
                             ),
                             _vm._v(" "),
                             _c(
@@ -39144,7 +39270,7 @@ var render = function () {
                                 _c(
                                   "option",
                                   { attrs: { selected: "", disabled: "" } },
-                                  [_vm._v("Pilih Nama Ibu Hamil")]
+                                  [_vm._v("Pilih Nama Balita")]
                                 ),
                                 _vm._v(" "),
                                 _vm._l(_vm.balita, function (balita, index) {
@@ -39167,123 +39293,163 @@ var render = function () {
                               "div",
                               { key: index, staticClass: "row g-3" },
                               [
-                                _c("div", { staticClass: "col-12" }, [
-                                  _c(
-                                    "label",
-                                    {
-                                      staticClass: "form-label",
-                                      attrs: { for: "stts_bumil" },
-                                    },
-                                    [_vm._v("Status Balita")]
-                                  ),
-                                  _vm._v(" "),
-                                  _c(
-                                    "select",
-                                    {
-                                      staticClass: "form-select",
-                                      attrs: {
-                                        "aria-label": "Default select example",
-                                        id: "stts_bumil",
+                                _c(
+                                  "div",
+                                  {
+                                    directives: [
+                                      {
+                                        name: "show",
+                                        rawName: "v-show",
+                                        value:
+                                          _vm.pemeriksaanBalita.id_balita ==
+                                          balita.id,
+                                        expression:
+                                          "pemeriksaanBalita.id_balita == balita.id",
                                       },
-                                    },
-                                    [
-                                      _vm.pemeriksaanBalita.id_balita ==
-                                      !balita.id
-                                        ? _c(
-                                            "option",
-                                            {
-                                              attrs: {
-                                                selected: "",
-                                                disabled: "",
+                                    ],
+                                    staticClass: "col-12",
+                                  },
+                                  [
+                                    _c(
+                                      "label",
+                                      {
+                                        staticClass: "form-label",
+                                        attrs: { for: "stts_bumil" },
+                                      },
+                                      [_vm._v("Status Balita")]
+                                    ),
+                                    _vm._v(" "),
+                                    _c(
+                                      "select",
+                                      {
+                                        staticClass: "form-select",
+                                        attrs: {
+                                          "aria-label":
+                                            "Default select example",
+                                          id: "stts_bumil",
+                                        },
+                                      },
+                                      [
+                                        _vm.pemeriksaanBalita.id_balita ==
+                                        !balita.id
+                                          ? _c(
+                                              "option",
+                                              {
+                                                attrs: {
+                                                  selected: "",
+                                                  disabled: "",
+                                                },
+                                                domProps: {
+                                                  value: balita.stts_balita,
+                                                },
                                               },
-                                              domProps: {
-                                                value: balita.stts_balita,
+                                              [_vm._v("Status Balita")]
+                                            )
+                                          : _vm._e(),
+                                        _vm._v(" "),
+                                        _vm.pemeriksaanBalita.id_balita ==
+                                        balita.id
+                                          ? _c(
+                                              "option",
+                                              {
+                                                attrs: {
+                                                  selected: "",
+                                                  disabled: "",
+                                                },
+                                                domProps: {
+                                                  value: balita.stts_balita,
+                                                },
                                               },
-                                            },
-                                            [_vm._v("Status Balita")]
-                                          )
-                                        : _vm._e(),
-                                      _vm._v(" "),
-                                      _vm.pemeriksaanBalita.id_balita ==
-                                      balita.id
-                                        ? _c(
-                                            "option",
-                                            {
-                                              attrs: {
-                                                selected: "",
-                                                disabled: "",
-                                              },
-                                              domProps: {
-                                                value: balita.stts_balita,
-                                              },
-                                            },
-                                            [_vm._v(_vm._s(balita.stts_balita))]
-                                          )
-                                        : _vm._e(),
-                                    ]
-                                  ),
-                                ]),
+                                              [
+                                                _vm._v(
+                                                  _vm._s(balita.stts_balita)
+                                                ),
+                                              ]
+                                            )
+                                          : _vm._e(),
+                                      ]
+                                    ),
+                                  ]
+                                ),
                                 _vm._v(" "),
-                                _c("div", { staticClass: "col-12" }, [
-                                  _c(
-                                    "label",
-                                    {
-                                      staticClass: "form-label",
-                                      attrs: { for: "kader" },
-                                    },
-                                    [_vm._v("Petugas Posyandu")]
-                                  ),
-                                  _vm._v(" "),
-                                  _c(
-                                    "select",
-                                    {
-                                      staticClass: "form-select",
-                                      attrs: {
-                                        "aria-label": "Default select example",
-                                        id: "kader",
+                                _c(
+                                  "div",
+                                  {
+                                    directives: [
+                                      {
+                                        name: "show",
+                                        rawName: "v-show",
+                                        value:
+                                          _vm.pemeriksaanBalita.id_balita ==
+                                          balita.id,
+                                        expression:
+                                          "pemeriksaanBalita.id_balita == balita.id",
                                       },
-                                    },
-                                    [
-                                      _vm.pemeriksaanBalita.id_balita ==
-                                      !balita.id
-                                        ? _c(
-                                            "option",
-                                            {
-                                              attrs: {
-                                                selected: "",
-                                                disabled: "",
+                                    ],
+                                    staticClass: "col-12",
+                                  },
+                                  [
+                                    _c(
+                                      "label",
+                                      {
+                                        staticClass: "form-label",
+                                        attrs: { for: "kader" },
+                                      },
+                                      [_vm._v("Petugas Posyandu")]
+                                    ),
+                                    _vm._v(" "),
+                                    _c(
+                                      "select",
+                                      {
+                                        staticClass: "form-select",
+                                        attrs: {
+                                          "aria-label":
+                                            "Default select example",
+                                          id: "kader",
+                                        },
+                                      },
+                                      [
+                                        _vm.pemeriksaanBalita.id_balita ==
+                                        !balita.id
+                                          ? _c(
+                                              "option",
+                                              {
+                                                attrs: {
+                                                  selected: "",
+                                                  disabled: "",
+                                                },
+                                                domProps: {
+                                                  value: balita.id_kader_balita,
+                                                },
                                               },
-                                              domProps: {
-                                                value: balita.id_kader_balita,
+                                              [_vm._v("Pilih Petugas Posyandu")]
+                                            )
+                                          : _vm._e(),
+                                        _vm._v(" "),
+                                        _vm.pemeriksaanBalita.id_balita ==
+                                        balita.id
+                                          ? _c(
+                                              "option",
+                                              {
+                                                attrs: {
+                                                  selected: "",
+                                                  disabled: "",
+                                                },
+                                                domProps: {
+                                                  value: balita.id_kader_balita,
+                                                },
                                               },
-                                            },
-                                            [_vm._v("Pilih Petugas Posyandu")]
-                                          )
-                                        : _vm._e(),
-                                      _vm._v(" "),
-                                      _vm.pemeriksaanBalita.id_balita ==
-                                      balita.id
-                                        ? _c(
-                                            "option",
-                                            {
-                                              attrs: {
-                                                selected: "",
-                                                disabled: "",
-                                              },
-                                              domProps: {
-                                                value: balita.id_kader_balita,
-                                              },
-                                            },
-                                            [
-                                              _vm._v(
-                                                _vm._s(balita.id_kader_balita)
-                                              ),
-                                            ]
-                                          )
-                                        : _vm._e(),
-                                    ]
-                                  ),
-                                ]),
+                                              [
+                                                _vm._v(
+                                                  _vm._s(balita.id_kader_balita)
+                                                ),
+                                              ]
+                                            )
+                                          : _vm._e(),
+                                      ]
+                                    ),
+                                  ]
+                                ),
                               ]
                             )
                           }),
@@ -39694,145 +39860,200 @@ var render = function () {
                               "div",
                               { key: index, staticClass: "row g-3" },
                               [
-                                _c("div", { staticClass: "col-12" }, [
-                                  _c(
-                                    "label",
-                                    {
-                                      staticClass: "form-label",
-                                      attrs: { for: "nik" },
-                                    },
-                                    [_vm._v("NIK")]
-                                  ),
-                                  _vm._v(" "),
-                                  _vm.pemeriksaanBumil.id_bumil == ortu.id
-                                    ? _c("input", {
-                                        staticClass: "form-control",
-                                        attrs: { type: "text", id: "nik" },
-                                        domProps: { value: ortu.nik_ibu },
-                                      })
-                                    : _vm._e(),
-                                  _vm._v(" "),
-                                  _vm.pemeriksaanBumil.id_bumil == !ortu.id
-                                    ? _c("input", {
-                                        staticClass: "form-control",
+                                _c(
+                                  "div",
+                                  {
+                                    directives: [
+                                      {
+                                        name: "show",
+                                        rawName: "v-show",
+                                        value:
+                                          _vm.pemeriksaanBumil.id_bumil ==
+                                          ortu.id,
+                                        expression:
+                                          "pemeriksaanBumil.id_bumil == ortu.id",
+                                      },
+                                    ],
+                                    staticClass: "col-12",
+                                  },
+                                  [
+                                    _c(
+                                      "label",
+                                      {
+                                        staticClass: "form-label",
+                                        attrs: { for: "nik" },
+                                      },
+                                      [_vm._v("NIK")]
+                                    ),
+                                    _vm._v(" "),
+                                    _vm.pemeriksaanBumil.id_bumil == ortu.id
+                                      ? _c("input", {
+                                          staticClass: "form-control",
+                                          attrs: { type: "text", id: "nik" },
+                                          domProps: { value: ortu.nik_ibu },
+                                        })
+                                      : _vm._e(),
+                                    _vm._v(" "),
+                                    _vm.pemeriksaanBumil.id_bumil == !ortu.id
+                                      ? _c("input", {
+                                          staticClass: "form-control",
+                                          attrs: {
+                                            type: "text",
+                                            id: "nik",
+                                            disabled: "",
+                                          },
+                                        })
+                                      : _vm._e(),
+                                  ]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "div",
+                                  {
+                                    directives: [
+                                      {
+                                        name: "show",
+                                        rawName: "v-show",
+                                        value:
+                                          _vm.pemeriksaanBumil.id_bumil ==
+                                          ortu.id,
+                                        expression:
+                                          "pemeriksaanBumil.id_bumil == ortu.id",
+                                      },
+                                    ],
+                                    staticClass: "col-12",
+                                  },
+                                  [
+                                    _c(
+                                      "label",
+                                      {
+                                        staticClass: "form-label",
+                                        attrs: { for: "stts_bumil" },
+                                      },
+                                      [_vm._v("Status Ibu Hamil")]
+                                    ),
+                                    _vm._v(" "),
+                                    _c(
+                                      "select",
+                                      {
+                                        staticClass: "form-select",
                                         attrs: {
-                                          type: "text",
-                                          id: "nik",
-                                          disabled: "",
+                                          "aria-label":
+                                            "Default select example",
+                                          id: "stts_bumil",
                                         },
-                                      })
-                                    : _vm._e(),
-                                ]),
-                                _vm._v(" "),
-                                _c("div", { staticClass: "col-12" }, [
-                                  _c(
-                                    "label",
-                                    {
-                                      staticClass: "form-label",
-                                      attrs: { for: "stts_bumil" },
-                                    },
-                                    [_vm._v("Status Ibu Hamil")]
-                                  ),
-                                  _vm._v(" "),
-                                  _c(
-                                    "select",
-                                    {
-                                      staticClass: "form-select",
-                                      attrs: {
-                                        "aria-label": "Default select example",
-                                        id: "stts_bumil",
                                       },
-                                    },
-                                    [
-                                      _vm.pemeriksaanBumil.id_bumil == !ortu.id
-                                        ? _c(
-                                            "option",
-                                            {
-                                              attrs: {
-                                                selected: "",
-                                                disabled: "",
+                                      [
+                                        _vm.pemeriksaanBumil.id_bumil ==
+                                        !ortu.id
+                                          ? _c(
+                                              "option",
+                                              {
+                                                attrs: {
+                                                  selected: "",
+                                                  disabled: "",
+                                                },
+                                                domProps: {
+                                                  value: ortu.stts_bumil,
+                                                },
                                               },
-                                              domProps: {
-                                                value: ortu.stts_bumil,
+                                              [_vm._v("Status Ibu Hamil")]
+                                            )
+                                          : _vm._e(),
+                                        _vm._v(" "),
+                                        _vm.pemeriksaanBumil.id_bumil == ortu.id
+                                          ? _c(
+                                              "option",
+                                              {
+                                                attrs: {
+                                                  selected: "",
+                                                  disabled: "",
+                                                },
+                                                domProps: {
+                                                  value: ortu.stts_bumil,
+                                                },
                                               },
-                                            },
-                                            [_vm._v("Status Ibu Hamil")]
-                                          )
-                                        : _vm._e(),
-                                      _vm._v(" "),
-                                      _vm.pemeriksaanBumil.id_bumil == ortu.id
-                                        ? _c(
-                                            "option",
-                                            {
-                                              attrs: {
-                                                selected: "",
-                                                disabled: "",
-                                              },
-                                              domProps: {
-                                                value: ortu.stts_bumil,
-                                              },
-                                            },
-                                            [_vm._v(_vm._s(ortu.stts_bumil))]
-                                          )
-                                        : _vm._e(),
-                                    ]
-                                  ),
-                                ]),
+                                              [_vm._v(_vm._s(ortu.stts_bumil))]
+                                            )
+                                          : _vm._e(),
+                                      ]
+                                    ),
+                                  ]
+                                ),
                                 _vm._v(" "),
-                                _c("div", { staticClass: "col-12" }, [
-                                  _c(
-                                    "label",
-                                    {
-                                      staticClass: "form-label",
-                                      attrs: { for: "kader" },
-                                    },
-                                    [_vm._v("Petugas Posyandu")]
-                                  ),
-                                  _vm._v(" "),
-                                  _c(
-                                    "select",
-                                    {
-                                      staticClass: "form-select",
-                                      attrs: {
-                                        "aria-label": "Default select example",
-                                        id: "kader",
+                                _c(
+                                  "div",
+                                  {
+                                    directives: [
+                                      {
+                                        name: "show",
+                                        rawName: "v-show",
+                                        value:
+                                          _vm.pemeriksaanBumil.id_bumil ==
+                                          ortu.id,
+                                        expression:
+                                          "pemeriksaanBumil.id_bumil == ortu.id",
                                       },
-                                    },
-                                    [
-                                      _vm.pemeriksaanBumil.id_bumil == !ortu.id
-                                        ? _c(
-                                            "option",
-                                            {
-                                              attrs: {
-                                                selected: "",
-                                                disabled: "",
+                                    ],
+                                    staticClass: "col-12",
+                                  },
+                                  [
+                                    _c(
+                                      "label",
+                                      {
+                                        staticClass: "form-label",
+                                        attrs: { for: "kader" },
+                                      },
+                                      [_vm._v("Petugas Posyandu")]
+                                    ),
+                                    _vm._v(" "),
+                                    _c(
+                                      "select",
+                                      {
+                                        staticClass: "form-select",
+                                        attrs: {
+                                          "aria-label":
+                                            "Default select example",
+                                          id: "kader",
+                                        },
+                                      },
+                                      [
+                                        _vm.pemeriksaanBumil.id_bumil ==
+                                        !ortu.id
+                                          ? _c(
+                                              "option",
+                                              {
+                                                attrs: {
+                                                  selected: "",
+                                                  disabled: "",
+                                                },
+                                                domProps: {
+                                                  value: ortu.stts_bumil,
+                                                },
                                               },
-                                              domProps: {
-                                                value: ortu.stts_bumil,
+                                              [_vm._v("Pilih Petugas Posyandu")]
+                                            )
+                                          : _vm._e(),
+                                        _vm._v(" "),
+                                        _vm.pemeriksaanBumil.id_bumil == ortu.id
+                                          ? _c(
+                                              "option",
+                                              {
+                                                attrs: {
+                                                  selected: "",
+                                                  disabled: "",
+                                                },
+                                                domProps: {
+                                                  value: ortu.stts_bumil,
+                                                },
                                               },
-                                            },
-                                            [_vm._v("Pilih Petugas Posyandu")]
-                                          )
-                                        : _vm._e(),
-                                      _vm._v(" "),
-                                      _vm.pemeriksaanBumil.id_bumil == ortu.id
-                                        ? _c(
-                                            "option",
-                                            {
-                                              attrs: {
-                                                selected: "",
-                                                disabled: "",
-                                              },
-                                              domProps: {
-                                                value: ortu.stts_bumil,
-                                              },
-                                            },
-                                            [_vm._v(_vm._s(ortu.nama_kader))]
-                                          )
-                                        : _vm._e(),
-                                    ]
-                                  ),
-                                ]),
+                                              [_vm._v(_vm._s(ortu.nama_kader))]
+                                            )
+                                          : _vm._e(),
+                                      ]
+                                    ),
+                                  ]
+                                ),
                               ]
                             )
                           }),

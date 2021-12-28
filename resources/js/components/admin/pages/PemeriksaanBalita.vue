@@ -58,8 +58,8 @@
                                             {{ item.tgl_lahir }}
                                         </td>
                                         <td class="text-center">
-                                            <p v-if="item.stts_balita == 0">Meninggal</p>
-                                            <p v-if="item.stts_balita == 1">Hidup</p>
+                                            <p v-if="item.stts_balita == 0" class="badge bg-secondary">Meninggal</p>
+                                            <p v-if="item.stts_balita == 1" class="badge bg-light text-dark">Hidup</p>
                                         </td>
                                         <td class="text-center">
                                             <p v-if="item.stts_balita == 1">-</p>

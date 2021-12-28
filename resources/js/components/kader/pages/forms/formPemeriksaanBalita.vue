@@ -40,9 +40,9 @@
                                 <div class="tab-content pt-2" id="myTabjustifiedContent">
                                     <div class="tab-pane fade show row g-3 active" id="home-justified" role="tabpanel" aria-labelledby="home-tab">
                                         <div class="col-12">
-                                            <label for="nama_bumil" class="form-label">Nama Ibu Hamil</label>
+                                            <label for="nama_bumil" class="form-label">Nama Balita</label>
                                             <select class="form-select" aria-label="Default select example" id="nama_bumil" v-model="pemeriksaanBalita.id_balita">
-                                                <option selected disabled>Pilih Nama Ibu Hamil</option>
+                                                <option selected disabled>Pilih Nama Balita</option>
                                                 <option v-for="(balita, index) in balita" :key="index" :value="balita.id">{{ balita.nama }}</option>
                                             </select>
                                         </div>
@@ -59,7 +59,7 @@
                                                 <input type="text" class="form-control" id="stts_bumil" v-if="pemeriksaanBalita.id_bumil == balita.id" :value="balita.stts_bumil" />
                                             </div> -->
 
-                                            <div class="col-12">
+                                            <div class="col-12" v-show="pemeriksaanBalita.id_balita == balita.id">
                                                 <label for="stts_bumil" class="form-label">Status Balita</label>
                                                 <select class="form-select" aria-label="Default select example" id="stts_bumil">
                                                     <option v-if="pemeriksaanBalita.id_balita == !balita.id" :value="balita.stts_balita" selected disabled>Status Balita</option>
@@ -67,7 +67,7 @@
                                                 </select>
                                             </div>
 
-                                            <div class="col-12">
+                                            <div class="col-12" v-show="pemeriksaanBalita.id_balita == balita.id">
                                                 <label for="kader" class="form-label">Petugas Posyandu</label>
                                                 <select class="form-select" aria-label="Default select example" id="kader">
                                                     <option v-if="pemeriksaanBalita.id_balita == !balita.id" :value="balita.id_kader_balita" selected disabled>Pilih Petugas Posyandu</option>

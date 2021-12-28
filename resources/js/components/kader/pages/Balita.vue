@@ -8,9 +8,6 @@
                         <router-link :to="{ name: 'dashboard' }"><i class="bi bi-house-door"></i></router-link>
                     </li>
                     <li class="breadcrumb-item active">Balita</li>
-                    <li class="breadcrumb-item active">
-                        <router-link :to="{ name: 'balita' }">Data Balita</router-link>
-                    </li>
                 </ol>
             </nav>
         </div>
@@ -105,8 +102,8 @@
                                             <!-- End Vertically centered Modal-->
                                         </td>
                                         <td class="text-center">
-                                            <p v-if="item.stts_balita == 0">Meniggal</p>
-                                            <p v-if="item.stts_balita == 1">Hidup</p>
+                                            <p v-if="item.stts_balita == 0" class="badge bg-secondary">Meniggal</p>
+                                            <p v-if="item.stts_balita == 1" class="badge bg-light text-dark">Hidup</p>
                                         </td>
                                         <td class="text-center">
                                             <p v-if="item.stts_balita == 1">-</p>
@@ -198,7 +195,7 @@ export default {
             this.tambahPemeriksaan.tb = response.data.tb;
             this.tambahPemeriksaan.bb = response.data.bb;
             this.tambahPemeriksaan.lk = response.data.lk;
-            console.log(this.tambahPemeriksaan);
+            // console.log(this.tambahPemeriksaan);
         });
         this.getDataBalitas();
         this.getDetailOrtu();
