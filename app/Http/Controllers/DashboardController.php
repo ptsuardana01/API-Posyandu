@@ -12,7 +12,7 @@ class DashboardController extends Controller
         if (Auth::user()->hasRole('admin')) {
             return redirect('/admin/dashboard');
         } else if (Auth::user()->hasRole('kader')) {
-            return redirect('/kader/dashboard');
+            return redirect('/petugas-posyandu/dashboard');
         } else {
             return redirect('/user/dashboard');
         }

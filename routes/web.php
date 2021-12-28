@@ -25,7 +25,7 @@ Route::get('/admin/{any}', function () {
 })->middleware(['auth', 'role:admin'])
     ->where('any', '.*');
 
-Route::get('/kader/{any}', function () {
+Route::get('/petugas-posyandu/{any}', function () {
     return view('kader/dashboard');
 })->middleware(['auth', 'role:kader'])
     ->where('any', '.*');
@@ -36,4 +36,4 @@ Route::get('/user/{any}', function () {
     ->where('any', '.*');
 
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';
