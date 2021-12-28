@@ -6328,51 +6328,13 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
       s: "",
       ortu: {},
       balita: {},
+      filterBalita: {},
       pemeriksaanBumil: {},
       pemeriksaanBalita: {}
     };
@@ -6382,6 +6344,7 @@ __webpack_require__.r(__webpack_exports__);
     this.getBalita();
     this.getpemeriksaanBumil();
     this.getpemeriksaanBalita();
+    this.getFilterBalita();
   },
   methods: {
     getOrtu: function getOrtu() {
@@ -6389,8 +6352,7 @@ __webpack_require__.r(__webpack_exports__);
 
       var page = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1;
       this.axios.get("/api/ortu?page=" + page + "&search=" + this.s).then(function (response) {
-        _this.ortu = response.data;
-        console.log(_this.ortu);
+        _this.ortu = response.data; // console.log(this.ortu);
       });
     },
     getBalita: function getBalita() {
@@ -6398,10 +6360,19 @@ __webpack_require__.r(__webpack_exports__);
 
       var page = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1;
       this.axios.get("/api/balita?page=" + page + "&search=" + this.s).then(function (response) {
-        _this2.balita = response.data;
-        console.log(_this2.balita);
+        _this2.balita = response.data; // console.log(this.balita);
       });
     },
+    // getFilterBalita: function () {
+    //     this.getOrtu();
+    //     this.getBalita();
+    //     for (let i = 0; i < balita.length; i++) {
+    //         if (ortu.data.data.[i].id == balita.data.data.[i].id_ortu) {
+    //             this.filterBalita += balita.data;
+    //         }
+    //         console.log(this.filterBalita);
+    //     }
+    // },
     getpemeriksaanBumil: function getpemeriksaanBumil() {
       var _this3 = this;
 
@@ -6419,7 +6390,12 @@ __webpack_require__.r(__webpack_exports__);
       });
     },
     getDataSearch: function getDataSearch(s) {
-      this.s = this.getOrtu();
+      if (this.s == "") {
+        console.log("TULIS NAMA GOBLOK");
+      } else {
+        this.getOrtu();
+      }
+
       console.log(this.s);
       console.log("data udh ketangkep");
     }
@@ -41571,15 +41547,15 @@ var staticRenderFns = [
       { staticClass: "bg-pink-100 pt-12", attrs: { id: "footer" } },
       [
         _c("div", { staticClass: "copyright text-center" }, [
-          _vm._v("\n        © Copyright "),
+          _vm._v("\n        © Copyright\n        "),
           _c("strong", [_c("span", [_vm._v("PS2001 & yudiwtnrya_")])]),
-          _vm._v(". All Rights Reserved\n    "),
+          _vm._v("\n        . All Rights Reserved\n    "),
         ]),
         _vm._v(" "),
         _c("div", { staticClass: "credits text-center pb-8" }, [
           _vm._v("\n        Designed by\n        "),
           _c("a", { attrs: { href: "https:www.instagram.com/ptsuardana01" } }, [
-            _vm._v("ptsuardana01 & "),
+            _vm._v("ptsuardana01 &"),
           ]),
           _vm._v(" "),
           _c("a", { attrs: { href: "https:www.instagram.com/yudiwtnrya_" } }, [
@@ -41793,49 +41769,19 @@ var render = function () {
                 }),
                 _vm._v(" "),
                 _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.s,
-                      expression: "s",
-                    },
-                  ],
                   staticClass:
                     "py-2 px-4 w-1/4 bg-gray-100 shadow-md rounded-lg",
-                  attrs: { type: "text", placeholder: "NIK Orangtua balita" },
-                  domProps: { value: _vm.s },
-                  on: {
-                    input: function ($event) {
-                      if ($event.target.composing) {
-                        return
-                      }
-                      _vm.s = $event.target.value
-                    },
+                  attrs: {
+                    type: "text",
+                    placeholder: "NIK Orangtua balita",
+                    maxlength: "16",
                   },
                 }),
                 _vm._v(" "),
                 _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.s,
-                      expression: "s",
-                    },
-                  ],
                   staticClass:
                     "py-2 px-4 w-1/4 bg-gray-100 shadow-md rounded-lg",
                   attrs: { type: "text", placeholder: "Nama Balita" },
-                  domProps: { value: _vm.s },
-                  on: {
-                    input: function ($event) {
-                      if ($event.target.composing) {
-                        return
-                      }
-                      _vm.s = $event.target.value
-                    },
-                  },
                 }),
                 _vm._v(" "),
                 _c(
@@ -41893,18 +41839,16 @@ var render = function () {
                                         "aria-labelledby": "home-tab",
                                       },
                                     },
-                                    _vm._l(
-                                      _vm.ortu.data,
-                                      function (ortu, index) {
-                                        return _c(
-                                          "table",
-                                          {
-                                            key: index,
-                                            staticClass:
-                                              "table table-borderless",
-                                          },
-                                          [
-                                            _c("tbody", [
+                                    [
+                                      _c(
+                                        "table",
+                                        {
+                                          staticClass: "table table-borderless",
+                                        },
+                                        _vm._l(
+                                          _vm.ortu.data,
+                                          function (ortu, index) {
+                                            return _c("tbody", { key: index }, [
                                               _c("tr", [
                                                 _c(
                                                   "td",
@@ -42180,24 +42124,201 @@ var render = function () {
                                                   ]
                                                 ),
                                               ]),
-                                            ]),
-                                          ]
-                                        )
-                                      }
-                                    ),
-                                    0
+                                            ])
+                                          }
+                                        ),
+                                        0
+                                      ),
+                                    ]
                                   ),
                                   _vm._v(" "),
-                                  _vm._m(5),
-                                  _vm._v(" "),
-                                  _vm._m(6),
-                                ]
+                                  _vm._l(
+                                    _vm.balita.data,
+                                    function (balita, index) {
+                                      return _c(
+                                        "div",
+                                        {
+                                          key: index,
+                                          staticClass: "tab-pane fade",
+                                          attrs: {
+                                            id: "pills-profile",
+                                            role: "tabpanel",
+                                            "aria-labelledby": "profile-tab",
+                                          },
+                                        },
+                                        [
+                                          _c(
+                                            "table",
+                                            {
+                                              staticClass:
+                                                "table table-borderless",
+                                            },
+                                            [
+                                              _c("tbody", [
+                                                _c("tr", [
+                                                  _c(
+                                                    "td",
+                                                    {
+                                                      staticClass: "text-start",
+                                                    },
+                                                    [_vm._v("Nama Balita")]
+                                                  ),
+                                                  _vm._v(" "),
+                                                  _c("td", [_vm._v(":")]),
+                                                  _vm._v(" "),
+                                                  _c(
+                                                    "td",
+                                                    {
+                                                      staticClass: "text-start",
+                                                    },
+                                                    [
+                                                      _vm._v(
+                                                        _vm._s(balita.nama)
+                                                      ),
+                                                    ]
+                                                  ),
+                                                ]),
+                                                _vm._v(" "),
+                                                _c("tr", [
+                                                  _c(
+                                                    "td",
+                                                    {
+                                                      staticClass: "text-start",
+                                                    },
+                                                    [_vm._v("Tempat Lahir")]
+                                                  ),
+                                                  _vm._v(" "),
+                                                  _c("td", [_vm._v(":")]),
+                                                  _vm._v(" "),
+                                                  _c(
+                                                    "td",
+                                                    {
+                                                      staticClass: "text-start",
+                                                    },
+                                                    [
+                                                      _vm._v(
+                                                        _vm._s(
+                                                          balita.tmpt_lahir
+                                                        )
+                                                      ),
+                                                    ]
+                                                  ),
+                                                ]),
+                                                _vm._v(" "),
+                                                _c("tr", [
+                                                  _c(
+                                                    "td",
+                                                    {
+                                                      staticClass: "text-start",
+                                                    },
+                                                    [_vm._v("Tanggal Lahir")]
+                                                  ),
+                                                  _vm._v(" "),
+                                                  _c("td", [_vm._v(":")]),
+                                                  _vm._v(" "),
+                                                  _c(
+                                                    "td",
+                                                    {
+                                                      staticClass: "text-start",
+                                                    },
+                                                    [
+                                                      _vm._v(
+                                                        _vm._s(balita.tgl_lahir)
+                                                      ),
+                                                    ]
+                                                  ),
+                                                ]),
+                                                _vm._v(" "),
+                                                _c("tr", [
+                                                  _c(
+                                                    "td",
+                                                    {
+                                                      staticClass: "text-start",
+                                                    },
+                                                    [_vm._v("Jenis Kelamin")]
+                                                  ),
+                                                  _vm._v(" "),
+                                                  _c("td", [_vm._v(":")]),
+                                                  _vm._v(" "),
+                                                  _c(
+                                                    "td",
+                                                    {
+                                                      staticClass: "text-start",
+                                                    },
+                                                    [_vm._v(_vm._s(balita.jk))]
+                                                  ),
+                                                ]),
+                                                _vm._v(" "),
+                                                _c("tr", [
+                                                  _c(
+                                                    "td",
+                                                    {
+                                                      staticClass: "text-start",
+                                                    },
+                                                    [_vm._v("Status Balita")]
+                                                  ),
+                                                  _vm._v(" "),
+                                                  _c("td", [_vm._v(":")]),
+                                                  _vm._v(" "),
+                                                  _c(
+                                                    "td",
+                                                    {
+                                                      staticClass: "text-start",
+                                                    },
+                                                    [
+                                                      _vm._v(
+                                                        _vm._s(
+                                                          balita.stts_balita
+                                                        )
+                                                      ),
+                                                    ]
+                                                  ),
+                                                ]),
+                                                _vm._v(" "),
+                                                _c("tr", [
+                                                  _c(
+                                                    "td",
+                                                    {
+                                                      staticClass: "text-start",
+                                                    },
+                                                    [
+                                                      _vm._v(
+                                                        "Tanggal Meninggal"
+                                                      ),
+                                                    ]
+                                                  ),
+                                                  _vm._v(" "),
+                                                  _c("td", [_vm._v(":")]),
+                                                  _vm._v(" "),
+                                                  _c(
+                                                    "td",
+                                                    {
+                                                      staticClass: "text-start",
+                                                    },
+                                                    [
+                                                      _vm._v(
+                                                        _vm._s(
+                                                          balita.tgl_meninggal
+                                                        )
+                                                      ),
+                                                    ]
+                                                  ),
+                                                ]),
+                                              ]),
+                                            ]
+                                          ),
+                                        ]
+                                      )
+                                    }
+                                  ),
+                                ],
+                                2
                               ),
                             ]),
                           ]),
                         ]),
                         _vm._v(" "),
-                        _vm._m(7),
+                        _vm._m(5),
                       ]),
                     ]),
                   ]
@@ -42208,7 +42329,7 @@ var render = function () {
         ]
       ),
       _vm._v(" "),
-      _vm._m(8),
+      _vm._m(6),
     ]),
   ])
 }
@@ -42340,165 +42461,6 @@ var staticRenderFns = [
             },
             [_vm._v("Data Balita")]
           ),
-        ]),
-        _vm._v(" "),
-        _c("li", { staticClass: "nav-item", attrs: { role: "presentation" } }, [
-          _c(
-            "button",
-            {
-              staticClass: "nav-link",
-              attrs: {
-                id: "pills-contact-tab",
-                "data-bs-toggle": "pill",
-                "data-bs-target": "#pills-contact",
-                type: "button",
-                role: "tab",
-                "aria-controls": "pills-contact",
-                "aria-selected": "false",
-              },
-            },
-            [_vm._v("Data Pemeriksaan Bumil & Balita")]
-          ),
-        ]),
-      ]
-    )
-  },
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      {
-        staticClass: "tab-pane fade",
-        attrs: {
-          id: "pills-profile",
-          role: "tabpanel",
-          "aria-labelledby": "profile-tab",
-        },
-      },
-      [
-        _c("tbody", [
-          _c("tr", [
-            _c("td", { staticClass: "text-start" }, [_vm._v("Nama Balita")]),
-            _vm._v(" "),
-            _c("td", [_vm._v(":")]),
-            _vm._v(" "),
-            _c("td", { staticClass: "text-start" }, [_vm._v("{{}}")]),
-          ]),
-          _vm._v(" "),
-          _c("tr", [
-            _c("td", { staticClass: "text-start" }, [_vm._v("Tempat Lahir")]),
-            _vm._v(" "),
-            _c("td", [_vm._v(":")]),
-            _vm._v(" "),
-            _c("td", { staticClass: "text-start" }, [_vm._v("{{}}")]),
-          ]),
-          _vm._v(" "),
-          _c("tr", [
-            _c("td", { staticClass: "text-start" }, [_vm._v("Tanggal Lahir")]),
-            _vm._v(" "),
-            _c("td", [_vm._v(":")]),
-            _vm._v(" "),
-            _c("td", { staticClass: "text-start" }, [_vm._v("{{}}")]),
-          ]),
-          _vm._v(" "),
-          _c("tr", [
-            _c("td", { staticClass: "text-start" }, [_vm._v("Jenis Kelamin")]),
-            _vm._v(" "),
-            _c("td", [_vm._v(":")]),
-            _vm._v(" "),
-            _c("td", { staticClass: "text-start" }, [_vm._v("{{}}")]),
-          ]),
-          _vm._v(" "),
-          _c("tr", [
-            _c("td", { staticClass: "text-start" }, [_vm._v("Setatus Balita")]),
-            _vm._v(" "),
-            _c("td", [_vm._v(":")]),
-            _vm._v(" "),
-            _c("td", { staticClass: "text-start" }, [_vm._v("{{}}")]),
-          ]),
-          _vm._v(" "),
-          _c("tr", [
-            _c("td", { staticClass: "text-start" }, [
-              _vm._v("Tanggal Meninggal"),
-            ]),
-            _vm._v(" "),
-            _c("td", [_vm._v(":")]),
-            _vm._v(" "),
-            _c("td", { staticClass: "text-start" }, [_vm._v("{{}}")]),
-          ]),
-        ]),
-      ]
-    )
-  },
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      {
-        staticClass: "tab-pane fade",
-        attrs: {
-          id: "pills-contact",
-          role: "tabpanel",
-          "aria-labelledby": "contact-tab",
-        },
-      },
-      [
-        _c("tbody", [
-          _c("h1", [_vm._v("Pemeriksaan Ibu Hamil")]),
-          _vm._v(" "),
-          _c("tr", [
-            _c("td", { staticClass: "text-start" }, [_vm._v("Tinggi Badan")]),
-            _vm._v(" "),
-            _c("td", [_vm._v(":")]),
-            _vm._v(" "),
-            _c("td", { staticClass: "text-start" }, [_vm._v("{{}}")]),
-          ]),
-          _vm._v(" "),
-          _c("tr", [
-            _c("td", { staticClass: "text-start" }, [_vm._v("Berat Badan")]),
-            _vm._v(" "),
-            _c("td", [_vm._v(":")]),
-            _vm._v(" "),
-            _c("td", { staticClass: "text-start" }, [_vm._v("{{}}")]),
-          ]),
-          _vm._v(" "),
-          _c("tr", [
-            _c("td", { staticClass: "text-start" }, [_vm._v("Lingkar Lengan")]),
-            _vm._v(" "),
-            _c("td", [_vm._v(":")]),
-            _vm._v(" "),
-            _c("td", { staticClass: "text-start" }, [_vm._v("{{}}")]),
-          ]),
-          _vm._v(" "),
-          _c("h1", [_vm._v("Pemeriksaan Balita")]),
-          _vm._v(" "),
-          _c("tr", [
-            _c("td", { staticClass: "text-start" }, [_vm._v("Tinggi Badan")]),
-            _vm._v(" "),
-            _c("td", [_vm._v(":")]),
-            _vm._v(" "),
-            _c("td", { staticClass: "text-start" }, [_vm._v("{{}}")]),
-          ]),
-          _vm._v(" "),
-          _c("tr", [
-            _c("td", { staticClass: "text-start" }, [_vm._v("Berat Badan")]),
-            _vm._v(" "),
-            _c("td", [_vm._v(":")]),
-            _vm._v(" "),
-            _c("td", { staticClass: "text-start" }, [_vm._v("{{}}")]),
-          ]),
-          _vm._v(" "),
-          _c("tr", [
-            _c("td", { staticClass: "text-start" }, [_vm._v("Lingkar Kepala")]),
-            _vm._v(" "),
-            _c("td", [_vm._v(":")]),
-            _vm._v(" "),
-            _c("td", { staticClass: "text-start" }, [_vm._v("{{}}")]),
-          ]),
         ]),
       ]
     )

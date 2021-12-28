@@ -26,8 +26,8 @@
                     </div>
                     <div class="flex gap-5" action="">
                         <input class="py-2 px-4 w-1/4 bg-gray-100 shadow-md rounded-lg" type="text" placeholder="Masukan Nama Orangtua" v-model="s" />
-                        <input class="py-2 px-4 w-1/4 bg-gray-100 shadow-md rounded-lg" type="text" placeholder="NIK Orangtua balita" v-model="s" />
-                        <input class="py-2 px-4 w-1/4 bg-gray-100 shadow-md rounded-lg" type="text" placeholder="Nama Balita" v-model="s" />
+                        <input class="py-2 px-4 w-1/4 bg-gray-100 shadow-md rounded-lg" type="text" placeholder="NIK Orangtua balita" maxlength="16" />
+                        <input class="py-2 px-4 w-1/4 bg-gray-100 shadow-md rounded-lg" type="text" placeholder="Nama Balita" />
                         <button @click="getDataSearch()" class="rounded-lg bg-blue-100 w-52 px-7 py-4 font-bold text-lg shadow-lg hover:bg-indigo-500 cursor-pointer transition duration-700 transform hover:scale-110 motion-reduce:transform-none hover:text-white" data-bs-toggle="modal" data-bs-target="#largeModal">Cari</button>
                         <div class="modal fade" id="largeModal" tabindex="-1">
                             <div class="modal-dialog modal-lg">
@@ -48,14 +48,11 @@
                                                     <li class="nav-item" role="presentation">
                                                         <button class="nav-link" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="false">Data Balita</button>
                                                     </li>
-                                                    <li class="nav-item" role="presentation">
-                                                        <button class="nav-link" id="pills-contact-tab" data-bs-toggle="pill" data-bs-target="#pills-contact" type="button" role="tab" aria-controls="pills-contact" aria-selected="false">Data Pemeriksaan Bumil & Balita</button>
-                                                    </li>
                                                 </ul>
                                                 <div class="tab-content pt-2" id="myTabContent">
                                                     <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="home-tab">
-                                                        <table class="table table-borderless" v-for="(ortu, index) in ortu.data" :key="index">
-                                                            <tbody>
+                                                        <table class="table table-borderless">
+                                                            <tbody v-for="(ortu, index) in ortu.data" :key="index">
                                                                 <tr>
                                                                     <td class="text-start">Nama Ibu</td>
                                                                     <td>:</td>
@@ -143,77 +140,41 @@
                                                             </tbody>
                                                         </table>
                                                     </div>
-                                                    <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="profile-tab">
-                                                        <tbody>
-                                                            <tr>
-                                                                <td class="text-start">Nama Balita</td>
-                                                                <td>:</td>
-                                                                <td class="text-start">{{}}</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td class="text-start">Tempat Lahir</td>
-                                                                <td>:</td>
-                                                                <td class="text-start">{{}}</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td class="text-start">Tanggal Lahir</td>
-                                                                <td>:</td>
-                                                                <td class="text-start">{{}}</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td class="text-start">Jenis Kelamin</td>
-                                                                <td>:</td>
-                                                                <td class="text-start">{{}}</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td class="text-start">Setatus Balita</td>
-                                                                <td>:</td>
-                                                                <td class="text-start">{{}}</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td class="text-start">Tanggal Meninggal</td>
-                                                                <td>:</td>
-                                                                <td class="text-start">{{}}</td>
-                                                            </tr>
-                                                        </tbody>
-                                                    </div>
-                                                    <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="contact-tab">
-                                                        <tbody>
-                                                            <h1>Pemeriksaan Ibu Hamil</h1>
-                                                            <tr>
-                                                                <td class="text-start">Tinggi Badan</td>
-                                                                <td>:</td>
-                                                                <td class="text-start">{{}}</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td class="text-start">Berat Badan</td>
-                                                                <td>:</td>
-                                                                <td class="text-start">{{}}</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td class="text-start">Lingkar Lengan</td>
-                                                                <td>:</td>
-                                                                <td class="text-start">{{}}</td>
-                                                            </tr>
-
-                                                            <h1>Pemeriksaan Balita</h1>
-
-                                                            <tr>
-                                                                <td class="text-start">Tinggi Badan</td>
-                                                                <td>:</td>
-                                                                <td class="text-start">{{}}</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td class="text-start">Berat Badan</td>
-                                                                <td>:</td>
-                                                                <td class="text-start">{{}}</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td class="text-start">Lingkar Kepala</td>
-                                                                <td>:</td>
-                                                                <td class="text-start">{{}}</td>
-                                                            </tr>
-                                                        </tbody>
+                                                    <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="profile-tab" v-for="(balita, index) in balita.data" :key="index">
+                                                        <table class="table table-borderless">
+                                                            <tbody>
+                                                                <tr>
+                                                                    <td class="text-start">Nama Balita</td>
+                                                                    <td>:</td>
+                                                                    <td class="text-start">{{ balita.nama }}</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td class="text-start">Tempat Lahir</td>
+                                                                    <td>:</td>
+                                                                    <td class="text-start">{{ balita.tmpt_lahir }}</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td class="text-start">Tanggal Lahir</td>
+                                                                    <td>:</td>
+                                                                    <td class="text-start">{{ balita.tgl_lahir }}</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td class="text-start">Jenis Kelamin</td>
+                                                                    <td>:</td>
+                                                                    <td class="text-start">{{ balita.jk }}</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td class="text-start">Status Balita</td>
+                                                                    <td>:</td>
+                                                                    <td class="text-start">{{ balita.stts_balita }}</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td class="text-start">Tanggal Meninggal</td>
+                                                                    <td>:</td>
+                                                                    <td class="text-start">{{ balita.tgl_meninggal }}</td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
                                                     </div>
                                                 </div>
                                                 <!-- End Pills Tabs -->
@@ -279,6 +240,7 @@ export default {
             s: "",
             ortu: {},
             balita: {},
+            filterBalita: {},
             pemeriksaanBumil: {},
             pemeriksaanBalita: {},
         };
@@ -288,20 +250,31 @@ export default {
         this.getBalita();
         this.getpemeriksaanBumil();
         this.getpemeriksaanBalita();
+        this.getFilterBalita();
     },
     methods: {
         getOrtu: function (page = 1) {
             this.axios.get("/api/ortu?page=" + page + "&search=" + this.s).then((response) => {
                 this.ortu = response.data;
-                console.log(this.ortu);
+                // console.log(this.ortu);
             });
         },
         getBalita: function (page = 1) {
             this.axios.get("/api/balita?page=" + page + "&search=" + this.s).then((response) => {
                 this.balita = response.data;
-                console.log(this.balita);
+                // console.log(this.balita);
             });
         },
+        // getFilterBalita: function () {
+        //     this.getOrtu();
+        //     this.getBalita();
+        //     for (let i = 0; i < balita.length; i++) {
+        //         if (ortu.data.data.[i].id == balita.data.data.[i].id_ortu) {
+        //             this.filterBalita += balita.data;
+        //         }
+        //         console.log(this.filterBalita);
+        //     }
+        // },
         getpemeriksaanBumil: function () {
             this.axios.get("/api/pemeriksaan-bumil").then((response) => {
                 this.pemeriksaanBumil = response.data;
@@ -315,7 +288,11 @@ export default {
             });
         },
         getDataSearch: function (s) {
-            this.s = this.getOrtu();
+            if (this.s == "") {
+                console.log("TULIS NAMA GOBLOK");
+            } else {
+                this.getOrtu();
+            }
             console.log(this.s);
             console.log("data udh ketangkep");
         },
