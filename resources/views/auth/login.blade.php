@@ -18,16 +18,16 @@
 
     <title>Login</title>
   </head>
-  <body>
+  <body class="bg-white">
   
   <div class="content">
     <div class="container">
       <div class="row">
         <div class="col-md-6">
-          <img src="{{ asset('img/Asset 2.png') }}" alt="Image" class="img-fluid">
+          <img src="{{ asset('img/Breastfeeding (2).gif') }}" alt="Image" class="img-fluid">
         </div>
         <div class="col-md-6 contents">
-          <div class="row justify-content-center">
+          <div class="row justify-content-center bg-gray-100">
             <div class="col-md-8">
               <div class="mb-4">
               <h3>Sign In</h3>
@@ -58,8 +58,9 @@
                 </span> 
                 @endif
               </div>
-
               <button type="submit" class="btn btn-block btn-primary"> Login </button>
+              <a href="{{ route('register') }}" style="display: flex; align-items:center; justify-content:center; text-decoration:none" class="btn btn-block btn-primary text-white"> Register </a>
+
             </form>
             </div>
           </div> 

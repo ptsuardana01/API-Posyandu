@@ -1,17 +1,31 @@
 <template>
     <div class="">
         <Navbar></Navbar>
-        <Homepage></Homepage>
+        <div>
+            <router-view></router-view>
+        </div>
+        <Footer></Footer>
     </div>
 </template>
 
 <script>
 import Navbar from "./Navbar.vue";
 import Homepage from "./pages/Homepage.vue";
+import Footer from "./Footer.vue";
 export default {
     components: {
-        Homepage,
         Navbar,
+        Homepage,
+        Footer,
     },
 };
 </script>
+
+<style>
+* {
+    scroll-behavior: smooth;
+}
+body {
+    font-family: "Nunito", sans-serif;
+}
+</style>

@@ -1,44 +1,43 @@
 <template>
     <div
-        class="w-full h-24 flex items-center justify-between bg-pink-100 sm:items-center px-40 sm:pt-0 shadow-md fixed"
+        class="w-full h-24 flex items-center justify-between bg-pink-100 sm:items-center px-40 sm:pt-0 shadow-md fixed z-10"
     >
-        <div class="flex items-center justify-center">
-            <img class="h-12" src="img/Logo.png" alt="" />
+        <div class="flex items-center">
+            <img class="h-12" src="/img/Logo.png" alt="" />
         </div>
-
         <div class="hidden top-0 right-0 px-8 py-4 sm:block space-x-8">
-            <a
-                class="text-sm text-gray-700 dark:text-gray-500 underline"
-                href="#beranda"
-                >Homepage</a
+            <router-link
+                class="text-sm text-pink-700 font-bold hover:text-indigo-500 motion-reduce:transform-none transition duration-700"
+                :to="{ name: 'Homepage' }"
+                >Homepage</router-link
             >
             <a
-                class="text-sm text-gray-700 dark:text-gray-500 underline"
+                class="text-sm text-pink-700 font-bold hover:text-indigo-500 motion-reduce:transform-none transition duration-700"
                 href="#tentang"
                 >Tentang</a
             >
 
-            <a
-                href=""
-                class="text-sm text-gray-700 dark:text-gray-500 underline"
-                >Data Diri</a
+            <router-link
+                :to="{ name: 'Registrasi' }"
+                class="text-sm text-pink-700 font-bold hover:text-indigo-500 motion-reduce:transform-none transition duration-700"
+                >Data Diri</router-link
             >
 
-            <a
-                href=""
-                class="text-sm text-gray-700 dark:text-gray-500 underline"
-                >Statistik Posyandu</a
+            <router-link
+                :to="{ name: 'Registrasi' }"
+                class="text-sm text-pink-700 font-bold hover:text-indigo-500 motion-reduce:transform-none transition duration-700"
+                >Statistik Posyandu</router-link
             >
 
-            <a
-                href=""
-                class="ml-4 text-sm text-gray-700 dark:text-gray-500 underline"
-                >Register</a
+            <router-link
+                :to="{ name: 'Registrasi' }"
+                class="ml-4 text-sm text-pink-700 font-bold hover:text-indigo-500 motion-reduce:transform-none transition duration-700"
+                >Register</router-link
             >
 
             <button
                 @click="logout()"
-                class="text-sm text-gray-700 dark:text-gray-500 underline"
+                class="text-sm text-pink-700 transition hover:text-indigo-500 duration-700 transform hover:scale-150 motion-reduce:transform-none"
             >
                 <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -63,7 +62,7 @@ export default {
     methods: {
         logout() {
             axios.post("/logout").then((response) => {
-                window.location.href = "/login";
+                window.location.href = "/";
             });
         },
     },

@@ -24,22 +24,22 @@
         </style>
     </head>
     <body class="antialiased">
-        <div class="w-full h-24 flex items-center justify-between bg-pink-100 sm:items-center px-40 sm:pt-0 shadow-md fixed">
+        <div class="w-full h-24 flex items-center justify-between bg-pink-100 sm:items-center px-40 sm:pt-0 shadow-md fixed z-10">
             <div class="flex items-center justify-center">
                 <img class="h-12" src="img/Logo.png" alt="">
             </div>
 
             @if (Route::has('login'))
                 <div class="hidden top-0 right-0 px-8 py-4 sm:block space-x-8">
-                    <a class="text-sm text-gray-700 dark:text-gray-500 underline" href="#beranda">Beranda</a>
-                    <a class="text-sm text-gray-700 dark:text-gray-500 underline" href="#tentang">Tentang</a>
+                    <a class="text-sm text-pink-700 dark:text-pink-500 font-bold hover:text-indigo-500 motion-reduce:transform-none transition duration-700" href="#beranda">Beranda</a>
+                    <a class="text-sm text-pink-700 dark:text-pink-500 font-bold hover:text-indigo-500 motion-reduce:transform-none transition duration-700" href="#tentang">Tentang</a>
                     @auth
-                        <a href="{{ url('/dashboard') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Dashboard</a>
+                        <a href="{{ url('/dashboard') }}" class="text-sm text-pink-700 dark:text-pink-500 font-bold hover:text-indigo-500 motion-reduce:transform-none transition duration-700">Dashboard</a>
                     @else
-                        <a href="{{ route('login') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Log in</a>
+                        <a href="{{ route('login') }}" class="text-sm text-pink-700 dark:text-pink-500 font-bold hover:text-indigo-500 motion-reduce:transform-none transition duration-700">Log in</a>
 
                         @if (Route::has('register'))
-                            <a href="{{ route('register') }}" class="ml-4 text-sm text-gray-700 dark:text-gray-500 underline">Register</a>
+                            <a url="{{ route('register') }}" class="ml-4 text-sm text-pink-700 dark:text-pink-500 font-bold hover:text-indigo-500 motion-reduce:transform-none transition duration-700">Register</a>
                         @endif
                         
                     @endauth
@@ -47,8 +47,8 @@
             @endif
 
         </div>
-        <div class="px-40">
-            <section id="beranda" class="grid h-screen w-full">
+        <div class="">
+            <section id="beranda" class="grid h-screen w-full px-64">
                 <div class="flex items-center justify-center space-x-8">
                     <div class="flex flex-col space-y-8">
                         <h1 class="text-7xl text-pink-300 font-bold">
@@ -62,8 +62,8 @@
                             masyarakat
                         </p>
                         {{-- <a class="hover:bg-green-300 transition duration-700 w-32 py-5 px-7 bg-green-500 rounded-md font-bold text-white">Registrasi</a> --}}
-                        <a class="flex hover:bg-green-300 cursor-pointer transition duration-700 bg-green-500 transform hover:scale-110 motion-reduce:transform-none w-44 py-5 px-7 rounded-md font-bold text-white">
-                            Registrasi 
+                        <a href="{{ url('/user/Registrasi') }}" class="flex hover:bg-green-300 cursor-pointer transition duration-700 bg-green-500 transform hover:scale-110 motion-reduce:transform-none w-60 py-5 px-7 rounded-md font-bold text-white">
+                            Dafar Data Anda 
                             <svg class="w-6 ml-5 h-6 animate-bounce" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-11a1 1 0 10-2 0v3.586L7.707 9.293a1 1 0 00-1.414 1.414l3 3a1 1 0 001.414 0l3-3a1 1 0 00-1.414-1.414L11 10.586V7z" clip-rule="evenodd"></path></svg>
                           </a>
                     </div>
@@ -74,7 +74,7 @@
                 <h1 class="text-2xl pt-32 pb-12 text-pink-500 font-bold flex items-center justify-center">
                     Informasi untuk Anda
                 </h1>
-                <div class="px-24 grid grid-cols-2 bg-gray-100">
+                <div class="px-64 grid grid-cols-2 bg-gray-100">
                     <div class="flex items-center justify-center ">
                         <img class="w-1/2 p-12 " src="img/Asset scroll.png" alt="images not found">
                     </div> 

@@ -1,10 +1,4 @@
 <x-guest-layout>
-    <x-auth-card>
-        <x-slot name="logo">
-            <a href="/">
-                <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
-            </a>
-        </x-slot>
 
         <!-- Validation Errors -->
         <x-auth-validation-errors class="mb-4" :errors="$errors" />
@@ -13,47 +7,65 @@
             @csrf
 
             <!-- Name -->
-            <div>
-                <x-label for="name" :value="__('Name')" />
+            <div class="container">
 
-                <x-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus />
-            </div>
-
-            <!-- Email Address -->
-            <div class="mt-4">
-                <x-label for="email" :value="__('Email')" />
-
-                <x-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required />
-            </div>
-
-            <!-- Password -->
-            <div class="mt-4">
-                <x-label for="password" :value="__('Password')" />
-
-                <x-input id="password" class="block mt-1 w-full"
-                                type="password"
-                                name="password"
-                                required autocomplete="new-password" />
-            </div>
-
-            <!-- Confirm Password -->
-            <div class="mt-4">
-                <x-label for="password_confirmation" :value="__('Confirm Password')" />
-
-                <x-input id="password_confirmation" class="block mt-1 w-full"
-                                type="password"
-                                name="password_confirmation" required />
-            </div>
-
-            <div class="flex items-center justify-end mt-4">
-                <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('login') }}">
-                    {{ __('Already registered?') }}
-                </a>
-
-                <x-button class="ml-4">
-                    {{ __('Register') }}
-                </x-button>
-            </div>
+                <section class="section register min-vh-100 d-flex flex-column align-items-center justify-content-center py-4">
+                  <div class="container">
+                    <div class="row justify-content-center">
+                      <div class="col-lg-4 col-md-6 d-flex flex-column align-items-center justify-content-center">
+                        <div class="card mb-3">
+          
+                          <div class="card-body">
+          
+                            <div class="pt-4 pb-2">
+                              <h5 class="card-title text-center pb-0 fs-4">Create an Account</h5>
+                              <p class="text-center small">Enter your personal details to create account</p>
+                            </div>
+          
+                            <form class="row g-3 needs-validation" novalidate>
+                              <div class="col-12">
+                                <label for="name" class="form-label">Nama Lengkap</label>
+                                <input :value="old('name')" type="text" name="name" class="form-control" id="name" required autofocus>
+                                <div class="invalid-feedback">Masukkan nama anda</div>
+                              </div>
+          
+                              <div class="col-12">
+                                <label for="email" class="form-label">Email</label>
+                                <input :value="old('email')" type="email" name="email" class="form-control" id="email" required>
+                                <div class="invalid-feedback">Please enter a valid Email adddress!</div>
+                              </div>
+          
+                              <div class="col-12">
+                                <label for="password" class="form-label">Password</label>
+                                <input type="password" name="password" class="form-control" id="password" required autocomplete="new-password">
+                                <div class="invalid-feedback">Please enter your password!</div>
+                              </div>
+                              <div class="col-12">
+                                <label for="password_confirmation" class="form-label">Confirmation Password</label>
+                                <input type="password" name="password_confirmation" class="form-control" id="password_confirmation" required autocomplete="new-password">
+                                <div class="invalid-feedback">Please enter your password!</div>
+                              </div>
+          
+                              <div class="col-12">
+                                <div class="form-check">
+                                  <input class="form-check-input" name="terms" type="checkbox" value="" id="acceptTerms" required>
+                                  <label class="form-check-label" for="acceptTerms">I agree and accept the <a href="#">terms and conditions</a></label>
+                                  <div class="invalid-feedback">You must agree before submitting.</div>
+                                </div>
+                              </div>
+                              <div class="col-12">
+                                <button class="btn btn-primary w-100" type="submit">Register</button>
+                              </div>
+                            </form>
+                            
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+          
+                </section>
+          
+              </div>
         </form>
-    </x-auth-card>
 </x-guest-layout>
