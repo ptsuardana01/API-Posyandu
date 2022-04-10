@@ -32503,9 +32503,9 @@ var staticRenderFns = [
             _c("div", { staticClass: "card-body" }, [
               _c("h5", { staticClass: "card-title" }, [
                 _vm._v(
-                  "\n                        Sales\n                        "
+                  "\n                        Balita\n                        "
                 ),
-                _c("span", [_vm._v("| Today")]),
+                _c("span", [_vm._v("| This Month")]),
               ]),
               _vm._v(" "),
               _c("div", { staticClass: "d-flex align-items-center" }, [
@@ -32515,21 +32515,17 @@ var staticRenderFns = [
                     staticClass:
                       "card-icon rounded-circle d-flex align-items-center justify-content-center",
                   },
-                  [_c("i", { staticClass: "bi bi-cart" })]
+                  [_c("i", { staticClass: "bi bi-person-circle" })]
                 ),
                 _vm._v(" "),
                 _c("div", { staticClass: "ps-3" }, [
-                  _c("h6", [_vm._v("145")]),
+                  _c("h6", [_vm._v("0")]),
                   _vm._v(" "),
                   _c(
                     "span",
                     { staticClass: "text-success small pt-1 fw-bold" },
-                    [_vm._v("12%")]
+                    [_vm._v("Data Balita yang masuk")]
                   ),
-                  _vm._v(" "),
-                  _c("span", { staticClass: "text-muted small pt-2 ps-1" }, [
-                    _vm._v("increase"),
-                  ]),
                 ]),
               ]),
             ]),
@@ -32589,7 +32585,7 @@ var staticRenderFns = [
             _c("div", { staticClass: "card-body" }, [
               _c("h5", { staticClass: "card-title" }, [
                 _vm._v(
-                  "\n                        Revenue\n                        "
+                  "\n                        Orang Tua\n                        "
                 ),
                 _c("span", [_vm._v("| This Month")]),
               ]),
@@ -32601,21 +32597,17 @@ var staticRenderFns = [
                     staticClass:
                       "card-icon rounded-circle d-flex align-items-center justify-content-center",
                   },
-                  [_c("i", { staticClass: "bi bi-currency-dollar" })]
+                  [_c("i", { staticClass: "bi bi-people-fill" })]
                 ),
                 _vm._v(" "),
                 _c("div", { staticClass: "ps-3" }, [
-                  _c("h6", [_vm._v("$3,264")]),
+                  _c("h6", [_vm._v("0")]),
                   _vm._v(" "),
                   _c(
                     "span",
                     { staticClass: "text-success small pt-1 fw-bold" },
-                    [_vm._v("8%")]
+                    [_vm._v("Data Ortu yang masuk")]
                   ),
-                  _vm._v(" "),
-                  _c("span", { staticClass: "text-muted small pt-2 ps-1" }, [
-                    _vm._v("increase"),
-                  ]),
                 ]),
               ]),
             ]),
@@ -32675,9 +32667,9 @@ var staticRenderFns = [
             _c("div", { staticClass: "card-body" }, [
               _c("h5", { staticClass: "card-title" }, [
                 _vm._v(
-                  "\n                        Customers\n                        "
+                  "\n                        Petugas Posyandu\n                        "
                 ),
-                _c("span", [_vm._v("| This Year")]),
+                _c("span", [_vm._v("| This Month")]),
               ]),
               _vm._v(" "),
               _c("div", { staticClass: "d-flex align-items-center" }, [
@@ -32691,17 +32683,13 @@ var staticRenderFns = [
                 ),
                 _vm._v(" "),
                 _c("div", { staticClass: "ps-3" }, [
-                  _c("h6", [_vm._v("1244")]),
+                  _c("h6", [_vm._v("0")]),
                   _vm._v(" "),
                   _c(
                     "span",
                     { staticClass: "text-danger small pt-1 fw-bold" },
-                    [_vm._v("12%")]
+                    [_vm._v("Data Petugas Posyandu yang masuk")]
                   ),
-                  _vm._v(" "),
-                  _c("span", { staticClass: "text-muted small pt-2 ps-1" }, [
-                    _vm._v("decrease"),
-                  ]),
                 ]),
               ]),
             ]),
